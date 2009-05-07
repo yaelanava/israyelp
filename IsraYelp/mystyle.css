@@ -45,6 +45,11 @@
 	outline: 0px
 	}
 	
+	#head #register P {
+		TEXT-ALIGN: left;
+		COLOR: #FFFFFF}
+	}
+	
 	#head #rightEdge {	
 	BACKGROUND: url("./image/back_right.gif") #fff no-repeat right bottom;	
 	FLOAT: right;
