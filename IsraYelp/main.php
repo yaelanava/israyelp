@@ -17,7 +17,7 @@
 			<A href="main.php/"></A>
 		</div>
 		<div id="register">
-			<p><?php if (session_is_registered('username')) print($_SESSION['username'] . "-אתה מחובר כ") ?></p>
+			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
 		</div>
 		<div id="leftEdge"></div>
 		<div id="rightEdge"></div>
@@ -30,6 +30,7 @@
 			<LI class="header" id="writeReview"><A id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview" rel="nofollow">כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A href="http://static.px.yelp.com/find" rel="nofollow">מצא ביקורת</A> | </LI>
 			<LI class="header" id="invite"><A id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends" rel="nofollow">הזמן חברים</A></LI>
+			
 			<LI class="header_login"> <A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> rel="nofollow"> <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
 			<LI class="header_login"><A id="Zprofile" href="http://static.px.yelp.com/signup?return_url=%2Fprofile" rel="nofollow">החשבון שלי </A> | </LI>
 			<LI class="header_login"><A href="http://static.px.yelp.com/member_search" rel="nofollow"> חיפוש משתמש </A> | </LI>		

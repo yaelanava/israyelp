@@ -1,7 +1,10 @@
 <?php
+session_start();
+
 if ($_GET['logout']){
 	session_destroy();
-	header("Location:main.php");				
+	header("Location:main.php");
+	die(0);				
 }
 
 if (isset($_POST['email']) && ('' != $_POST['email']) && 
@@ -32,7 +35,6 @@ function loginUser(){
 //    $mysqli->close();
 	
 	if($count==1){
-		session_start();
 		$user = mysqli_fetch_assoc($result);
 		$_SESSION['username'] = $user['username'];
 		$_SESSION['email'] = $email; 
