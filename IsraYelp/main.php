@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,7 +30,7 @@
 			<LI class="header" id="writeReview"><A id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview" rel="nofollow">כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A href="http://static.px.yelp.com/find" rel="nofollow">מצא ביקורת</A> | </LI>
 			<LI class="header" id="invite"><A id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends" rel="nofollow">הזמן חברים</A></LI>
-			<LI class="header_login"> <A href=<?php if (session_is_registered('username')) {print("login.php?logout=1");} else{print("login.html");}?> rel="nofollow"> <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"> <A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> rel="nofollow"> <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
 			<LI class="header_login"><A id="Zprofile" href="http://static.px.yelp.com/signup?return_url=%2Fprofile" rel="nofollow">החשבון שלי </A> | </LI>
 			<LI class="header_login"><A href="http://static.px.yelp.com/member_search" rel="nofollow"> חיפוש משתמש </A> | </LI>		
 		</ul>
@@ -47,16 +47,14 @@
 				 <LI><A href="http://www.yelp.com/nyc">ירושלים</A> | </LI>
 				 <LI id="locBar_title">ערים אחרות:</LI>
 		</ul>
-
 	</div>
  
  	<h2 id="nonMemberWelcome"><A href="http://www.yelp.com/signup" rel="nofollow">!תוכלו בקלות לבקר ולדבר על כל מה שכדאי - ולא כדאי באזוריכם  - IsraYelp</A> </h2>
  	
 	<div id="external_search">
 		<form method="get" action="/search" name="external_search"> 
-		
 			<p>
-				<label for="find_desc_ext">   חפש <em>לדוגמא: מסעדה, מרפאה, סלון</em></label> 
+				<label for="find_desc_ext"> חפש <em>לדוגמא: מסעדה, מרפאה, סלון</em></label> 
 				<input type="text" maxlength="64" id="find_desc_ext" name="find_desc" tabindex="1">
 				
 			</p>
