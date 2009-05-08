@@ -189,26 +189,26 @@
 				</div> 
 
 				<div id="hot_and_new" class="external">
-					<h3>Hot on Yelp</h3>
-					<p class="smaller"><em>Hottest in the past month, based on bookmarks</em></p>
+					<h3>חם באתר</h3>
+					<p class="smaller"><em>המקום הכי חם בחודש האחרון</em></p>
 							
 					
 					<div class="clearStyles bizPhotoBox">
 							<a rel="nofollow" href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg"><img src="http://static.px.yelp.com/bphoto/vfVo_W0bOOmZimf5Yh78Sw/m" style="" alt="Shanghai Dumpling King, San Francisco, CA"></a>
 					</div>
 					
-						<div class="rating"><img class="stars_3_half" width="83" height="325" title="3.5 star rating" alt="3.5 star " src="http://static.px.yelp.com/static/20090427/i/new/ico/stars/stars_map.png"/></div>
-						<h4>1. <a rel="nofollow" href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg">Shanghai Dumpling King</a></h4>
-						<p>I&#39;ve eaten here on numerous occasions. &nbsp;My friend saw SDK on Check, Please! and wanted to give it a whirl. &nbsp;We came on a Sunday night at 8:30, and it was PACKED! &nbsp;Apparently everyone and their mother&#8230;</p>		
-						<div id="hot_list">
-						<h4>More Hot Picks</h4>
-						<ul class="stripped">
-							<li>2. <a rel="nofollow"  href="/biz/the-corner-san-francisco">The Corner</a></li>
-							<li>3. <a rel="nofollow"  href="/biz/borobudur-restaurant-san-francisco">Borobudur Restaurant</a></li>
-							<li>4. <a rel="nofollow"  href="/biz/mescolanza-san-francisco">Mescolanza</a></li>
-							<li>5. <a rel="nofollow"  href="/biz/farmerbrown-san-francisco">farmerbrown</a></li>
-						<li><a href="/top?most=hot&find_loc=San+Francisco%2C+CA">...See more &raquo;</a></li>
-						</ul>
+						<div class="rating"><img class="stars_3" width="83" height="325" title="3 star rating" alt="3 star " src="./image/stars_map.png"/></div>
+						<h4>1. <a rel="nofollow" href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg">הסושיה</a></h4>
+						<p>כאן תהיה הביקורת של המקום...</p>		
+						<div id="hot_list" >
+							<h4>עוד מקומות חמים</h4>
+							<ul class="stripped">
+								<li>2. <a rel="nofollow"  href="/biz/the-corner-san-francisco">The Corner</a></li>
+								<li>3. <a rel="nofollow"  href="/biz/borobudur-restaurant-san-francisco">Borobudur Restaurant</a></li>
+								<li>4. <a rel="nofollow"  href="/biz/mescolanza-san-francisco">Mescolanza</a></li>
+								<li>5. <a rel="nofollow"  href="/biz/farmerbrown-san-francisco">farmerbrown</a></li>
+							<li><a href="/top?most=hot&find_loc=San+Francisco%2C+CA">עוד >></a></li>
+							</ul>
 						</div>			
 				</div>
 		
@@ -321,5 +321,45 @@
 		</div>
 	</div>
 </div>
+
+<div id="pressLinks">
+	<IMG height="84" alt="homepage footer ads" src="./image/ads_empty.png" width="950" useMap="#pressMap" /> 
+	<MAP name="pressMap">
+		<AREA alt="The Weekly Yelp" href="http://www.yelp.com/weekly" rel="nofollow" />
+		<AREA alt="Yelp Apparel Store" href="http://www.yelp.com/store" rel="nofollow" />
+		<AREA alt="The Yelp Blog" href="http://officialblog.yelp.com/" rel="nofollow" />
+		<AREA alt="In the News" href="http://www.yelp.com/press" rel="nofollow" />
+	</MAP>
+</div>
+
+<div id="footer">
+	
+	<div>		
+				<ul id="aboutSite">
+					<li>  <a href="/signup" rel="nofollow" id="Zprofile_footer">עלינו</a></li>
+					<li> | <a href="/about" rel="nofollow">החשבון שלי</a></li>
+					<li> | <a href="/faq" rel="nofollow">שאלות נפוצות</a></li>
+				</ul>
+	</div>
+
+	<div class="directory">
+		<ul>
+			<li class="first"><strong>מפת האתר</strong></li>
+			<li> | <a href="/atlanta">תל-אביב</a></li>
+			<li> | <a href="/austin">ירושלים</a></li>
+			<li> | <a href="/boston">חיפה</a></li>
+			<li> | <a href="/chicago">באר שבע</a></li>
+			<li> | <a href="/dallas">הרצליה</a></li>
+			<li> | <a href="/denver">אשדוד</a></li>
+			<li> | <a href="/locations">ערים נוספות</a></li>
+		</ul>
+	</div>
+	
+	<div>
+		<p> זכויות יוצרים </p>
+	</div>
+</div>
+
+
 </body>
 </html>
