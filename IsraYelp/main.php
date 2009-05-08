@@ -9,7 +9,7 @@
 	
 	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="./myStyle.css">  	
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 
 <body class= "us" id="IsraYelp_main_body" dir="rtl">
