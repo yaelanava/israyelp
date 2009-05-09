@@ -33,8 +33,8 @@
 			<LI class="header" id="findReview"><A href="http://static.px.yelp.com/find" rel="nofollow">מצא ביקורת</A> | </LI>
 			<LI class="header" id="invite"><A id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends" rel="nofollow">הזמן חברים</A></LI>
 			
-			<LI class="header_login"> <A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> rel="nofollow"> <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A id="Zprofile" href="http://static.px.yelp.com/signup?return_url=%2Fprofile" rel="nofollow">החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> rel="nofollow"> <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?> rel="nofollow">החשבון שלי </A> | </LI>
 			<LI class="header_login"><A href="http://static.px.yelp.com/member_search" rel="nofollow"> חיפוש משתמש </A> | </LI>		
 		</ul>
 	
@@ -152,14 +152,12 @@
 							</ol>
 							<p><a href="/c/sf/beautysvc">עוד...</a></p>
 					</div>
-				</div>
-				
+				</div>				
 				</div>	
 					
 					<div id="cat_list">	
 						<h4 class="ieSucks">חפש לפי קטגוריה</h4>
-						<ul class="stripped ieSucks">
-								
+						<ul class="stripped ieSucks">								
 							<li class="shopping"><a href="/c/sf/shopping">קניות</a> 4165 </li>
 							<li class="restaurants"><a href="/c/sf/restaurants">מסעדות</a>  3910  </li>
 							<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
@@ -211,11 +209,6 @@
 							</ul>
 						</div>			
 				</div>
-		
-		
-		
-
-		
 		</div>
 <!--*******************************-->
 		
@@ -258,9 +251,7 @@
 					</li>
 				</ul>
 			</div>
-			
-			
-					
+										
 				<div id="freshListsModule">
 					<a href="/list_search?q=&sort=time_updated&location=San+Francisco%2C+CA" class="floatLink"><img src="./image/more_button.png" alt="Search lists"></a>
 					<h3>ישר מהתנור...</h3>
@@ -269,8 +260,7 @@
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
 							<a rel="nofollow" href="/user_details?userid=0juzbrgcLHqobdK-OZAyiw"><img src="http://static.px.yelp.com/photo/sTLR3ZURk2-JwZRwnUREwA/ss" style="height:40px;width:40px;" alt="Photo ofDaniel L." /></a>
-					</div>
-				
+					</div>				
 						<p>
 							<a rel="nofollow" href="/list/coffee-and-tea-berkeley">Coffee &amp; Tea</a>
 							<br />Isn&#39;t it time to take a break from what you&#39;re doing?
@@ -290,7 +280,6 @@
 								<div class="clearStyles photoBox" >
 							<a rel="nofollow" href="/user_details?userid=M_SxfmZjepJYxE_vNbWK4g"><img src="http://static.px.yelp.com/photo/rZrQob17DQ3qEjnbwanzaA/ss" style="height:40px;width:40px;" alt="Photo ofDeanna T." /></a>
 					</div>
-				
 						<p>
 							<a rel="nofollow" href="/list/the-rich-san-francisco">The Rich</a>
 							<br />The Inner and Outer Richmond! Sometimes it&#39;s nice to get away from the big city life.
@@ -299,8 +288,7 @@
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
 							<a rel="nofollow" href="/user_details?userid=Z2PeqEKL87UUG3vfMBRd4w"><img src="http://static.px.yelp.com/photo/S3PvXY3cr0ljiLWQL9hUmw/ss" style="height:40px;width:40px;" alt="Photo ofRobert S." /></a>
-					</div>
-				
+					</div>				
 						<p>
 							<a rel="nofollow" href="/list/burger-fanatics-love-burgers-and-must-try-them-all-san-mateo">Burger Fanatics love burgers and must try them all!!!!</a>
 							<br />If you love burgers you love to try out a new place and a good burger. &nbsp;Sometimes you will hit a bust but that is the fun in it. &nbsp;Go out and try a&#8230;
@@ -315,8 +303,7 @@
 							<a rel="nofollow" href="/list/best-breakfast-in-the-bay-berkeley">Best Breakfast in the Bay !</a>
 							<br />Here&#39;s where I like to come to stuff my face full of bacon + eggs + pancakes + toast.
 						</p>
-					</div>
-				
+					</div>				
 				</div>			
 		</div>
 	</div>
