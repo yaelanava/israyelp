@@ -760,3 +760,163 @@
 	
 	UL#aboutSite A {	FONT-SIZE: 12px !important}
 	
+	
+	/***************here we define style of restarants.php***************/
+	
+	#mainContent {	
+	BORDER-RIGHT: #ccc 1px solid;	
+	PADDING-RIGHT: 0px;	
+	BORDER-TOP: #ccc 1px solid;	
+	PADDING-LEFT: 0px;	
+	PADDING-BOTTOM: 5px;	
+	MARGIN: 0px auto;	
+	BORDER-LEFT: #ccc 1px solid;	
+	WIDTH: 930px;	
+	PADDING-TOP: 5px;	
+	BORDER-BOTTOM: #ccc 1px solid}
+	
+	.category_browse#mainContent {	
+	PADDING-RIGHT: 0px;	
+	PADDING-LEFT: 0px;	
+	PADDING-BOTTOM: 15px;	
+	PADDING-TOP: 10px}
+	
+	.category_browse #locBar {	
+	PADDING-BOTTOM: 5px;	
+	MARGIN: 0px 10px;	}
+	
+	#locBar {	
+	OVERFLOW: visible;	
+	POSITION: relative;	}
+	
+	#top_cat_biz {	
+	CLEAR: both;	
+	MIN-HEIGHT: 295px;	
+	PADDING-BOTTOM: 10px;	
+	PADDING-RIGHT: 6px;
+	MARGIN: 5px;	
+	POSITION: right;
+	BORDER-TOP: #ccc 1px solid;}
+	
+	
+	#top_biz_lists #BOY_logo {	
+	FLOAT: right;	
+	MARGIN-RIGHT: 0px;}
+	
+	.alignmid {	
+	VERTICAL-ALIGN: middle}
+	
+	#top_biz {	
+	FLOAT: right;	
+	WIDTH: 300px}
+	
+	#top_biz_lists H1 {	
+	MARGIN-TOP: 6px;	
+	FONT-SIZE: 14px;	
+	FLOAT: right;	
+	MARGIN-BOTTOM: 10px;	
+	OVERFLOW: auto;	WIDTH: auto}
+	
+	#top_biz_lists {	
+	WIDTH: 590px}
+	
+	#top_biz_lists #breadcrumbs {	
+	CLEAR: right;	
+	FLOAT: none;	
+	MARGIN-BOTTOM: 15px}
+	
+	#top_biz P {	
+	MARGIN-BOTTOM: 5px;
+	MARGIN-LEFT:5px;}
+	
+	#top_biz .bizPhotoBox {	
+	FLOAT: left;	
+	MARGIN-BOTTOM: 5px;	
+	MARGIN-LEFT: 10px;
+	MARGIN-TOP: 10px}
+	
+	#top_biz .biz_info {	
+	MARGIN-BOTTOM: 7px}
+	
+	#top_cat_biz .biz_info {	
+	PADDING-LEFT: 15px;	
+	BACKGROUND: url(../i/new/ico/map_marker_med.gif) no-repeat;	
+	OVERFLOW: hidden;	
+	PADDING-TOP: 2px}
+	
+	#top_biz .top_biz_rating {	
+	MARGIN-TOP: 2px;	
+	MARGIN-BOTTOM: 5px;	
+	OVERFLOW: auto} 
+	
+	#top_biz .rating {	
+	FLOAT: right;	
+	MARGIN-RIGHT: 5px}
+	
+	DIV.rating {	
+	OVERFLOW: hidden !important;	
+	WIDTH: 84px;	
+	POSITION: relative;	
+	HEIGHT: 17px} 
+
+
+	#top_cat_biz UL#biz_list {	
+	FLOAT: right;	
+	WIDTH: 275px;
+	PADDING-RIGHT:10px;} 
+	
+	UL#biz_list LI {	
+	MARGIN: 0px}
+	
+	#top_biz .biz_info {	
+	MARGIN-BOTTOM: 7px}
+	
+	#top_cat_biz .biz_info {
+	PADDING-LEFT: 15px;	
+	BACKGROUND: url(../i/new/ico/map_marker_med.gif) no-repeat;
+	OVERFLOW: hidden;	
+	PADDING-TOP: 2px}
+	
+	#biz_list .biz_name {	
+	FONT-WEIGHT: bold}
+	
+	#top_cat_biz UL .biz_rating {	
+	FONT-SIZE: 11px;	
+	MARGIN-RIGHT: 5px;	
+	HEIGHT: 14px;	
+	TEXT-ALIGN: right}
+	
+	#top_cat_biz UL .biz_rating DIV {	
+	MARGIN-TOP: 2px}
+	
+	DIV.rating-small {	
+	PADDING-RIGHT: 0px !important;	
+	PADDING-LEFT: 0px !important;	
+	FLOAT: right;	
+	PADDING-BOTTOM: 0px !important;	
+	OVERFLOW: hidden !important;	
+	WIDTH: 100px;	
+	PADDING-TOP: 0px !important;	
+	POSITION: relative;	
+	HEIGHT: 9px}
+	
+	#top_cat_biz UL .biz_rating EM {	
+	FLOAT: right;	
+	MARGIN-LEFT: 3px;	
+	LINE-HEIGHT: 14px}
+	
+	#biz_list LI P {	
+	FONT-SIZE: 11px;	
+	MARGIN-LEFT: 5px}
+
+	DIV.rating-small IMG.stars_4_half {	TOP: -302px}
+	
+	DIV.rating-small IMG {	POSITION: absolute}
+	
+	#top_cat_biz #biz_map {	
+	MARGIN-LEFT: 0px;
+	WIDTH: 300px;	
+	POSITION: relative;	
+	FLOAT: left;
+	HEIGHT: 400px}
+	
