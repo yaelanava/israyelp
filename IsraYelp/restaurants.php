@@ -1,4 +1,4 @@
-<?php ?>
+<?php session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,7 +69,7 @@
 							<a  href="/biz/bakery-mexico-san-jose#hrid:rwiHbJYf8uQWOnSglosPgg"><img src="http://static.px.yelp.com/bphoto/CTZh-CDPji271JkSYxYuBA/ms" style="" alt="Bakery Mexico"></a>
 					</div>
 		
-					<p class="biz_info">1. <a href="/biz/bakery-mexico-san-jose#hrid:rwiHbJYf8uQWOnSglosPgg" id="top_biz_name_1" title="Bakery Mexico">Bakery Mexico</a> </p>
+					<p class="biz_info">1. <a href="lukas.php" id="top_biz_name_1" title="lukas"> לוקאס </a> </p>
 					<div class="top_biz_rating">
 						<div class="rating"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">83 reviews</em>
 					</div>
@@ -119,14 +119,16 @@
 			</ul>
 			
 		</div>
-		<div id="biz_map">
+		<div id="biz_map" style="float:right";>
 		<h2>מפת תל-אביב </h2>
+		    <iframe src="http://maps.freemap.co.il/api/openlayers/?zoom=6&lat=32.06711&lon=34.77177"
+		        width="600px" height="400px"
+		        scrolling="no"
+		        marginwidth="0" marginheight="0" 
+		        frameborder="1">
+      		</iframe>
 		</div>
-		
 	</div>
-	
-	 
-
 </div>
 </body>
 </html>

@@ -35,9 +35,8 @@
 			
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> rel="nofollow"> <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?> rel="nofollow">החשבון שלי </A> | </LI>
-			<LI class="header_login"><A href="http://static.px.yelp.com/member_search" rel="nofollow"> חיפוש משתמש </A> | </LI>		
+			<LI class="header_login"><A href="member_search.php" rel="nofollow"> חיפוש משתמש </A> | </LI>		
 		</ul>
-	
 </div>
 	
 <div id="bodyContainer">
@@ -52,7 +51,7 @@
 		</ul>
 	</div>
  
- 	<h2 id="nonMemberWelcome"><A href="http://www.yelp.com/signup" rel="nofollow">!תוכלו בקלות לבקר ולדבר על כל מה שכדאי - ולא כדאי באזוריכם  - IsraYelp</A> </h2>
+ 	<h2 id="nonMemberWelcome"><A href="signup.html" rel="nofollow">!תוכלו בקלות לבקר ולדבר על כל מה שכדאי - ולא כדאי באזוריכם  - IsraYelp</A> </h2>
  	
 	<div id="external_search">
 		<form method="get" action="/search" name="external_search"> 
@@ -85,7 +84,7 @@
 				
 				<div class="clearfix">
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="Best Restaurants in San Francisco"><a href="/c/sf/restaurants">מסעדות</a></h4>
+						<h4 style="margin-bottom:0px;" title="Best Restaurants in San Francisco"><a href="restaurants.php">מסעדות</a></h4>
 						<em>3829 ביקורות</em>			
 				
 						<div class="clearStyles bizPhotoBox">
