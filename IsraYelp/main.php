@@ -97,7 +97,7 @@
 							<li><a rel="nofollow" href="/biz/ikes-place-san-francisco">רביעי</a></li>
 							<li><a rel="nofollow" href="/biz/roxie-food-center-san-francisco">חמישי</a></li>
 							</ol>
-							<p><a href="/c/sf/restaurants">עוד...</a></p>
+							<p><a href="restaurants.php">עוד...</a></p>
 					</div>
 				
 					<div class="bestCat">
@@ -158,7 +158,7 @@
 						<h4 class="ieSucks">חפש לפי קטגוריה</h4>
 						<ul class="stripped ieSucks">								
 							<li class="shopping"><a href="/c/sf/shopping">קניות</a> 4165 </li>
-							<li class="restaurants"><a href="/c/sf/restaurants">מסעדות</a>  3910  </li>
+							<li class="restaurants"><a href="restaurants.php">מסעדות</a>  3910  </li>
 							<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
 							<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>
 							<li class="beautysvc"><a href="/c/sf/beautysvc">יופי וספא</a>  1870 </li>
