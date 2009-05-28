@@ -57,7 +57,6 @@
 
 	<div id="top_cat_biz">
 		<div id="top_biz_lists" class="clearfix">
-			<img src="../image/best_of_yelp.gif" width="101" height="25" class="alignmid" alt="Best of Yelp" id="BOY_logo" />
 			<h1>מסעדות בתל-אביב</h1>
 			<p id="breadcrumbs">קטגוריה: <a href="/sanjose">תל-אביב </a> 
 				&raquo; מסעדות
