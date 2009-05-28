@@ -28,14 +28,14 @@
 <div id="navContainer">
 		<ul>
 			<LI class="header" id="welcome" ><A class="tabon" href="./">ברוכים הבאים</A> | </LI>
-			<LI class="header" id="aboutMe"><A rel="nofollow" id="Zabout_me" href="http://static.px.yelp.com/signup?return_url=%2Fuser_details" >עלינו</A> | </LI>
-			<LI class="header" id="writeReview"><A rel="nofollow" id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview" >כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A rel="nofollow" href="http://static.px.yelp.com/find" >מצא ביקורת</A> | </LI>
-			<LI class="header" id="invite"><A rel="nofollow" id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends" >הזמן חברים</A></LI>
+			<LI class="header" id="aboutMe"><A   id="Zabout_me" href="http://static.px.yelp.com/signup?return_url=%2Fuser_details" >עלינו</A> | </LI>
+			<LI class="header" id="writeReview"><A   id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview" >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A   href="http://static.px.yelp.com/find" >מצא ביקורת</A> | </LI>
+			<LI class="header" id="invite"><A   id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends" >הזמן חברים</A></LI>
 			
-			<LI class="header_login"><A rel="nofollow" href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A rel="nofollow" href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
-			<LI class="header_login"><A rel="nofollow" href="member_search.php" > חיפוש משתמש </A> | </LI>		
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href="member_search.php" > חיפוש משתמש </A> | </LI>		
 		</ul>
 </div>
 	
@@ -51,7 +51,7 @@
 		</ul>
 	</div>
  
- 	<h2 id="nonMemberWelcome"><A href="signup.html" rel="nofollow">!תוכלו בקלות לבקר ולדבר על כל מה שכדאי - ולא כדאי באזוריכם  - IsraYelp</A> </h2>
+ 	<h2 id="nonMemberWelcome"><A href="signup.html"  >!תוכלו בקלות לבקר ולדבר על כל מה שכדאי - ולא כדאי באזוריכם  - IsraYelp</A> </h2>
  	
 	<div id="external_search">
 		<form method="get" action="/search" name="external_search"> 
@@ -79,7 +79,7 @@
 			<div id="bestOfYelpModule" class="clearfix external" >
 					
 				<div id="best_cats">
-				<a rel="nofollow" href="/find"><img src="./image/more_button2.png" alt="More Best Of" style="float: left; margin-left: 8px; margin-top: 5px;" /></a>
+				<a   href="/find"><img src="./image/more_button2.png" alt="More Best Of" style="float: left; margin-left: 8px; margin-top: 5px;" /></a>
 				<h3>המקומות הטובים ביותר בתל-אביב</h3>
 				
 				<div class="clearfix">
@@ -91,11 +91,11 @@
 							<a  href="/biz/san-francisco-meats-and-delicatessen-san-francisco-2"><img src="http://static.px.yelp.com/bphoto/JfEZplImdPEBuE1BNc767A/m"  alt="San Francisco Meats &amp; Delicatessen, San Francisco"></a>
 						</div>
 							<ol>
-							<li><strong><a rel="nofollow" href="/biz/san-francisco-meats-and-delicatessen-san-francisco-2">ראשון</a></strong></li>
-							<li><a rel="nofollow" href="/biz/petite-deli-san-francisco-2">שני</a></li>
-							<li><a rel="nofollow" href="/biz/gary-danko-san-francisco-2">שלישי</a></li>
-							<li><a rel="nofollow" href="/biz/ikes-place-san-francisco">רביעי</a></li>
-							<li><a rel="nofollow" href="/biz/roxie-food-center-san-francisco">חמישי</a></li>
+							<li><strong><a   href="/biz/san-francisco-meats-and-delicatessen-san-francisco-2">ראשון</a></strong></li>
+							<li><a   href="/biz/petite-deli-san-francisco-2">שני</a></li>
+							<li><a   href="/biz/gary-danko-san-francisco-2">שלישי</a></li>
+							<li><a   href="/biz/ikes-place-san-francisco">רביעי</a></li>
+							<li><a   href="/biz/roxie-food-center-san-francisco">חמישי</a></li>
 							</ol>
 							<p><a href="restaurants.php">עוד...</a></p>
 					</div>
@@ -108,11 +108,11 @@
 						<a  href="/biz/diannes-old-and-new-estates-san-francisco-2"><img src="http://static.px.yelp.com/bphoto/Tm0CoFsSJrbe1wXWvTATwA/m" style="" alt=""></a>
 						</div>
 							<ol>
-							<li><strong><a rel="nofollow" href="/biz/diannes-old-and-new-estates-san-francisco-2">ראשון</a></strong></li>
-							<li><a rel="nofollow" href="/biz/not-just-flowers-san-francisco">שני</a></li>
-							<li><a rel="nofollow" href="/biz/my-trick-pony-san-francisco">שלישי</a></li>
-							<li><a rel="nofollow" href="/biz/xapno-san-francisco">רביעי</a></li>
-							<li><a rel="nofollow" href="/biz/keetsa-mattress-san-francisco">חמישי</a></li>
+							<li><strong><a   href="/biz/diannes-old-and-new-estates-san-francisco-2">ראשון</a></strong></li>
+							<li><a   href="/biz/not-just-flowers-san-francisco">שני</a></li>
+							<li><a   href="/biz/my-trick-pony-san-francisco">שלישי</a></li>
+							<li><a   href="/biz/xapno-san-francisco">רביעי</a></li>
+							<li><a   href="/biz/keetsa-mattress-san-francisco">חמישי</a></li>
 							</ol>
 							<p><a href="/c/sf/shopping">עוד...</a></p>
 						</div>
@@ -126,11 +126,11 @@
 							<a  href="/biz/cairo-nights-san-francisco"><img src="http://static.px.yelp.com/bphoto/JWNZlCwcSOrLtvpll4Om0A/m" style="" alt="Cairo Nights, San Francisco"></a>
 						</div>
 							<ol>
-							<li><strong><a rel="nofollow" href="/biz/cairo-nights-san-francisco">ראשון</a></strong></li>
+							<li><strong><a   href="/biz/cairo-nights-san-francisco">ראשון</a></strong></li>
 							<li><a rel="nofolzlow" href="/biz/the-sisters-of-perpetual-indulgence-inc-san-francisco">שני</a></li>
-							<li><a rel="nofollow" href="/biz/sunshine-coast-san-francisco">שלישי</a></li>
-							<li><a rel="nofollow" href="/biz/great-american-music-hall-san-francisco">רביעי</a></li>
-							<li><a rel="nofollow" href="/biz/sedusa-studios-campbell">חמישי</a></li>
+							<li><a   href="/biz/sunshine-coast-san-francisco">שלישי</a></li>
+							<li><a   href="/biz/great-american-music-hall-san-francisco">רביעי</a></li>
+							<li><a   href="/biz/sedusa-studios-campbell">חמישי</a></li>
 							</ol>
 							<p><a href="/c/sf/nightlife">עוד...</a></p>
 					</div>
@@ -143,11 +143,11 @@
 							<a  href="/biz/urban-allure-san-francisco"><img src="http://static.px.yelp.com/bphoto/r4hH874MVyjpQ1vcNTWOow/m" style="" alt="Urban Allure, San Francisco"></a>
 						</div>
 							<ol>
-							<li><strong><a rel="nofollow" href="/biz/urban-allure-san-francisco">ראשון</a> </strong>  </li>
-							<li><a rel="nofollow" href="/biz/gentle-star-medspa-san-francisco">שני</a> </li>
-							<li><a rel="nofollow" href="/biz/earthbody-advanced-therapies-san-francisco">שלישי</a></li>
-							<li><a rel="nofollow" href="/biz/nevas-beauty-san-francisco">רביעי</a></li>
-							<li><a rel="nofollow" href="/biz/alisha-valverde-skincare-medical-skin-aesthetics-san-francisco">חמישי</a></li>
+							<li><strong><a   href="/biz/urban-allure-san-francisco">ראשון</a> </strong>  </li>
+							<li><a   href="/biz/gentle-star-medspa-san-francisco">שני</a> </li>
+							<li><a   href="/biz/earthbody-advanced-therapies-san-francisco">שלישי</a></li>
+							<li><a   href="/biz/nevas-beauty-san-francisco">רביעי</a></li>
+							<li><a   href="/biz/alisha-valverde-skincare-medical-skin-aesthetics-san-francisco">חמישי</a></li>
 							</ol>
 							<p><a href="/c/sf/beautysvc">עוד...</a></p>
 					</div>
@@ -191,19 +191,19 @@
 							
 					
 					<div class="clearStyles bizPhotoBox">
-							<a rel="nofollow" href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg"><img src="http://static.px.yelp.com/bphoto/vfVo_W0bOOmZimf5Yh78Sw/m" style="" alt="Shanghai Dumpling King, San Francisco, CA"></a>
+							<a   href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg"><img src="http://static.px.yelp.com/bphoto/vfVo_W0bOOmZimf5Yh78Sw/m" style="" alt="Shanghai Dumpling King, San Francisco, CA"></a>
 					</div>
 					
 						<div class="rating"><img class="stars_3" width="83" height="325" title="3 star rating" alt="3 star " src="./image/stars_map.png"/></div>
-						<h4>1. <a rel="nofollow" href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg">הסושיה</a></h4>
+						<h4>1. <a   href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg">הסושיה</a></h4>
 						<p>כאן תהיה הביקורת של המקום...</p>		
 						<div id="hot_list" >
 							<h4>עוד מקומות חמים</h4>
 							<ul class="stripped">
-								<li>2. <a rel="nofollow"  href="/biz/the-corner-san-francisco">The Corner</a></li>
-								<li>3. <a rel="nofollow"  href="/biz/borobudur-restaurant-san-francisco">Borobudur Restaurant</a></li>
-								<li>4. <a rel="nofollow"  href="/biz/mescolanza-san-francisco">Mescolanza</a></li>
-								<li>5. <a rel="nofollow"  href="/biz/farmerbrown-san-francisco">farmerbrown</a></li>
+								<li>2. <a    href="/biz/the-corner-san-francisco">The Corner</a></li>
+								<li>3. <a    href="/biz/borobudur-restaurant-san-francisco">Borobudur Restaurant</a></li>
+								<li>4. <a    href="/biz/mescolanza-san-francisco">Mescolanza</a></li>
+								<li>5. <a    href="/biz/farmerbrown-san-francisco">farmerbrown</a></li>
 							<li><a href="/top?most=hot&find_loc=San+Francisco%2C+CA">עוד >></a></li>
 							</ul>
 						</div>			
@@ -221,15 +221,15 @@
 				
 				<div id="reviewerInfo">
 					<div class="clearStyles photoBox" >
-					<a rel="nofollow" href="/user_details?userid=FRSoGLPQI16pus03avyaSA"><img src="http://static.px.yelp.com/photo/30Ja3pPB0xdGxKviW0ChZw/m" style="" alt="Photo of Gill C." /></a></div>
-					<p><a rel="nofollow" href="/user_details?userid=FRSoGLPQI16pus03avyaSA">שם המבקר</a></p>
+					<a   href="/user_details?userid=FRSoGLPQI16pus03avyaSA"><img src="http://static.px.yelp.com/photo/30Ja3pPB0xdGxKviW0ChZw/m" style="" alt="Photo of Gill C." /></a></div>
+					<p><a   href="/user_details?userid=FRSoGLPQI16pus03avyaSA">שם המבקר</a></p>
 				</div>
 				
 				<div id="reviewPick">
 					<div class="rating"><img class="stars_5" width="83" height="325" title="5 star rating" alt="5 star rating" src="./image/stars_map.png"/></div>
-					<p><a rel="nofollow" href="/biz/joanns-cafe-south-san-francisco#hrid:P2l_hXqjw900yLKb-5BGeQ">שם המקום</a></p>
+					<p><a   href="/biz/joanns-cafe-south-san-francisco#hrid:P2l_hXqjw900yLKb-5BGeQ">שם המקום</a></p>
 					<p style="padding-top:.3em;">כאן תהיה ביקורת שתבחר בדרך כלשהי, כל יום ביקורת אחרת</p>
-					<a rel="nofollow" href="/biz/joanns-cafe-south-san-francisco#hrid:P2l_hXqjw900yLKb-5BGeQ" > המשך&raquo; </a>
+					<a   href="/biz/joanns-cafe-south-san-francisco#hrid:P2l_hXqjw900yLKb-5BGeQ" > המשך&raquo; </a>
 					
 				</div>	
 			</div>
@@ -239,12 +239,12 @@
 				<h3> מבצעים והנחות </h3>
 				<ul class="stripped">
 					<li>
-						<h4><a href="/biz/cary-lane-san-francisco" rel="nofollow">פיצה דומינוס</a></h4>
+						<h4><a href="/biz/cary-lane-san-francisco"  >פיצה דומינוס</a></h4>
 						<p>  הנחה על פיצה משפחתית </p>
 						<p class="grey">ההתחלה של ההודעה המקורית...</p>
 					</li>
 					<li>
-						<h4><a href="/biz/amisha-indian-cuisine-san-francisco" rel="nofollow">מרכז הטיפוח</a></h4>
+						<h4><a href="/biz/amisha-indian-cuisine-san-francisco"  >מרכז הטיפוח</a></h4>
 						<p>מסאז' שני בחצי מחיר</p>
 						<p class="grey">ההתחלה של ההודעה המקורית...</p>
 					</li>
@@ -258,48 +258,48 @@
 				
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a rel="nofollow" href="/user_details?userid=0juzbrgcLHqobdK-OZAyiw"><img src="http://static.px.yelp.com/photo/sTLR3ZURk2-JwZRwnUREwA/ss" style="height:40px;width:40px;" alt="Photo ofDaniel L." /></a>
+							<a   href="/user_details?userid=0juzbrgcLHqobdK-OZAyiw"><img src="http://static.px.yelp.com/photo/sTLR3ZURk2-JwZRwnUREwA/ss" style="height:40px;width:40px;" alt="Photo ofDaniel L." /></a>
 					</div>				
 						<p>
-							<a rel="nofollow" href="/list/coffee-and-tea-berkeley">Coffee &amp; Tea</a>
+							<a   href="/list/coffee-and-tea-berkeley">Coffee &amp; Tea</a>
 							<br />Isn&#39;t it time to take a break from what you&#39;re doing?
 						</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a rel="nofollow" href="/user_details?userid=yVtAUqcUaLV3PLRcCHaw5w"><img src="http://static.px.yelp.com/photo/1nrEbqCt1dvST083jXD3rw/ss" style="height:40px;width:40px;" alt="Photo ofJennifer C P." /></a>
+							<a   href="/user_details?userid=yVtAUqcUaLV3PLRcCHaw5w"><img src="http://static.px.yelp.com/photo/1nrEbqCt1dvST083jXD3rw/ss" style="height:40px;width:40px;" alt="Photo ofJennifer C P." /></a>
 					</div>
 				
 						<p>
-							<a rel="nofollow" href="/list/no-thank-you---never-again-san-francisco">No thank you - NEVER again!</a>
+							<a   href="/list/no-thank-you---never-again-san-francisco">No thank you - NEVER again!</a>
 							<br />These are establishments that I will never again visit. Never. No, really, I insist because mean people suck and that&#39;s sad. My fellow elite buddy&#8230;
 						</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a rel="nofollow" href="/user_details?userid=M_SxfmZjepJYxE_vNbWK4g"><img src="http://static.px.yelp.com/photo/rZrQob17DQ3qEjnbwanzaA/ss" style="height:40px;width:40px;" alt="Photo ofDeanna T." /></a>
+							<a   href="/user_details?userid=M_SxfmZjepJYxE_vNbWK4g"><img src="http://static.px.yelp.com/photo/rZrQob17DQ3qEjnbwanzaA/ss" style="height:40px;width:40px;" alt="Photo ofDeanna T." /></a>
 					</div>
 						<p>
-							<a rel="nofollow" href="/list/the-rich-san-francisco">The Rich</a>
+							<a   href="/list/the-rich-san-francisco">The Rich</a>
 							<br />The Inner and Outer Richmond! Sometimes it&#39;s nice to get away from the big city life.
 						</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a rel="nofollow" href="/user_details?userid=Z2PeqEKL87UUG3vfMBRd4w"><img src="http://static.px.yelp.com/photo/S3PvXY3cr0ljiLWQL9hUmw/ss" style="height:40px;width:40px;" alt="Photo ofRobert S." /></a>
+							<a   href="/user_details?userid=Z2PeqEKL87UUG3vfMBRd4w"><img src="http://static.px.yelp.com/photo/S3PvXY3cr0ljiLWQL9hUmw/ss" style="height:40px;width:40px;" alt="Photo ofRobert S." /></a>
 					</div>				
 						<p>
-							<a rel="nofollow" href="/list/burger-fanatics-love-burgers-and-must-try-them-all-san-mateo">Burger Fanatics love burgers and must try them all!!!!</a>
+							<a   href="/list/burger-fanatics-love-burgers-and-must-try-them-all-san-mateo">Burger Fanatics love burgers and must try them all!!!!</a>
 							<br />If you love burgers you love to try out a new place and a good burger. &nbsp;Sometimes you will hit a bust but that is the fun in it. &nbsp;Go out and try a&#8230;
 						</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a rel="nofollow" href="/user_details?userid=QxicE6c4zNxYYJh_aeywlA"><img src="http://static.px.yelp.com/photo/4__2w7AMiMNKqjyyqtuB6Q/ss" style="height:40px;width:40px;" alt="Photo ofMark B." /></a>
+							<a   href="/user_details?userid=QxicE6c4zNxYYJh_aeywlA"><img src="http://static.px.yelp.com/photo/4__2w7AMiMNKqjyyqtuB6Q/ss" style="height:40px;width:40px;" alt="Photo ofMark B." /></a>
 					</div>
 				
 						<p>
-							<a rel="nofollow" href="/list/best-breakfast-in-the-bay-berkeley">Best Breakfast in the Bay !</a>
+							<a   href="/list/best-breakfast-in-the-bay-berkeley">Best Breakfast in the Bay !</a>
 							<br />Here&#39;s where I like to come to stuff my face full of bacon + eggs + pancakes + toast.
 						</p>
 					</div>				
@@ -311,10 +311,10 @@
 <div id="pressLinks">
 	<IMG height="84" alt="homepage footer ads" src="./image/ads_empty.png" width="950" useMap="#pressMap" /> 
 	<MAP name="pressMap">
-		<AREA alt="The Weekly Yelp" href="http://www.yelp.com/weekly" rel="nofollow" />
-		<AREA alt="Yelp Apparel Store" href="http://www.yelp.com/store" rel="nofollow" />
-		<AREA alt="The Yelp Blog" href="http://officialblog.yelp.com/" rel="nofollow" />
-		<AREA alt="In the News" href="http://www.yelp.com/press" rel="nofollow" />
+		<AREA alt="The Weekly Yelp" href="http://www.yelp.com/weekly"   />
+		<AREA alt="Yelp Apparel Store" href="http://www.yelp.com/store"   />
+		<AREA alt="The Yelp Blog" href="http://officialblog.yelp.com/"   />
+		<AREA alt="In the News" href="http://www.yelp.com/press"   />
 	</MAP>
 </div>
 
@@ -322,9 +322,9 @@
 	
 	<div>		
 				<ul id="aboutSite">
-					<li>  <a href="/signup" rel="nofollow" id="Zprofile_footer">עלינו</a></li>
-					<li> | <a href="/about" rel="nofollow">החשבון שלי</a></li>
-					<li> | <a href="/faq" rel="nofollow">שאלות נפוצות</a></li>
+					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
+					<li> | <a href="/about"  >החשבון שלי</a></li>
+					<li> | <a href="/faq"  >שאלות נפוצות</a></li>
 				</ul>
 	</div>
 
