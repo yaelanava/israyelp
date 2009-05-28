@@ -27,7 +27,6 @@
 	
 <div id="navContainer">
 		<ul>
-			<LI class="header" id="welcome" ><A class="tabon" href="./">ברוכים הבאים</A> | </LI>
 			<LI class="header" id="aboutMe"><A   id="Zabout_me" href="http://static.px.yelp.com/signup?return_url=%2Fuser_details" >עלינו</A> | </LI>
 			<LI class="header" id="writeReview"><A   id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="http://static.px.yelp.com/find" >מצא ביקורת</A> | </LI>
@@ -323,8 +322,8 @@
 	<div>		
 				<ul id="aboutSite">
 					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
-					<li> | <a href="/about"  >החשבון שלי</a></li>
-					<li> | <a href="/faq"  >שאלות נפוצות</a></li>
+					<li> | <a href="/about">החשבון שלי</a></li>
+					<li> | <a href="/faq" >שאלות נפוצות </a></li>
 				</ul>
 	</div>
 
