@@ -4,7 +4,7 @@
 <head>
 	<title>מסעדות בתל-אביב </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
-	<meta name="description" content="IsraYelp - User Reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
+	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
 	
 	<link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
@@ -67,53 +67,54 @@
 							<a  href="/biz/bakery-mexico-san-jose#hrid:rwiHbJYf8uQWOnSglosPgg"><img src="http://static.px.yelp.com/bphoto/CTZh-CDPji271JkSYxYuBA/ms" style="" alt="Bakery Mexico"></a>
 					</div>
 		
-					<p class="biz_info">1. <a href="./tel-aviv/restaurants/lukas.php" id="top_biz_name_1" title="lukas"> לוקאס </a> </p>
+					<p class="biz_info">1. <a href="./restaurants/lukas.php" id="top_biz_name_2" title="lukas"> לוקאס </a> </p>
 					<div class="top_biz_rating">
-						<div class="rating"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">83 reviews</em>
+						<div class="rating"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">83 ביקורות</em>
 					</div>
-					<p class="smaller">Category: <a href="/c/sanjose/bakeries">Bakeries</a>, <a href="/c/sanjose/mexican">Mexican</a></p>
+					<p class="smaller">קטגוריה: <a href="./take-away.php">Take Away </a>, <a href="./bar-rest.php"> בר-מסעדה</a>, <a href="./bistro.php">ביסטרו</a>, <a href="./events.php">אירועים</a> </p>
 		
-					<p>I&#39;m a white girl. &nbsp;I&#39;d never had a torta before and decided to try Bakery Mexico because of all the wonderful and helpful Yelp reviews. &nbsp;Wow, I am a torta fan! &nbsp;I had the Milanesa and it was huge and unbelievably tasty with lots of onions and avocado for less than 6 bucks! &nbsp;Why not 5 stars? &nbsp;Well, the place is kind of dirty, probably because they are so busy and there was no one there that spoke&#8230;</p>
+					<p>"רבותי, חיפשתי מסעדה טובה עם סטייקים איכותיים, וכשראיתי את המחיר בלוקאס, חשבתי פעמיים אם ללכת כי זה נראה חשוד. אבל אנשים, קיבלתי שם את אחד הסטייקים הטובים שאכלתי אי פעם (ואכלתי בהרבה מסעדות שף בשריות). עשוי במידת צלייה מושלמת, בשר איכותי, מחיר מפתיע (600 גר' ב-90 ש"ח אל מול 500 גר' במחיר ממוצע של 120 ש"ח במקומות אחרים). בת זוגתי נהנתה מאוד ממנת כבד העוף שלהם. בקיצור, ממליץ בחום, ללכת וליהנות."</p>
 			</div>
 		
 			<ul id="biz_list" class="stripped">
 				<li>
 					<div class="biz_info">
-						2. <a href="/biz/international-food-bazaar-san-jose#hrid:xaAwZx0xd8eOXKIzWOTDIg" id="top_biz_name_2" class="biz_name" title="International Food Bazaar">International Food Bazaar</a>
+						2. <a href="/biz/international-food-bazaar-san-jose#hrid:xaAwZx0xd8eOXKIzWOTDIg" id="top_biz_name_2" class="biz_name" title="International Food Bazaar">בוקצ'ו</a>
 					</div>
 					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">42 reviews</em>
+						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">42 ביקורות</em>
 					</div>
-						<p class="smaller">Category: <a href="/c/sanjose/grocery">Grocery</a>, <a href="/c/sanjose/delis">Delis</a></p>
+						<p class="smaller">קטגוריה: <a href="./meat.php">בשרים</a>, <a href="./events.php">אירועים</a>, <a href="./italian.php">איטלקי</a></p>
 				</li>
 				<li>
 					<div class="biz_info">
-						3. <a href="/biz/gulzaar-halaal-restaurant-and-bakery-san-jose#hrid:ZKvRBQVsZ4H6MQ7vcnYt9g" id="top_biz_name_3" class="biz_name" title="Gulzaar Halaal Restaurant &amp; Bakery">Gulzaar Halaal Restaurant &amp; Bakery</a>
+						3. <a href="/biz/gulzaar-halaal-restaurant-and-bakery-san-jose#hrid:ZKvRBQVsZ4H6MQ7vcnYt9g" id="top_biz_name_3" class="biz_name" title="Gulzaar Halaal Restaurant &amp; Bakery">ברונו</a>
 					</div>
 					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">120 reviews</em>
+						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">120 ביקורות</em>
 					</div>
-						<p class="smaller">Category: <a href="/c/sanjose/mideastern">Middle Eastern</a>, <a href="/c/sanjose/halal">Halal</a></p>
+						<p class="smaller">קטגוריה: <a href="./mideastern.php">ים תיכוני</a>, <a href="./gurme.php">גורמה</a>, <a href="./meat.php">בשרים</a>, <a href="./events.php">אירועים</a> 
+						</p>
 				</li>
 				<li>
 					<div class="biz_info">
-						4. <a href="/biz/penguin-froyo-san-jose#hrid:Bzvz0k_z_KEeca0itRxY-w" id="top_biz_name_4" class="biz_name" title="Penguin Froyo">Penguin Froyo</a>
+						4. <a href="/biz/penguin-froyo-san-jose#hrid:Bzvz0k_z_KEeca0itRxY-w" id="top_biz_name_4" class="biz_name" title="Penguin Froyo">טורקיז</a>
 					</div>
 					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">189 reviews</em>
+						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">189 ביקורות</em>
 					</div>
-						<p class="smaller">Category: <a href="/c/sanjose/icecream">Ice Cream &amp; Frozen Yogurt</a>, <a href="/c/sanjose/creperies">Creperies</a></p>
+						<p class="smaller">קטגוריה: <a href="./fish.php">דגים</a>, <a href="./seafood.php">מאכלי ים</a></p> 
 				</li>
 				<li>
 					<div class="biz_info">
-						5. <a href="/biz/rose-donuts-and-cafe-san-jose-3#hrid:YRCSpDpA__N76eaWH9_o_A" id="top_biz_name_5" class="biz_name" title="Rose Donuts &amp; Cafe">Rose Donuts &amp; Cafe</a>
+						5. <a href="/biz/rose-donuts-and-cafe-san-jose-3#hrid:YRCSpDpA__N76eaWH9_o_A" id="top_biz_name_5" class="biz_name" title="Rose Donuts &amp; Cafe">גשן</a>
 					</div>
 					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">93 reviews</em>
+						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">93 ביקורות</em>
 					</div>
-						<p class="smaller">Category: <a href="/c/sanjose/donuts">Donuts</a>, <a href="/c/sanjose/burgers">Burgers</a></p>
+						<p class="smaller">קטגוריה: <a href="./meat.php">בשרים </a>, <a href="./bar-rest.php"> בר-מסעדה</a>, <a href="./events.php">אירועים</a>, <a href="./chefrest.php">מסעדת-שף</a></p>
 				</li>
-				<li id="top_more_link"><a href="/search?find_loc=San+Jose%2C+CA&amp;cflt=restaurants"><strong>More San Jose  Restaurants &raquo;</strong></a></li>
+				<li id="top_more_link"><a href="/search?find_loc=San+Jose%2C+CA&amp;cflt=restaurants"><strong>עוד מסעדות בתל-אביב &raquo;</strong></a></li>
 			</ul>
 			
 		</div>
