@@ -78,9 +78,7 @@
 			<div id="bestOfYelpModule" class="clearfix external" >
 					
 				<div id="best_cats">
-				<a   href="/find"><img src="./image/more_button2.png" alt="More Best Of" style="float: left; margin-left: 8px; margin-top: 5px;" /></a>
-				<h3>המקומות הטובים ביותר בתל-אביב</h3>
-				
+				<h3>המקומות הטובים ביותר בתל-אביב:</h3>			
 				<div class="clearfix">
 					<div class="bestCat">
 						<h4 style="margin-bottom:0px;" title="Best Restaurants in San Francisco"><a href="./tel-aviv/restaurants.php">מסעדות</a></h4>
