@@ -624,12 +624,28 @@
 	#bestOfYelpModule H4 A {	COLOR: #c41200}
 	
 	#bestOfYelpModule H3 {	
-	BACKGROUND: url("./image/best_of.png") no-repeat;	
+	/*BACKGROUND: url("./image/best_of.png") no-repeat;	
+	FONT-FAMILY: arial, verdana, sans-serif;
+	COLOR: #c41200;	
+	TEXT-ALIGN: right;
+	FONT-WEIGHT: bold;
 	MARGIN-LEFT: -5px;	
 	WIDTH: 149px;	
 	TEXT-INDENT: -9999px;	
 	HEIGHT: 45px;
-	PADDING-RIGHT:15px;} 
+	PADDING-RIGHT:15px;*/
+	
+		
+	FONT-FAMILY: arial, verdana, sans-serif;
+	FONT-WEIGHT: bold;	
+	COLOR: #c41200;	
+	TEXT-ALIGN: right;
+	FONT-SIZE: 14px;	
+	MARGIN-LEFT: -5px;
+	PADDING-RIGHT:10px;
+	PADDING-BOTTOM:10px;
+	MARGIN: 0px 0px 5px
+	} 
 	
 	#freshListsModule {	
 	PADDING-RIGHT: 0px;	
