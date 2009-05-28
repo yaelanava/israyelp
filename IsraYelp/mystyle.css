@@ -932,7 +932,11 @@
 	#top_cat_biz #biz_map {	
 	MARGIN-LEFT: 0px;
 	WIDTH: 300px;	
-	POSITION: left;	
-	FLOAT: left;
+	POSITION: right;	
+	FLOAT: right;
 	HEIGHT: 400px}
+	
+	#biz_map H2{
+	float: right;
+	}
 	
