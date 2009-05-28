@@ -28,15 +28,14 @@
 
 <div id="navContainer">
 		<ul>
-			<LI class="header" id="welcome" ><A class="tabon" href="./">ברוכים הבאים</A> | </LI>
-			<LI class="header" id="aboutMe"><A id="Zabout_me" href="http://static.px.yelp.com/signup?return_url=%2Fuser_details" rel="nofollow">עלינו</A> | </LI>
-			<LI class="header" id="writeReview"><A id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview" rel="nofollow">כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A href="http://static.px.yelp.com/find" rel="nofollow">מצא ביקורת</A> | </LI>
-			<LI class="header" id="invite"><A id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends" rel="nofollow">הזמן חברים</A></LI>
+			<LI class="header" id="aboutMe"><A id="Zabout_me" href="http://static.px.yelp.com/signup?return_url=%2Fuser_details"  >עלינו</A> | </LI>
+			<LI class="header" id="writeReview"><A id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview"  >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A href="http://static.px.yelp.com/find"  >מצא ביקורת</A> | </LI>
+			<LI class="header" id="invite"><A id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends"  >הזמן חברים</A></LI>
 			
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> rel="nofollow"> <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?> rel="nofollow">החשבון שלי </A> | </LI>
-			<LI class="header_login"><A href="http://static.px.yelp.com/member_search" rel="nofollow"> חיפוש משתמש </A> | </LI>		
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?>  > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?>  >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href="http://static.px.yelp.com/member_search"  > חיפוש משתמש </A> | </LI>		
 		</ul>
 	
 </div>
