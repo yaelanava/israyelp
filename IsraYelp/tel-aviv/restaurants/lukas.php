@@ -10,7 +10,7 @@
 	
 	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="./mystyle.css"> 
+	<link rel="stylesheet" type="text/css" href="../../mystyle.css"> 
 	
 	
 	<!--<link rel="stylesheet" type="text/css" media="all" href="http://static.px.yelp.com/static/20090507c/css/base_versioned.css">-->
