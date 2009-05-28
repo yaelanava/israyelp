@@ -916,7 +916,7 @@
 	#top_cat_biz #biz_map {	
 	MARGIN-LEFT: 0px;
 	WIDTH: 300px;	
-	POSITION: relative;	
+	POSITION: left;	
 	FLOAT: left;
 	HEIGHT: 400px}
 	
