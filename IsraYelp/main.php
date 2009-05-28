@@ -43,9 +43,9 @@
 		<H1>תל-אביב</H1>
 		<ul>
 				 <LI><A id="locBoxToggle" onclick='Yelp.init_locBox(this, {"city_dir_depth":0,"return_url":"/home"});return false' href="http://www.yelp.com/locations?return_url=%2Fhome">עוד...</A> </LI>
-				 <LI><A href="http://www.yelp.com/la">חיפה</A> | </LI>
-				 <LI><A href="http://www.yelp.com/sanjose">באר שבע</A> | </LI>
-				 <LI><A href="http://www.yelp.com/nyc">ירושלים</A> | </LI>
+				 <LI><A href="./haifa">חיפה</A> | </LI>
+				 <LI><A href="./beer_sheva">באר שבע</A> | </LI>
+				 <LI><A href="jerusalem.php">ירושלים</A> | </LI>
 				 <LI id="locBar_title">ערים אחרות:</LI>
 		</ul>
 	</div>
@@ -83,7 +83,7 @@
 				
 				<div class="clearfix">
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="Best Restaurants in San Francisco"><a href="restaurants.php">מסעדות</a></h4>
+						<h4 style="margin-bottom:0px;" title="Best Restaurants in San Francisco"><a href="./tel-aviv/restaurants.php">מסעדות</a></h4>
 						<em>3829 ביקורות</em>			
 				
 						<div class="clearStyles bizPhotoBox">
@@ -96,7 +96,7 @@
 							<li><a   href="/biz/ikes-place-san-francisco">רביעי</a></li>
 							<li><a   href="/biz/roxie-food-center-san-francisco">חמישי</a></li>
 							</ol>
-							<p><a href="restaurants.php">עוד...</a></p>
+							<p><a href="./tel-aviv/restaurants.php">עוד...</a></p>
 					</div>
 				
 					<div class="bestCat">
@@ -157,7 +157,7 @@
 						<h4 class="ieSucks">חפש לפי קטגוריה</h4>
 						<ul class="stripped ieSucks">								
 							<li class="shopping"><a href="/c/sf/shopping">קניות</a> 4165 </li>
-							<li class="restaurants"><a href="restaurants.php">מסעדות</a>  3910  </li>
+							<li class="restaurants"><a href="./tel-aviv/restaurants.php">מסעדות</a>  3910  </li>
 							<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
 							<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>
 							<li class="beautysvc"><a href="/c/sf/beautysvc">יופי וספא</a>  1870 </li>
