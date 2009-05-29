@@ -128,6 +128,30 @@
       		</iframe>
 		</div>
 	</div>
+	
+	<div id="section_content" class="clearfix">
+		<div id="main_column">
+			<div id="sub_cat_lists" class="clearfix">
+				<h2>מסעדות תל-אביב לפי קטגוריות<h2>
+				<ul class="stripped other_sub_cats">
+					<li><a href="./events.php">אירועים</a></li>
+					<li><a href="./bar-rest.php">בר-מסעדה</a></li>
+					<li><a href="./meat.php">בשר</a></li>
+					<li><a href="./gurme.php">גורמה</a></li>
+					<li><a href="./fish.php">דגים</a></li>
+					<li><a href="./mideastern.php">ים-תיכוני</a></li>
+					<li><a href="./seafood">מאכלי ים</a></li>
+					<li><a href="./chefrest.php">מסעדת שף</a></li>
+
+				</ul>
+
+		</div>
+		
+		
+		
+		
+	</div>
+	
 </div>
 </body>
 </html>
