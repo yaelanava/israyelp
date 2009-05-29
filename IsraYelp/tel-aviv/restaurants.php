@@ -58,7 +58,7 @@
 	<div id="top_cat_biz">
 		<div id="top_biz_lists" class="clearfix">
 			<h1>מסעדות בתל-אביב</h1>
-			<p id="breadcrumbs">קטגוריה: <a href="/sanjose">תל-אביב </a> 
+			<p id="breadcrumbs">קטגוריה: <a href="../main.php">תל-אביב </a> 
 				&raquo; מסעדות
 			</p>
 		
@@ -153,6 +153,35 @@
 	</div>
 	
 </div>
+
+<div id="footer">
+	
+	<div>		
+				<ul id="aboutSite">
+					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
+					<li> | <a href="/about">החשבון שלי</a></li>
+					<li> | <a href="/faq" >שאלות נפוצות </a></li>
+				</ul>
+	</div>
+
+	<div class="directory">
+		<ul>
+			<li class="first"><strong>מפת האתר</strong></li>
+			<li> | <a href="/atlanta">תל-אביב</a></li>
+			<li> | <a href="/austin">ירושלים</a></li>
+			<li> | <a href="/boston">חיפה</a></li>
+			<li> | <a href="/chicago">באר שבע</a></li>
+			<li> | <a href="/dallas">הרצליה</a></li>
+			<li> | <a href="/denver">אשדוד</a></li>
+			<li> | <a href="/locations">ערים נוספות</a></li>
+		</ul>
+	</div>
+	
+	<div>
+		<p> זכויות יוצרים </p>
+	</div>
+</div>
+
 </body>
 </html>
 
