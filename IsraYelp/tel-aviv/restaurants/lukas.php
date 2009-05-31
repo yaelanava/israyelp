@@ -115,10 +115,61 @@
 			
 			<div id="bizReviews">
 				<div id="bizReviewsHeader" class="clearfix">
+					<form id="review_search_form" method="GET" action="/biz/ichaat-cafe-sunnyvale-3">
+						<p><input type="text" name="q" value="" />
+						<button type="submit" class="form_img_btn alignbtm">Search Reviews</button></p>
+					</form>
+					<h2 id="total_reviews">14 reviews for iChaat Cafe</h2>	
 				</div>
 				<div id="bizReviewsContent">
+					<div id="bizReviewsInner">
+						<DIV id="bizReviewsInner">
+							<H3 id="allReviewHeader" style="DISPLAY: block">All Reviews</H3>
+							<DIV class="review externalReview clearfix nonfollowingReview " id="review_e9vBvWz7IKmZIuvgHvMjgg">
+								<DIV class="wrap">
+									<DIV class="reviewer">
+										<DIV class="mini">
+											<DIV class="photoBoxSm">
+												<DIV class="clearStyles photoBox">
+													<A href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA" rel="nofollow"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of Sheena D." src="http://static.px.yelp.com/photo/VWQ0SOuTgPPN7rTCyuTbkg/ss" /></A>
+												</div>
+												<P class="miniOrange is_elite ieSucks">&nbsp; </P>
+												<P class="miniOrange friend_count ieSucks">4</P>
+												<P class="miniOrange review_count ieSucks">9</P>
+											</div>
+										</div>
+										<P class="reviewer_info"><A class="reviewer_name" href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA">Sheena D.</A></P>
+										<P class="reviewer_info">San Jose, CA</P>
+									</div>
+									<DIV class="ext_rating">
+										<DIV class="rating">
+											<IMG class="stars_4" title="4 star rating" height="325" alt="4 star rating" src="http://static.px.yelp.com/static/20090527a/i/new/ico/stars/stars_map.png" width="83" /></DIV>
+											<EM class="smaller">5/14/2009</EM> 
+										</DIV>
+										<P class="review_comment ieSucks">This is a cute little cafe off of Lawrence Expressway. &nbsp;I found it because I was going to the Wells Fargo nearby. <BR /><BR />It is Indian Fast Food. &nbsp;And I know as impossible and improbable as that sounds (as many of us has been traumatized by this genre) it was actually quite good.<BR /><BR />The food was delicious. &nbsp;The prices were affordable. &nbsp;The decor was very modern. &nbsp;It had the atmosphere of a coffee shop you can read a newspaper for hours at -- quiet but not eerie quiet. &nbsp;<BR /><BR />I would recommend this for a quick bite to eat for a chill lunch.</P>
+										<UL class="externalReviewActions">
+											<LI class="add-review-comment"><A class="add-owner-comment" href="https://biz.yelp.com/login/add_owner_comment?return_url=%2Fr2r%2F54anJf73lEHBItVRPgRgrA%2Fcomment%2FIZ69bDkna2mmffvoTuyEUA%2Fcompose&biz_id=54anJf73lEHBItVRPgRgrA" rel="nofollow">Add owner comment </A></LI>
+											<LI><A class="bookmark" title="" onclick="initBookSignUp(this,'54anJf73lEHBItVRPgRgrA','iChaat Cafe');return false" href="http://www.yelp.com/signup" rel="nofollow">Bookmark</A> </LI>
+											<LI><A class="sendToFriend" onclick="Yelp.send2Friends.open(this, '54anJf73lEHBItVRPgRgrA', 'e9vBvWz7IKmZIuvgHvMjgg', null);return false" href="http://www.yelp.com/biz_share?bizid=54anJf73lEHBItVRPgRgrA&reviewid=e9vBvWz7IKmZIuvgHvMjgg&return_url=/biz/ichaat-cafe-sunnyvale-3" rel="nofollow">Send to a Friend</A> </LI>
+											<LI><A class="linkToThis" onclick="review_fetcher.fetchReviews('54anJf73lEHBItVRPgRgrA', '', 'e9vBvWz7IKmZIuvgHvMjgg')" href="http://www.yelp.com/biz/ichaat-cafe-sunnyvale-3#hrid:e9vBvWz7IKmZIuvgHvMjgg" rel="nofollow">Link to This Review</A> </LI>
+										</UL>
+								</div>
+							</div>
+						</div>
+					</div>
+				
 				</div>
 				<div id="paginationControls" class="pagination_controls">
+					<TABLE class="fs_pagination_controls" cellSpacing="0" cellPadding="0" width="95%" border="0">
+						<TBODY>
+							<TR>
+								<TD style="WHITE-SPACE: nowrap">
+									<SPAN class="highlight2">1</SPAN>&nbsp;to&nbsp;<SPAN class="highlight2">14</SPAN>&nbsp;of&nbsp;<SPAN class="highlight2">14</SPAN>
+								</TD>
+							</TR>
+						</TBODY>
+					</TABLE>
+					<A href="http://www.yelp.com/writeareview/biz/54anJf73lEHBItVRPgRgrA"><IMG height="25" alt="Write a review" src="http://static.px.yelp.com/static/20090527a/i/new/btn/write_a_review_red.gif" width="145" /></A> 
 				</div>
 			</div>
 		</div>
