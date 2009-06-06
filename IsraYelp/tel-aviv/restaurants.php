@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>מסעדות בתל-אביב </title>
+	<title>מסעדות בתל-אביב | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="../mystyle.css">  	
 </head>
 
-<body class= "us" id="IsraYelp_main_body" dir="rtl">
+<body dir="rtl">
 
 <div id="head">
 		<div id="logo">
@@ -33,8 +33,8 @@
 			<LI class="header" id="findReview"><A href="http://static.px.yelp.com/find"  >מצא ביקורת</A> | </LI>
 			<LI class="header" id="invite"><A id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends"  >הזמן חברים</A></LI>
 			
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?>  > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?>  >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../login.php?logout=1";} else{echo "../login.html";}?>  > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../profile.php";} else{echo "../signup.html?profile=1";}?>  >החשבון שלי </A> | </LI>
 			<LI class="header_login"><A href="http://static.px.yelp.com/member_search"  > חיפוש משתמש </A> | </LI>		
 		</ul>
 	
