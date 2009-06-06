@@ -37,7 +37,7 @@
 		</ul>
 </div>
 
-<div id="bizReviewWrapper">
+<div id="bodyContainer">
 	<div id="ieInnerWrap" class="clearfix">
 		<div id="bizMain">
 			<div id="bizBox">
@@ -99,7 +99,7 @@
 				<div id="bizActions" class="clearfix">
 					<a class="send-to-friend" rel="nofollow"  href="/biz_share?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../../image/send2friend.png" width=108 height=41></a>
 					<a class="bookmark" rel="nofollow" title="Something catch your eye?<br/>Bookmark this business to build your own list of fun ideas to check out later!" class="bookmark" id="bizBookmark" href="/signup"><img src= "../../image/bookmark.png" width=108 height=41></a>
-					<a class="write review" rel="nofollow" href="/writeareview/biz/54anJf73lEHBItVRPgRgrA" id="bizWriteReview"><img src= "../../image/write.png" width=108 height=41></a>
+					<a class="write review" rel="nofollow" href="lukas_writeReview.php" id="bizWriteReview"><img src= "../../image/write.png" width=108 height=41></a>
 				</div>
 			</div>
 			
@@ -155,7 +155,6 @@
 							</TR>
 						</TBODY>
 					</TABLE>
-					<A href="http://www.yelp.com/writeareview/biz/54anJf73lEHBItVRPgRgrA"><IMG height="25" alt="Write a review" src="http://static.px.yelp.com/static/20090527a/i/new/btn/write_a_review_red.gif" width="145" /></A> 
 				</div>
 			</div>
 		</div>
