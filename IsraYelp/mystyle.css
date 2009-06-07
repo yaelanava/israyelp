@@ -1075,7 +1075,7 @@
 	WIDTH: 100%}
 	
 	#bizInfoHeader #bizRating .rating {	
-	FLOAT: right;	
+	FLOAT: left;	
 	MARGIN-RIGHT: 5px} 
 	
 	#bizInfoHeader #bizRating EM {	
@@ -1166,7 +1166,8 @@
 	BACKGROUND-POSITION: 0px -180px}
 */	
 	
-	#bizReviewsHeader {	
+	#bizReviewsHeader {
+	Margin-right: 0px;	
 	PADDING-RIGHT: 0px;	
 	PADDING-LEFT: 0px;	
 	PADDING-BOTTOM: 7px;	
@@ -1184,7 +1185,7 @@
 	BORDER-TOP: #c41200 1px solid;	
 	MARGIN: 0px 5px 10px}
 	
-	#allReviewHeader {	
+	#allReviewHeader {
 	PADDING-RIGHT: 5px;	
 	PADDING-LEFT: 0px;	
 	FONT-SIZE: 12px;	
@@ -1192,6 +1193,7 @@
 	MARGIN: 0px 5px;	
 	COLOR: #555;	
 	PADDING-TOP: 5px;	
+	float: left;
 	BACKGROUND-COLOR: #fff0d1}
 	
 	#bizReviews DIV.externalReview {	
@@ -1203,7 +1205,8 @@
 	BACKGROUND-COLOR: #fff} 
 	
 	#bizReviews DIV.externalReview .wrap {	
-	MARGIN-right: 125px}
+	MARGIN-right: 125px;
+	PADDING-TOP: 10px;}
 	
 	.externalReview .reviewer {	
 	DISPLAY: inline;	
@@ -1237,7 +1240,15 @@
 	PADDING-TOP: 0px;	
 	LIST-STYLE-TYPE: none}
 	
+	#bizSideBar {	
+	DISPLAY: inline;	
+	FLOAT: left;	
+	PADDING-BOTTOM: 50px;	
+	MARGIN: 4px 5px 5px 0px;	
+	WIDTH: 250px;	
+	BACKGROUND-COLOR: transparent}
 	
-	
+	#bizSideBar #bizNearby {	
+	MARGIN: 0px 0px 10px 7px}
 	
 	
