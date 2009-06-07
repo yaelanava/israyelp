@@ -74,7 +74,7 @@
 								<div class="clearStyles bizPhotoBox">
 										<a  href="/biz_photos/54anJf73lEHBItVRPgRgrA?select=gPtUeg7qvd7TkhUi5RQ6Og"><img src="./image/lucas.jpg" width=70 height= 100 style="" alt="לוקאס, תל אביב"></a>
 								</div>
-								<span style="font-size: 10px;"><a rel="nofollow" href="../../uploadpic.php">הוסף תמונה</a></span>
+								<span style="font-size: 10px;"><a rel="nofollow" href="../../uploadPic.php">הוסף תמונה</a></span>
 							</div>
 						</div>
 						
