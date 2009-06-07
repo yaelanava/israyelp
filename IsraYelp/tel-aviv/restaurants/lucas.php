@@ -1,6 +1,7 @@
 <?php session_start();?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
 	<title>לוקאס | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
@@ -142,7 +143,7 @@
 							</div>
 							
 							
-														<DIV class="review externalReview clearfix nonfollowingReview " id="review_e9vBvWz7IKmZIuvgHvMjgg">
+							<DIV class="review externalReview clearfix nonfollowingReview " id="review_e9vBvWz7IKmZIuvgHvMjgg">
 								<DIV class="wrap">
 									<DIV class="reviewer">
 										<DIV class="mini">
@@ -176,8 +177,7 @@
 					</div>
 				
 				</div>
-<<<<<<< .mine
-=======
+
 				<div id="paginationControls" class="pagination_controls">
 					<TABLE class="fs_pagination_controls" cellSpacing="0" cellPadding="0" width="95%" border="0">
 						<TBODY>
@@ -189,7 +189,7 @@
 						</TBODY>
 					</TABLE>
 				</div>
->>>>>>> .r60
+
 			</div>
 		</div>
 		
