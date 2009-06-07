@@ -178,18 +178,6 @@
 				
 				</div>
 
-				<div id="paginationControls" class="pagination_controls">
-					<TABLE class="fs_pagination_controls" cellSpacing="0" cellPadding="0" width="95%" border="0">
-						<TBODY>
-							<TR>
-								<TD style="WHITE-SPACE: nowrap">
-									<SPAN class="highlight2">1</SPAN>&nbsp;to&nbsp;<SPAN class="highlight2">14</SPAN>&nbsp;of&nbsp;<SPAN class="highlight2">14</SPAN>
-								</TD>
-							</TR>
-						</TBODY>
-					</TABLE>
-				</div>
-
 			</div>
 		</div>
 		
