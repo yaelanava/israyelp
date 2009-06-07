@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html>
 <head>
 	<title>אתר ביקורות הגולשים - IsraYelp </title>
@@ -5,11 +6,11 @@
 	<meta name="description" content="IsraYelp - User Reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
 	
-	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
+	<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="image/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">  	
 </head>
-<body class= "us" id="IsraYelp_main_body" dir="rtl">
+<body dir="rtl">
 
 <div id="head">
 		<div id="logo">
@@ -21,6 +22,20 @@
 		<div id="leftEdge"></div>
 		<div id="rightEdge"></div>
 </div>
+
+<div id="navContainer">
+		<ul>
+			<LI class="header" id="aboutMe"><A id="Zabout_me" href="http://static.px.yelp.com/signup?return_url=%2Fuser_details"  >עלינו</A> | </LI>
+			<LI class="header" id="writeReview"><A id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview"  >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A href="http://static.px.yelp.com/find"  >מצא ביקורת</A> | </LI>
+			<LI class="header" id="invite"><A id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends"  >הזמן חברים</A></LI>
+			
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../../login.php?logout=1";} else{echo "../../login.html";}?>  > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../../profile.php";} else{echo "../../signup.html?profile=1";}?>  >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href="http://static.px.yelp.com/member_search"  > חיפוש משתמש </A> | </LI>		
+		</ul>
+</div>
+
 <script type="text/javascript">
 	function submitToFriends(){
 		$$('#lists_viewport input[type=checkbox]').invoke('disable');
@@ -64,20 +79,7 @@
 					
 					</td>
 				</tr>
-				<tr>
-					<td>
-						<p style="text-align:right;margin-top:15px;"><img src="http://static.px.yelp.com/static/20090527a/i/new/btn/sendFriendButton_142x29.gif" onclick="submitToFriends();" style="cursor:pointer;" alt="Send"></p>
-					</td>
-					<td>
-						<p style="text-align:right;margin-top:15px;">
-						<img src="http://static.px.yelp.com/static/20090527a/i/new/btn/sendFriendButton_142x29.gif" 
-						onclick="submitToFriends();" 
-						style="cursor:pointer;" alt="Send"></p>
-					
-					</td>
-				</tr>
 			</table>
-
 		</form>
 		</div>
 </div>

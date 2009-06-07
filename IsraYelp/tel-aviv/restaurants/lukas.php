@@ -7,8 +7,8 @@
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
 	
-	<link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../../image/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../image/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="../../mystyle.css">  	
 </head>
 
@@ -16,7 +16,7 @@
 
 <div id="head">
 		<div id="logo">
-			<A href="main.php/"></A>
+			<A href="../../main.php"></A>
 		</div>
 		<div id="register">
 			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
@@ -55,7 +55,7 @@
 								</div>
 								<div id="bizInfoContent">
 									<p id="bizCategories">קטגוריה:
-									<span id="cat_display">				<a  href="/c/sunnyvale-ca/indpak">Take Away</a>, 		<a  href="/c/sunnyvale-ca/afghani">אירועים</a>, 		<a  href="/c/sunnyvale-ca/pakistani">ביסטרו</a> </span>
+									<span id="cat_display">	<a  href="/c/sunnyvale-ca/indpak">Take Away</a>, 		<a  href="/c/sunnyvale-ca/afghani">אירועים</a>, 		<a  href="/c/sunnyvale-ca/pakistani">ביסטרו</a> </span>
 									</p>
 
 									<address class="adr">
@@ -67,13 +67,12 @@
 									<div id="bizUrl">
 										<a href="http://www.yelp.com/redir?url=http%3A%2F%2Fwww.ichaatcafe.com&amp;src_bizid=54anJf73lEHBItVRPgRgrA" target="_blank" rel="nofollow" class="url"></a>
 									</div>
-
 								</div>
 							</div>
 							
 							<div id="bizPhotos">
 								<div class="clearStyles bizPhotoBox">
-										<a  href="/biz_photos/54anJf73lEHBItVRPgRgrA?select=gPtUeg7qvd7TkhUi5RQ6Og"><img src="./image/lucas.jpg" width=70 height= 100 style="" alt="iChaat Cafe, Sunnyvale, CA"></a>
+										<a  href="/biz_photos/54anJf73lEHBItVRPgRgrA?select=gPtUeg7qvd7TkhUi5RQ6Og"><img src="./image/lucas.jpg" width=70 height= 100 style="" alt="לוקאס, תל אביב"></a>
 								</div>
 								<span style="font-size: 10px;"><a rel="nofollow" href="../../uploadpic.php">הוסף תמונה</a></span>
 							</div>
@@ -98,7 +97,7 @@
 				</div>
 				
 				<div id="bizActions" class="clearfix">
-					<a class="send-to-friend" rel="nofollow"  href="/biz_share?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../../image/send2friend.png" width=108 height=41></a>
+					<a class="send-to-friend" rel="nofollow"  href="../../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../../image/send2friend.png" width=108 height=41></a>
 					<a class="bookmark" rel="nofollow" title="Something catch your eye?<br/>Bookmark this business to build your own list of fun ideas to check out later!" class="bookmark" id="bizBookmark" href="/signup"><img src= "../../image/bookmark.png" width=108 height=41></a>
 					<a class="write review" rel="nofollow" href="lukas_writeReview.php" id="bizWriteReview"><img src= "../../image/write.png" width=108 height=41></a>
 				</div>
@@ -107,6 +106,7 @@
 			
 			<div id="bizReviews">
 				<div id="bizReviewsHeader" class="clearfix">
+					</br></br>
 					<h2 id="total_reviews">14 ביקורות עבור לוקאס:</h2>	
 				</div>
 				<div id="bizReviewsContent">
@@ -171,19 +171,16 @@
 											<LI><A class="sendToFriend" onclick="Yelp.send2Friends.open(this, '54anJf73lEHBItVRPgRgrA', 'e9vBvWz7IKmZIuvgHvMjgg', null);return false" href="http://www.yelp.com/biz_share?bizid=54anJf73lEHBItVRPgRgrA&reviewid=e9vBvWz7IKmZIuvgHvMjgg&return_url=/biz/ichaat-cafe-sunnyvale-3" rel="nofollow">שלח לחבר</A> </LI>
 										</UL>
 								</div>
-							</div>
-							
-						
-					</div>
-				
+							</div>											
+					</div>				
 				</div>
 
 			</div>
 		</div>
 		
 		<div id="bizSideBar" class="clearfix">
-				<iframe src="http://maps.freemap.co.il/api/openlayers/?zoom=6&lat=32.06711&lon=34.77177"
-		        width=auto height=auto
+				<iframe src="http://maps.freemap.co.il/api/openlayers/?zoom=9&lat=32.06711&lon=34.77177&marker=true"
+        		width="300px" height="200px"
 		        scrolling="no"
 		        marginwidth="0" marginheight="0" 
 		        frameborder="1">
