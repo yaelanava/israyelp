@@ -50,7 +50,15 @@
 									<h1 class="fn org">לוקאס</h1>
 									<div id="bizRating">
 										<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="http://static.px.yelp.com/static/20090527a/i/new/ico/stars/stars_map.png"/></div> 
-										<em>מבוסס על <span class="count">14</span> ביקורות</em>
+										<em>מבוסס על <span class="count">
+										<?php 
+											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+											$query = "SELECT * FROM `test`.`critiques` WHERE restaurant='lukas'";
+											$result = $mysqli->query($query);
+											$count = $result->num_rows;
+											echo $count;
+										?>
+										</span> ביקורות</em>
 									</div>
 								</div>
 								<div id="bizInfoContent">
