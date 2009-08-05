@@ -8,13 +8,13 @@
 	
 	<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="mystyle.css">  	
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 <body dir="rtl">
 
 <div id="head">
 		<div id="logo">
-			<A href="main.php/"></A>
+			<A href="./main.php"></A>
 		</div>
 		<div id="register">
 			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
