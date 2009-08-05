@@ -73,7 +73,7 @@
 					</td>
 					<td>
 						<p style="text-align:right;margin-top:15px;">
-						<img src="http://static.px.yelp.com/static/20090527a/i/new/btn/sendFriendButton_142x29.gif" 
+						<img src="./image/send2friend.png" 
 						onclick="submitToFriends();" 
 						style="cursor:pointer;" alt="Send"></p>
 					
