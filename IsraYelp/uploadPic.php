@@ -56,6 +56,7 @@
 			<td>
 				<input name="image" type="file" >
 			</td>
+			
 
 		</tr>
 		<tr>
