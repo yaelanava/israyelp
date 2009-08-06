@@ -16,7 +16,7 @@
 
 <div id="head">
 		<div id="logo">
-			<A href="main.php/"></A>
+			<A href="./main.php"></A>
 		</div>
 		<div id="register">
 			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
@@ -28,8 +28,8 @@
 <div id="navContainer">
 		<ul>
 			<LI class="header" id="aboutMe"><A   id="Zabout_me" href="http://static.px.yelp.com/signup?return_url=%2Fuser_details" >עלינו</A> | </LI>
-			<LI class="header" id="writeReview"><A   id="Zwrite_a_review" href="http://static.px.yelp.com/signup?return_url=%2Fwriteareview" >כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A   href="http://static.px.yelp.com/find" >מצא ביקורת</A> | </LI>
+			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A   href="./find_review.php" >מצא ביקורת</A> | </LI>
 			<LI class="header" id="invite"><A   id="Zinvite_friends" href="http://static.px.yelp.com/signup?return_url=%2Finvite_friends" >הזמן חברים</A></LI>
 			
 			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
