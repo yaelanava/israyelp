@@ -5,7 +5,7 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {		
 	createUser();
 } else {
-	echo "חלק מהשדות היו ריקים. בבקשה נסה שנית.";
+	echo "חלק מהשדות היו ריקים. בבקשה נסה שנית";
 	die(0);
 }
 
@@ -15,7 +15,7 @@ function createUser(){
 	$password = $_POST['password'];
 	$confirmed_password = $_POST['confirmed_password'];
 	if ($password !== $confirmed_password) {
-		echo "<br/>passwords not match!";		
+		echo "<br/>סיסמאות לא מתאימות";		
 	} else {
 		$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 		
