@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body dir="rtl">
 <div id="head">
 		<div id="logo">
 			<A href="./main.php">Yelp</A>
@@ -27,29 +27,57 @@
 	<form method="post" action="signup.php" >
 		<table cellpadding="5" cellspacing="5" border="0">
 				<tr>
+					<td>שם משתמש:</td> 
 					<td><input name="username" size="40"></td>
-					<td>:שם משתמש</td> 
 				</tr>
 				<tr>
-					<td> <input name="email" size="40"></td>
-					<td>:דוא"ל</td>
+					<td>דוא"ל:</td>
+					<td> <input name="email" size="40"></td>	
 				</tr>
 				<tr>
-					<td> <input name="password" type="password" size="40"></td>
-					<td>:סיסמא</td>
+					<td>סיסמא:</td>
+					<td> <input name="password" type="password" size="40"></td>					
 				</tr>
 				<tr>
-					<td> <input name="confirmed_password" type="password" size="40"></td>
-					<td>:אשר סיסמא</td>
+					<td>אשר סיסמא:</td>
+					<td> <input name="confirmed_password" type="password" size="40"></td>					
 				</tr>
 				<tr>
-					<td style="text-align:left;"> <input type="submit" value="הרשמה"></td>
+					<td style="text-align:right;"> <input type="submit" value="הרשמה"></td>
 					<td></td>
 				</tr>
 		</table>		
 	</form>
 	<br style="clear:both;"/>
 </div>
+</div>
+
+<div id="footer">
+	
+	<div>		
+				<ul id="aboutSite">
+					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
+					<li> | <a href="/about">החשבון שלי</a></li>
+					<li> | <a href="/faq" >שאלות נפוצות </a></li>
+				</ul>
+	</div>
+
+	<div class="directory">
+		<ul>
+			<li class="first"><strong>מפת האתר</strong></li>
+			<li> | <a href="../restaurants.php">תל-אביב</a></li>
+			<li> | <a href="../../jerusalem/restaurants.php">ירושלים</a></li>
+			<li> | <a href="/boston">חיפה</a></li>
+			<li> | <a href="/chicago">באר שבע</a></li>
+			<li> | <a href="/dallas">הרצליה</a></li>
+			<li> | <a href="/denver">אשדוד</a></li>
+			<li> | <a href="/locations">ערים נוספות</a></li>
+		</ul>
+	</div>
+	
+	<div>
+		<p> זכויות יוצרים </p>
+	</div>
 </div>
 </body>
 </html>

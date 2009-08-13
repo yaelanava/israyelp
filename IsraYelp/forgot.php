@@ -52,7 +52,7 @@
 			</tr>
 			<tr>
 				<td>
-					<a href="main.php"> <u> חזור לדף הראשי </u> </a>
+					<a href="./main.php"> <u> חזור לדף הראשי </u> </a>
 				</td>
 			</tr>
 		</table>
