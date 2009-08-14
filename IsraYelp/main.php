@@ -180,28 +180,47 @@
 					</div>
 				</div> 
 
-				<div id="hot_and_new" class="external">
-					<h3>חם באתר</h3>
-					<p class="smaller"><em>המקום הכי חם בחודש האחרון</em></p>
-							
-					
-					<div class="clearStyles bizPhotoBox">
-							<a   href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg"><img src="http://static.px.yelp.com/bphoto/vfVo_W0bOOmZimf5Yh78Sw/m" style="" alt="Shanghai Dumpling King, San Francisco, CA"></a>
+				<div id="topYelpersModule" class="external">
+					<h3>מבקרים נבחרים</h3>
+					<div class="divider">
+						<div>
+							<div class="clearStyles photoBox">
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
+							</div>
+							<P>
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">CAPow x.</A> 
+							</P>
+						</div>
+						<div>
+							<div class="clearStyles photoBox">
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
+							</div>
+							<P>
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">CAPow x.</A> 
+							</P>
+						</div>
 					</div>
-					
-						<div class="rating"><img class="stars_3" width="83" height="325" title="3 star rating" alt="3 star " src="./image/stars_map.png"/></div>
-						<h4>1. <a   href="/biz/shanghai-dumpling-king-san-francisco#hrid:ImF2RtPABGuiB9KlTUMXVg">הסושיה</a></h4>
-						<p>כאן תהיה הביקורת של המקום...</p>		
-						<div id="hot_list" >
-							<h4>עוד מקומות חמים</h4>
-							<ul class="stripped">
-								<li>2. <a    href="/biz/the-corner-san-francisco">The Corner</a></li>
-								<li>3. <a    href="/biz/borobudur-restaurant-san-francisco">Borobudur Restaurant</a></li>
-								<li>4. <a    href="/biz/mescolanza-san-francisco">Mescolanza</a></li>
-								<li>5. <a    href="/biz/farmerbrown-san-francisco">farmerbrown</a></li>
-							<li><a href="/top?most=hot&find_loc=San+Francisco%2C+CA">עוד >></a></li>
-							</ul>
-						</div>			
+		
+					<div class="divider">
+						<div>
+							<div class="clearStyles photoBox">
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
+							</div>
+							<P>
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">CAPow x.</A> 
+							</P>
+						</div>
+						<div>
+							<div class="clearStyles photoBox">
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
+							</div>
+							<P>
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">CAPow x.</A> 
+							</P>
+						</div>
+					</div>
+		
+		
 				</div>
 		</div>
 <!--*******************************-->
