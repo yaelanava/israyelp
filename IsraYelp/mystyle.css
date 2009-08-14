@@ -1251,4 +1251,46 @@
 	#bizSideBar #bizNearby {	
 	MARGIN: 0px 0px 10px 7px}
 	
+	#topYelpersModule {	
+	PADDING-RIGHT: 0px;	
+	PADDING-LEFT: 5px;	
+	MARGIN-BOTTOM: 10px;	
+	PADDING-BOTTOM: 15px;	
+	PADDING-TOP: 5px;	
+	BORDER-BOTTOM: #ccc 1px solid;
+	BORDER-LEFT: #ccc 1px solid}
+	
+	.external#topYelpersModule {	
+	BORDER-BOTTOM-WIDTH: 0px}
+	
+	#topYelpersModule DIV {	
+	FLOAT: right;	
+	OVERFLOW: hidden;	
+	WIDTH: 140px;	
+	MARGIN-RIGHT: 5px}
+	
+	#topYelpersModule DIV.divider {	
+	CLEAR: right;	
+	FLOAT: none;	
+	WIDTH: 100%;	
+	PADDING-TOP: 15px}
+	
+	#topYelpersModule P {	
+	MARGIN: 0px 2px 0px 50px}
+	
+	#topYelpersModule DIV.photoBox {	
+	WIDTH: auto}
+	
+	#topYelpersModule DIV.photoBox IMG {	
+	WIDTH: 40px;	
+	HEIGHT: 40px}
+	
+	#topYelpersModule H3 {	
+	MARGIN-BOTTOM: 0px}
+	
+	
+	
+	
+	
+	
 	
