@@ -1266,8 +1266,8 @@
 	#topYelpersModule DIV {	
 	FLOAT: right;	
 	OVERFLOW: hidden;	
-	WIDTH: 140px;	
-	MARGIN-RIGHT: 5px}
+	WIDTH: 160px;	
+	MARGIN-LEFT: 5px}
 	
 	#topYelpersModule DIV.divider {	
 	CLEAR: right;	

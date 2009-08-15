@@ -188,7 +188,7 @@
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
 							</div>
 							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">CAPow x.</A> 
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">משתמש1</A> 
 							</P>
 						</div>
 						<div>
@@ -196,7 +196,7 @@
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
 							</div>
 							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">CAPow x.</A> 
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">משתמש2</A> 
 							</P>
 						</div>
 					</div>
@@ -207,7 +207,7 @@
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
 							</div>
 							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">CAPow x.</A> 
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">משתמש3</A> 
 							</P>
 						</div>
 						<div>
@@ -215,7 +215,7 @@
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
 							</div>
 							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">CAPow x.</A> 
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">משתמש4</A> 
 							</P>
 						</div>
 					</div>
