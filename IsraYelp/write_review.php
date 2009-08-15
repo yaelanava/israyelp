@@ -45,17 +45,29 @@
 	<div id="external_search">
 	<form method="get" action="/search" name="external_search"> 
 		<p>
-			<label for="find_desc_ext"> חפש <em>לדוגמא: מסעדה, מרפאה, סלון</em></label> 
-			<input type="text" maxlength="64" id="find_desc_ext" name="find_desc" tabindex="1" value="בית קפה">
+			<label for="find_desc_ext"> שם המקום <em> שם העסק</em></label> 
+			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="find_desc" tabindex="1" value="" >
 			
 		</p>
 		<p>
-			<label for="find_loc_ext">מיקום <em>כתובת, עיר</em></label>
-			<input type="text" maxlength="64" name="find_loc" id="find_loc_ext" tabindex="2" value="חיים לבנון, תל-אביב">
-			<input type="hidden" name="ns" value="1">
-			<input type="hidden" name="rpp" value="10">
+			<label for="find_loc_ext">סוג מקום <em> </em></label>
+			<select>
+ 				 <option value="restaurant">מסעדה</option>
+				 <option value="cafe">בית-קפה</option>
+  				 <option value="hair_salon">מספרה</option>
+                 <option value="cinema">בית קולנוע</option>
+			</select>
 		</p>
 
+		<p>
+			<label for="find_loc_ext">עיר <em> </em></label>
+			<select>
+ 				 <option value="tel-aviv">תל-אביב</option>
+				 <option value="jerusalem">ירושלים</option>
+  				 <option value="beer_sheva">באר שבע</option>
+                 <option value="haifa">חיפה</option>
+			</select>
+		</p>
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3" onclick="document.external_search.rpp.value=Yelp.readRppFromSearchPrefsCookie();">חפש</button>
 	</form>
 	</div>
