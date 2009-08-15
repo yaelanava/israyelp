@@ -1,8 +1,10 @@
 <?php
 if (isset($_POST['username']) && ('' != $_POST['username']) && 
 	isset($_POST['email']) && ('' != $_POST['email']) &&
+	isset($_POST['country']) && ('' != $_POST['country']) &&
+	isset($_POST['city']) && ('' != $_POST['city']) &&
 	isset($_POST['password']) && ('' != $_POST['password']) &&
-	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {		
+	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {
 	createUser();
 } else {
 	echo "חלק מהשדות היו ריקים. בבקשה נסה שנית";
@@ -12,8 +14,13 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 function createUser(){
 	$username = $_POST['username'];
 	$email = $_POST['email'];
+	$country = $_POST['country'];
+	$city = $_POST['city'];
 	$password = $_POST['password'];
 	$confirmed_password = $_POST['confirmed_password'];
+	
+	
+	
 	if ($password !== $confirmed_password) {
 		echo "<br/>סיסמאות לא מתאימות";		
 	} else {
@@ -38,12 +45,15 @@ function createUser(){
 					`id` ,
 					`username` ,
 					`email` ,
-					`password`  
+					`country` ,
+					`city` ,
+					`password` 
 					)
 				VALUES (
-					NULL , '$username', '$email', PASSWORD('$password') 
+					NULL , '$username', '$email', '$country', '$city', PASSWORD( '$password' ) 
 				)";
-		
+				
+				
 		$result = $mysqli->query($query);
 		if 	($result) {
 			header("Location: signup_ssuccess.html");				
