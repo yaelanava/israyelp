@@ -124,9 +124,25 @@ ul#userTabs li.selected a{
  				</p>
  
  				<div id="profile_questions">
-					<span class="highlight2">מיקום</span>
-					<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
-					<p>Great Neck, NY</p>
+					<span class="highlight2">מיקום:</span>
+					
+					
+					<?php 
+						$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+						$name=$_SESSION['username'];
+						$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
+						$result = $mysqli->query($my_query);
+							
+						 while ($row = $result->fetch_row()) {
+						 	echo  $row[3];
+						 	echo ' , ';
+						 	echo  $row[4];
+    					}		
+						
+					?>
+					<p>					<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
+					</p>
+
 					<span class="highlight2">רשום לאתר מ-</span>
 					<p>May 2009</p>
 					<span class="highlight2">דברים שאני אוהב</span>
@@ -144,7 +160,7 @@ ul#userTabs li.selected a{
 <div id="footer">	
 	<div>		
 		<ul id="aboutSite">
-			<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
+			<li>  <a href="http://localhost/IsraYelp/contact_us.html"   id="Zprofile_footer">עלינו</a></li>
 			<li> | <a href="/about">החשבון שלי</a></li>
 			<li> | <a href="/faq" >שאלות נפוצות </a></li>
 		</ul>
