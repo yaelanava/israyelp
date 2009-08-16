@@ -146,14 +146,24 @@ ul#userTabs li.selected a{
     						echo  $row[4];
     					echo "<br />";
     					
+    					
 					?>
 					<p>					<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
 					</p>
 
 					<span class="highlight2">רשום לאתר מ-</span>
-					<p>May 2009</p>
+					<?php
+						echo "<br />";
+						echo $row[5];
+						echo "<br />";
+						
+					?>
+					
+					<p>
 					<span class="highlight2">דברים שאני אוהב</span>
+					
 					<a href="/profile_bio" class="smaller">ערוך</a>
+					</p>
 					<p>עדיין לא אמרת לנו... זה הזמן</p>
 					<a href="/profile_bio">עדכן פרופיל</a><br/>
 				</div>
