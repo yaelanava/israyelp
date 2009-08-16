@@ -130,15 +130,22 @@ ul#userTabs li.selected a{
 					<?php 
 						$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 						$name=$_SESSION['username'];
-						$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
+						$email = $_SESSION['email'];
+						//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
+						$my_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
 						$result = $mysqli->query($my_query);
-							
-						 while ($row = $result->fetch_row()) {
-						 	echo  $row[3];
-						 	echo ' , ';
-						 	echo  $row[4];
-    					}		
-						
+						$row = $result->fetch_row();   					
+    					if (empty($row[3]))
+    						echo 'ארצך לא ידועה';
+    					else 
+    						echo  $row[3];
+    					echo ' , ';
+    					if (empty($row[4]))
+    						echo 'עיר מגוריך אינה ידועה';	
+    					else 
+    						echo  $row[4];
+    					echo "<br />";
+    					
 					?>
 					<p>					<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
 					</p>
