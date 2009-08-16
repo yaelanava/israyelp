@@ -37,7 +37,7 @@ function loginUser(){
 	if($count==1){
 		$user = mysqli_fetch_assoc($result);
 		$_SESSION['username'] = $user['username'];
-		$_SESSION['email'] = $email['email'];
+		$_SESSION['email'] = $email;
 		header("location:login_success.php");
 	} else {
 		echo "דוא'ל או סיסמא לא נכונים";
