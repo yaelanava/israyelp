@@ -1,8 +1,6 @@
 <?php
 if (isset($_POST['username']) && ('' != $_POST['username']) && 
 	isset($_POST['email']) && ('' != $_POST['email']) &&
-	isset($_POST['country']) && ('' != $_POST['country']) &&
-	isset($_POST['city']) && ('' != $_POST['city']) &&
 	isset($_POST['password']) && ('' != $_POST['password']) &&
 	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {
 	createUser();
