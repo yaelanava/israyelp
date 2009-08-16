@@ -92,8 +92,18 @@
 				<h3>המקומות הטובים ביותר בתל-אביב:</h3>			
 				<div class="clearfix">
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="Best Restaurants in San Francisco"><a href="./tel-aviv/restaurants.php">מסעדות</a></h4>
-						<em>3829 ביקורות</em>			
+						<h4 style="margin-bottom:0px;" title="best places in Tel-Aviv"><a href="./tel-aviv/restaurants.php">מסעדות</a></h4>
+						<em>
+									<?php 
+											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+											$query = "SELECT * FROM `test`.`critiques`";
+											$result = $mysqli->query($query);
+											$count = $result->num_rows;
+											echo $count;
+									?>  
+						ביקורות
+						
+						</em>			
 				
 						<div class="clearStyles bizPhotoBox">
 							<a  href="/biz/san-francisco-meats-and-delicatessen-san-francisco-2"><img src="http://static.px.yelp.com/bphoto/JfEZplImdPEBuE1BNc767A/m"  alt="San Francisco Meats &amp; Delicatessen, San Francisco"></a>
@@ -166,7 +176,14 @@
 						<h4 class="ieSucks">חפש לפי קטגוריה</h4>
 						<ul class="stripped ieSucks">								
 							<li class="shopping"><a href="/c/sf/shopping">קניות</a> 4165 </li>
-							<li class="restaurants"><a href="./tel-aviv/restaurants.php">מסעדות</a>  3910  </li>
+							<li class="restaurants"><a href="./tel-aviv/restaurants.php">מסעדות</a>  										
+									<?php 
+											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+											$query = "SELECT * FROM `test`.`restaurants`";
+											$result = $mysqli->query($query);
+											$count = $result->num_rows;
+											echo $count;
+									?>  </li>
 							<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
 							<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>
 							<li class="beautysvc"><a href="/c/sf/beautysvc">יופי וספא</a>  1870 </li>
