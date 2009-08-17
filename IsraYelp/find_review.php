@@ -81,7 +81,7 @@
 	<form method="get" action="/search" name="external_search"> 
 		<p>
 			<label for="find_desc_ext">כינוי <em>כותב הביקורת</em></label> 
-			<input type="text" maxlength="64" id="find_desc_ext" name="find_desc" tabindex="1" value="">	
+			<input type="text" maxlength="64" id="find_desc_ext" name="find_reviewer" tabindex="1" value="">	
 		</p>
 
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3" onclick="document.external_search.rpp.value=Yelp.readRppFromSearchPrefsCookie();">חפש</button>
