@@ -359,18 +359,46 @@
 			</div>
 										
 				<div id="freshListsModule">
-					<a href="/list_search?q=&sort=time_updated&location=San+Francisco%2C+CA" class="floatLink"><img src="./image/more_button.png" alt="Search lists"></a>
+					<a class="floatLink"><img src="./image/more_button.png" alt="Search lists"></a>
 					<h3>ישר מהתנור...</h3>
 					<p>הביקורות האחרונות של חברי האתר</p>
 				
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a   href="/user_details?userid=0juzbrgcLHqobdK-OZAyiw"><img src="http://static.px.yelp.com/photo/sTLR3ZURk2-JwZRwnUREwA/ss" style="height:40px;width:40px;" alt="Photo ofDaniel L." /></a>
-					</div>				
-						<p>
-							<a   href="/list/coffee-and-tea-berkeley">Coffee &amp; Tea</a>
-							<br />Isn&#39;t it time to take a break from what you&#39;re doing?
-						</p>
+									<a   href="/user_details?userid=0juzbrgcLHqobdK-OZAyiw"><img src="http://static.px.yelp.com/photo/sTLR3ZURk2-JwZRwnUREwA/ss" style="height:40px;width:40px;" alt="Photo ofDaniel L." /></a>
+								</div>				
+								<p>
+									<a   href="/list/coffee-and-tea-berkeley">
+									<?php 
+										$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+										$query = "SELECT * FROM `test`.`critiques`";
+										$result = $mysqli->query($query);
+										$count = $result->num_rows;
+										$query = "SELECT * FROM `test`.`critiques` WHERE id=$count";
+										$result = $mysqli->query($query);
+										$row_from_critiques = $result->fetch_row();
+										echo $row_from_critiques[4];
+
+									?>
+									
+									</a>
+									<br />
+									
+									<em class="smaller grey">
+									<?php 
+										$user_id=$row_from_critiques[1];//user_id
+										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
+										$result = $mysqli->query($query);
+										$row_from_users = $result->fetch_row();
+										
+										echo $row_from_users[1];										
+									?>
+									</em>
+									<br />
+										<?php 
+											echo $row_from_critiques[5];
+										?>
+								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
@@ -378,8 +406,30 @@
 					</div>
 				
 						<p>
-							<a   href="/list/no-thank-you---never-again-san-francisco">No thank you - NEVER again!</a>
-							<br />These are establishments that I will never again visit. Never. No, really, I insist because mean people suck and that&#39;s sad. My fellow elite buddy&#8230;
+							<a   href="/list/no-thank-you---never-again-san-francisco">
+								<?php 
+										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-1)";
+										$result = $mysqli->query($query);
+										$row_from_critiques = $result->fetch_row();
+										echo $row_from_critiques[4];
+								?>
+							</a>
+							<br />
+									
+									<em class="smaller grey">
+									<?php 
+										$user_id=$row_from_critiques[1];//user_id
+										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
+										$result = $mysqli->query($query);
+										$row_from_users = $result->fetch_row();
+										
+										echo $row_from_users[1];										
+									?>
+									</em>
+									<br />
+										<?php 
+											echo $row_from_critiques[5];
+										?>
 						</p>
 					</div>
 					<div class="clearfix">
@@ -387,8 +437,30 @@
 							<a   href="/user_details?userid=M_SxfmZjepJYxE_vNbWK4g"><img src="http://static.px.yelp.com/photo/rZrQob17DQ3qEjnbwanzaA/ss" style="height:40px;width:40px;" alt="Photo ofDeanna T." /></a>
 					</div>
 						<p>
-							<a   href="/list/the-rich-san-francisco">The Rich</a>
-							<br />The Inner and Outer Richmond! Sometimes it&#39;s nice to get away from the big city life.
+							<a   href="/list/no-thank-you---never-again-san-francisco">
+								<?php 
+										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-2)";
+										$result = $mysqli->query($query);
+										$row_from_critiques = $result->fetch_row();
+										echo $row_from_critiques[4];
+								?>
+							</a>
+							<br />
+									
+									<em class="smaller grey">
+									<?php 
+										$user_id=$row_from_critiques[1];//user_id
+										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
+										$result = $mysqli->query($query);
+										$row_from_users = $result->fetch_row();
+										
+										echo $row_from_users[1];										
+									?>
+									</em>
+									<br />
+										<?php 
+											echo $row_from_critiques[5];
+										?>
 						</p>
 					</div>
 					<div class="clearfix">
@@ -396,8 +468,30 @@
 							<a   href="/user_details?userid=Z2PeqEKL87UUG3vfMBRd4w"><img src="http://static.px.yelp.com/photo/S3PvXY3cr0ljiLWQL9hUmw/ss" style="height:40px;width:40px;" alt="Photo ofRobert S." /></a>
 					</div>				
 						<p>
-							<a   href="/list/burger-fanatics-love-burgers-and-must-try-them-all-san-mateo">Burger Fanatics love burgers and must try them all!!!!</a>
-							<br />If you love burgers you love to try out a new place and a good burger. &nbsp;Sometimes you will hit a bust but that is the fun in it. &nbsp;Go out and try a&#8230;
+							<a   href="/list/no-thank-you---never-again-san-francisco">
+								<?php 
+										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-3)";
+										$result = $mysqli->query($query);
+										$row_from_critiques = $result->fetch_row();
+										echo $row_from_critiques[4];
+								?>
+							</a>
+							<br />
+									
+									<em class="smaller grey">
+									<?php 
+										$user_id=$row_from_critiques[1];//user_id
+										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
+										$result = $mysqli->query($query);
+										$row_from_users = $result->fetch_row();
+										
+										echo $row_from_users[1];										
+									?>
+									</em>
+									<br />
+										<?php 
+											echo $row_from_critiques[5];
+										?>
 						</p>
 					</div>
 					<div class="clearfix">
@@ -406,8 +500,30 @@
 					</div>
 				
 						<p>
-							<a   href="/list/best-breakfast-in-the-bay-berkeley">Best Breakfast in the Bay !</a>
-							<br />Here&#39;s where I like to come to stuff my face full of bacon + eggs + pancakes + toast.
+							<a   href="/list/no-thank-you---never-again-san-francisco">
+								<?php 
+										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-4)";
+										$result = $mysqli->query($query);
+										$row_from_critiques = $result->fetch_row();
+										echo $row_from_critiques[4];
+								?>
+							</a>
+							<br />
+									
+									<em class="smaller grey">
+									<?php 
+										$user_id=$row_from_critiques[1];//user_id
+										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
+										$result = $mysqli->query($query);
+										$row_from_users = $result->fetch_row();
+										
+										echo $row_from_users[1];										
+									?>
+									</em>
+									<br />
+										<?php 
+											echo $row_from_critiques[5];
+										?>
 						</p>
 					</div>				
 				</div>			
