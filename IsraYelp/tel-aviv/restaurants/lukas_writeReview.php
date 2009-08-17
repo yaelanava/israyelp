@@ -54,16 +54,16 @@
 						<p id="ratingDescription">לחץ על הכוכב כדי לדרג</p>
 					</dd>
 
-					<dt class="review"><strong>הביקורת שלך</strong><br/>		
-			<!--		<br/><em class="smaller"><a href="/static?p=guide_pop" onclick="window.open('/static?p=guide_pop','guide_pop','width=450,height=500,status=no,toolbar=no,location=no,scrollbars=yes,menubar=no');return false">Read our review guidelines.</a></em>-->
-					</dt>
+
+					<dt class="review"><strong>כותרת</strong><br/>	</dt>
+					<dd class="review">
+						<input type="text" name="title" size=40> 
+						<br>
+					</dd>
+					
+					<dt class="review"><strong><br>הביקורת שלך</strong>		</dt>
 					<dd class="review">
 						<textarea cols="40" rows="8" class="form400"  name="comment"></textarea>
-	<!--					<div id="default_text">
-							Your review helps others learn about great local businesses.
-						<br/><br/>
-							If you happen to know the owner or have a conflict of interest, please don't review.
-						</div> -->
 					</dd>
 				</dl>
 
