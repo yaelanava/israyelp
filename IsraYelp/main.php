@@ -9,7 +9,12 @@
 	
 	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">
+	
+
+		
+			
+	  	
 </head>
 
 <body class= "us" id="IsraYelp_main_body" dir="rtl">
@@ -58,7 +63,7 @@
 			
 		</p>
 		<p>
-			<label for="find_loc_ext">סוג מקום <em> </em></label>
+			<label for="find_loc_ext">סוג המקום <em> </em></label>
 			<select>
  				 <option value="restaurant">מסעדה</option>
 				 <option value="cafe">בית-קפה</option>
@@ -210,6 +215,9 @@
 					</div>
 				</div> 
 
+
+		
+
 				<div id="topYelpersModule" class="external">
 					<h3>מבקרים נבחרים</h3>
 					<div class="divider">
@@ -218,7 +226,38 @@
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
 							</div>
 							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">משתמש1</A> 
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
+									<?php 
+											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+											$query = "SELECT username FROM `test`.`users`";
+											$result = $mysqli->query($query);
+											$count = $result->num_rows;
+											$num1 = rand(1,$count);
+											$num2 = 0; 
+											while ($num2==0) { 
+												$num2 = rand(1,$count); 
+												if ($num2 == $num1) $num2 = 0; 
+											}
+											$num3 = 0; 
+											while ($num3==0) { 
+												$num3 = rand(1,$count); 
+												if ($num3 == $num1 || $num3 == $num2) $num3 = 0; 
+											}
+											$num4 = 0; 
+											while ($num4==0) { 
+												$num4 = rand(1,$count); 
+												if ($num4 == $num1 || $num4 == $num2 || $num4 == $num3) $num4 = 0; 
+											}
+											$query = "SELECT username FROM `test`.`users` WHERE id=$num1";
+											$result = $mysqli->query($query,MYSQLI_STORE_RESULT);
+											$row = $result->fetch_row();
+											echo $row[0];
+
+											
+											?>
+									
+											
+								</A> 
 							</P>
 						</div>
 						<div>
@@ -226,7 +265,16 @@
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
 							</div>
 							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">משתמש2</A> 
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
+								<?php 
+									$query = "SELECT username FROM `test`.`users` WHERE id=$num2";
+									$result = $mysqli->query($query,MYSQLI_STORE_RESULT);
+									$row = $result->fetch_row();
+									echo $row[0];	
+								?>
+								
+								
+								</A> 
 							</P>
 						</div>
 					</div>
@@ -237,7 +285,14 @@
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
 							</div>
 							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">משתמש3</A> 
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
+								<?php 
+									$query = "SELECT username FROM `test`.`users` WHERE id=$num3";
+									$result = $mysqli->query($query,MYSQLI_STORE_RESULT);
+									$row = $result->fetch_row();
+									echo $row[0];	
+								?>
+								</A> 
 							</P>
 						</div>
 						<div>
@@ -245,7 +300,15 @@
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
 							</div>
 							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">משתמש4</A> 
+								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
+								<?php 
+									$query = "SELECT username FROM `test`.`users` WHERE id=$num4";
+									$result = $mysqli->query($query,MYSQLI_STORE_RESULT);
+									$row = $result->fetch_row();
+									echo $row[0];	
+								?>
+										
+								</A> 
 							</P>
 						</div>
 					</div>
