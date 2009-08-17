@@ -50,7 +50,8 @@
 			
 		</p>
 		<p>
-			<label for="find_loc_ext">סוג מקום <em> </em></label>
+			<label for="find_loc_ext">סוג המקום <em> </em></label>
+
 			<select>
  				 <option value="restaurant">מסעדה</option>
 				 <option value="cafe">בית-קפה</option>
