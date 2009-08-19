@@ -28,7 +28,7 @@
 <div id="navContainer">
 		<ul>
 			
-			<LI class="header" id="writeReview"><A   href="../../write_review.php" >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="writeReview"><A   href="../../write_review.php>כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="../../find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../../login.php?logout=1";} else{echo "../../login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
@@ -113,18 +113,7 @@
 			<div id="bizReviews">
 				<div id="bizReviewsHeader" class="clearfix">
 					</br>
-					<h2 id="total_reviews">
-					<?php 
-						$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-						$query = "SELECT * FROM `test`.`critiques` WHERE restaurant='lukas'";
-						$result = $mysqli->query($query);
-						$count = $result->num_rows;
-						echo $count;
-					
-					?>
-					
-					
-					 ביקורות עבור לוקאס:</h2>	
+					<h2 id="total_reviews">	<?php echo $count; ?> ביקורות עבור לוקאס:</h2>	
 				</div>
 				<div id="bizReviewsContent">
 					<div id="bizReviewsInner">
@@ -135,13 +124,18 @@
 											<DIV class="photoBoxSm">
 												<DIV class="clearStyles photoBox">
 													<A href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA" rel="nofollow"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of Sheena D." src="http://static.px.yelp.com/photo/VWQ0SOuTgPPN7rTCyuTbkg/ss" /></A>
-												</div>
-												
-		
+												</div>												
 											</div>
 										</div>
-										<P class="reviewer_info"><A class="reviewer_name" href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA">דנה א.</A></P>
-										<P class="reviewer_info">תל-אביב</P>
+										<?php 
+											$review = $result->fetch_row();
+											$userId = $review[1];
+											$userQuery = "SELECT * FROM `test`.`users` WHERE id='$userId'";
+											$userResult = $mysqli->query($userQuery);
+											$user = mysqli_fetch_assoc($userResult);											
+										?>
+										<P class="reviewer_info"><A class="reviewer_name" href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA"><?php echo $user['username'];?></A></P>
+										<P class="reviewer_info"><?php echo $user['city'];?></P>
 									</div>
 									<DIV class="ext_rating">
 										<DIV class="rating">
@@ -149,7 +143,7 @@
 										</DIV>
 											<EM class="smaller">5/14/2009</EM> 
 									</DIV>
-										<P class="review_comment ieSucks">"יו איזה כיף היה, האוכל נהדר! האנטריקוט שחבר שלי הזמין היה מעולה (ואני לא חובבת אנטריקוט), פירות הים נהדרים (ואל תקשיבו למלצר שמזהיר אתכם מטעם האניס ברוטב... אני שונאת אניס ולא הרגשתי בטעם) והקינוחים סופניים... מומלץ מאוד בעיקר בגלל השירות הסופר מקצועי והאוכל המעולה."
+										<P class="review_comment ieSucks"><?php echo $review[4];?>
 
 										</P>
 										<UL class="externalReviewActions">
@@ -158,6 +152,8 @@
 										</UL>
 								</div>
 							</div>
+							
+		
 							
 							
 							<DIV class="review externalReview clearfix nonfollowingReview " id="review_e9vBvWz7IKmZIuvgHvMjgg">
