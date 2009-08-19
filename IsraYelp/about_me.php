@@ -136,14 +136,10 @@ ul#userTabs li.selected a{
 						$result = $mysqli->query($my_query);
 						$row = $result->fetch_row();   					
     					if (empty($row[3]))
-    						echo 'ארצך לא ידועה';
+    						echo 'עיר מגוריך אינה ידועה';
     					else 
     						echo  $row[3];
-    					echo ' , ';
-    					if (empty($row[4]))
-    						echo 'עיר מגוריך אינה ידועה';	
-    					else 
-    						echo  $row[4];
+    					
     					echo "<br />";
     					
     					
@@ -154,7 +150,7 @@ ul#userTabs li.selected a{
 					<span class="highlight2">רשום לאתר מ-</span>
 					<?php
 						echo "<br />";
-						echo $row[5];
+						echo $row[4];
 						echo "<br />";
 						
 					?>
