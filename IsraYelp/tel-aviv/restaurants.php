@@ -66,7 +66,7 @@
 		
 					<p class="biz_info">1. <a href="./restaurants/lukas.php" id="top_biz_name_2" title="lukas"> לוקאס </a> </p>
 					<div class="top_biz_rating">
-						<div class="rating"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">83 ביקורות</em>
+						<div class="rating"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">83 ביקורות</em>
 					</div>
 					<p class="smaller">קטגוריה: <a href="./take-away.php">Take Away </a>, <a href="./bar-rest.php"> בר-מסעדה</a>, <a href="./bistro.php">ביסטרו</a>, <a href="./events.php">אירועים</a> </p>
 		
@@ -79,7 +79,7 @@
 						2. <a href="/biz/international-food-bazaar-san-jose#hrid:xaAwZx0xd8eOXKIzWOTDIg" id="top_biz_name_2" class="biz_name" title="International Food Bazaar">בוקצ'ו</a>
 					</div>
 					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">42 ביקורות</em>
+						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">42 ביקורות</em>
 					</div>
 						<p class="smaller">קטגוריה: <a href="./meat.php">בשרים</a>, <a href="./events.php">אירועים</a>, <a href="./italian.php">איטלקי</a></p>
 				</li>
@@ -88,7 +88,7 @@
 						3. <a href="/biz/gulzaar-halaal-restaurant-and-bakery-san-jose#hrid:ZKvRBQVsZ4H6MQ7vcnYt9g" id="top_biz_name_3" class="biz_name" title="Gulzaar Halaal Restaurant &amp; Bakery">ברונו</a>
 					</div>
 					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">120 ביקורות</em>
+						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">120 ביקורות</em>
 					</div>
 						<p class="smaller">קטגוריה: <a href="./mideastern.php">ים תיכוני</a>, <a href="./gurme.php">גורמה</a>, <a href="./meat.php">בשרים</a>, <a href="./events.php">אירועים</a> 
 						</p>
@@ -107,7 +107,7 @@
 						5. <a href="/biz/rose-donuts-and-cafe-san-jose-3#hrid:YRCSpDpA__N76eaWH9_o_A" id="top_biz_name_5" class="biz_name" title="Rose Donuts &amp; Cafe">גשן</a>
 					</div>
 					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">93 ביקורות</em>
+						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">93 ביקורות</em>
 					</div>
 						<p class="smaller">קטגוריה: <a href="./meat.php">בשרים </a>, <a href="./bar-rest.php"> בר-מסעדה</a>, <a href="./events.php">אירועים</a>, <a href="./chefrest.php">מסעדת-שף</a></p>
 				</li>

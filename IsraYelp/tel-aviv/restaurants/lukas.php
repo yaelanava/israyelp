@@ -139,7 +139,7 @@
 									</div>
 									<DIV class="ext_rating">
 										<DIV class="rating">
-											<IMG class="stars_5" title="5 star rating" height="325" alt="5 star rating" src="http://static.px.yelp.com/static/20090527a/i/new/ico/stars/stars_map.png" width="83" />
+											<IMG class="stars_5" title="5 star rating" height="325" alt="5 star rating" src="../../image/stars_map.png" width="83" />
 										</DIV>
 											<EM class="smaller">5/14/2009</EM> 
 									</DIV>
@@ -173,7 +173,7 @@
 									</div>
 									<DIV class="ext_rating">
 										<DIV class="rating">
-											<IMG class="stars_4" title="4 star rating" height="325" alt="4 star rating" src="http://static.px.yelp.com/static/20090527a/i/new/ico/stars/stars_map.png" width="83" />
+											<IMG class="stars_4" title="4 star rating" height="325" alt="4 star rating" src="../../image/stars_map.png" width="83" />
 										</DIV>
 											<EM class="smaller">5/14/2009</EM> 
 									</DIV>
