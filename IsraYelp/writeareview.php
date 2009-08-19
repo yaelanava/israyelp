@@ -12,7 +12,7 @@ if (isset($_POST['rest_name']) && ('' != $_POST['rest_name']) &&
 	saveReview();
 } else {
 	header("location:../restaurants.php");
-	//todo
+	//todo yael
 	die(0);				
 }
 
@@ -36,18 +36,20 @@ function saveReview(){
 				`user_id` ,
 				`restaurant` ,
 				`grading` ,
-				`review` 
+				`comment` 
 			)
 			VALUES (
 				NULL , '$userID', '$rest_name', '$rating', '$comment'
 			);";
 			
-	$result = $mysqli->query($query);
+	$result = $mysqli->query($query);	
+	
 	if 	($result) {
-		echo ".הביקורת נשמרה בהצלחה";
-				header("location:writeareview_success.html");
+//		header("Location: ../../writeareview_ssuccess.html");
+		echo "הביקורת נשמרה בהצלחה.";
 	} else {
-		echo "הביקורת לא נשמרה. אנא נסה שוב";				
+		echo "הביקורת לא נשמרה. אנא נסה שוב";
+//		header("Location: ../../writeareview_failure.html");
 	}
 }
 ?>
