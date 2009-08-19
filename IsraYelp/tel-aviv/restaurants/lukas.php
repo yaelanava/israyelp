@@ -112,8 +112,19 @@
 			
 			<div id="bizReviews">
 				<div id="bizReviewsHeader" class="clearfix">
-					</br></br>
-					<h2 id="total_reviews">14 ביקורות עבור לוקאס:</h2>	
+					</br>
+					<h2 id="total_reviews">
+					<?php 
+						$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+						$query = "SELECT * FROM `test`.`critiques` WHERE restaurant='lukas'";
+						$result = $mysqli->query($query);
+						$count = $result->num_rows;
+						echo $count;
+					
+					?>
+					
+					
+					 ביקורות עבור לוקאס:</h2>	
 				</div>
 				<div id="bizReviewsContent">
 					<div id="bizReviewsInner">
