@@ -97,7 +97,7 @@
 				<h3>המקומות הטובים ביותר בתל-אביב:</h3>			
 				<div class="clearfix">
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="best places in Tel-Aviv"><a href="./tel-aviv/restaurants.php">מסעדות</a></h4>
+						<h4 style="margin-bottom:0px;" title="מסעדות"><a href="./tel-aviv/restaurants.php">מסעדות</a></h4>
 						<em>
 									<?php 
 											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
@@ -124,7 +124,7 @@
 					</div>
 				
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="Best Shopping in San Francisco"><a href="/c/sf/shopping">קניות</a></h4>
+						<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="/c/sf/shopping">קניות</a></h4>
 						<em>4115 ביקורות</em>
 						
 						<div class="clearStyles bizPhotoBox">
@@ -143,7 +143,7 @@
 					
 				<div class="clearfix">
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="Best Nightlife in San Francisco"><a href="/c/sf/nightlife">חיי לילה</a></h4>
+						<h4 style="margin-bottom:0px;" title="מקומות בילוי"><a href="/c/sf/nightlife">חיי לילה</a></h4>
 						<em>965 ביקורות</em>
 						<div class="clearStyles bizPhotoBox">
 							<a  href="/biz/cairo-nights-san-francisco"><img src="http://static.px.yelp.com/bphoto/JWNZlCwcSOrLtvpll4Om0A/m" style="" alt="Cairo Nights, San Francisco"></a>
@@ -159,7 +159,7 @@
 					</div>
 						
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="Best Beauty and Spas in San Francisco"><a href="/c/sf/beautysvc">יופי וספא</a></h4>
+						<h4 style="margin-bottom:0px;" title="אתרי ספא ויופי"><a href="/c/sf/beautysvc">יופי וספא</a></h4>
 						<em>1843 ביקורות</em>
 						
 						<div class="clearStyles bizPhotoBox">
@@ -215,8 +215,6 @@
 					</div>
 				</div> 
 
-
-		
 
 				<div id="topYelpersModule" class="external">
 					<h3>מבקרים נבחרים</h3>
