@@ -20,8 +20,7 @@
 		<div id="leftEdge"></div>
 		<div id="rightEdge"></div>
 </div>
-<div id="bodyContainer">
-	
+<div id="bodyContainer_Centered">	
 	<p><?php session_start(); print($_SESSION['username']);?>-אתה מחובר כ</p>
 	<a href="./main.php">.לחץ כאן כדי להתחיל לגלוש באתר</a>
 </div>
