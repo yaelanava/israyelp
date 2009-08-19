@@ -12,7 +12,6 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 function createUser(){
 	$username = $_POST['username'];
 	$email = $_POST['email'];
-	$country = $_POST['country'];
 	$city = $_POST['city'];
 	$password = $_POST['password'];
 	$confirmed_password = $_POST['confirmed_password'];
@@ -43,12 +42,11 @@ function createUser(){
 					`id` ,
 					`username` ,
 					`email` ,
-					`country` ,
 					`city` ,
 					`password` 
 					)
 				VALUES (
-					NULL , '$username', '$email', '$country', '$city', PASSWORD( '$password' ) 
+					NULL , '$username', '$email', '$city', PASSWORD( '$password' ) 
 				)";
 				
 				
