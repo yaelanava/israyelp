@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?php session_start();?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
@@ -12,7 +13,7 @@
 
 
 </head>
-<body>
+<body  dir="rtl">
 <div id="head">
 		<div id="logo">
 			<A href="./main.php">Yelp</A>
@@ -21,8 +22,8 @@
 		<div id="rightEdge"></div>
 </div>
 <div id="bodyContainer_Centered">	
-	<p><?php session_start(); print($_SESSION['username']);?>-אתה מחובר כ</p>
-	<a href="./main.php">.לחץ כאן כדי להתחיל לגלוש באתר</a>
+	<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
+	<a href="./main.php">לחץ כאן כדי להתחיל לגלוש באתר. </a>
 </div>
 </body>
 </html>
