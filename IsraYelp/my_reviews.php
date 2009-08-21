@@ -40,9 +40,9 @@
 <div id="mainContent">
 	<div id="user_header" class="ieSucks" align="right">
 		<ul id="userTabs" >
-				<li><a href="./my_reviews.php">הפרופיל שלי</a></li> 
-				<li class="selected"><a href="/user_details?userid=231YbLWB6JcbHbWoV4EIcg">ביקורות</a></li> 
-				<li><a href="/user_details_bookmarks?userid=231YbLWB6JcbHbWoV4EIcg">מועדפים</a></li>
+				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
+				<li class="selected"><a href="./my_reviviews.php">ביקורות</a></li> 
+				<li><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
 <?php
