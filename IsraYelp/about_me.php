@@ -85,13 +85,8 @@ ul#userTabs li.selected a{
 	<div id="user_header" class="ieSucks" align="right">
 		<ul id="userTabs" >
 				<li class="selected"><a href="/user_details?userid=231YbLWB6JcbHbWoV4EIcg">הפרופיל שלי</a></li> 
-				<li><a href="/user_details_lists?userid=231YbLWB6JcbHbWoV4EIcg">רשימות</a></li> 
-				<li><a href="/user_details_reviews_self?userid=231YbLWB6JcbHbWoV4EIcg">ביקורות</a></li> 
-				<li><a href="/user_details_thanx?userid=231YbLWB6JcbHbWoV4EIcg">מחמאות</a></li> 
-				<li><a href="/user_details_friends?userid=231YbLWB6JcbHbWoV4EIcg">חברים</a></li> 
-				<li><a href="/user_details_following">מעקבים</a></li> 
-				<li><a href="/user_details_bookmarks?userid=231YbLWB6JcbHbWoV4EIcg">Bookmarks</a></li>
-				<li><a href="/user_details_events?userid=231YbLWB6JcbHbWoV4EIcg">אירועים</a></li>
+				<li><a href="./my_reviews.php">ביקורות</a></li> 
+				<li><a href="/user_details_bookmarks?userid=231YbLWB6JcbHbWoV4EIcg">מועדפים</a></li>
 		</ul> 
 	</div>
 		
@@ -113,8 +108,47 @@ ul#userTabs li.selected a{
 				</table>	
  
 				<ul class="stripped" id="user_stats">
-					<li id="friendCount"><a href="/user_details_friends?userid=231YbLWB6JcbHbWoV4EIcg">0&nbsp;חברים</a></li>
-					<li id="reviewCount"><a href="/user_details_reviews_self?userid=231YbLWB6JcbHbWoV4EIcg">0&nbsp;ביקורות</a></li>
+					
+					<?php
+						//extracting the user information 
+						$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+						$name=$_SESSION['username'];
+						$email = $_SESSION['email'];
+						//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
+						$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
+						$user_result = $mysqli->query($user_query);
+						$row = $user_result->fetch_row();   		
+						$id=$row[0];
+						$city=$row[3];
+						$added=$row[4];
+						
+						
+						//counting how much reviews this user wrote
+						$review_query = "SELECT * FROM `test`.`critiques1` WHERE user_id='$id'";
+						$rev_result = $mysqli->query($review_query);
+						$rev_count = $rev_result->num_rows;
+						echo $rev_count;
+						$_SESSION['my_revs']=$rev_result;
+						
+						
+						//while($one_rev = $rev_result->fetch_row())
+						//{
+							//echo 'res:';
+							//echo $one_rev[2];
+							//echo "<br />";
+							//echo 'grade';
+							//echo $one_rev[3];
+							//echo "<br />";
+							//echo 'the rev:';
+							//echo $one_rev[4];
+							
+						//}
+						echo "</br>";
+						
+						
+					?>
+				
+					<a href="./my_reviews.php" >ביקורות שנכתבו על ידך</a>
 			
 				</ul>
 				<div id="user_badges">
@@ -127,18 +161,11 @@ ul#userTabs li.selected a{
 					<span class="highlight2">מיקום:</span>
 					
 					
-					<?php 
-						$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-						$name=$_SESSION['username'];
-						$email = $_SESSION['email'];
-						//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
-						$my_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
-						$result = $mysqli->query($my_query);
-						$row = $result->fetch_row();   					
-    					if (empty($row[3]))
+					<?php    					
+    					if (empty($city))
     						echo 'עיר מגוריך אינה ידועה';
     					else 
-    						echo  $row[3];
+    						echo  $city;
     					
     					echo "<br />";
     					
@@ -150,7 +177,7 @@ ul#userTabs li.selected a{
 					<span class="highlight2">רשום לאתר מ-</span>
 					<?php
 						echo "<br />";
-						echo $row[4];
+						echo $added;
 						echo "<br />";
 						
 					?>
