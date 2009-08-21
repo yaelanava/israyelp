@@ -41,13 +41,17 @@
 	<div id="user_header" class="ieSucks" align="right">
 		<ul id="userTabs" >
 				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-				<li><a href="./my_reviviews.php">ביקורות</a></li> 
+				<li><a href="./my_reviews.php">ביקורות</a></li> 
 				<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
 <?php
 	echo $name=$_SESSION['username'];
 	echo $email = $_SESSION['email']; 
+	echo '</br>';
+	echo $try=$_SESSION['id'];
+		echo '</br>';
+	
 	$my_revs=$_POST['my_revs'];
 	while($one_rev = $my_revs->fetch_row())
 	{
