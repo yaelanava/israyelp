@@ -4,48 +4,7 @@
 <html>
 <head>
 
-<style type="text/css">	
 
-#user_header{}
-	
-	ul#userTabs{
-	margin:0px 0px 0px 15px;
-	padding:0px;
-	list-style:none;
-	overflow:auto;
-	margin:15px;
-}
-ul#userTabs li{
-	background:url(../i/new/tabs2/round_left_off.gif) no-repeat #F38E5A;
-	padding:0px 0px 0px 10px;
-	margin:0px 2px 0px 0px;
-	font-size:11px;
-	float:right;
-}
-ul#userTabs li a{
-	background:url(../i/new/tabs2/round_right_off.gif) no-repeat;
-	background-position:top right;
-	display:block;
-	float:left;
-	color:#fff;
-	padding:4px 10px 4px 0px;
-	outline:0px;
-}
-
-ul#userTabs li.selected{
-	background-image:url(../i/new/tabs2/round_left_on.gif);
-	background-color:#ED5100;
-}
-
-ul#userTabs li.selected a{
-	background-image:url(../i/new/tabs2/round_right_on.gif);
-}
-
-#about_user_column{width:200px;float:right;}
-#user_details_wrapper{border:1px solid #ccc;margin-top:5px;padding:5px 0px;}
-#inner_container{background:url(../i/new/gfx/1x1.gif) repeat-y 205px 0px;}
-			
-</style>
 		
 	<title> עליי </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
@@ -84,9 +43,9 @@ ul#userTabs li.selected a{
 <div id="mainContent">
 	<div id="user_header" class="ieSucks" align="right">
 		<ul id="userTabs" >
-				<li class="selected"><a href="/user_details?userid=231YbLWB6JcbHbWoV4EIcg">הפרופיל שלי</a></li> 
+				<li class="selected"><a href="./about_me.php">הפרופיל שלי</a></li> 
 				<li><a href="./my_reviews.php">ביקורות</a></li> 
-				<li><a href="/user_details_bookmarks?userid=231YbLWB6JcbHbWoV4EIcg">מועדפים</a></li>
+				<li><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
 		
@@ -124,12 +83,13 @@ ul#userTabs li.selected a{
 						
 						
 						//counting how much reviews this user wrote
-						$review_query = "SELECT * FROM `test`.`critiques1` WHERE user_id='$id'";
+						$review_query = "SELECT * FROM `test`.`critiques` WHERE user_id='$id'";
 						$rev_result = $mysqli->query($review_query);
 						$rev_count = $rev_result->num_rows;
 						echo $rev_count;
 						$_SESSION['my_revs']=$rev_result;
-						
+						$_SESSION['try']=$rev_result;
+						$_SESSION['user_id']=8200;
 						
 						//while($one_rev = $rev_result->fetch_row())
 						//{
