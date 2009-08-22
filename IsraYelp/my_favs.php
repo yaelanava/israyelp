@@ -61,7 +61,7 @@
 	$rev_count = $rev_result->num_rows;
 	echo $rev_count;
 	?>
-	<span> מקומות מועדפים והם: </span>
+	<span> מקומות מועדפים </span>
 	
 	<?php 
 	echo "<br />";
