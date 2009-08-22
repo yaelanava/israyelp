@@ -87,9 +87,7 @@
 						$rev_result = $mysqli->query($review_query);
 						$rev_count = $rev_result->num_rows;
 						echo $rev_count;
-						$_SESSION['my_revs']=$rev_result;
-						$_SESSION['try']=$rev_result;
-						$_SESSION['user_id']=8200;
+						$_SESSION['user_id']=$id;
 						
 						//while($one_rev = $rev_result->fetch_row())
 						//{
