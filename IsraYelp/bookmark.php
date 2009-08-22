@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	$rest_name = $_SESSION['rest_name'];
+	$rest_name = $_POST['rest_name'];
 	$username = $_SESSION['username'];
 	
 	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
