@@ -10,9 +10,12 @@
 	else
 	echo "there isn't";
 	
-	$nimage = imagecreatefrompng('IsraYelp\image\archive_button.png');
+	$nimage = imagecreatefrompng('./image/newLogo2.png');
 	
 	imagepng($nimage);
+	echo "</br>";
+	image2wbmp($nimage);
+	
 	echo "</br>";
 	echo 'fin';
 	
