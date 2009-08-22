@@ -59,12 +59,12 @@
 	<form method="get" action="/search" name="external_search"> 
 		<p>
 			<label for="find_desc_ext"> שם המקום <em> שם העסק</em></label> 
-			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="find_desc" tabindex="1" value="" >
+			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="name" tabindex="1" value="" >
 			
 		</p>
 		<p>
 			<label for="find_loc_ext">סוג המקום <em> </em></label>
-			<select>
+			<select name="kind">
  				 <option value="restaurant">מסעדה</option>
 				 <option value="cafe">בית-קפה</option>
   				 <option value="hair_salon">מספרה</option>
@@ -74,7 +74,7 @@
 
 		<p>
 			<label for="find_loc_ext">עיר <em> </em></label>
-			<select>
+			<select name="city">
  				 <option value="tel-aviv">תל-אביב</option>
 				 <option value="jerusalem">ירושלים</option>
   				 <option value="beer_sheva">באר שבע</option>
