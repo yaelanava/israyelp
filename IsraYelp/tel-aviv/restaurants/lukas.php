@@ -13,7 +13,7 @@
 </head>
 
 <body dir="rtl">
-
+<input type="hidden" name="rest_name" value="lukas">
 <div id="head">
 		<div id="logo">
 			<A href="../../main.php"></A>
@@ -104,8 +104,9 @@
 				
 				<div id="bizActions" class="clearfix">
 					<a class="send-to-friend" rel="nofollow"  href="../../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../../image/send2friend.png" width=108 height=41></a>
-					<a class="bookmark" rel="nofollow" title="Something catch your eye?<br/>Bookmark this business to build your own list of fun ideas to check out later!" class="bookmark" id="bizBookmark" href="/signup"><img src= "../../image/bookmark.png" width=108 height=41></a>
+					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../../bookmark.php"><img src= "../../image/bookmark.png" width=108 height=41></a>
 					<a class="write review" rel="nofollow" href="lukas_writeReview.php" id="bizWriteReview"><img src= "../../image/write.png" width=108 height=41></a>
+					
 				</div>
 			</div>
 			
