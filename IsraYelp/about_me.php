@@ -88,19 +88,6 @@
 						$rev_count = $rev_result->num_rows;
 						echo $rev_count;
 						$_SESSION['user_id']=$id;
-						
-						//while($one_rev = $rev_result->fetch_row())
-						//{
-							//echo 'res:';
-							//echo $one_rev[2];
-							//echo "<br />";
-							//echo 'grade';
-							//echo $one_rev[3];
-							//echo "<br />";
-							//echo 'the rev:';
-							//echo $one_rev[4];
-							
-						//}
 						echo "</br>";
 						
 						
