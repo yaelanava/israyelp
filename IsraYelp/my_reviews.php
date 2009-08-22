@@ -45,23 +45,42 @@
 				<li><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
-<?php
-	echo $name=$_SESSION['username'];
-	echo $email = $_SESSION['email']; 
-	echo '</br>';
-	echo $try=$_SESSION['try'];
-		echo '</br>';
-	$my_revs=$_POST['my_revs'];
-	while($one_rev = $try->fetch_row())
+
+	<div id="user_details_wrapper">
+	<?php
+	$id=$_SESSION['user_id'];											
+	//counting how much reviews this user wrote
+	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+	$review_query = "SELECT * FROM `test`.`critiques` WHERE user_id='$id'";
+	$rev_result = $mysqli->query($review_query);
+
+	//echo $name=$_SESSION['username'];
+	//echo $email = $_SESSION['email']; 
+	?>
+	<span> כתבת כבר </span>
+	<?php 
+	$rev_count = $rev_result->num_rows;
+	echo $rev_count;
+	?>
+	<span> ביקורות לאתר </span>
+	
+	<?php 
+	echo "<br />";
+	echo "<br />";
+	$num=1;
+	while($one_rev = $rev_result->fetch_row())
 	{
-		echo 'res:';
-		echo $one_rev[2];
+		printf("ביקורת מספר %d:",$num);
 		echo "<br />";
-		echo 'grade';
-		echo $one_rev[3];
+		printf("נכתבה עבור המסעדה: %s ", $one_rev[2]);
+		printf("קיבלה את הציון %s על ידך ", $one_rev[3]);
+		printf("והביקורת שלך הייתה: %s ", $one_rev[5]);
 		echo "<br />";
-		echo 'the rev:';
-		echo $one_rev[4];
+		echo "<br />";
+		$num++;
 		
 	}
 ?>
+</div>
+</div>
+	
