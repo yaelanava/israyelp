@@ -26,34 +26,23 @@ function saveReview(){
 		
 	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 	
-	$query = "SELECT * FROM `test`.`users` WHERE email=$useremail";
+	$query = "SELECT * FROM `test`.`users` WHERE email='$useremail'";
 	$result = $mysqli->query($query);
 	
 	$user = mysqli_fetch_assoc($result);
 	$userID = $user['id'];
 	
-
-	
-	$query = "INSERT INTO `test`.`critiques` (
-				`id` ,
-				`user_id` ,
-				`restaurant` ,
-				`grading` ,
-				`title` 
-				`comment` 
-			)
-			VALUES (
-				NULL , $userID, $rest_name, $rating,$title, $comment
-			);";
+	$query = "INSERT INTO `test`.`critiques` (id,user_id,restaurant,grading,title,comment)
+			VALUES (NULL , '$userID', '$rest_name', '$rating', '$title', '$comment')";
 			
 	$result = $mysqli->query($query);	
 	
+	
 	if 	($result) {
-//		header("Location: ../../writeareview_ssuccess.html");
-		echo "הביקורת נשמרה בהצלחה.";
+		header("Location: ./writeareview_ssuccess.html");
 	} else {
-		echo "הביקורת לא נשמרה. אנא נסה שוב";
-//		header("Location: ../../writeareview_failure.html");
+		header("Location: ./writeareview_failure.html");
 	}
+
 }
 ?>
