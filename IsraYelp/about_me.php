@@ -17,6 +17,19 @@
 </head>
 
 <body class= "us" id="IsraYelp_main_body" dir="rtl">
+<?php
+		//extracting the user information 
+		$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+		$name=$_SESSION['username'];
+		$email = $_SESSION['email'];
+		//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
+		$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
+		$user_result = $mysqli->query($user_query);
+		$row = $user_result->fetch_row();   		
+		$id=$row[0];
+		$city=$row[3];
+		$added=$row[4]; 
+?>
 
 <div id="head">
 		<div id="logo">
@@ -36,7 +49,7 @@
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -57,8 +70,11 @@
 					<tr><td valign="bottom">
 						<div id="user_main_photo">
 							<div class="clearStyles photoBox" >
-								<a href="/user_photos?return_url=%2Fuser_details%3Fuserid%3D231YbLWB6JcbHbWoV4EIcg">
-								<img src="http://static4.px.yelp.com/static/20090717/i/new/gfx/blank_user_medium.gif" style="" alt="user photo" /></a>
+								<?php $destination="./users_pics/".$id;
+									if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
+								?>
+								<img src="<? echo $destination; ?>" >
 							</div>
 	 
 						</div>
@@ -72,16 +88,16 @@
 					
 					<?php
 						//extracting the user information 
-						$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-						$name=$_SESSION['username'];
-						$email = $_SESSION['email'];
+						//$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+						//$name=$_SESSION['username'];
+						//$email = $_SESSION['email'];
 						//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
-						$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
-						$user_result = $mysqli->query($user_query);
-						$row = $user_result->fetch_row();   		
-						$id=$row[0];
-						$city=$row[3];
-						$added=$row[4];
+						//$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
+						//$user_result = $mysqli->query($user_query);
+						//$row = $user_result->fetch_row();   		
+						//$id=$row[0];
+						//$city=$row[3];
+						//$added=$row[4];
 						
 						
 						//counting how much reviews this user wrote
