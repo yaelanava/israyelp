@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();
+	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -33,15 +34,14 @@
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "./about_me.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
 
 
 <div  id="bodyContainer">
-
-<form action="uploading_pic.php" method="post" >
+<form action="uploading_pic.php" method="post" enctype="multipart/form-data">
 	<table align="center" cellpadding="5">
 
 		<tr>
