@@ -220,54 +220,63 @@
 					<div class="divider">
 						<div>
 							<div class="clearStyles photoBox">
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
+							<?php 
+							
+										$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+										$query = "SELECT username FROM `test`.`users`";
+										$result = $mysqli->query($query);
+										$count = $result->num_rows;
+										$num1 = rand(1,$count);
+										$num2 = 0; 
+										while ($num2==0) { 
+											$num2 = rand(1,$count); 
+											if ($num2 == $num1) $num2 = 0; 
+										}
+										$num3 = 0; 
+										while ($num3==0) { 
+											$num3 = rand(1,$count); 
+											if ($num3 == $num1 || $num3 == $num2) $num3 = 0; 
+										}
+										$num4 = 0; 
+										while ($num4==0) { 
+											$num4 = rand(1,$count); 
+											if ($num4 == $num1 || $num4 == $num2 || $num4 == $num3) $num4 = 0; 
+										}							
+							           	$destination="./users_pics/".$num1;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
+							?>	
+										<img src="<? echo $destination; ?>" >
 							</div>
 							<P>
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
 									<?php 
-											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-											$query = "SELECT username FROM `test`.`users`";
-											$result = $mysqli->query($query);
-											$count = $result->num_rows;
-											$num1 = rand(1,$count);
-											$num2 = 0; 
-											while ($num2==0) { 
-												$num2 = rand(1,$count); 
-												if ($num2 == $num1) $num2 = 0; 
-											}
-											$num3 = 0; 
-											while ($num3==0) { 
-												$num3 = rand(1,$count); 
-												if ($num3 == $num1 || $num3 == $num2) $num3 = 0; 
-											}
-											$num4 = 0; 
-											while ($num4==0) { 
-												$num4 = rand(1,$count); 
-												if ($num4 == $num1 || $num4 == $num2 || $num4 == $num3) $num4 = 0; 
-											}
-											$query = "SELECT username FROM `test`.`users` WHERE id=$num1";
-											$result = $mysqli->query($query,MYSQLI_STORE_RESULT);
-											$row = $result->fetch_row();
-											echo $row[0];
 
-											
+											$query = "SELECT username FROM `test`.`users` WHERE id=$num1";
+											$result = $mysqli->query($query);
+											$row = mysqli_fetch_assoc($result);
+											echo $row['username'];										
 											?>
-									
-											
 								</A> 
 							</P>
 						</div>
 						<div>
 							<div class="clearStyles photoBox">
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
+							<?php 
+							           	$destination="./users_pics/".$num2;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
+							?>	
+										<img src="<? echo $destination; ?>" >
+							
 							</div>
 							<P>
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
 								<?php 
 									$query = "SELECT username FROM `test`.`users` WHERE id=$num2";
-									$result = $mysqli->query($query,MYSQLI_STORE_RESULT);
-									$row = $result->fetch_row();
-									echo $row[0];	
+									$result = $mysqli->query($query);
+									$row = mysqli_fetch_assoc($result);
+									echo $row['username'];	
 								?>
 								
 								
@@ -279,30 +288,42 @@
 					<div class="divider">
 						<div>
 							<div class="clearStyles photoBox">
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
+							<?php 
+							           	$destination="./users_pics/".$num3;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
+							?>	
+										<img src="<? echo $destination; ?>" >
+							
 							</div>
 							<P>
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
 								<?php 
 									$query = "SELECT username FROM `test`.`users` WHERE id=$num3";
-									$result = $mysqli->query($query,MYSQLI_STORE_RESULT);
-									$row = $result->fetch_row();
-									echo $row[0];	
+									$result = $mysqli->query($query);
+									$row = mysqli_fetch_assoc($result);
+									echo $row['username'];	
 								?>
 								</A> 
 							</P>
 						</div>
 						<div>
 							<div class="clearStyles photoBox">
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of CAPow x." src="http://static4.px.yelp.com/photo/OCGyju5tTwADihHw-wY4cA/ss" /></A> 								
+							<?php 
+							           	$destination="./users_pics/".$num4;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
+							?>	
+										<img src="<? echo $destination; ?>" >
+							
 							</div>
 							<P>
 								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
 								<?php 
 									$query = "SELECT username FROM `test`.`users` WHERE id=$num4";
-									$result = $mysqli->query($query,MYSQLI_STORE_RESULT);
-									$row = $result->fetch_row();
-									echo $row[0];	
+									$result = $mysqli->query($query);
+									$row = mysqli_fetch_assoc($result);
+									echo $row['username'];		
 								?>
 										
 								</A> 
@@ -362,167 +383,163 @@
 				
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-									<a   href="/user_details?userid=0juzbrgcLHqobdK-OZAyiw"><img src="http://static.px.yelp.com/photo/sTLR3ZURk2-JwZRwnUREwA/ss" style="height:40px;width:40px;" alt="Photo ofDaniel L." /></a>
-								</div>				
-								<p>
-									<a   href="/list/coffee-and-tea-berkeley">
-									<?php 
+								<?php 
 										$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 										$query = "SELECT * FROM `test`.`critiques`";
 										$result = $mysqli->query($query);
 										$count = $result->num_rows;
 										$query = "SELECT * FROM `test`.`critiques` WHERE id=$count";
 										$result = $mysqli->query($query);
-										$row_from_critiques = $result->fetch_row();
-										echo $row_from_critiques[4];
-
-									?>
-									
-									</a>
+										$row_from_critiques = mysqli_fetch_assoc($result);
+										$user_id=$row_from_critiques['user_id'];//user_id
+										
+							           	$destination="./users_pics/".$user_id;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
+								?>
+										<img src="<? echo $destination; ?>" >
+								</div>				
+								<p>
+									<a   href="/list/coffee-and-tea-berkeley">
+									<?php echo $row_from_critiques['title'];?></a>
 									<br />
 									
 									<em class="smaller grey">
 									<?php 
-										$user_id=$row_from_critiques[1];//user_id
 										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
 										$result = $mysqli->query($query);
-										$row_from_users = $result->fetch_row();
-										
-										echo $row_from_users[1];										
+										$row_from_users = mysqli_fetch_assoc($result);
+										echo $row_from_users['username'];										
 									?>
 									</em>
 									<br />
-										<?php 
-											echo $row_from_critiques[5];
-										?>
+										<?php echo $row_from_critiques['comment'];?>
 								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a   href="/user_details?userid=yVtAUqcUaLV3PLRcCHaw5w"><img src="http://static.px.yelp.com/photo/1nrEbqCt1dvST083jXD3rw/ss" style="height:40px;width:40px;" alt="Photo ofJennifer C P." /></a>
-					</div>
-				
-						<p>
-							<a   href="/list/no-thank-you---never-again-san-francisco">
-								<?php 
+								<?php 									
 										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-1)";
 										$result = $mysqli->query($query);
-										$row_from_critiques = $result->fetch_row();
-										echo $row_from_critiques[4];
+										$row_from_critiques = mysqli_fetch_assoc($result);
+										$user_id=$row_from_critiques['user_id'];//user_id
+										
+							           	$destination="./users_pics/".$user_id;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
 								?>
-							</a>
-							<br />
+										<img src="<? echo $destination; ?>" >
+								</div>				
+								<p>
+									<a   href="/list/coffee-and-tea-berkeley">
+									<?php echo $row_from_critiques['title'];?></a>
+									<br />
 									
 									<em class="smaller grey">
 									<?php 
-										$user_id=$row_from_critiques[1];//user_id
 										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
 										$result = $mysqli->query($query);
-										$row_from_users = $result->fetch_row();
-										
-										echo $row_from_users[1];										
+										$row_from_users = mysqli_fetch_assoc($result);
+										echo $row_from_users['username'];										
 									?>
 									</em>
 									<br />
-										<?php 
-											echo $row_from_critiques[5];
-										?>
-						</p>
+										<?php echo $row_from_critiques['comment'];?>
+								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a   href="/user_details?userid=M_SxfmZjepJYxE_vNbWK4g"><img src="http://static.px.yelp.com/photo/rZrQob17DQ3qEjnbwanzaA/ss" style="height:40px;width:40px;" alt="Photo ofDeanna T." /></a>
-					</div>
-						<p>
-							<a   href="/list/no-thank-you---never-again-san-francisco">
-								<?php 
+								<?php 									
 										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-2)";
 										$result = $mysqli->query($query);
-										$row_from_critiques = $result->fetch_row();
-										echo $row_from_critiques[4];
+										$row_from_critiques = mysqli_fetch_assoc($result);
+										$user_id=$row_from_critiques['user_id'];//user_id
+										
+							           	$destination="./users_pics/".$user_id;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
 								?>
-							</a>
-							<br />
+										<img src="<? echo $destination; ?>" >
+								</div>				
+								<p>
+									<a   href="/list/coffee-and-tea-berkeley">
+									<?php echo $row_from_critiques['title'];?></a>
+									<br />
 									
 									<em class="smaller grey">
 									<?php 
-										$user_id=$row_from_critiques[1];//user_id
 										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
 										$result = $mysqli->query($query);
-										$row_from_users = $result->fetch_row();
-										
-										echo $row_from_users[1];										
+										$row_from_users = mysqli_fetch_assoc($result);
+										echo $row_from_users['username'];										
 									?>
 									</em>
 									<br />
-										<?php 
-											echo $row_from_critiques[5];
-										?>
-						</p>
+										<?php echo $row_from_critiques['comment'];?>
+								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a   href="/user_details?userid=Z2PeqEKL87UUG3vfMBRd4w"><img src="http://static.px.yelp.com/photo/S3PvXY3cr0ljiLWQL9hUmw/ss" style="height:40px;width:40px;" alt="Photo ofRobert S." /></a>
-					</div>				
-						<p>
-							<a   href="/list/no-thank-you---never-again-san-francisco">
-								<?php 
+								<?php 									
 										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-3)";
 										$result = $mysqli->query($query);
-										$row_from_critiques = $result->fetch_row();
-										echo $row_from_critiques[4];
+										$row_from_critiques = mysqli_fetch_assoc($result);
+										$user_id=$row_from_critiques['user_id'];//user_id
+										
+							           	$destination="./users_pics/".$user_id;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
 								?>
-							</a>
-							<br />
+										<img src="<? echo $destination; ?>" >
+								</div>				
+								<p>
+									<a   href="/list/coffee-and-tea-berkeley">
+									<?php echo $row_from_critiques['title'];?></a>
+									<br />
 									
 									<em class="smaller grey">
 									<?php 
-										$user_id=$row_from_critiques[1];//user_id
 										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
 										$result = $mysqli->query($query);
-										$row_from_users = $result->fetch_row();
-										
-										echo $row_from_users[1];										
+										$row_from_users = mysqli_fetch_assoc($result);
+										echo $row_from_users['username'];										
 									?>
 									</em>
 									<br />
-										<?php 
-											echo $row_from_critiques[5];
-										?>
-						</p>
+										<?php echo $row_from_critiques['comment'];?>
+								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
-							<a   href="/user_details?userid=QxicE6c4zNxYYJh_aeywlA"><img src="http://static.px.yelp.com/photo/4__2w7AMiMNKqjyyqtuB6Q/ss" style="height:40px;width:40px;" alt="Photo ofMark B." /></a>
-					</div>
-				
-						<p>
-							<a   href="/list/no-thank-you---never-again-san-francisco">
-								<?php 
+								<?php 									
 										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-4)";
 										$result = $mysqli->query($query);
-										$row_from_critiques = $result->fetch_row();
-										echo $row_from_critiques[4];
+										$row_from_critiques = mysqli_fetch_assoc($result);
+										$user_id=$row_from_critiques['user_id'];//user_id
+										
+							           	$destination="./users_pics/".$user_id;
+										if (!file_exists($destination))
+										$destination="./users_pics/blank_user_medium.gif";
 								?>
-							</a>
-							<br />
+										<img src="<? echo $destination; ?>" >
+								</div>				
+								<p>
+									<a   href="/list/coffee-and-tea-berkeley">
+									<?php echo $row_from_critiques['title'];?></a>
+									<br />
 									
 									<em class="smaller grey">
 									<?php 
-										$user_id=$row_from_critiques[1];//user_id
 										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
 										$result = $mysqli->query($query);
-										$row_from_users = $result->fetch_row();
-										
-										echo $row_from_users[1];										
+										$row_from_users = mysqli_fetch_assoc($result);
+										echo $row_from_users['username'];										
 									?>
 									</em>
 									<br />
-										<?php 
-											echo $row_from_critiques[5];
-										?>
-						</p>
-					</div>				
+										<?php echo $row_from_critiques['comment'];?>
+								</p>
+					</div>			
 				</div>			
 		</div>
 	</div>
