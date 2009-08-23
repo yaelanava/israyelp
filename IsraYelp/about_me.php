@@ -57,7 +57,8 @@
 					<tr><td valign="bottom">
 						<div id="user_main_photo">
 							<div class="clearStyles photoBox" >
-								<a href="/user_photos?return_url=%2Fuser_details%3Fuserid%3D231YbLWB6JcbHbWoV4EIcg"><img src="http://static4.px.yelp.com/static/20090717/i/new/gfx/blank_user_medium.gif" style="" alt="user photo" /></a>
+								<a href="/user_photos?return_url=%2Fuser_details%3Fuserid%3D231YbLWB6JcbHbWoV4EIcg">
+								<img src="http://static4.px.yelp.com/static/20090717/i/new/gfx/blank_user_medium.gif" style="" alt="user photo" /></a>
 							</div>
 	 
 						</div>
@@ -100,7 +101,7 @@
 				<div id="user_badges">
 				</div>
  				<p id="photo_action_link">
- 					<a href="/user_photos?return_url=%2Fuser_details" class="small">העלה תמונה</a>
+ 					<a href="./upload_pic.php" class="small">העלה תמונה</a>
  				</p>
  
  				<div id="profile_questions">
