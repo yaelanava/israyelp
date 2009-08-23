@@ -87,35 +87,20 @@
 				<ul class="stripped" id="user_stats">
 					
 					<?php
-						//extracting the user information 
-						//$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-						//$name=$_SESSION['username'];
-						//$email = $_SESSION['email'];
-						//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
-						//$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
-						//$user_result = $mysqli->query($user_query);
-						//$row = $user_result->fetch_row();   		
-						//$id=$row[0];
-						//$city=$row[3];
-						//$added=$row[4];
-						
-						
+
 						//counting how much reviews this user wrote
 						$review_query = "SELECT * FROM `test`.`critiques` WHERE user_id='$id'";
 						$rev_result = $mysqli->query($review_query);
 						$rev_count = $rev_result->num_rows;
 						echo $rev_count;
 						$_SESSION['user_id']=$id;
-						
-						
-						
+
 					?>
 				
 					<a href="./my_reviews.php" >ביקורות שנכתבו על ידך</a>
 			
 				</ul>
-				<div id="user_badges">
-				</div>
+	
  				<p id="photo_action_link">
  					<a href="./upload_pic.php" class="small">העלה תמונה</a>
  				</p>
@@ -145,11 +130,11 @@
 						
 					?>
 					
-					<p>
+					<span></span>
 					<span class="highlight2">דברים שאני אוהב</span>
 					
 					<a href="/profile_bio" class="smaller">ערוך</a>
-					</p>
+					
 					<p>עדיין לא אמרת לנו... זה הזמן</p>
 					<a href="/profile_bio">עדכן פרופיל</a><br/>
 				</div>
