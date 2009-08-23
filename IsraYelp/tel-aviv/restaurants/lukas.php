@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();
+	$_SESSION['rest_name']='lucas';?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,15 +61,29 @@
 									</div>
 								</div>
 								<div id="bizInfoContent">
-									<p id="bizCategories">קטגוריה:
-									<span id="cat_display">	<a  href="/c/sunnyvale-ca/indpak">Take Away</a>, 		<a  href="/c/sunnyvale-ca/afghani">אירועים</a>, 		<a  href="/c/sunnyvale-ca/pakistani">ביסטרו</a> </span>
+									<p id="bizCategories"><strong>קטגוריה:</strong>
+									<span id="cat_display">	
+									<?php 
+										$query_restaurant = "SELECT * FROM `test`.`restaurants` WHERE name='lukas'";
+										$result_restaurant = $mysqli->query($query_restaurant);
+										$restaurant = mysqli_fetch_assoc($result_restaurant);	
+										echo $restaurant['type_rest'];								
+									?>
+							
 									</p>
 
 									<address class="adr">
-										<span class="street-address">מזא"ה 5, תל אביב </span>
+										<span class="street-address">
+										<?php 
+
+											echo $restaurant['street'].' '.$restaurant['no.street'].', '.$restaurant['city'];
+						
+										?>
+										</span>
+										
 									</address>
 	
-									<span id="bizPhone" class="tel">03-5252565, 03-5686820</span>
+									<span id="bizPhone" class="tel"> <?php echo $restaurant['no.phone']; ?> </span>
 	
 									<div id="bizUrl">
 										<a href="http://www.yelp.com/redir?url=http%3A%2F%2Fwww.ichaatcafe.com&amp;src_bizid=54anJf73lEHBItVRPgRgrA" target="_blank" rel="nofollow" class="url"></a>
@@ -86,16 +101,16 @@
 						
 						<div id="bizAdditionalInfo" class="clearfix">
 							<ul>
-								<li><strong>מחיר לסועד:</strong> בהתאם לתפריט</li>
-								<li><strong>משלוחים:</strong> כן</li>
-								<li><strong>כשר:</strong> לא</li>
-								<li><strong>גישה לנכים:</strong> כן</li>
-								<li><strong>ידידותי לילדים:</strong> כן</li>
-								<li><strong>אירועים:</strong> כן</li>
-								<li><strong>רומנטי:</strong> כן</li>
-								<li><strong>חניה:</strong> כן</li>
-								<li><strong>אזור עישון:</strong> כן</li>
-								<li><strong>ישיבה בחוץ:</strong> כן</li>
+							
+								<li><strong>משלוחים:</strong><?php if($restaurant['delivery']==1){echo  " כן";} else {echo " לא";} ?></li>
+								<li><strong>כשר:</strong><?php if($restaurant['kosher']==1){echo  " כן";} else {echo " לא";} ?></li>
+								<li><strong>גישה לנכים:</strong> <?php if($restaurant['invalid_access']==1){echo  " כן";} else {echo " לא";} ?></li>
+								<li><strong>ידידותי לילדים:</strong> <?php if($restaurant['child_friendly']==1){echo  " כן";} else {echo " לא";} ?></li>
+								<li><strong>אירועים:</strong> <?php if($restaurant['events']==1){echo  " כן";} else {echo " לא";} ?></li>
+								<li><strong>רומנטי:</strong> <?php if($restaurant['romantic']==1){echo  " כן";} else {echo " לא";} ?></li>
+								<li><strong>חניה:</strong> <?php if($restaurant['parking']==1){echo  " כן";} else {echo " לא";} ?></li>
+								<li><strong>אזור עישון:</strong> <?php if($restaurant['smoking']==1){echo  " כן";} else {echo " לא";} ?></li>
+								<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>
 											
 							</ul>
 						</div>
@@ -118,7 +133,7 @@
 				</div>
 				<div id="bizReviewsContent">
 					<div id="bizReviewsInner">
-							<DIV class="review externalReview clearfix nonfollowingReview " id="review_e9vBvWz7IKmZIuvgHvMjgg">
+							<DIV class="review externalReview clearfix nonfollowingReview " >
 								<DIV class="wrap">
 									<DIV class="reviewer">
 										<DIV class="mini">
@@ -128,9 +143,12 @@
 												</div>												
 											</div>
 										</div>
+										
+										
+										
 										<?php 
-											$review = $result->fetch_row();
-											$userId = $review[1];
+											$review = mysqli_fetch_assoc($result);
+											$userId = $review['user_id'];
 											$userQuery = "SELECT * FROM `test`.`users` WHERE id='$userId'";
 											$userResult = $mysqli->query($userQuery);
 											$user = mysqli_fetch_assoc($userResult);											
@@ -142,22 +160,17 @@
 										<DIV class="rating">
 											<IMG class="stars_5" title="5 star rating" height="325" alt="5 star rating" src="../../image/stars_map.png" width="83" />
 										</DIV>
-											<EM class="smaller">5/14/2009</EM> 
+											<EM class="smaller"><?php echo $review['added']?></EM> 
 									</DIV>
-										<P class="review_comment ieSucks"><?php echo $review[4];?>
-
-										</P>
-										<UL class="externalReviewActions">
-											<LI><A class="bookmark" title="" onclick="initBookSignUp(this,'54anJf73lEHBItVRPgRgrA','iChaat Cafe');return false" href="http://www.yelp.com/signup" rel="nofollow">סמן כמועדף</A> </LI>
-											<LI><A class="sendToFriend" onclick="Yelp.send2Friends.open(this, '54anJf73lEHBItVRPgRgrA', 'e9vBvWz7IKmZIuvgHvMjgg', null);return false" href="http://www.yelp.com/biz_share?bizid=54anJf73lEHBItVRPgRgrA&reviewid=e9vBvWz7IKmZIuvgHvMjgg&return_url=/biz/ichaat-cafe-sunnyvale-3" rel="nofollow">שלח לחבר</A> </LI>
-										</UL>
+										<p class="review_comment ieSucks"><b><?php echo $review['title'];?></b><br> <?php echo $review['comment']; ?></P>
+								
 								</div>
 							</div>
 							
 		
 							
 							
-							<DIV class="review externalReview clearfix nonfollowingReview " id="review_e9vBvWz7IKmZIuvgHvMjgg">
+							<DIV class="review externalReview clearfix nonfollowingReview " >
 								<DIV class="wrap">
 									<DIV class="reviewer">
 										<DIV class="mini">
@@ -165,25 +178,29 @@
 												<DIV class="clearStyles photoBox">
 													<A href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA" rel="nofollow"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of Sheena D." src="http://static.px.yelp.com/photo/VWQ0SOuTgPPN7rTCyuTbkg/ss" /></A>
 												</div>
-												
-		
+
 											</div>
 										</div>
-										<P class="reviewer_info"><A class="reviewer_name" href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA">דנה א.</A></P>
-										<P class="reviewer_info">תל-אביב</P>
+											<?php
+												$result = $mysqli->query($query);
+												$review = mysqli_fetch_assoc($result);
+												$userId = $review['user_id'];
+												$userQuery = "SELECT * FROM `test`.`users` WHERE id='$userId'";
+												$userResult = $mysqli->query($userQuery);
+												$user = mysqli_fetch_assoc($userResult);
+												
+												 ?>
+										<P class="reviewer_info"><A class="reviewer_name" href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA"><?php echo $user['username'];?></A></P>
+										<P class="reviewer_info"><?php echo $user['city'];?></P>
 									</div>
 									<DIV class="ext_rating">
 										<DIV class="rating">
 											<IMG class="stars_4" title="4 star rating" height="325" alt="4 star rating" src="../../image/stars_map.png" width="83" />
 										</DIV>
-											<EM class="smaller">5/14/2009</EM> 
+											<EM class="smaller"><?php echo $review['added']?></EM> 
 									</DIV>
-										<P class="review_comment ieSucks">"פשוט מאוד, מחיר מול מוצר. במחיר של העסקיות בלוקאס אוכלים ברשת המבורגרים ידועה. סטייק טעים עסיסי ועשוי היטב והמחיר ברצפה. כל הכבוד לבעלי המסעדה שהלכו על מסעדה ברמה ובמחיר עממי לכל נפש. נמאס מכל המסעדות ששודדות את הקהל; לא נותנות כלום ומוכרות ביוקר. לוקאס זו דוגמא של לתת יפה ובזול. מזכיר לי את המסעדות בניו יורק שנותנות אוכל איכותי במחירים השווים לכל נפש. כל הכבוד ושיהיו הרבה מסעדות מהסוג של לוקאס כי מהאחרות כבר שבענו."
-										</P>
-										<UL class="externalReviewActions">
-											<LI><A class="bookmark" title="" onclick="initBookSignUp(this,'54anJf73lEHBItVRPgRgrA','iChaat Cafe');return false" href="http://www.yelp.com/signup" rel="nofollow">סמן כמועדף</A> </LI>
-											<LI><A class="sendToFriend" onclick="Yelp.send2Friends.open(this, '54anJf73lEHBItVRPgRgrA', 'e9vBvWz7IKmZIuvgHvMjgg', null);return false" href="http://www.yelp.com/biz_share?bizid=54anJf73lEHBItVRPgRgrA&reviewid=e9vBvWz7IKmZIuvgHvMjgg&return_url=/biz/ichaat-cafe-sunnyvale-3" rel="nofollow">שלח לחבר</A> </LI>
-										</UL>
+										<p class="review_comment ieSucks"><b><?php echo $review['title'];?></b><br> <?php echo $review['comment']; ?></P>
+
 								</div>
 							</div>											
 					</div>				
