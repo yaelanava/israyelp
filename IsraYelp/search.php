@@ -1,12 +1,15 @@
-<?php
-if (isset($_POST['place_name']) && ('' != $_POST['place_name']) && 
-	isset($_POST['place_kind'])  && isset($_POST['city'])) 
+<?php 
+session_start();
+
+if ((isset($_POST['place_name']) && ('' != $_POST['place_name'])) &&
+	(isset($_POST['place_kind']) && ('' != $_POST['place_kind'])) &&
+	(isset($_POST['city']) && ('' != $_POST['city'])))
 	{
-	search();
-} else {
-	echo "חלק מהשדות היו ריקים. בבקשה נסה שנית";
+		search();
+	} else {
+		echo "חלק מהשדות היו ריקים. בבקשה נסה שנית";
 	die(0);
-}
+	}
 
 function search(){
 	$name = $_POST['place_name'];
@@ -19,14 +22,18 @@ function search(){
 		   printf("Connect failed: %s\n", mysqli_connect_error());
 		   exit();
 	}
-		
 	$query = "SELECT * FROM `test`.`restaurants` WHERE name='$name'";
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;
 		
 		if ($count != 0) {
-			echo "קיים";
-				
+			//todo
+			header("Location: ./tel-aviv/restaurants/lukas_writeReview.php");		
+		}
+		else {
+			header("Location: ./new_place.php");
+			//echo "המקום אינו נמצא במאגר";
+			
 		}
 
 	}
