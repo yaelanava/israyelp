@@ -90,7 +90,7 @@
 						$rev_count = $rev_result->num_rows;
 						echo $rev_count;
 						$_SESSION['user_id']=$id;
-						echo "</br>";
+						
 						
 						
 					?>
