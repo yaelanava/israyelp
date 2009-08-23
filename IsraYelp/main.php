@@ -45,7 +45,6 @@
 	<div class="ieSucks" id="locBar">
 		<H1>תל-אביב</H1>
 		<ul>
-				 <LI><A id="locBoxToggle" onclick='Yelp.init_locBox(this, {"city_dir_depth":0,"return_url":"/home"});return false' href="http://www.yelp.com/locations?return_url=%2Fhome">עוד...</A> </LI>
 				 <LI><A href="./haifa">חיפה</A> | </LI>
 				 <LI><A href="./beer_sheva">באר שבע</A> | </LI>
 				 <LI><A href="jerusalem.php">ירושלים</A> | </LI>

@@ -13,7 +13,7 @@
 </head>
 
 <body dir="rtl">
-<input type="hidden" name="rest_name" value="lukas">
+
 <div id="head">
 		<div id="logo">
 			<A href="../../main.php"></A>
