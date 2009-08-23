@@ -1238,7 +1238,8 @@
 	OVERFLOW: hidden;	
 	WIDTH: 90%}
 	
-	#bizMain .externalReview .review_comment {	PADDING-LEFT: 0px}
+	#bizMain .externalReview .review_comment {	
+	PADDING-RIGHT: 0px}
 	
 	#bizMain .review_comment {	
 	PADDING-RIGHT: 0px;	
