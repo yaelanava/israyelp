@@ -43,7 +43,7 @@
 		<table cellpadding="5" cellspacing="5" border="0">
 				<tr>
 					<td>שם המקום:</td> 
-					<td><input name="name" size="40"></td>
+					<td><input name="name" size="40" ></td>
 				</tr>
 				<tr>
 					<td>רחוב:</td>
