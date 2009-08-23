@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php 
+session_start();
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -43,7 +45,7 @@
 <div id="bodyContainer">
 <h1>עבור איזה עסק תרצה לכתוב ביקורת?</h1>
 	<div id="external_search">
-	<form method="get" action="./search.php" name="external_search"> 
+	<form method="post" action="./search.php" name="external_search"> 
 		<p>
 			<label for="find_desc_ext"> שם המקום <em> שם העסק</em></label> 
 			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="place_name" tabindex="1" value="" >
@@ -69,8 +71,10 @@
 			</select>
 		</p>
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
+
 	</form>
 	</div>
+
 
 	
 </div>
