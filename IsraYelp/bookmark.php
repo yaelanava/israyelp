@@ -1,7 +1,7 @@
 <?php 
 	session_start();
-	//$rest_name = $_POST['rest_name'];
-	$rest_name = 'lukas';
+	
+	$rest_name = $_SESSION['rest_name'];
 	$username = $_SESSION['username'];
 	
 	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
@@ -12,14 +12,28 @@
 	$user = mysqli_fetch_assoc($result);
 	$userID = $user['id'];
 	
-	$query = "INSERT INTO `test`.`favorites` (user_id ,restaurant)
-		VALUES ('$userID' , '$rest_name')";
-		
-			
-	$result = $mysqli->query($query);	
 	
-	if 	($result) {
-		echo "ok";
-	} else {
-		echo "not ok";
+	
+	$query = "SELECT * FROM `test`.`favorites` WHERE user_id='$userID' and restaurant='$rest_name'";
+	$result = $mysqli->query($query);
+	$count = $result->num_rows;
+	if ($count == 0)
+	{
+		$query = "INSERT INTO `test`.`favorites` (user_id ,restaurant)
+			VALUES ('$userID' , '$rest_name')";
+		$result = $mysqli->query($query);	
+		if 	($result) {
+			echo "ok";
+			} 
+		else{
+			echo "not ok";
+			}
+		
 	}
+	else 
+		echo "you've already bookmarked this place";
+	
+	
+
+	
+
