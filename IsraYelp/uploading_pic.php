@@ -12,7 +12,7 @@
 
 ?>
 <a href="./about_me.php"   id="Zprofile_footer">חזור לחשבון שלך</a>
-//<img src="<? echo $destination; ?>" >
+
 
 
 
