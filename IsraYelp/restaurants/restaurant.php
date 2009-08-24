@@ -1,7 +1,9 @@
 <?php 
 
 session_start();
-$_SESSION['rest_id'] = $_GET['rest_id'];
+
+include '../utils/functions.php';
+
 $rest_id = $_GET['rest_id'];
 
 $mysqli = new mysqli('localhost', 'administrator', '', 'test');
@@ -33,10 +35,10 @@ $count_reviews = $result_reviews->num_rows;
 
 <div id="head">
 		<div id="logo">
-			<A href="../../main.php"></A>
+			<A href="../main.php"></A>
 		</div>
 		<div id="register">
-			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
+			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username'])?></p>
 		</div>
 		<div id="leftEdge"></div>
 		<div id="rightEdge"></div>
@@ -145,7 +147,7 @@ $count_reviews = $result_reviews->num_rows;
 													<DIV class=\"mini\">
 														<DIV class=\"photoBoxSm\">
 															<DIV class=\"clearStyles photoBox\">
-																<A href=\"http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"../users_pics/".$user['id'].".gif\"></A>
+																<A href=\"http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
 															</div>
 			
 														</div>
