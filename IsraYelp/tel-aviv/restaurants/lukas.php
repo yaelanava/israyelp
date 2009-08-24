@@ -52,7 +52,7 @@
 										<em>מבוסס על <span class="count">
 										<?php 
 											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-											$query = "SELECT * FROM `test`.`critiques` WHERE restaurant='lukas'";
+											$query = "SELECT * FROM `test`.`critiques` WHERE restaurant='lukas' ORDER BY added DESC";
 											$result = $mysqli->query($query);
 											$count = $result->num_rows;
 											echo $count;
@@ -131,78 +131,43 @@
 					</br>
 					<h2 id="total_reviews">	<?php echo $count; ?> ביקורות עבור לוקאס:</h2>	
 				</div>
+				<br></br>
 				<div id="bizReviewsContent">
 					<div id="bizReviewsInner">
-							<DIV class="review externalReview clearfix nonfollowingReview " >
-								<DIV class="wrap">
-									<DIV class="reviewer">
-										<DIV class="mini">
-											<DIV class="photoBoxSm">
-												<DIV class="clearStyles photoBox">
-													<A href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA" rel="nofollow"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of Sheena D." src="http://static.px.yelp.com/photo/VWQ0SOuTgPPN7rTCyuTbkg/ss" /></A>
-												</div>												
-											</div>
-										</div>
-										
-										
-										
-										<?php 
-											$review = mysqli_fetch_assoc($result);
-											$userId = $review['user_id'];
-											$userQuery = "SELECT * FROM `test`.`users` WHERE id='$userId'";
-											$userResult = $mysqli->query($userQuery);
-											$user = mysqli_fetch_assoc($userResult);											
-										?>
-										<P class="reviewer_info"><A class="reviewer_name" href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA"><?php echo $user['username'];?></A></P>
-										<P class="reviewer_info"><?php echo $user['city'];?></P>
-									</div>
-									<DIV class="ext_rating">
-										<DIV class="rating">
-											<IMG class="stars_5" title="5 star rating" height="325" alt="5 star rating" src="../../image/stars_map.png" width="83" />
-										</DIV>
-											<EM class="smaller"><?php echo $review['added']?></EM> 
-									</DIV>
-										<p class="review_comment ieSucks"><b><?php echo $review['title'];?></b><br> <?php echo $review['comment']; ?></P>
+							<?php 
+							while ($review = mysqli_fetch_assoc($result)){
+								$userId = $review['user_id'];
+								$userQuery = "SELECT * FROM `test`.`users` WHERE id='$userId'";
+								$userResult = $mysqli->query($userQuery);
+								$user = mysqli_fetch_assoc($userResult);
 								
-								</div>
-							</div>
-							
-		
-							
-							
-							<DIV class="review externalReview clearfix nonfollowingReview " >
-								<DIV class="wrap">
-									<DIV class="reviewer">
-										<DIV class="mini">
-											<DIV class="photoBoxSm">
-												<DIV class="clearStyles photoBox">
-													<A href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA" rel="nofollow"><IMG style="WIDTH: 40px; HEIGHT: 40px" alt="Photo of Sheena D." src="http://static.px.yelp.com/photo/VWQ0SOuTgPPN7rTCyuTbkg/ss" /></A>
+								$html = "<DIV class=\"review externalReview clearfix nonfollowingReview \" >
+											<DIV class=\"wrap\">
+												<DIV class=\"reviewer\">
+													<DIV class=\"mini\">
+														<DIV class=\"photoBoxSm\">
+															<DIV class=\"clearStyles photoBox\">
+																<A href=\"http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"../../users_pics/".$user['id'].".gif\"></A>
+															</div>
+			
+														</div>
+													</div>
+													<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA\">". $user['username']. "</A></P>
+													<P class=\"reviewer_info\">". $user['city']."</P>
 												</div>
-
+												<DIV class=\"ext_rating\">
+													<DIV class=\"rating\">
+														<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../../image/stars_map.png\" width=\"83\" />
+													</DIV>
+														<EM class=\"smaller\">". $review['added']."</EM> 
+												</DIV>
+													<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['comment']."</P>
 											</div>
-										</div>
-											<?php
-												$result = $mysqli->query($query);
-												$review = mysqli_fetch_assoc($result);
-												$userId = $review['user_id'];
-												$userQuery = "SELECT * FROM `test`.`users` WHERE id='$userId'";
-												$userResult = $mysqli->query($userQuery);
-												$user = mysqli_fetch_assoc($userResult);
-												
-												 ?>
-										<P class="reviewer_info"><A class="reviewer_name" href="http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA"><?php echo $user['username'];?></A></P>
-										<P class="reviewer_info"><?php echo $user['city'];?></P>
-									</div>
-									<DIV class="ext_rating">
-										<DIV class="rating">
-											<IMG class="stars_4" title="4 star rating" height="325" alt="4 star rating" src="../../image/stars_map.png" width="83" />
-										</DIV>
-											<EM class="smaller"><?php echo $review['added']?></EM> 
-									</DIV>
-										<p class="review_comment ieSucks"><b><?php echo $review['title'];?></b><br> <?php echo $review['comment']; ?></P>
-
-								</div>
-							</div>											
+										</div>	
+										";
+								echo $html;
+							}
+						?>	
 					</div>				
 				</div>
 

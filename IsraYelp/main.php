@@ -242,7 +242,7 @@
 											$num4 = rand(1,$count); 
 											if ($num4 == $num1 || $num4 == $num2 || $num4 == $num3) $num4 = 0; 
 										}							
-							           	$destination="./users_pics/".$num1;
+							           	$destination="./users_pics/".$num1.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 							?>	
@@ -263,7 +263,7 @@
 						<div>
 							<div class="clearStyles photoBox">
 							<?php 
-							           	$destination="./users_pics/".$num2;
+							           	$destination="./users_pics/".$num2.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 							?>	
@@ -289,7 +289,7 @@
 						<div>
 							<div class="clearStyles photoBox">
 							<?php 
-							           	$destination="./users_pics/".$num3;
+							           	$destination="./users_pics/".$num3.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 							?>	
@@ -310,7 +310,7 @@
 						<div>
 							<div class="clearStyles photoBox">
 							<?php 
-							           	$destination="./users_pics/".$num4;
+							           	$destination="./users_pics/".$num4.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 							?>	
@@ -393,7 +393,7 @@
 										$row_from_critiques = mysqli_fetch_assoc($result);
 										$user_id=$row_from_critiques['user_id'];//user_id
 										
-							           	$destination="./users_pics/".$user_id;
+							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 								?>
@@ -424,7 +424,7 @@
 										$row_from_critiques = mysqli_fetch_assoc($result);
 										$user_id=$row_from_critiques['user_id'];//user_id
 										
-							           	$destination="./users_pics/".$user_id;
+							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 								?>
@@ -455,7 +455,7 @@
 										$row_from_critiques = mysqli_fetch_assoc($result);
 										$user_id=$row_from_critiques['user_id'];//user_id
 										
-							           	$destination="./users_pics/".$user_id;
+							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 								?>
@@ -486,7 +486,7 @@
 										$row_from_critiques = mysqli_fetch_assoc($result);
 										$user_id=$row_from_critiques['user_id'];//user_id
 										
-							           	$destination="./users_pics/".$user_id;
+							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 								?>
@@ -517,7 +517,7 @@
 										$row_from_critiques = mysqli_fetch_assoc($result);
 										$user_id=$row_from_critiques['user_id'];//user_id
 										
-							           	$destination="./users_pics/".$user_id;
+							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 								?>

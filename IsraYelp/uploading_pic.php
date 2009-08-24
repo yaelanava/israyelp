@@ -1,15 +1,13 @@
 <?php
 	session_start();
-	if (isset($_FILES['image']) && ('' != $_FILES['image']))
-	{
+	if (isset($_FILES['image']) && ('' != $_FILES['image'])) {
 		$temp_name = $_FILES['image']['tmp_name'];
 	}
 	else
 		echo "there was an error";
-	$id=$_SESSION['user_id'];
-	$destination="./users_pics/".$id;
+	$id = $_SESSION['user_id'];
+	$destination = "./users_pics/".$id.".gif";
 	copy($temp_name, $destination);
-
 ?>
 
 <html>
@@ -40,9 +38,3 @@
 </div>
 </body>
 </html>
-
-
-
-
-
-
