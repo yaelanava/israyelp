@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php session_start();
+
+$rest_id = $_GET['rest_id'];
+$rest_name = $_GET['rest_name'];
+
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,14 +15,14 @@
 	
 	<link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="../image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="../../mystyle.css">  	
+	<link rel="stylesheet" type="text/css" href="../mystyle.css">  	
 </head>
 
 <body dir="rtl">
 
 <div id="head">
 		<div id="logo">
-			<A href="../../main.php"></A>
+			<A href="../main.php"></A>
 		</div>
 		<div id="register">
 			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
@@ -28,28 +33,28 @@
 
 <div id="navContainer">
 		<ul>			
-			<LI class="header" id="writeReview"><A   href="../../write_review.php" >כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A   href="../../find_review.php" >חפש ביקורת</A></LI>
+			<LI class="header" id="writeReview"><A   href="../write_review.php" >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A   href="../find_review.php" >חפש ביקורת</A></LI>
 						
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../../login.php?logout=1";} else{echo "../../login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../../profile.php";} else{echo "../../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../login.php?logout=1";} else{echo "../login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../profile.php";} else{echo "../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
 <div id="bodyContainer">
-	<H1> כתוב את הביקורת שלך עבור לוקאס</H1>
-	<form method="post" action="../../writeareview.php" name="review_rate_form" id="review_rate_form">
+	<H1>כתוב את הביקורת שלך עבור <?php echo $rest_name?></H1>
+	<form method="post" action="./writeareview.php" name="review_rate_form" id="review_rate_form">
 				<dl id="newBizForm">
 					<dt>
 						<strong>דירוג</strong><br/>
 					</dt>
 					<dd class="clearfix">
 						<div id="starRating">
-							<input type="radio" name="rating" value="1" /> 1
-							<input type="radio" name="rating" value="2" /> 2
-							<input type="radio" name="rating" value="3" /> 3
-							<input type="radio" name="rating" value="4" /> 4
-							<input type="radio" name="rating" value="5" /> 5
+							<input type="radio" name="grading" value="1" /> 1
+							<input type="radio" name="grading" value="2" /> 2
+							<input type="radio" name="grading" value="3" /> 3
+							<input type="radio" name="grading" value="4" /> 4
+							<input type="radio" name="grading" value="5" /> 5
 						</div>
 						<p id="ratingDescription">לחץ על הכוכב כדי לדרג</p>
 					</dd>
@@ -63,13 +68,13 @@
 					
 					<dt class="review"><strong><br>הביקורת שלך</strong>		</dt>
 					<dd class="review">
-						<textarea cols="40" rows="8" class="form400"  name="comment"></textarea>
+						<textarea cols="40" rows="8" class="form400"  name="review"></textarea>
 					</dd>
 				</dl>
 
 		<input type="submit" name="action_select" value="שלח">
 		<input type="button" name="" value="חזור" class="formButton">
-		<input type="hidden" name="rest_name" value="lukas">
+		<input type="hidden" name="rest_id" value="<?php echo $rest_id?>">
 		<em class="smaller grey">* תמיד ניתן לשנות את הביקורת מאוחר יותר</em>
 	</form>
 </div>

@@ -64,7 +64,7 @@
 							<a  href="/biz/bakery-mexico-san-jose#hrid:rwiHbJYf8uQWOnSglosPgg"><img src="http://static.px.yelp.com/bphoto/CTZh-CDPji271JkSYxYuBA/ms" style="" alt="Bakery Mexico"></a>
 					</div>
 		
-					<p class="biz_info">1. <a href="./restaurants/lukas.php" id="top_biz_name_2" title="lukas"> לוקאס </a> </p>
+					<p class="biz_info">1. <a href="restaurant.php?rest_id=1" id="top_biz_name_2" title="lukas"> לוקאס </a> </p>
 					<div class="top_biz_rating">
 						<div class="rating"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">83 ביקורות</em>
 					</div>

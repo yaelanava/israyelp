@@ -100,7 +100,7 @@
 						<em>
 									<?php 
 											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-											$query = "SELECT * FROM `test`.`critiques`";
+											$query = "SELECT * FROM `test`.`reviews`";
 											$result = $mysqli->query($query);
 											$count = $result->num_rows;
 											echo $count;
@@ -180,7 +180,7 @@
 						<h4 class="ieSucks">חפש לפי קטגוריה</h4>
 						<ul class="stripped ieSucks">								
 							<li class="shopping"><a href="/c/sf/shopping">קניות</a> 4165 </li>
-							<li class="restaurants"><a href="./tel-aviv/restaurants.php">מסעדות</a>  										
+							<li class="restaurants"><a href="./restaurants/restaurants.php">מסעדות</a>  										
 									<?php 
 											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 											$query = "SELECT * FROM `test`.`restaurants`";
@@ -385,10 +385,10 @@
 								<div class="clearStyles photoBox" >
 								<?php 
 										$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-										$query = "SELECT * FROM `test`.`critiques`";
+										$query = "SELECT * FROM `test`.`reviews`";
 										$result = $mysqli->query($query);
 										$count = $result->num_rows;
-										$query = "SELECT * FROM `test`.`critiques` WHERE id=$count";
+										$query = "SELECT * FROM `test`.`reviews` WHERE id=$count";
 										$result = $mysqli->query($query);
 										$row_from_critiques = mysqli_fetch_assoc($result);
 										$user_id=$row_from_critiques['user_id'];//user_id
@@ -413,16 +413,16 @@
 									?>
 									</em>
 									<br />
-										<?php echo $row_from_critiques['comment'];?>
+										<?php echo $row_from_critiques['review'];?>
 								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
 								<?php 									
-										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-1)";
+										$query = "SELECT * FROM `test`.`reviews` WHERE id=($count-1)";
 										$result = $mysqli->query($query);
-										$row_from_critiques = mysqli_fetch_assoc($result);
-										$user_id=$row_from_critiques['user_id'];//user_id
+										$row_from_reviews = mysqli_fetch_assoc($result);
+										$user_id=$row_from_reviews['user_id'];//user_id
 										
 							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
@@ -432,7 +432,7 @@
 								</div>				
 								<p>
 									<a   href="/list/coffee-and-tea-berkeley">
-									<?php echo $row_from_critiques['title'];?></a>
+									<?php echo $row_from_reviews['title'];?></a>
 									<br />
 									
 									<em class="smaller grey">
@@ -444,16 +444,16 @@
 									?>
 									</em>
 									<br />
-										<?php echo $row_from_critiques['comment'];?>
+										<?php echo $row_from_reviews['review'];?>
 								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
 								<?php 									
-										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-2)";
+										$query = "SELECT * FROM `test`.`reviews` WHERE id=($count-2)";
 										$result = $mysqli->query($query);
-										$row_from_critiques = mysqli_fetch_assoc($result);
-										$user_id=$row_from_critiques['user_id'];//user_id
+										$row_from_reviews = mysqli_fetch_assoc($result);
+										$user_id=$row_from_reviews['user_id'];//user_id
 										
 							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
@@ -463,7 +463,7 @@
 								</div>				
 								<p>
 									<a   href="/list/coffee-and-tea-berkeley">
-									<?php echo $row_from_critiques['title'];?></a>
+									<?php echo $row_from_reviews['title'];?></a>
 									<br />
 									
 									<em class="smaller grey">
@@ -475,16 +475,16 @@
 									?>
 									</em>
 									<br />
-										<?php echo $row_from_critiques['comment'];?>
+										<?php echo $row_from_reviews['review'];?>
 								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
 								<?php 									
-										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-3)";
+										$query = "SELECT * FROM `test`.`reviews` WHERE id=($count-3)";
 										$result = $mysqli->query($query);
-										$row_from_critiques = mysqli_fetch_assoc($result);
-										$user_id=$row_from_critiques['user_id'];//user_id
+										$row_from_reviews = mysqli_fetch_assoc($result);
+										$user_id=$row_from_reviews['user_id'];//user_id
 										
 							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
@@ -494,7 +494,7 @@
 								</div>				
 								<p>
 									<a   href="/list/coffee-and-tea-berkeley">
-									<?php echo $row_from_critiques['title'];?></a>
+									<?php echo $row_from_reviews['title'];?></a>
 									<br />
 									
 									<em class="smaller grey">
@@ -506,16 +506,16 @@
 									?>
 									</em>
 									<br />
-										<?php echo $row_from_critiques['comment'];?>
+										<?php echo $row_from_reviews['review'];?>
 								</p>
 					</div>
 					<div class="clearfix">
 								<div class="clearStyles photoBox" >
 								<?php 									
-										$query = "SELECT * FROM `test`.`critiques` WHERE id=($count-4)";
+										$query = "SELECT * FROM `test`.`reviews` WHERE id=($count-4)";
 										$result = $mysqli->query($query);
-										$row_from_critiques = mysqli_fetch_assoc($result);
-										$user_id=$row_from_critiques['user_id'];//user_id
+										$row_from_reviews = mysqli_fetch_assoc($result);
+										$user_id=$row_from_reviews['user_id'];//user_id
 										
 							           	$destination="./users_pics/".$user_id.".gif";
 										if (!file_exists($destination))
@@ -525,7 +525,7 @@
 								</div>				
 								<p>
 									<a   href="/list/coffee-and-tea-berkeley">
-									<?php echo $row_from_critiques['title'];?></a>
+									<?php echo $row_from_reviews['title'];?></a>
 									<br />
 									
 									<em class="smaller grey">
@@ -537,7 +537,7 @@
 									?>
 									</em>
 									<br />
-										<?php echo $row_from_critiques['comment'];?>
+										<?php echo $row_from_reviews['review'];?>
 								</p>
 					</div>			
 				</div>			
