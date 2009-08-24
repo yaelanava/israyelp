@@ -37,25 +37,31 @@
 </div>
 	
 <div id="bodyContainer">	
-<H1>ספר לנו על המקום החדש!</H1>
+<H1>המקום אינו מופיע במאגר שלנו.</H1>
+<H3>ספר לנו על המקום החדש!</H3>
 <div class="box" id="signupForm">
-	<form method="post" action="" onsubmit="" >
+	<form method="post" action="sending_new_place.php" >
 		<table cellpadding="5" cellspacing="5" border="0">
+		
 				<tr>
 					<td>שם המקום:</td> 
-					<td><input name="name" size="40" ></td>
+					<td><input name="new_name" size="40" value=" <?php echo $_SESSION['place_name'] ?> "></td>
 				</tr>
 				<tr>
 					<td>רחוב:</td>
-					<td> <input name="city" size="40"></td>	
+					<td> <input name="new_street" size="40"></td>	
 				</tr>
 				<tr>
 					<td>עיר:</td>
-					<td> <input name="city" size="40"></td>	
+					<td> <input name="new_city" size="40" value="<?php echo $_SESSION['place_city'] ?>"></td>	
 				</tr>
 				<tr>
 					<td>ביקורת:</td>
-					<td> <textarea id="STF_Note" name="comment" rows="5" cols="50" class="form400"></textarea>
+					<td> <textarea  name="new_comment" rows="5" cols="50" class="form400"></textarea>
+				</tr>
+				<tr>
+					<td>דוא"ל כותב הביקורת:</td> 
+					<td><input name="new_email" size="40" value=""></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;"> <input type="submit" value="שלח"></td>
