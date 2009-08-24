@@ -43,33 +43,33 @@
 <div id="bodyContainer">
 <h1>חיפוש לפי מקום:</h1>
 	<div id="external_search">
-	<form method="get" action="/search" name="external_search"> 
+	<form method="post" action="./search.php" name="external_search"> 
 		<p>
 			<label for="find_desc_ext"> שם המקום <em> שם העסק</em></label> 
-			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="find_desc" tabindex="1" value="" >
+			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="place_name" tabindex="1" value="" >
 			
 		</p>
 		<p>
 			<label for="find_loc_ext">סוג המקום <em> </em></label>
-
-			<select>
- 				 <option value="restaurant">מסעדה</option>
-				 <option value="cafe">בית-קפה</option>
-  				 <option value="hair_salon">מספרה</option>
-                 <option value="cinema">בית קולנוע</option>
+			<select name="place_kind">
+ 				 <option value="מסעדה" >מסעדה</option>
+				 <option value="בית-קפה">בית-קפה</option>
+  				 <option value="מספרה">מספרה</option>
+                 <option value="בית קולנוע">בית קולנוע</option>
 			</select>
 		</p>
 
 		<p>
 			<label for="find_loc_ext">עיר <em> </em></label>
-			<select>
- 				 <option value="tel-aviv">תל-אביב</option>
-				 <option value="jerusalem">ירושלים</option>
-  				 <option value="beer_sheva">באר שבע</option>
-                 <option value="haifa">חיפה</option>
+			<select name="city">
+				<option value="תל-אביב" > תל-אביב </option>
+				 <option value="ירושלים">ירושלים</option>
+  				 <option value="באר-שבע">באר שבע</option>
+                 <option value="חיפה">חיפה</option>
 			</select>
 		</p>
-		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3" onclick="document.external_search.rpp.value=Yelp.readRppFromSearchPrefsCookie();">חפש</button>
+		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
+
 	</form>
 	</div>
 	
@@ -89,5 +89,33 @@
 	</div>
 	
 </div>
+
+	<div id="footer">
+		
+		<div>		
+					<ul id="aboutSite">
+						<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
+						<li> | <a href="/about">החשבון שלי</a></li>
+						<li> | <a href="/faq" >שאלות נפוצות </a></li>
+					</ul>
+		</div>
+	
+		<div class="directory">
+			<ul>
+				<li class="first"><strong>מפת האתר</strong></li>
+				<li> | <a href="../restaurants.php">תל-אביב</a></li>
+				<li> | <a href="../../jerusalem/restaurants.php">ירושלים</a></li>
+				<li> | <a href="/boston">חיפה</a></li>
+				<li> | <a href="/chicago">באר שבע</a></li>
+				<li> | <a href="/dallas">הרצליה</a></li>
+				<li> | <a href="/denver">אשדוד</a></li>
+				<li> | <a href="/locations">ערים נוספות</a></li>
+			</ul>
+		</div>
+		
+		<div>
+			<p> זכויות יוצרים </p>
+		</div>
+	</div>
 </body>
 </html>
