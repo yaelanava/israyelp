@@ -29,7 +29,7 @@ function search(){
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;
 		
-		if ($count != 0) {
+		if ($count != 0 && $city=="תל-אביב" && $kind=="מסעדה") {
 			//todo
 			header("Location: ./tel-aviv/restaurants/lukas_writeReview.php");		
 		}
