@@ -8,7 +8,7 @@
 		die(o);
 	}
 	$id = $_SESSION['user_id'];
-	$destination = "./users_pics/".$id.".gif";
+	$destination = "./users_pics/".$id;
 	copy($temp_name, $destination);
 ?>
 
