@@ -54,10 +54,10 @@ session_start();
 		<p>
 			<label for="find_loc_ext">סוג המקום <em> </em></label>
 			<select name="place_kind">
- 				 <option value="restaurant" >מסעדה</option>
-				 <option value="cafe">בית-קפה</option>
-  				 <option value="hair_salon">מספרה</option>
-                 <option value="cinema">בית קולנוע</option>
+ 				 <option value="מסעדה" >מסעדה</option>
+				 <option value="בית-קפה">בית-קפה</option>
+  				 <option value="מספרה">מספרה</option>
+                 <option value="בית קולנוע">בית קולנוע</option>
 			</select>
 		</p>
 
