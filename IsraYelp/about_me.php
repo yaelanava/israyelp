@@ -130,7 +130,8 @@
 						
 					?>
 					
-					<span></span>
+					<p>					<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
+					</p>
 					<span class="highlight2">דברים שאני אוהב</span>
 					
 					<a href="/profile_bio" class="smaller">ערוך</a>
