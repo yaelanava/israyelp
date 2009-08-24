@@ -3,8 +3,10 @@
 	if (isset($_FILES['image']) && ('' != $_FILES['image'])) {
 		$temp_name = $_FILES['image']['tmp_name'];
 	}
-	else
+	else {
 		echo "there was an error";
+		die(o);
+	}
 	$id = $_SESSION['user_id'];
 	$destination = "./users_pics/".$id.".gif";
 	copy($temp_name, $destination);
@@ -12,7 +14,7 @@
 
 <html>
 <head>
-	<title>כתוב ביקורת |IsraYelp</title>
+	<title>העלה תמונה |IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User Reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -31,9 +33,9 @@
 		<div id="rightEdge"></div>
 </div>
 <div id="bodyContainer_Centered">
-	<p>התמונה הועלתה בהצלחה.
-	<br><br>
-	<a href="./about_me.php"   id="Zprofile_footer">חזור לחשבון שלך</a>
+	<p>התמונה הועלתה בהצלחה.<?php echo $temp_name;?>
+		<br><br>
+		<a href="./about_me.php"   id="Zprofile_footer">.חזור לחשבון שלך</a>
 	</p>
 </div>
 </body>

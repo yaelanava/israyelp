@@ -1,16 +1,32 @@
-<?php session_start();
-	$_SESSION['rest_name']='lucas';?>
+<?php 
+
+session_start();
+$_SESSION['rest_id'] = $_GET['rest_id'];
+$rest_id = $_GET['rest_id'];
+
+$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+
+$query_restaurant = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
+$result_restaurant = $mysqli->query($query_restaurant);
+$restaurant = mysqli_fetch_assoc($result_restaurant);	
+
+$query_reviews = "SELECT * FROM `test`.`reviews` WHERE restaurant_id='$rest_id' ORDER BY added DESC";
+$result_reviews = $mysqli->query($query_reviews);
+$count_reviews = $result_reviews->num_rows;
+											
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>לוקאס | IsraYelp</title>
+	<title><?php echo $restaurant['name']?> | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
 	
-	<link rel="shortcut icon" href="../../image/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../../image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="../../mystyle.css">  	
+	<link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="../mystyle.css">  	
 </head>
 
 <body dir="rtl">
@@ -29,11 +45,11 @@
 <div id="navContainer">
 		<ul>
 			
-			<LI class="header" id="writeReview"><A   href="../../write_review.php>כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A   href="../../find_review.php" >חפש ביקורת</A></LI>
+			<LI class="header" id="writeReview"><A href="../write_review.php>כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A href="../find_review.php" >חפש ביקורת</A></LI>
 			
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../../login.php?logout=1";} else{echo "../../login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../../about_me.php";} else{echo "../../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../login.php?logout=1";} else{echo "../login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../about_me.php";} else{echo "../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -46,44 +62,21 @@
 						<div id="bizInfoBody">
 							<div class="wrap">
 								<div id="bizInfoHeader">
-									<h1 class="fn org">לוקאס</h1>
+									<h1 class="fn org"><?php echo $restaurant['name']?></h1>
 									<div id="bizRating">
-										<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="http://static.px.yelp.com/static/20090527a/i/new/ico/stars/stars_map.png"/></div> 
-										<em>מבוסס על <span class="count">
-										<?php 
-											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-											$query = "SELECT * FROM `test`.`critiques` WHERE restaurant='lukas' ORDER BY added DESC";
-											$result = $mysqli->query($query);
-											$count = $result->num_rows;
-											echo $count;
-										?>
-										</span> ביקורות</em>
+										<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="../image/stars_map.png"/></div> 
+										<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
 									</div>
 								</div>
 								<div id="bizInfoContent">
 									<p id="bizCategories"><strong>קטגוריה:</strong>
-									<span id="cat_display">	
-									<?php 
-										$query_restaurant = "SELECT * FROM `test`.`restaurants` WHERE name='lukas'";
-										$result_restaurant = $mysqli->query($query_restaurant);
-										$restaurant = mysqli_fetch_assoc($result_restaurant);	
-										echo $restaurant['type_rest'];								
-									?>
-							
+										<span id="cat_display"> <?php echo $restaurant['type_rest'];?>	
 									</p>
-
 									<address class="adr">
-										<span class="street-address">
-										<?php 
-
-											echo $restaurant['street'].' '.$restaurant['no.street'].', '.$restaurant['city'];
-						
-										?>
-										</span>
-										
+										<span class="street-address"><?php echo $restaurant['address']; ?></span>										
 									</address>
 	
-									<span id="bizPhone" class="tel"> <?php echo $restaurant['no.phone']; ?> </span>
+									<span id="bizPhone" class="tel"> <?php echo $restaurant['phone_number']; ?> </span>
 	
 									<div id="bizUrl">
 										<a href="http://www.yelp.com/redir?url=http%3A%2F%2Fwww.ichaatcafe.com&amp;src_bizid=54anJf73lEHBItVRPgRgrA" target="_blank" rel="nofollow" class="url"></a>
@@ -93,15 +86,14 @@
 							
 							<div id="bizPhotos">
 								<div class="clearStyles bizPhotoBox">
-										<a  href="/biz_photos/54anJf73lEHBItVRPgRgrA?select=gPtUeg7qvd7TkhUi5RQ6Og"><img src="./image/lucas.jpg" width=70 height= 100 style="" alt="לוקאס, תל אביב"></a>
+										<a  href="/biz_photos/54anJf73lEHBItVRPgRgrA?select=gPtUeg7qvd7TkhUi5RQ6Og"><img src="./image/<?php echo  $rest_id?>.jpg" width=70 height= 100 style="" alt=""></a>
 								</div>
-								<span style="font-size: 10px;"><a rel="nofollow" href="../../uploadPic.php">הוסף תמונה</a></span>
+								<span style="font-size: 10px;"><a rel="nofollow" href="../uploadPic.php">הוסף תמונה</a></span>
 							</div>
 						</div>
 						
 						<div id="bizAdditionalInfo" class="clearfix">
-							<ul>
-							
+							<ul>							
 								<li><strong>משלוחים:</strong><?php if($restaurant['delivery']==1){echo  " כן";} else {echo " לא";} ?></li>
 								<li><strong>כשר:</strong><?php if($restaurant['kosher']==1){echo  " כן";} else {echo " לא";} ?></li>
 								<li><strong>גישה לנכים:</strong> <?php if($restaurant['invalid_access']==1){echo  " כן";} else {echo " לא";} ?></li>
@@ -110,17 +102,23 @@
 								<li><strong>רומנטי:</strong> <?php if($restaurant['romantic']==1){echo  " כן";} else {echo " לא";} ?></li>
 								<li><strong>חניה:</strong> <?php if($restaurant['parking']==1){echo  " כן";} else {echo " לא";} ?></li>
 								<li><strong>אזור עישון:</strong> <?php if($restaurant['smoking']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>
-											
+								<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>									
 							</ul>
 						</div>
 					</div>
 				</div>
 				
 				<div id="bizActions" class="clearfix">
-					<a class="send-to-friend" rel="nofollow"  href="../../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../../image/send2friend.png" width=108 height=41></a>
-					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../../bookmark.php"><img src= "../../image/bookmark.png" width=108 height=41></a>
-					<a class="write review" rel="nofollow" href="lukas_writeReview.php" id="bizWriteReview"><img src= "../../image/write.png" width=108 height=41></a>
+					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
+					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php"><img src= "../image/bookmark.png" width=108 height=41></a>
+					<a class="write review" rel="nofollow" 
+						href= "<?php if (!session_is_registered('username')) { 
+										echo ("../login.php?returnUrl=./restaurants/restaurant.php?rest_id=".$rest_id);
+									} else {
+										echo ("writeRestaurantReview.php?rest_id=".$rest_id."&rest_name=".$restaurant['name']);
+									}
+							?>" 
+							id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>
 					
 				</div>
 			</div>
@@ -129,17 +127,17 @@
 			<div id="bizReviews">
 				<div id="bizReviewsHeader" class="clearfix">
 					</br>
-					<h2 id="total_reviews">	<?php echo $count; ?> ביקורות עבור לוקאס:</h2>	
+					<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $restaurant['name']?>:</h2>	
 				</div>
 				<br></br>
 				<div id="bizReviewsContent">
 					<div id="bizReviewsInner">
 							<?php 
-							while ($review = mysqli_fetch_assoc($result)){
+							while ($review = mysqli_fetch_assoc($result_reviews)){
 								$userId = $review['user_id'];
-								$userQuery = "SELECT * FROM `test`.`users` WHERE id='$userId'";
-								$userResult = $mysqli->query($userQuery);
-								$user = mysqli_fetch_assoc($userResult);
+								$query_user = "SELECT * FROM `test`.`users` WHERE id='$userId'";
+								$result_user = $mysqli->query($query_user);
+								$user = mysqli_fetch_assoc($result_user);
 								
 								$html = "<DIV class=\"review externalReview clearfix nonfollowingReview \" >
 											<DIV class=\"wrap\">
@@ -147,7 +145,7 @@
 													<DIV class=\"mini\">
 														<DIV class=\"photoBoxSm\">
 															<DIV class=\"clearStyles photoBox\">
-																<A href=\"http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"../../users_pics/".$user['id'].".gif\"></A>
+																<A href=\"http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"../users_pics/".$user['id'].".gif\"></A>
 															</div>
 			
 														</div>
@@ -157,11 +155,11 @@
 												</div>
 												<DIV class=\"ext_rating\">
 													<DIV class=\"rating\">
-														<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../../image/stars_map.png\" width=\"83\" />
+														<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../image/stars_map.png\" width=\"83\" />
 													</DIV>
 														<EM class=\"smaller\">". $review['added']."</EM> 
 												</DIV>
-													<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['comment']."</P>
+													<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['review']."</P>
 											</div>
 										</div>	
 										";
@@ -201,7 +199,7 @@
 		<ul>
 			<li class="first"><strong>מפת האתר</strong></li>
 			<li> | <a href="../restaurants.php">תל-אביב</a></li>
-			<li> | <a href="../../jerusalem/restaurants.php">ירושלים</a></li>
+			<li> | <a href="../jerusalem/restaurants.php">ירושלים</a></li>
 			<li> | <a href="/boston">חיפה</a></li>
 			<li> | <a href="/chicago">באר שבע</a></li>
 			<li> | <a href="/dallas">הרצליה</a></li>
