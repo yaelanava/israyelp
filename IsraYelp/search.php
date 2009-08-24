@@ -16,6 +16,9 @@ function search(){
 	$kind = $_POST['place_kind'];
 	$city = $_POST['city'];
 	
+	$_SESSION['place_name']= $name;
+	$_SESSION['place_city']= $city;
+	
 	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 	/* check connection */
 	if (mysqli_connect_errno()) {

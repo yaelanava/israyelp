@@ -23,14 +23,17 @@
 			VALUES ('$userID' , '$rest_name')";
 		$result = $mysqli->query($query);	
 		if 	($result) {
-			echo "ok";
+			header("Location: bookmark_success.html");		
 			} 
 		else{
-			echo "not ok";
+			header("Location: bookmark_failure.html");		
 			}
 		
 	}
-	else 
+	else {
+		header("Location: bookmark_already.html");	
+	}
+	
 		echo "you've already bookmarked this place";
 	
 	

@@ -64,7 +64,7 @@
 		
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
-			//<div id="about_user_column">
+			<div id="about_user_column">
 			<div id="freshListsModule">
 				<table cellspacing="0" cellpadding="0" border="0" id="user_profile_photos">
 					<tr><td valign="bottom">

@@ -64,10 +64,10 @@ session_start();
 		<p>
 			<label for="find_loc_ext">עיר <em> </em></label>
 			<select name="city">
- 				 <option value="tel-aviv">תל-אביב</option>
-				 <option value="jerusalem">ירושלים</option>
-  				 <option value="beer_sheva">באר שבע</option>
-                 <option value="haifa">חיפה</option>
+				<option value="תל-אביב" > תל-אביב </option>
+				 <option value="ירושלים">ירושלים</option>
+  				 <option value="באר-שבע">באר שבע</option>
+                 <option value="חיפה">חיפה</option>
 			</select>
 		</p>
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
