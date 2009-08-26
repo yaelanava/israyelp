@@ -70,7 +70,7 @@
 					<tr><td valign="bottom">
 						<div id="user_main_photo">
 							<div class="clearStyles photoBox" >
-								<?php $destination="./users_pics/".$id.".gif";
+								<?php $destination="./users_pics/".$id;
 									if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 								?>
