@@ -1,4 +1,7 @@
 <?php
+
+include './utils/functions.php';
+
 if (isset($_POST['username']) && ('' != $_POST['username']) && 
 	isset($_POST['email']) && ('' != $_POST['email']) &&
 	isset($_POST['password']) && ('' != $_POST['password']) &&

@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../utils/functions.php';
+
 if (isset($_POST['rest_id']) && ('' != $_POST['rest_id']) && 
 	isset($_POST['title']) && ('' != $_POST['title']) && 
 	isset($_POST['review']) && ('' != $_POST['review']) && 

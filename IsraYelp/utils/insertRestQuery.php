@@ -1,4 +1,7 @@
 <?php
+
+include '../utils/functions.php';
+
 $mysqli = getMysqliConnection();
 	
 //$name = "мечас";

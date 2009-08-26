@@ -1,6 +1,8 @@
 <?php 
 session_start();
 
+include './utils/functions.php';
+
 if ((isset($_POST['place_name']) && ('' != $_POST['place_name'])) &&
 	(isset($_POST['place_kind']) && ('' != $_POST['place_kind'])) &&
 	(isset($_POST['city']) && ('' != $_POST['city'])))
