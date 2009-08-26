@@ -11,7 +11,7 @@ $mysqli = getMysqliConnection();
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>מסעדות בתל-אביב | IsraYelp</title>
+	<title>מסעדות ב<?php echo $city_name?> | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -36,8 +36,7 @@ $mysqli = getMysqliConnection();
 
 
 <div id="navContainer">
-		<ul>
-			
+		<ul>			
 			<LI class="header" id="writeReview"><A   href="../write_review.php" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="../find_review.php" >חפש ביקורת</A></LI>
 			
@@ -57,14 +56,11 @@ $mysqli = getMysqliConnection();
 				 <LI id="locBar_title">ערים אחרות:</LI>
 		</ul>
 	</div>
-	
-
-
 
 	<div id="top_cat_biz">
 		<div id="top_biz_lists" class="clearfix">
-			<h1>מסעדות בתל-אביב</h1>
-			<p id="breadcrumbs">קטגוריה: <a href="../main.php">תל-אביב </a> 
+			<h1>מסעדות ב<?php echo $city_name?> </h1>
+			<p id="breadcrumbs">קטגוריה: <a href="../main.php"><?php echo $city_name?></a> 
 				&raquo; מסעדות
 			</p>
 		
