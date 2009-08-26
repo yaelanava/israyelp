@@ -371,7 +371,7 @@ $city_name = getCityName($city_id);
 		<ul>
 			<li class="first"><strong>מפת האתר</strong></li>
 			<li> | <a href="./main.php?city_id=1">תל-אביב</a></li>
-			<li> | <a href="./main.php?city_id=2">ראשוןן לציון</a></li>
+			<li> | <a href="./main.php?city_id=2">ראשון לציון</a></li>
 			<li> | <a href="./main.php?city_id=3">ירושלים</a></li>
 			<li> | <a href="./main.php?city_id=4">חיפה</a></li>
 			<li> | <a href="./main.php?city_id=5">באר שבע</a></li>
