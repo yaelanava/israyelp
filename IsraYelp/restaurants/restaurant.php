@@ -148,12 +148,12 @@ $count_reviews = $result_reviews->num_rows;
 													<DIV class=\"mini\">
 														<DIV class=\"photoBoxSm\">
 															<DIV class=\"clearStyles photoBox\">
-																<A href=./about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
+																<A href=\"../about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
 															</div>
 			
 														</div>
 													</div>
-													<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA\">". $user['username']. "</A></P>
+													<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"../about_me.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
 													<P class=\"reviewer_info\">". $user['city']."</P>
 												</div>
 												<DIV class=\"ext_rating\">
@@ -188,8 +188,7 @@ $count_reviews = $result_reviews->num_rows;
 
 </div>
  
-<div id="footer">
-	
+<div id="footer">	
 	<div>		
 				<ul id="aboutSite">
 					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
