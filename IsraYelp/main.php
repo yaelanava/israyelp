@@ -252,20 +252,21 @@ $city_name = getCityName($city_id);
 
 				<div id="topYelpersModule" class="external">
 					<h3>מבקרים נבחרים</h3>
-						<?php 						
-							$query = "SELECT * FROM `test`.`users` ORDER BY RAND() LIMIT 6";
-							$result = $mysqli->query($query);
-							while ($user = mysqli_fetch_assoc($result)){
-								$html = "<div>
-											<P><A href=\"./about_me.php?user_id=".$user['id']."\">".$user['username']."</A></P>
-											<div class=\"clearStyles photoBox\">
-												<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
-											</div>
-											<div></div>			
-										</div>";
-								echo $html;
-							}										
-						?>							
+					<br>
+					<?php 						
+						$query = "SELECT * FROM `test`.`users` ORDER BY RAND() LIMIT 6";
+						$result = $mysqli->query($query);
+						while ($user = mysqli_fetch_assoc($result)){
+							$html = "<div>
+									<P><A href=\"./about_me.php?user_id=".$user['id']."\">".$user['username']."</A></P>
+									<div class=\"clearStyles photoBox\">
+										<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
+									</div>
+									<div></div>			
+									</div>";
+							echo $html;
+						}										
+					?>							
 				</div>
 		</div>
 <!--*******************************-->
