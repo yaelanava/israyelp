@@ -147,7 +147,7 @@ $count_reviews = $result_reviews->num_rows;
 													<DIV class=\"mini\">
 														<DIV class=\"photoBoxSm\">
 															<DIV class=\"clearStyles photoBox\">
-																<A href=\"http://www.yelp.com/user_details?userid=IZ69bDkna2mmffvoTuyEUA\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
+																<A href=./about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
 															</div>
 			
 														</div>

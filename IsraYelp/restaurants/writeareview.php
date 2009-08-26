@@ -6,6 +6,7 @@ if (isset($_POST['rest_id']) && ('' != $_POST['rest_id']) &&
 	isset($_POST['review']) && ('' != $_POST['review']) && 
 	isset($_POST['grading']) && ('' != $_POST['grading'])) {
 	
+	$city_id = $_SESSION['city_id'];
 	$rest_id = $_POST['rest_id'];
 	$review = $_POST['review'];
 	$grading = $_POST['grading'];
@@ -24,13 +25,14 @@ if (isset($_POST['rest_id']) && ('' != $_POST['rest_id']) &&
 	
 	$query = "INSERT INTO `test`.`reviews` (
 				id, 
+				city_id,
 				restaurant_id, 
 				user_id, 
 				grading, 
 				title, 
 				review
 			) VALUES (
-				NULL , '$rest_id', '$userID', '$grading', '$title', '$review'
+				NULL , '$city_id', '$rest_id', '$userID', '$grading', '$title', '$review'
 			);";
 			
 	$result = $mysqli->query($query);

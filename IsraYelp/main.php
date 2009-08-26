@@ -3,9 +3,24 @@ session_start();
 
 include './utils/functions.php';
 
+if ($_GET['city_id']){
+	$city_id = $_GET['city_id'];
+	$_SESSION['city_id'] = $city_id;
+} else if (session_is_registered('city_id')){
+	header("Location: ./main.php?city_id=".$_SESSION['city_id']);
+	}else {
+	header("Location: ./main.php?city_id=1");	//default
+}
+
 $mysqli = new mysqli('localhost', 'administrator', '', 'test');
 
+$city_query = "SELECT * FROM `test`.`cities` WHERE id=$city_id";
+$city_result = $mysqli->query($city_query);
+$city = mysqli_fetch_assoc($city_result);
+$city_name = $city['name'];
+ 
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,12 +31,7 @@ $mysqli = new mysqli('localhost', 'administrator', '', 'test');
 	
 	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="./mystyle.css">
-	
-
-		
-			
-	  	
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">	
 </head>
 
 <body class= "us" id="IsraYelp_main_body" dir="rtl">
@@ -38,35 +48,45 @@ $mysqli = new mysqli('localhost', 'administrator', '', 'test');
 </div>
 	
 <div id="navContainer">
-		<ul>
+		<ul>			
+			<LI class="header" id="writeReview"><A href="./write_review.php" >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A href="./find_review.php" >חפש ביקורת</A></LI>
 			
-			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
-			
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "about_me.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 	
 <div id="bodyContainer">
-	<div class="ieSucks" id="locBar">
-		<H1>תל-אביב</H1>
-		<ul>
-				 <LI><A href="./haifa">חיפה</A> | </LI>
-				 <LI><A href="./beer_sheva">באר שבע</A> | </LI>
-				 <LI><A href="jerusalem.php">ירושלים</A> | </LI>
-				 <LI id="locBar_title">ערים אחרות:</LI>
-		</ul>
+	<div id="locBar">
+		<?php	
+			$other_cities_query = "SELECT * FROM `test`.`cities` WHERE id!=$city_id ORDER BY id DESC";
+			$other_cities_result = $mysqli->query($other_cities_query);
+			
+			$html = "<H1>".$city_name."</H1>";
+			$html .= "<ul>";
+			$html .= "<li><A href=\"\">עוד...</A></li>"; //todo: replace href 			
+			while ($row = mysqli_fetch_assoc($other_cities_result)){
+				$html .= "<li><A href=\"./main.php?city_id=".$row['id']."\">".$row['name']."</A> | </li>";
+			}			
+			$html .= "<li id=\"locBar_title\">ערים אחרות:</li>";
+			$html .= "</ul>";
+			echo $html;
+		?>
 	</div>
  
- 	<h2 id="nonMemberWelcome"><A href="signup.html"  >!תוכלו בקלות לבקר ולדבר על כל מה שכדאי - ולא כדאי באזוריכם  - IsraYelp</A> </h2>
+ 	<?php 
+ 		if (!session_is_registered('username')){
+ 			$html = "<h2 id=\"nonMemberWelcome\"><A href=\"signup.html\"></A></h2>";
+ 			echo $html;
+ 		}
+ 	?>
  	
 	<div id="external_search">
 	<form method="get" action="/search" name="external_search"> 
 		<p>
 			<label for="find_desc_ext"> שם המקום <em> שם העסק</em></label> 
-			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="name" tabindex="1" value="" >
-			
+			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="name" tabindex="1" value="" >			
 		</p>
 		<p>
 			<label for="find_loc_ext">סוג המקום <em> </em></label>
@@ -97,37 +117,48 @@ $mysqli = new mysqli('localhost', 'administrator', '', 'test');
 <!--*******************************-->
 		<div id="rightColumn">
 		
-			<div id="bestOfYelpModule" class="clearfix external" >
-					
+			<div id="bestOfYelpModule" class="clearfix external" >					
 				<div id="best_cats">
-				<h3>המקומות הטובים ביותר בתל-אביב:</h3>			
-				<div class="clearfix">
-					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="מסעדות"><a href="./tel-aviv/restaurants.php">מסעדות</a></h4>
-						<em>
-									<?php 
-											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-											$query = "SELECT * FROM `test`.`reviews`";
-											$result = $mysqli->query($query);
-											$count = $result->num_rows;
-											echo $count;
-									?>  
-						ביקורות
-						
-						</em>			
-				
-						<div class="clearStyles bizPhotoBox">
-							<a  href="/biz/san-francisco-meats-and-delicatessen-san-francisco-2"><img src="http://static.px.yelp.com/bphoto/JfEZplImdPEBuE1BNc767A/m"  alt="San Francisco Meats &amp; Delicatessen, San Francisco"></a>
+					<h3>המקומות הטובים ביותר ב<?php echo $city_name?>:</h3>			
+					<div class="clearfix">
+						<div class="bestCat">
+							<h4 style="margin-bottom:0px;" title="מסעדות"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a></h4>
+							<em>
+								<?php 
+									$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id";
+									$result = $mysqli->query($query);
+									$count = $result->num_rows;
+									echo $count;
+								?>  
+								ביקורות							
+							</em>			
+					
+							<div class="clearStyles bizPhotoBox">
+								<a  href="/biz/san-francisco-meats-and-delicatessen-san-francisco-2"><img src="http://static.px.yelp.com/bphoto/JfEZplImdPEBuE1BNc767A/m"  alt="San Francisco Meats &amp; Delicatessen, San Francisco"></a>
+							</div>
+							
+							<?php 
+								$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+								$result = $mysqli->query($query);
+								$first = 1;
+								$html = "<ol>";			
+								while ($rest = mysqli_fetch_assoc($result)){
+									$html .= "<li>";
+									if ($first){
+										$html .= "<strong>";
+									}
+									$html .= "<a href=\"./restaurants/restaurants.php?rest_id=".$rest['id']."\">".$rest['name']."</a>";
+									if ($first){
+										$html .= "</strong>";
+										$first = 0;
+									}
+									$html .= "</li>";
+								}
+								$html .= "</ol>";
+								$html .= "<p><a href=\"./restaurants/restaurants.php?city_id=".$city_id."\">עוד...</a></p>";
+								echo $html;
+							?>														
 						</div>
-							<ol>
-							<li><strong><a   href="/biz/san-francisco-meats-and-delicatessen-san-francisco-2">ראשון</a></strong></li>
-							<li><a   href="/biz/petite-deli-san-francisco-2">שני</a></li>
-							<li><a   href="/biz/gary-danko-san-francisco-2">שלישי</a></li>
-							<li><a   href="/biz/ikes-place-san-francisco">רביעי</a></li>
-							<li><a   href="/biz/roxie-food-center-san-francisco">חמישי</a></li>
-							</ol>
-							<p><a href="./tel-aviv/restaurants.php">עוד...</a></p>
-					</div>
 				
 					<div class="bestCat">
 						<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="/c/sf/shopping">קניות</a></h4>
@@ -187,14 +218,14 @@ $mysqli = new mysqli('localhost', 'administrator', '', 'test');
 						<h4 class="ieSucks">חפש לפי קטגוריה</h4>
 						<ul class="stripped ieSucks">								
 							<li class="shopping"><a href="/c/sf/shopping">קניות</a> 4165 </li>
-							<li class="restaurants"><a href="./restaurants/restaurants.php">מסעדות</a>  										
-									<?php 
-											$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-											$query = "SELECT * FROM `test`.`restaurants`";
-											$result = $mysqli->query($query);
-											$count = $result->num_rows;
-											echo $count;
-									?>  </li>
+							<li class="restaurants"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a>  										
+								<?php 
+									$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id";
+									$result = $mysqli->query($query);
+									$count = $result->num_rows;
+									echo $count;
+								?>  
+							</li>
 							<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
 							<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>
 							<li class="beautysvc"><a href="/c/sf/beautysvc">יופי וספא</a>  1870 </li>
@@ -224,92 +255,20 @@ $mysqli = new mysqli('localhost', 'administrator', '', 'test');
 
 				<div id="topYelpersModule" class="external">
 					<h3>מבקרים נבחרים</h3>
-					<div class="divider">
-						<div>
-							<div class="clearStyles photoBox">
-								<?php 						
-										$query = "SELECT username FROM `test`.`users`";
-										$result = $mysqli->query($query);
-										$count = $result->num_rows;
-										$num1 = rand(1, $count);
-										$num2 = 0; 
-										while ($num2==0) { 
-											$num2 = rand(1,$count); 
-											if ($num2 == $num1) $num2 = 0; 
-										}
-										$num3 = 0; 
-										while ($num3==0) { 
-											$num3 = rand(1,$count); 
-											if ($num3 == $num1 || $num3 == $num2) $num3 = 0; 
-										}
-										$num4 = 0; 
-										while ($num4==0) { 
-											$num4 = rand(1,$count); 
-											if ($num4 == $num1 || $num4 == $num2 || $num4 == $num3) $num4 = 0; 
-										}							
-								?>	
-								<img src="<?php echo getUserPictureSrc($num1, "./")?>" >					
-							</div>
-							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
-									<?php 
-										$query = "SELECT username FROM `test`.`users` WHERE id=$num1";
-										$result = $mysqli->query($query);
-										$row = mysqli_fetch_assoc($result);
-										echo $row['username'];										
-									?>
-								</A> 
-							</P>
-						</div>
-						<div>
-							<div class="clearStyles photoBox">
-								<img src="<?php echo getUserPictureSrc($num2, "./")?>" >						
-							</div>
-							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
-									<?php 
-										$query = "SELECT username FROM `test`.`users` WHERE id=$num2";
-										$result = $mysqli->query($query);
-										$row = mysqli_fetch_assoc($result);
-										echo $row['username'];	
-									?>															
-								</A> 
-							</P>
-						</div>
-					</div>
-		
-					<div class="divider">
-						<div>
-							<div class="clearStyles photoBox">
-								<img src="<?php echo getUserPictureSrc($num3, "./")?>" >													
-							</div>
-							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
-									<?php 
-										$query = "SELECT username FROM `test`.`users` WHERE id=$num3";
-										$result = $mysqli->query($query);
-										$row = mysqli_fetch_assoc($result);
-										echo $row['username'];	
-									?>
-								</A> 
-							</P>
-						</div>
-						<div>
-							<div class="clearStyles photoBox">
-								<img src="<?php echo getUserPictureSrc($num4, "./")?>" >													
-							</div>
-							<P>
-								<A href="http://www.yelp.com/user_details?userid=3viH_SSb9QhrCbifTbx0Ng">
-									<?php 
-										$query = "SELECT username FROM `test`.`users` WHERE id=$num4";
-										$result = $mysqli->query($query);
-										$row = mysqli_fetch_assoc($result);
-										echo $row['username'];		
-									?>										
-								</A> 
-							</P>
-						</div>
-					</div>			
+						<?php 						
+							$query = "SELECT * FROM `test`.`users` ORDER BY RAND() LIMIT 6";
+							$result = $mysqli->query($query);
+							while ($user = mysqli_fetch_assoc($result)){
+								$html = "<div>
+											<P><A href=\"./about_me.php?user_id=".$user['id']."\">".$user['username']."</A></P>
+											<div class=\"clearStyles photoBox\">
+												<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
+											</div>
+											<div></div>			
+										</div>";
+								echo $html;
+							}										
+						?>							
 				</div>
 		</div>
 <!--*******************************-->
@@ -524,13 +483,14 @@ $mysqli = new mysqli('localhost', 'administrator', '', 'test');
 	<div class="directory">
 		<ul>
 			<li class="first"><strong>מפת האתר</strong></li>
-			<li> | <a href="/atlanta">תל-אביב</a></li>
-			<li> | <a href="/austin">ירושלים</a></li>
-			<li> | <a href="/boston">חיפה</a></li>
-			<li> | <a href="/chicago">באר שבע</a></li>
-			<li> | <a href="/dallas">הרצליה</a></li>
-			<li> | <a href="/denver">אשדוד</a></li>
-			<li> | <a href="/locations">ערים נוספות</a></li>
+			<li> | <a href="./main.php?city_id=1">תל-אביב</a></li>
+			<li> | <a href="./main.php?city_id=2">ראשוןן לציון</a></li>
+			<li> | <a href="./main.php?city_id=3">ירושלים</a></li>
+			<li> | <a href="./main.php?city_id=4">חיפה</a></li>
+			<li> | <a href="./main.php?city_id=5">באר שבע</a></li>
+			<li> | <a href="./main.php?city_id=6">רחובות</a></li>
+			<li> | <a href="./main.php?city_id=7">חדרה</a></li>
+			<li> | <a href="">ערים נוספות</a></li>
 		</ul>
 	</div>
 	
