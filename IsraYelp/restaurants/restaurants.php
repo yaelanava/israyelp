@@ -1,4 +1,13 @@
-<?php session_start();?>
+<?php session_start();
+
+include '../utils/functions.php';
+
+$city_id = $_GET['city_id'];
+$city_name = getCityName($city_id);
+
+$mysqli = getMysqliConnection();
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

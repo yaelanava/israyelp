@@ -4,15 +4,13 @@
 	$rest_name = $_SESSION['rest_name'];
 	$username = $_SESSION['username'];
 	
-	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+	$mysqli = getMysqliConnection();	
 	$query = "SELECT * FROM `test`.`users` WHERE username='$username'";
 	$result = $mysqli->query($query);
 	
 	
 	$user = mysqli_fetch_assoc($result);
-	$userID = $user['id'];
-	
-	
+	$userID = $user['id'];		
 	
 	$query = "SELECT * FROM `test`.`favorites` WHERE user_id='$userID' and restaurant='$rest_name'";
 	$result = $mysqli->query($query);

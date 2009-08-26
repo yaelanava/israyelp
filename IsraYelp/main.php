@@ -12,12 +12,9 @@ if ($_GET['city_id']){
 	header("Location: ./main.php?city_id=1");	//default
 }
 
-$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+$mysqli = getMysqliConnection();
 
-$city_query = "SELECT * FROM `test`.`cities` WHERE id=$city_id";
-$city_result = $mysqli->query($city_query);
-$city = mysqli_fetch_assoc($city_result);
-$city_name = $city['name'];
+$city_name = getCityName($city_id);
  
 ?>
 

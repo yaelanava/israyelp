@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+$mysqli = getMysqliConnection();
 	
 //$name = "мечас";
 //$city_id = 1;

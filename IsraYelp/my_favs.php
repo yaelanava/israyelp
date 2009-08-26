@@ -49,7 +49,7 @@
 	<?php
 	$id=$_SESSION['user_id'];											
 	//counting how much reviews this user wrote
-	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+	$mysqli = getMysqliConnection();	
 	$review_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$id'";
 	$rev_result = $mysqli->query($review_query);
 

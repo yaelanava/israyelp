@@ -6,7 +6,7 @@ include '../utils/functions.php';
 
 $rest_id = $_GET['rest_id'];
 
-$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+$mysqli = getMysqliConnection();
 
 $query_restaurant = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
 $result_restaurant = $mysqli->query($query_restaurant);
@@ -149,8 +149,7 @@ $count_reviews = $result_reviews->num_rows;
 														<DIV class=\"photoBoxSm\">
 															<DIV class=\"clearStyles photoBox\">
 																<A href=\"../about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
-															</div>
-			
+															</div>			
 														</div>
 													</div>
 													<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"../about_me.php?user_id=".$user['id']."\">". $user['username']. "</A></P>

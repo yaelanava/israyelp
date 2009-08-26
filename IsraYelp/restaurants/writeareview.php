@@ -15,8 +15,8 @@ if (isset($_POST['rest_id']) && ('' != $_POST['rest_id']) &&
 
 	$rest_url = "./restaurant.php?rest_id=".$rest_id;
 	
-	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-	
+	$mysqli = getMysqliConnection();
+		
 	$query = "SELECT * FROM `test`.`users` WHERE email='$useremail'";
 	$result = $mysqli->query($query);
 	
