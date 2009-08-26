@@ -175,11 +175,15 @@ $count_reviews = $result_reviews->num_rows;
 		</div>
 		
 		<div id="bizSideBar" class="clearfix">
-				<iframe src="http://maps.freemap.co.il/api/openlayers/?zoom=9&lat=32.06711&lon=34.77177&marker=true"
-        		width="300px" height="200px"
-		        scrolling="no"
-		        marginwidth="0" marginheight="0" 
-		        frameborder="1">
+			<iframe 
+				src="http://maps.freemap.co.il/api/openlayers/?zoom=9&
+						lat=<?php echo $restaurant['lat']?>&
+						lon=<?php echo $restaurant['lon']?>&
+						marker=true"
+	        	width="300px" height="200px"
+			       scrolling="no"
+			       marginwidth="0" marginheight="0" 
+			       frameborder="1">
       		</iframe>
 		</div>
 	
@@ -189,11 +193,11 @@ $count_reviews = $result_reviews->num_rows;
  
 <div id="footer">	
 	<div>		
-				<ul id="aboutSite">
-					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
-					<li> | <a href="/about">החשבון שלי</a></li>
-					<li> | <a href="/faq" >שאלות נפוצות </a></li>
-				</ul>
+		<ul id="aboutSite">
+			<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
+			<li> | <a href="/about">החשבון שלי</a></li>
+			<li> | <a href="/faq" >שאלות נפוצות </a></li>
+		</ul>
 	</div>
 
 	<div class="directory">
