@@ -317,144 +317,34 @@ $city_name = $city['name'];
 					<a class="floatLink"><img src="./image/more_button.png" alt="Search lists"></a>
 					<h3>ישר מהתנור...</h3>
 					<p>הביקורות האחרונות של חברי האתר</p>
-				
-					<div class="clearfix">
-								<div class="clearStyles photoBox" >
-									<?php 
-										$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-										$query = "SELECT * FROM `test`.`reviews`";
-										$result = $mysqli->query($query);
-										$count = $result->num_rows;
-										$query = "SELECT * FROM `test`.`reviews` WHERE id=$count";
-										$result = $mysqli->query($query);
-										$row_from_critiques = mysqli_fetch_assoc($result);
-										$user_id=$row_from_critiques['user_id'];//user_id
-									?>
-									<img src="<?php echo getUserPictureSrc($user_id, "./")?>" >	
-								</div>				
+					<?php 
+						$query_reviews = "SELECT * FROM `test`.`reviews` ORDER BY added DESC LIMIT 5";
+						$result_reviews = $mysqli->query($query_reviews);
+						while ($review = mysqli_fetch_assoc($result_reviews) ){
+							$user_id = $review['user_id'];								
+							$query_user = "SELECT * FROM `test`.`users` WHERE id='$user_id'";
+							$result_user = $mysqli->query($query_user);
+							$user = mysqli_fetch_assoc($result_user);
+							
+							$html = "<div class=\"clearfix\">
+							<DIV class=\"clearStyles photoBox\">
+								<IMG alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user_id, "./")."\">
+							</div>			
 								<p>
-									<a   href="/list/coffee-and-tea-berkeley">
-									<?php echo $row_from_critiques['title'];?></a>
-									<br />
-									
-									<em class="smaller grey">
-									<?php 
-										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
-										$result = $mysqli->query($query);
-										$row_from_users = mysqli_fetch_assoc($result);
-										echo $row_from_users['username'];										
-									?>
-									</em>
-									<br />
-										<?php echo $row_from_critiques['review'];?>
-								</p>
-					</div>
-					<div class="clearfix">
-								<div class="clearStyles photoBox" >
-									<?php 									
-										$query = "SELECT * FROM `test`.`reviews` WHERE id=($count-1)";
-										$result = $mysqli->query($query);
-										$row_from_reviews = mysqli_fetch_assoc($result);
-										$user_id=$row_from_reviews['user_id'];//user_id
-									?>
-									<img src="<?php echo getUserPictureSrc($user_id, "./")?>" >					
-								</div>				
-								<p>
-									<a href="/list/coffee-and-tea-berkeley"> <?php echo $row_from_reviews['title'];?></a>
-									<br />									
-									<em class="smaller grey">
-									<?php 
-										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
-										$result = $mysqli->query($query);
-										$row_from_users = mysqli_fetch_assoc($result);
-										echo $row_from_users['username'];										
-									?>
-									</em>
-									<br />
-										<?php echo $row_from_reviews['review'];?>
-								</p>
-					</div>
-					<div class="clearfix">
-								<div class="clearStyles photoBox" >
-									<?php 									
-										$query = "SELECT * FROM `test`.`reviews` WHERE id=($count-2)";
-										$result = $mysqli->query($query);
-										$row_from_reviews = mysqli_fetch_assoc($result);
-										$user_id=$row_from_reviews['user_id'];//user_id
-									?>
-									<img src="<?php echo getUserPictureSrc($user_id, "./")?>" >	
-								</div>				
-								<p>
-									<a   href="/list/coffee-and-tea-berkeley">
-									<?php echo $row_from_reviews['title'];?></a>
-									<br />
-									
-									<em class="smaller grey">
-									<?php 
-										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
-										$result = $mysqli->query($query);
-										$row_from_users = mysqli_fetch_assoc($result);
-										echo $row_from_users['username'];										
-									?>
-									</em>
-									<br />
-										<?php echo $row_from_reviews['review'];?>
-								</p>
-					</div>
-					<div class="clearfix">
-								<div class="clearStyles photoBox" >
-									<?php 									
-										$query = "SELECT * FROM `test`.`reviews` WHERE id=($count-3)";
-										$result = $mysqli->query($query);
-										$row_from_reviews = mysqli_fetch_assoc($result);
-										$user_id=$row_from_reviews['user_id'];//user_id
-									?>
-									<img src="<?php echo getUserPictureSrc($user_id, "./")?>" >	
-								</div>				
-								<p>
-									<a   href="/list/coffee-and-tea-berkeley">
-									<?php echo $row_from_reviews['title'];?></a>
-									<br />
-									
-									<em class="smaller grey">
-									<?php 
-										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
-										$result = $mysqli->query($query);
-										$row_from_users = mysqli_fetch_assoc($result);
-										echo $row_from_users['username'];										
-									?>
-									</em>
-									<br />
-										<?php echo $row_from_reviews['review'];?>
-								</p>
-					</div>
-					<div class="clearfix">
-								<div class="clearStyles photoBox" >
-									<?php 									
-										$query = "SELECT * FROM `test`.`reviews` WHERE id=($count-4)";
-										$result = $mysqli->query($query);
-										$row_from_reviews = mysqli_fetch_assoc($result);
-										$user_id=$row_from_reviews['user_id'];//user_id
-									?>
-									<img src="<?php echo getUserPictureSrc($user_id, "./")?>" >	
-								</div>				
-								<p>
-									<a   href="/list/coffee-and-tea-berkeley">
-									<?php echo $row_from_reviews['title'];?></a>
-									<br />
-									
-									<em class="smaller grey">
-									<?php 
-										$query = "SELECT * FROM `test`.`users` WHERE id=$user_id";
-										$result = $mysqli->query($query);
-										$row_from_users = mysqli_fetch_assoc($result);
-										echo $row_from_users['username'];										
-									?>
-									</em>
-									<br />
-										<?php echo $row_from_reviews['review'];?>
-								</p>
-					</div>			
+								<a   href=\"/list/coffee-and-tea-berkeley\">
+								  ". $review['title'] ."</a>
+								<br />
+								<em class=\"smaller grey\">
+									". $user['username'] ."																			
+								</em>
+								<br />
+									". $review['review'] ."
+							</p>
+							</div>";
+							echo $html;	
+						}
+					?>				
+			
 				</div>			
 		</div>
 	</div>
