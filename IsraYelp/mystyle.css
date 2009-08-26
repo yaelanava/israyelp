@@ -1343,10 +1343,13 @@
 	}
 	
 	#about_user_column{width:200px;float:right;}
-	#user_details_wrapper{border:1px solid #ccc;margin-top:5px;padding:5px 0px;}
+	#user_details_wrapper{border:1px solid #ccc;margin-top:5px;padding:0px 0px;}
 	#inner_container{background:url(../i/new/gfx/1x1.gif) repeat-y 205px 0px;}
+	#user_revs{border:margin-top:5px;}	
 		
-		
-		
+	#my_review {	
+	BORDER-BOTTOM: #ccc 1px solid}
+	
+	#user_pic{margin-top:15px}	
 		
 	
