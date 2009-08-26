@@ -147,7 +147,7 @@ $city_name = $city['name'];
 									if ($first){
 										$html .= "<strong>";
 									}
-									$html .= "<a href=\"./restaurants/restaurants.php?rest_id=".$rest['id']."\">".$rest['name']."</a>";
+									$html .= "<a href=\"./restaurants/restaurant.php?rest_id=".$rest['id']."\">".$rest['name']."</a>";
 									if ($first){
 										$html .= "</strong>";
 										$first = 0;
@@ -321,30 +321,29 @@ $city_name = $city['name'];
 						$query_reviews = "SELECT * FROM `test`.`reviews` ORDER BY added DESC LIMIT 5";
 						$result_reviews = $mysqli->query($query_reviews);
 						while ($review = mysqli_fetch_assoc($result_reviews) ){
-							$user_id = $review['user_id'];								
+							$user_id = $review['user_id'];
 							$query_user = "SELECT * FROM `test`.`users` WHERE id='$user_id'";
 							$result_user = $mysqli->query($query_user);
 							$user = mysqli_fetch_assoc($result_user);
 							
+							$rest_id = $review['restaurant_id'];
+							$query_rest = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
+							$result_rest = $mysqli->query($query_rest);
+							$rest = mysqli_fetch_assoc($result_rest);
+							
 							$html = "<div class=\"clearfix\">
-							<DIV class=\"clearStyles photoBox\">
-								<IMG alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user_id, "./")."\">
-							</div>			
-								<p>
-								<a   href=\"/list/coffee-and-tea-berkeley\">
-								  ". $review['title'] ."</a>
-								<br />
-								<em class=\"smaller grey\">
-									". $user['username'] ."																			
-								</em>
-								<br />
-									". $review['review'] ."
-							</p>
-							</div>";
+										<DIV class=\"clearStyles photoBox\">
+											<A href=\"../about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+										</div>								
+										<p>
+											<a href=\"./restaurants/restaurant.php?rest_id=".$rest['id']."\">".$rest['name']."</a> - ".$review['title'] ."
+											<br/><em class=\"smaller grey\">". $user['username'] ."</em>
+											<br/>".$review['review']."										
+										</p>
+									</div>";
 							echo $html;	
 						}
-					?>				
-			
+					?>							
 				</div>			
 		</div>
 	</div>
