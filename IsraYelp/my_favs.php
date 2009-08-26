@@ -1,7 +1,6 @@
-<?php 	
-session_start();
-
-include './utils/functions.php';	
+<?php 
+	session_start();
+	
 ?>
 
 <head>
@@ -39,7 +38,7 @@ include './utils/functions.php';
 </div>
 
 <div id="mainContent">
-	<div id="user_header" class="ieSucks" align="right">
+	<div id="user_header" align="right">
 		<ul id="userTabs" >
 				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
 				<li><a href="./my_reviews.php">ביקורות</a></li> 
@@ -50,19 +49,48 @@ include './utils/functions.php';
 	<?php
 	$id=$_SESSION['user_id'];											
 	//counting how much reviews this user wrote
-	$mysqli = getMysqliConnection();	
+	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 	$review_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$id'";
 	$rev_result = $mysqli->query($review_query);
 
 	//echo $name=$_SESSION['username'];
 	//echo $email = $_SESSION['email']; 
 	?>
-	<span> יש לך </span>
+	<span><b> יש לך </b></span>
 	<?php 
 	$rev_count = $rev_result->num_rows;
 	echo $rev_count;
 	?>
-	<span> מקומות מועדפים </span>
+	<span><b> מקומות מועדפים </b></span>
+	
+	
+	<?php 
+	
+	echo "<br />";
+	echo "<br />";
+	
+	
+	
+	while ($review = mysqli_fetch_assoc($rev_result)){
+		
+		$html = "<div id=\"my_review\">
+			
+			
+			<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
+				<tr>
+					<td><span> <b> ".$review['restaurant']."</b>"."</span>
+					</td> 
+				</tr>
+			</table>
+			</div>
+		";
+		echo $html;
+		
+			
+	}
+?>	
+	
+	
 	
 	<?php 
 	echo "<br />";
@@ -79,5 +107,30 @@ include './utils/functions.php';
 	}
 ?>
 </div>
+</div>
+<div id="footer">	
+	<div>		
+		<ul id="aboutSite">
+			<li>  <a href="http://localhost/IsraYelp/contact_us.html"   id="Zprofile_footer">עלינו</a></li>
+			<li> | <a href="/faq" >שאלות נפוצות </a></li>
+		</ul>
+	</div>
+
+	<div class="directory">
+		<ul>
+			<li class="first"><strong>מפת האתר</strong></li>
+			<li> | <a href="../restaurants.php">תל-אביב</a></li>
+			<li> | <a href="../../jerusalem/restaurants.php">ירושלים</a></li>
+			<li> | <a href="/boston">חיפה</a></li>
+			<li> | <a href="/chicago">באר שבע</a></li>
+			<li> | <a href="/dallas">הרצליה</a></li>
+			<li> | <a href="/denver">אשדוד</a></li>
+			<li> | <a href="/locations">ערים נוספות</a></li>
+		</ul>
+	</div>
+	
+	<div>
+		<p> זכויות יוצרים </p>
+	</div>
 </div>
 	
