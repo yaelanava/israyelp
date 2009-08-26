@@ -1,6 +1,7 @@
 <?php 
-	session_start();
-	
+session_start();
+
+include './utils/functions.php';
 ?>
 
 <head>

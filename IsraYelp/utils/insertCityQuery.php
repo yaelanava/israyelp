@@ -1,5 +1,7 @@
 <?php
 
+include '../utils/functions.php';
+
 $mysqli = getMysqliConnection();
 
 $name = "ראשון לציון";

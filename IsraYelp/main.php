@@ -315,7 +315,7 @@ $city_name = getCityName($city_id);
 					<h3>ישר מהתנור...</h3>
 					<p>הביקורות האחרונות של חברי האתר</p>
 					<?php 
-						$query_reviews = "SELECT * FROM `test`.`reviews` ORDER BY added DESC LIMIT 5";
+						$query_reviews = "SELECT * FROM `test`.`reviews` ORDER BY added DESC LIMIT 3";
 						$result_reviews = $mysqli->query($query_reviews);
 						while ($review = mysqli_fetch_assoc($result_reviews) ){
 							$user_id = $review['user_id'];

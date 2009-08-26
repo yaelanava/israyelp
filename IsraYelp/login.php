@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include './utils/functions.php';
+
 if ($_GET['logout']){
 	session_destroy();
 	header("Location:main.php");
