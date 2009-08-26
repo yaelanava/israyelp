@@ -88,7 +88,8 @@ $count_reviews = $result_reviews->num_rows;
 							
 							<div id="bizPhotos">
 								<div class="clearStyles bizPhotoBox">
-										<a  href="/biz_photos/54anJf73lEHBItVRPgRgrA?select=gPtUeg7qvd7TkhUi5RQ6Og"><img src="./image/<?php echo  $rest_id?>.jpg" width=70 height= 100 style="" alt=""></a>
+										<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
+										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height= 200 style="" alt=""></a>
 								</div>
 								<span style="font-size: 10px;"><a rel="nofollow" href="../uploadPic.php">десу ъоерд</a></span>
 							</div>
