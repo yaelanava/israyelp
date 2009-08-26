@@ -1,7 +1,7 @@
 <?php 
-session_start();
-
-include './utils/functions.php';
+	session_start();
+	include './utils/functions.php';
+	
 ?>
 
 <head>
@@ -39,49 +39,107 @@ include './utils/functions.php';
 </div>
 
 <div id="mainContent">
-	<div id="user_header" class="ieSucks" align="right">
+	<div id="user_header"  align="right">
 		<ul id="userTabs" >
 				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
 				<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
 				<li><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
+	
 
 	<div id="user_details_wrapper">
+	<div id="user_revs">
 	<?php
 	$id=$_SESSION['user_id'];											
 	//counting how much reviews this user wrote
-	$mysqli = getMysqliConnection();	
+	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 	$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$id'";
 	$rev_result = $mysqli->query($review_query);
 
 	//echo $name=$_SESSION['username'];
 	//echo $email = $_SESSION['email']; 
 	?>
-	<span> כתבת כבר </span>
+	<span><b> כתבת כבר </b></span>
 	<?php 
 	$rev_count = $rev_result->num_rows;
 	echo $rev_count;
 	?>
-	<span> ביקורות לאתר </span>
+	<span ><b> ביקורות לאתר </b></span>
+	
+	
 	
 	<?php 
+	
 	echo "<br />";
 	echo "<br />";
-	$num=1;
-	while($one_rev = $rev_result->fetch_row())
-	{
-		printf("ביקורת מספר %d:",$num);
-		echo "<br />";
-		printf("נכתבה עבור המסעדה: %s ", $one_rev[2]);
-		printf("קיבלה את הציון %s על ידך ", $one_rev[3]);
-		printf("והביקורת שלך הייתה: %s ", $one_rev[5]);
-		echo "<br />";
-		echo "<br />";
-		$num++;
+	
+	
+	
+	while ($review = mysqli_fetch_assoc($rev_result)){
+
+		$rest_id=$review['restaurant_id'];
+		$grading=$review['grading'];
+		$query_rest = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
+		$result_rest = $mysqli->query($query_rest);
+		$rest = mysqli_fetch_assoc($result_rest);
+		$query_user = "SELECT * FROM `test`.`users` WHERE id='$id'";
+		$result_user = $mysqli->query($query_user);
+		$user = mysqli_fetch_assoc($result_user);
 		
+		$sen="הביקורת נכתבה עבור ";
+		$html = "<div id=\"my_review\">
+			
+			
+			<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
+				<tr>
+					<td><span> <b> ".$sen.$rest['name']."</b>"."</span>
+							<DIV class=\"ext_rating\">
+								<DIV class=\"rating\">
+									<IMG class=\"stars_". $grading."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
+								</DIV>
+								<EM class=\"smaller\">". $review['added']."</EM> 
+							</DIV>
+					</td> 
+					<td>
+						<span><b>". $review['title']."</b><br>". $review['review']."</span>
+					</td>
+				</tr>
+			</table>
+			</div>
+		";
+		echo $html;
+		
+			
 	}
-?>
+?>	
 </div>
 </div>
+</div>
+<div id="footer">	
+	<div>		
+		<ul id="aboutSite">
+			<li>  <a href="http://localhost/IsraYelp/contact_us.html"   id="Zprofile_footer">עלינו</a></li>
+			<li> | <a href="/faq" >שאלות נפוצות </a></li>
+		</ul>
+	</div>
+
+	<div class="directory">
+		<ul>
+			<li class="first"><strong>מפת האתר</strong></li>
+			<li> | <a href="../restaurants.php">תל-אביב</a></li>
+			<li> | <a href="../../jerusalem/restaurants.php">ירושלים</a></li>
+			<li> | <a href="/boston">חיפה</a></li>
+			<li> | <a href="/chicago">באר שבע</a></li>
+			<li> | <a href="/dallas">הרצליה</a></li>
+			<li> | <a href="/denver">אשדוד</a></li>
+			<li> | <a href="/locations">ערים נוספות</a></li>
+		</ul>
+	</div>
+	
+	<div>
+		<p> זכויות יוצרים </p>
+	</div>
+</div>
+
 	
