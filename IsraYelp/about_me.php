@@ -74,7 +74,8 @@
 									if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 								?>
-								<img src="<? echo $destination; ?>" >
+								<img src="<? echo $destination; ?>" height="1000" width="1000">
+							
 							</div>
 	 
 						</div>
@@ -89,7 +90,7 @@
 					<?php
 
 						//counting how much reviews this user wrote
-						$review_query = "SELECT * FROM `test`.`critiques` WHERE user_id='$id'";
+						$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$id'";
 						$rev_result = $mysqli->query($review_query);
 						$rev_count = $rev_result->num_rows;
 						echo $rev_count;
