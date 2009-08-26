@@ -25,6 +25,7 @@ $mysqli = getMysqliConnection();
 <body class= "us" id="IsraYelp_main_body" dir="rtl">
 <?php
 		//extracting the user information 
+		$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 		$name=$_SESSION['username'];
 		$email = $_SESSION['email'];
 		//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
@@ -70,25 +71,27 @@ $mysqli = getMysqliConnection();
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
 			<div id="about_user_column">
-			<div id="freshListsModule">
+				<div id="user_pic">
 				<table cellspacing="0" cellpadding="0" border="0" id="user_profile_photos">
 					<tr><td valign="bottom">
-						<div id="user_main_photo">
+						
 							<div class="clearStyles photoBox" >
 								<?php $destination="./users_pics/".$id;
 									if (!file_exists($destination))
 										$destination="./users_pics/blank_user_medium.gif";
 								?>
-								<img src="<? echo $destination; ?>" height="1000" width="1000">
+								<img src="<? echo $destination; ?>" height="100px" width="100px">
 							
 							</div>
+						
 	 
-						</div>
+						
 					</td>
 					<td valign="bottom">
 						&nbsp;
 					</td></tr>
-				</table>	
+				</table>
+				</div>	
  
 				<ul class="stripped" id="user_stats">
 					
@@ -146,7 +149,7 @@ $mysqli = getMysqliConnection();
 					<a href="/profile_bio">עדכן פרופיל</a><br/>
 				</div>
  
-			</div>
+		
 		</div>
 	</div>
 </div>
@@ -156,7 +159,6 @@ $mysqli = getMysqliConnection();
 	<div>		
 		<ul id="aboutSite">
 			<li>  <a href="http://localhost/IsraYelp/contact_us.html"   id="Zprofile_footer">עלינו</a></li>
-			<li> | <a href="/about">החשבון שלי</a></li>
 			<li> | <a href="/faq" >שאלות נפוצות </a></li>
 		</ul>
 	</div>
