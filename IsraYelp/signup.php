@@ -21,14 +21,7 @@ function createUser(){
 	if ($password !== $confirmed_password) {
 		echo "<br/>סיסמאות לא מתאימות";		
 	} else {
-		$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-		
-		/* check connection */
-		if (mysqli_connect_errno()) {
-		    printf("Connect failed: %s\n", mysqli_connect_error());
-		    exit();
-		}
-		
+		$mysqli = getMysqliConnection();						
 		$query = "SELECT * FROM `test`.`users` WHERE email='$email'";
 		$result = $mysqli->query($query);
 		$count = $result->num_rows;

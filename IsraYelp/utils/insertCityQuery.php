@@ -1,6 +1,6 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+$mysqli = getMysqliConnection();
 
 $name = "ראשון לציון";
 $english_name = "Rishon Le Zion";

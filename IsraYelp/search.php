@@ -19,12 +19,7 @@ function search(){
 	$_SESSION['place_name']= $name;
 	$_SESSION['place_city']= $city;
 	
-	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-	/* check connection */
-	if (mysqli_connect_errno()) {
-		   printf("Connect failed: %s\n", mysqli_connect_error());
-		   exit();
-	}
+	$mysqli = getMysqliConnection();	
 	$query = "SELECT * FROM `test`.`restaurants` WHERE name='$name'";
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;

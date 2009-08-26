@@ -18,8 +18,8 @@ function loginUser(){
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	
-	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-	
+	$mysqli = getMysqliConnection();	
+		
 	$query = "SELECT * FROM `test`.`users` WHERE email='$email' and password=PASSWORD('$password')";
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;

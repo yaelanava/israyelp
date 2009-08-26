@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php 
+session_start();
+$mysqli = getMysqliConnection();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -19,7 +22,6 @@
 <body class= "us" id="IsraYelp_main_body" dir="rtl">
 <?php
 		//extracting the user information 
-		$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 		$name=$_SESSION['username'];
 		$email = $_SESSION['email'];
 		//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
