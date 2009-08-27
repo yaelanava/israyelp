@@ -45,21 +45,25 @@
 				<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
-<div id="user_details_wrapper">
+</div>
+
+<div id="user_details_wrapper">	
+<div id="mainContent">
+	
+
 	<?php
 	$id=$_SESSION['user_id'];											
 	//counting how much reviews this user wrote
 	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-	$review_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$id'";
-	$rev_result = $mysqli->query($review_query);
+	$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$id'";
+	$fav_result = $mysqli->query($fav_query);
 
-	//echo $name=$_SESSION['username'];
-	//echo $email = $_SESSION['email']; 
+	
 	?>
 	<span><b> יש לך </b></span>
 	<?php 
-	$rev_count = $rev_result->num_rows;
-	echo $rev_count;
+	$fav_count = $fav_result->num_rows;
+	echo $fav_count;
 	?>
 	<span><b> מקומות מועדפים </b></span>
 	
@@ -71,7 +75,7 @@
 	
 	
 	
-	while ($review = mysqli_fetch_assoc($rev_result)){
+	while ($review = mysqli_fetch_assoc($fav_result)){
 		
 		$html = "<div id=\"my_review\">
 			
@@ -92,20 +96,8 @@
 	
 	
 	
-	<?php 
-	echo "<br />";
-	echo "<br />";
-	$num=1;
-	while($one_rev = $rev_result->fetch_row())
-	{
-		printf("מקום מספר %d :",$num);
-		echo $one_rev[1];
-		echo "<br />";
-		echo "<br />";
-		$num++;
-		
-	}
-?>
+
+
 </div>
 </div>
 <div id="footer">	
