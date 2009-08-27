@@ -1307,7 +1307,7 @@
 	#topYelpersModule H3 {	
 	MARGIN-BOTTOM: 0px}
 	
-	#user_header{}
+	#user_header{WIDTH: 930px;}
 	
 	ul#userTabs{
 	margin:0px 0px 0px 15px;
@@ -1343,7 +1343,7 @@
 	}
 	
 	#about_user_column{width:200px;float:right;}
-	#user_details_wrapper{border:1px solid #ccc;margin-top:5px;padding:0px 0px;}
+	#user_details_wrapper{border:margin-top:5px;padding:0px 0px;}
 	#inner_container{background:url(../i/new/gfx/1x1.gif) repeat-y 205px 0px;}
 	#user_revs{border:margin-top:5px;}	
 		
@@ -1351,5 +1351,47 @@
 	BORDER-BOTTOM: #ccc 1px solid}
 	
 	#user_pic{margin-top:15px}	
-		
+	
+	#user_table {	
+	BORDER-RIGHT: #ccc 1px solid;	
+	PADDING-RIGHT: 25px;	
+	BORDER-TOP: #ccc 1px solid;	
+	PADDING-LEFT: 0px;	
+	PADDING-BOTTOM: 10px;	
+	MARGIN-LEFT: auto;	
+	BORDER-LEFT: #ccc 1px solid;	
+	WIDTH: 930px;	
+	MARGIN-RIGHT: 47px;	
+	PADDING-TOP: 10px;	
+	BORDER-BOTTOM: #ccc 1px solid} 
+	
+	#my_revs_st {	
+	BORDER-RIGHT: #ccc 1px solid;	
+	PADDING-RIGHT: 5px;	
+	BORDER-TOP: #ccc 1px solid;	
+	PADDING-LEFT: 1px;	
+	PADDING-BOTTOM: 10px;	
+	MARGIN-LEFT: 47px;	
+	BORDER-LEFT: #ccc 1px solid;	
+	WIDTH: 850px;	
+	MARGIN-RIGHT: 47px;	
+	PADDING-TOP: 10px;	
+	} 
+	
+	#rev_fix{
+		MARGIN: 40px;
+		BORDER-RIGHT: #ccc 1px solid;	
+		BORDER-LEFT: #ccc 1px solid;	
+		BORDER-TOP: #ccc 1px solid;	
+		PADDING-LEFT: 1px;	
+		PADDING-RIGHT: 1px;
+		BORDER-BOTTOM: #ccc 1px solid;	
+	
+	}	
+	
+	
+	#margin_fix_rev{
+		MARGIN-RIGHT: 0px;
+	}	
+	
 	

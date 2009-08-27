@@ -41,15 +41,20 @@
 <div id="mainContent">
 	<div id="user_header"  align="right">
 		<ul id="userTabs" >
+			
 				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
 				<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
 				<li><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
+</div>
 	
 
-	<div id="user_details_wrapper">
-	<div id="user_revs">
+	<div id="user_details_wrapper">	
+	<div id="main_content">
+	<div id="rev_fix">
+
+	
 	<?php
 	$id=$_SESSION['user_id'];											
 	//counting how much reviews this user wrote
@@ -112,7 +117,8 @@
 		
 			
 	}
-?>	
+?>
+</div>	
 </div>
 </div>
 </div>
