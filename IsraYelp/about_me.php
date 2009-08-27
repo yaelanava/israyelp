@@ -67,6 +67,7 @@ $mysqli = getMysqliConnection();
 				<li><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
+</div>
 		
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
@@ -150,7 +151,7 @@ $mysqli = getMysqliConnection();
 			</div>
 			</div>
 			</div>	
-			</div>
+			
 
 				<!--<ul class="stripped" id="user_stats">
 					
