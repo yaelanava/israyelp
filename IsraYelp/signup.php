@@ -34,9 +34,34 @@ function createUser(){
 			die(0);		
 		}
 		$today = getdate();
-		$month_added=$today['month'];
+		$month_added=$today['mon'];
+		
+		if ($month_added=1)
+			$month_added='ינואר';
+		elseif ($month_added=2)
+			$month_added='פברואר';
+		elseif ($month_added=3)
+			$month_added='מרץ';
+		elseif ($month_added=4)
+			$month_added='אפריל';
+		elseif ($month_added=5)
+			$month_added='מאי';
+		elseif ($month_added=6)
+			$month_added='יוני';
+		elseif ($month_added=7)
+			$month_added='יולי';
+		elseif ($month_added=8)
+			$month_added='אוגוסט';
+		elseif ($month_added=9)
+			$month_added='ספטמבר';
+		elseif ($month_added=10)
+			$month_added='אוקטובר';
+		elseif ($month_added=11)
+			$month_added='נובמבר';		
+		else $month_added='דצמבר';
+		
 		$year_added=$today['year'];
-		$query = "INSERT INTO `test`.`users` (
+		/*$query = "INSERT INTO `test`.`users` (
 					`id` ,
 					`username` ,
 					`email` ,
@@ -45,19 +70,18 @@ function createUser(){
 					)
 				VALUES (
 					NULL , '$username', '$username', '$city', PASSWORD( '$password' ) 
-				)";
+				)";*/
 		$query="INSERT INTO `test`.`users` (
 					`id` ,
 					`username` ,
 					`email` ,
 					`city` ,
-					`added` ,
 					`year_added` ,
 					`month_added` ,
 					`password`
 					)
 					VALUES (
-					NULL , '$username', '$username', '$city', '$year_added', '$month_added', PASSWORD( '$password' )
+					NULL , '$username', '$email', '$city', '$year_added', '$month_added', PASSWORD( '$password' )
 					)";
 				
 				
