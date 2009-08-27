@@ -5,7 +5,7 @@
 	}
 	else {
 		echo "there was an error";
-		die(o);
+		die(0);
 	}
 	$id = $_SESSION['user_id'];
 	$destination = "./users_pics/".$id;
@@ -33,7 +33,7 @@
 		<div id="rightEdge"></div>
 </div>
 <div id="bodyContainer_Centered">
-	<p>התמונה הועלתה בהצלחה.<?php echo $temp_name;?>
+	<p>התמונה הועלתה בהצלחה.
 		<br><br>
 		<a href="./about_me.php"   id="Zprofile_footer">.חזור לחשבון שלך</a>
 	</p>
