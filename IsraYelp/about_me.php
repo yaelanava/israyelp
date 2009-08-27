@@ -71,29 +71,88 @@ $mysqli = getMysqliConnection();
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
 			<div id="about_user_column">
-				<div id="user_pic">
-				<table cellspacing="0" cellpadding="0" border="0" id="user_profile_photos">
-					<tr><td valign="bottom">
+				
+				<table cellspacing="0" cellpadding="0" border="0" id="user_table">
+					<tr>
+						<td valign="bottom">
+							<div id="user_pic">
+								<div class="clearStyles photoBox" >
+									<?php $destination="./users_pics/".$id;
+										if (!file_exists($destination))
+											$destination="./users_pics/blank_user_medium.gif";
+									?>
+									<img src="<? echo $destination; ?>" height="100px" width="100px">
+									<p id="photo_action_link">
+					 					<a href="./upload_pic.php" class="small">העלה תמונה</a>
+					 				</p>
+								</div>
+							</div>	
+						</td>
+						<td>
+							<ul class="stripped" id="user_stats">
+					
+							<?php
+		
+								//counting how much reviews this user wrote
+								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$id'";
+								$rev_result = $mysqli->query($review_query);
+								$rev_count = $rev_result->num_rows;
+								echo $rev_count;
+								$_SESSION['user_id']=$id;
+		
+							?>
 						
-							<div class="clearStyles photoBox" >
-								<?php $destination="./users_pics/".$id;
-									if (!file_exists($destination))
-										$destination="./users_pics/blank_user_medium.gif";
-								?>
-								<img src="<? echo $destination; ?>" height="100px" width="100px">
+							<a href="./my_reviews.php" >ביקורות שנכתבו על ידך</a>
+							<br>
+							<?php
+								$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$id'";
+								$fav_result = $mysqli->query($fav_query);
 							
-							</div>
-						
-	 
-						
-					</td>
-					<td valign="bottom">
-						&nbsp;
-					</td></tr>
+								//echo $name=$_SESSION['username'];
+								//echo $email = $_SESSION['email']; 
+								$fav_count = $fav_result->num_rows;
+								echo $fav_count;
+							?>
+								<a href="./my_favs.php" >מקומות מועדפים</a>
+					
+							</ul>
+						</td>
+						<td>
+							<span class="highlight2">מיקום:</span>
+							<?php    					
+		    					if (empty($city))
+		    						echo 'עיר מגוריך אינה ידועה';
+		    					else 
+		    						echo  $city;
+		    					
+		    					echo "<br />";
+		    					
+		    					
+							?>
+							<p>					
+								<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
+							</p>
+						</td>
+						<td>
+							<span class="highlight2">רשום לאתר מ-</span>
+							<?php
+								echo "<br />";
+								echo $added;
+								echo "<br />";
+								
+							?>
+						</td>
+					</tr>
+					
+					
+					
 				</table>
-				</div>	
- 
-				<ul class="stripped" id="user_stats">
+			</div>
+			</div>
+			</div>	
+			</div>
+
+				<!--<ul class="stripped" id="user_stats">
 					
 					<?php
 
@@ -155,7 +214,7 @@ $mysqli = getMysqliConnection();
 </div>
 	
 
-<div id="footer">	
+--><div id="footer">	
 	<div>		
 		<ul id="aboutSite">
 			<li>  <a href="http://localhost/IsraYelp/contact_us.html"   id="Zprofile_footer">עלינו</a></li>
