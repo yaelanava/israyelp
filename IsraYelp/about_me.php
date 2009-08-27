@@ -31,10 +31,15 @@ $mysqli = getMysqliConnection();
 		//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
 		$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
 		$user_result = $mysqli->query($user_query);
-		$row = $user_result->fetch_row();   		
+		$row=mysqli_fetch_assoc($user_result);
+		/*$row = $user_result->fetch_row();   		
 		$id=$row[0];
 		$city=$row[3];
-		$added=$row[4]; 
+		$added=$row[4]; */
+		$id=$row['id'];
+		$city=$row['city'];
+		$month=$row['month_added'];
+		$year=$row['year_added'];
 ?>
 
 <div id="head">
@@ -131,14 +136,14 @@ $mysqli = getMysqliConnection();
 		    					
 							?>
 							<p>					
-								<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
+								<span class="formLabel"><a href="edit_city.html">ערוך</a></span>
 							</p>
 						</td>
 						<td>
 							<span class="highlight2">רשום לאתר מ-</span>
 							<?php
 								echo "<br />";
-								echo $added;
+								echo $month." , ".$year;
 								echo "<br />";
 								
 							?>
