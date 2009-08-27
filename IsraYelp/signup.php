@@ -33,7 +33,9 @@ function createUser(){
 			echo "משתמש קיים";
 			die(0);		
 		}
-		
+		$today = getdate();
+		$month_added=$today['month'];
+		$year_added=$today['year'];
 		$query = "INSERT INTO `test`.`users` (
 					`id` ,
 					`username` ,
@@ -42,8 +44,21 @@ function createUser(){
 					`password` 
 					)
 				VALUES (
-					NULL , '$username', '$email', '$city', PASSWORD( '$password' ) 
+					NULL , '$username', '$username', '$city', PASSWORD( '$password' ) 
 				)";
+		$query="INSERT INTO `test`.`users` (
+					`id` ,
+					`username` ,
+					`email` ,
+					`city` ,
+					`added` ,
+					`year_added` ,
+					`month_added` ,
+					`password`
+					)
+					VALUES (
+					NULL , '$username', '$username', '$city', '$year_added', '$month_added', PASSWORD( '$password' )
+					)";
 				
 				
 		$result = $mysqli->query($query);
