@@ -6,12 +6,14 @@ session_start();
 include '../utils/functions.php';
 
 $rest_id = $_GET['rest_id'];
+$rest_url = "./restaurants/restaurant.php?rest_id=".$rest_id;
 
 $mysqli = getMysqliConnection();
 
 $query_restaurant = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
 $result_restaurant = $mysqli->query($query_restaurant);
-$restaurant = mysqli_fetch_assoc($result_restaurant);	
+$restaurant = mysqli_fetch_assoc($result_restaurant);
+$rest_name = $restaurant['name'];	
 
 $query_reviews = "SELECT * FROM `test`.`reviews` WHERE restaurant_id='$rest_id' ORDER BY added DESC";
 $result_reviews = $mysqli->query($query_reviews);
@@ -22,7 +24,7 @@ $count_reviews = $result_reviews->num_rows;
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title><?php echo $restaurant['name']?> | IsraYelp</title>
+	<title><?php echo $rest_name?> | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -62,7 +64,7 @@ $count_reviews = $result_reviews->num_rows;
 		<tr>		
 			<td >
 				<div id="bizInfoHeader">
-					<h1 class="fn org"><?php echo $restaurant['name']?></h1>
+					<h1 class="fn org"><?php echo $rest_name?></h1>
 					<div id="bizRating">
 						<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="../image/stars_map.png"/></div> 
 						<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
@@ -122,16 +124,15 @@ $count_reviews = $result_reviews->num_rows;
 				<td>
 					<div  id="bizActions" class="clearfix">
 						<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
-						<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php"><img src= "../image/bookmark.png" width=108 height=41></a>
+						<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_id=<?php echo $rest_id?>&biz_name=<?php echo $rest_name?>&biz_type=1&returnUrl=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
 						<a class="write review" rel="nofollow" 
 							href= "<?php if (!session_is_registered('username')) { 
-											echo ("../login.php?returnUrl=./restaurants/restaurant.php?rest_id=".$rest_id);
+											echo ("../login.php?returnUrl=".$rest_url);
 										} else {
-											echo ("writeRestaurantReview.php?rest_id=".$rest_id."&rest_name=".$restaurant['name']);
+											echo ("writeRestaurantReview.php?rest_id=".$rest_id."&rest_name=".$rest_name);
 										}
 								?>" 
-								id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>
-						
+								id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						
 					</div>
 				</td>				
 			</tr>
@@ -140,7 +141,7 @@ $count_reviews = $result_reviews->num_rows;
 			<div id="bizReviews">
 				<div id="bizReviewsHeader" class="clearfix">
 					</br>
-					<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $restaurant['name']?>:</h2>	
+					<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $rest_name?>:</h2>	
 				</div>
 				<br></br>
 				<div id="bizReviewsContent">
