@@ -45,7 +45,7 @@
 		
 				<tr>
 					<td>שם המקום:</td> 
-					<td><input name="new_name" size="40" value=" <?php echo $_SESSION['place_name'] ?> "></td>
+					<td><input name="new_name" size="40" value=" <?php echo $_GET['place_name'] ?> "></td>
 				</tr>
 				<tr>
 					<td>רחוב:</td>
@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 					<td>עיר:</td>
-					<td> <input name="new_city" size="40" value="<?php echo $_SESSION['place_city'] ?>"></td>	
+					<td> <input name="new_city" size="40" value="<?php echo $_GET['place_city'] ?>"></td>	
 				</tr>
 				<tr>
 					<td>ביקורת:</td>
