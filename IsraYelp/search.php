@@ -19,27 +19,30 @@ function search(){
 	$source = $_POST['source'];
 
 	
-	$mysqli = getMysqliConnection();	
-	$query = "SELECT * FROM `test`.`restaurants` WHERE name='$name' or another_name='$name'";
+	$mysqli = getMysqliConnection();
+	if($kind =="מסעדה")	{
+		$query = "SELECT * FROM `test`.`restaurants` WHERE name='$name' or another_name='$name'";
+	}
+	
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;
 	if ($count ==1){
-		$rest = mysqli_fetch_assoc($result);
-		$rest_id = $rest['id'];
-		$rest_name = $rest['name'];		
-		$city_id = $rest['city_id'];
+		$biz = mysqli_fetch_assoc($result);
+		$biz_id = $biz['id'];
+		$biz_name = $biz['name'];		
+		$city_id = $biz['city_id'];
 		$city_name = getCityName($city_id);
-		$rest_url = "./restaurants/restaurant.php?rest_id=".$rest_id;
-		if ($city==$city_name && $kind=="מסעדה"){
+		$biz_url = "./restaurants/restaurant.php?rest_id=".$biz_id;
+		if ($city==$city_name){
 			if ($source == "write_review"){
 				if (!session_is_registered('username')) { 
-							header("Location: ./login.php?returnUrl=".$rest_url);
+							header("Location: ./login.php?returnUrl=".$biz_url);
 						} else {
-							header("Location: ./restaurants/writeRestaurantReview.php?rest_id=".$rest_id."&rest_name=".$rest_name);			
+							header("Location: ./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type="."restaurants");			
 						}					
 			}
 			if ($source == "main"){
-				header("Location:./restaurants/restaurant.php?rest_id=".$rest_id);
+				header("Location:./restaurants/restaurant.php?biz_id=".$biz_id);
 			}
 		}
 		else {
