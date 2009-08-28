@@ -46,19 +46,13 @@ $mysqli = getMysqliConnection();
 </div>
 
 <div id="mainContent" class="category_browse">
-	<div class="ieSucks" id="locBar">
-		<H1 >תל-אביב</H1>
-		<ul style="float:right;">
-				 <LI><A id="locBoxToggle" onclick='Yelp.init_locBox(this, {"city_dir_depth":0,"return_url":"/home"});return false' href="http://www.yelp.com/locations?return_url=%2Fhome">עוד...</A> </LI>
-				 <LI><A href="http://www.yelp.com/la">חיפה</A> | </LI>
-				 <LI><A href="http://www.yelp.com/sanjose">באר שבע</A> | </LI>
-				 <LI><A href="http://www.yelp.com/nyc">ירושלים</A> | </LI>
-				 <LI id="locBar_title">ערים אחרות:</LI>
-		</ul>
+	<div id="locBar">
+		<?php echo getLocBarHtmlCode($city_id, $city_name, "./restaurants.php");?>		
 	</div>
 
 	<div id="top_cat_biz">
 		<div id="top_biz_lists" class="clearfix">
+			<br/>
 			<h1>מסעדות ב<?php echo $city_name?> </h1>
 			<p id="breadcrumbs">קטגוריה: <a href="../main.php"><?php echo $city_name?></a> 
 				&raquo; מסעדות
