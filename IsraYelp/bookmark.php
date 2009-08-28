@@ -5,35 +5,22 @@ include './utils/functions.php';
 
 $mysqli = getMysqliConnection();	
 
-$returnUrl = $_GET['returnUrl'];
-
-$biz_id = $_GET['biz_id'];
 $biz_name = $_GET['biz_name'];
-$biz_type = $_GET['biz_type'];
-$query = "SELECT * FROM `test`.`bizTypes` WHERE type='$biz_type'";
-$result = $mysqli->query($query);
-$biz_type = mysqli_fetch_assoc($result);
-$biz_table = $biz_type['table_name'];
+$biz_url = $_GET['biz_url'];
 
-$username = $_SESSION['username'];
+$user_id = $_SESSION['user_id'];		
 
-$query = "SELECT * FROM `test`.`users` WHERE username='$username'";
-$result = $mysqli->query($query);
-
-$user = mysqli_fetch_assoc($result);
-$userID = $user['id'];		
-
-$query = "SELECT * FROM `test`.`favorites` WHERE user_id='$userID' and biz_id='$biz_id' and biz_table='$biz_table'";
+$query = "SELECT * FROM `test`.`favorites` WHERE user_id='$user_id' and biz_url='$biz_url'";
 $result = $mysqli->query($query);
 $count = $result->num_rows;
 if ($count == 0) {
 	$query = "INSERT INTO `test`.`favorites` (
 				`user_id` ,
-				`biz_id` ,
-				`biz_table` 	
+				`biz_name` ,
+				`biz_url` 	
 			)VALUES (
-				'$userID' , '$biz_id', '$biz_table'
-			)";
+				'$user_id' , '$biz_name', '$biz_url'
+			);";
 	$result = $mysqli->query($query);	
 	if 	($result) {
 		$bookmark_msg = "'".$biz_name."' נרשם בהצלחה כמקום מועדף.";
@@ -41,7 +28,7 @@ if ($count == 0) {
 		$bookmark_msg = "פעולת סימון '".$biz_name."' כמקום מועדף נכשלה. אנא נסה שוב.";		
 	}		
 } else {
-	$bookmark_msg = "'".$biz_name."' כבר כבר נמצא ברשימת המקומות המועדפים עלייך.";			
+	$bookmark_msg = "'".$biz_name."' כבר נמצא ברשימת המקומות המועדפים עלייך.";			
 }
 ?>
 
@@ -67,7 +54,7 @@ if ($count == 0) {
 </div>
 <div id="bodyContainer_Centered">
 	<p><?php echo $bookmark_msg?></p>
-	<a href="<?php echo $returnUrl?>">לחץ כאן כדי לחזור לדף הקודם.</a>
+	<a href="<?php echo $biz_url?>">לחץ כאן כדי לחזור לדף הקודם.</a>
 </div>
 </body>
 </html>
