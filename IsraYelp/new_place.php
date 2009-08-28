@@ -48,6 +48,10 @@
 					<td><input name="new_name" size="40" value=" <?php echo $_GET['place_name'] ?> "></td>
 				</tr>
 				<tr>
+					<td>סוג המקום:</td> 
+					<td><input name="new_type" size="40" value=" <?php echo $_GET['place_type'] ?> "></td>
+				</tr>
+				<tr>
 					<td>רחוב:</td>
 					<td> <input name="new_street" size="40"></td>	
 				</tr>
