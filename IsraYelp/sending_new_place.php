@@ -16,7 +16,7 @@
 	$message .= "comment: \n";
 	$message .= $new_comment;
 	
-	//echo $message;
+	
 	$to = "milaor@gmail.com";
 	$subject = "new place: ".$new_name;
 	$body = $message;

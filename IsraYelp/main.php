@@ -80,31 +80,36 @@ $city_name = getCityName($city_id);
  	?>
  	
 	<div id="external_search">
-	<form method="get" action="/search" name="external_search"> 
+	<form method="post" action="./search.php" name="external_search"> 
 		<p>
 			<label for="find_desc_ext"> שם המקום <em> שם העסק</em></label> 
-			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="name" tabindex="1" value="" >			
+			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="place_name" tabindex="1" value="" >
+			
 		</p>
 		<p>
 			<label for="find_loc_ext">סוג המקום <em> </em></label>
-			<select name="kind">
- 				 <option value="restaurant">מסעדה</option>
-				 <option value="cafe">בית-קפה</option>
-  				 <option value="hair_salon">מספרה</option>
-                 <option value="cinema">בית קולנוע</option>
+			<select name="place_kind">
+ 				 <option value="מסעדה" >מסעדה</option>
+				 <option value="בית-קפה">בית-קפה</option>
+  				 <option value="מספרה">מספרה</option>
+                 <option value="בית קולנוע">בית קולנוע</option>
 			</select>
 		</p>
 
 		<p>
 			<label for="find_loc_ext">עיר <em> </em></label>
-			<select name="city">
- 				 <option value="tel-aviv">תל-אביב</option>
-				 <option value="jerusalem">ירושלים</option>
-  				 <option value="beer_sheva">באר שבע</option>
-                 <option value="haifa">חיפה</option>
+			<select name="place_city">
+				<option value="תל אביב" > תל אביב </option>
+				 <option value="ראשון לציון">ראשון לציון</option>
+  				 <option value="ירושלים">ירושלים</option>
+                 <option value="חיפה">חיפה</option>
+   				 <option value="באר שבע">באר שבע</option>
+                 <option value="רחובות">רחובות</option>  
+                 <option value="חדרה">חדרה</option>               
 			</select>
 		</p>
-		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3" onclick="document.external_search.rpp.value=Yelp.readRppFromSearchPrefsCookie();">חפש</button>
+		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
+
 	</form>
 	</div>
 
