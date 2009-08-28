@@ -108,6 +108,8 @@ $city_name = getCityName($city_id);
                  <option value="חדרה">חדרה</option>               
 			</select>
 		</p>
+		<input type="hidden" name="source" value="main">
+
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
 
 	</form>
