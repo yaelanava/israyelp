@@ -56,20 +56,7 @@ $city_name = getCityName($city_id);
 	
 <div id="bodyContainer">
 	<div id="locBar">
-		<?php	
-			$other_cities_query = "SELECT * FROM `test`.`cities` WHERE id!=$city_id ORDER BY id DESC";
-			$other_cities_result = $mysqli->query($other_cities_query);
-			
-			$html = "<H1>".$city_name."</H1>";
-			$html .= "<ul>";
-			$html .= "<li><A href=\"\">עוד...</A></li>"; //todo: replace href 			
-			while ($row = mysqli_fetch_assoc($other_cities_result)){
-				$html .= "<li><A href=\"./main.php?city_id=".$row['id']."\">".$row['name']."</A> | </li>";
-			}			
-			$html .= "<li id=\"locBar_title\">ערים אחרות:</li>";
-			$html .= "</ul>";
-			echo $html;
-		?>
+		<?php echo getLocBarHtmlCode($city_id, $city_name, "./main.php");?>
 	</div>
  
  	<?php 
