@@ -1,3 +1,4 @@
+
 <?php 
 
 session_start();
@@ -55,78 +56,87 @@ $count_reviews = $result_reviews->num_rows;
 		</ul>
 </div>
 
+
 <div id="bodyContainer">
-	<div id="ieInnerWrap" class="clearfix">
-		<div id="bizMain">
-			<div id="bizBox">
-				<div class="hReview-aggregate">
-					<div class="item vcard">
-						<div id="bizInfoBody">
-							<div class="wrap">
-								<div id="bizInfoHeader">
-									<h1 class="fn org"><?php echo $restaurant['name']?></h1>
-									<div id="bizRating">
-										<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="../image/stars_map.png"/></div> 
-										<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
-									</div>
-								</div>
-								<div id="bizInfoContent">
-									<p id="bizCategories"><strong>קטגוריה:</strong>
-										<span id="cat_display"> <?php echo $restaurant['type_rest'];?>	
-									</p>
-									<address class="adr">
-										<span class="street-address"><?php echo $restaurant['address']; ?></span>										
-									</address>
-	
-									<span id="bizPhone" class="tel"> <?php echo $restaurant['phone_number']; ?> </span>
-	
-									<div id="bizUrl">
-										<a href="http://www.yelp.com/redir?url=http%3A%2F%2Fwww.ichaatcafe.com&amp;src_bizid=54anJf73lEHBItVRPgRgrA" target="_blank" rel="nofollow" class="url"></a>
-									</div>
-								</div>
-							</div>
-							
-							<div id="bizPhotos">
-								<div class="clearStyles bizPhotoBox">
-										<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
-										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height= 200 style="" alt=""></a>
-								</div>
-								<span style="font-size: 10px;"><a rel="nofollow" href="../uploadPic.php">הוסף תמונה</a></span>
-							</div>
-						</div>
-						
-						<div id="bizAdditionalInfo" class="clearfix">
-							<ul>							
-								<li><strong>משלוחים:</strong><?php if($restaurant['delivery']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>כשר:</strong><?php if($restaurant['kosher']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>גישה לנכים:</strong> <?php if($restaurant['invalid_access']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>ידידותי לילדים:</strong> <?php if($restaurant['child_friendly']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>אירועים:</strong> <?php if($restaurant['events']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>רומנטי:</strong> <?php if($restaurant['romantic']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>חניה:</strong> <?php if($restaurant['parking']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>אזור עישון:</strong> <?php if($restaurant['smoking']==1){echo  " כן";} else {echo " לא";} ?></li>
-								<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>									
-							</ul>
-						</div>
+	<table>
+		<tr>		
+			<td >
+				<div id="bizInfoHeader">
+					<h1 class="fn org"><?php echo $restaurant['name']?></h1>
+					<div id="bizRating">
+						<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="../image/stars_map.png"/></div> 
+						<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
 					</div>
 				</div>
-				
-				<div id="bizActions" class="clearfix">
-					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
-					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php"><img src= "../image/bookmark.png" width=108 height=41></a>
-					<a class="write review" rel="nofollow" 
-						href= "<?php if (!session_is_registered('username')) { 
-										echo ("../login.php?returnUrl=./restaurants/restaurant.php?rest_id=".$rest_id);
-									} else {
-										echo ("writeRestaurantReview.php?rest_id=".$rest_id."&rest_name=".$restaurant['name']);
-									}
-							?>" 
-							id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>
-					
+				<div id="bizInfoContent">
+					<p id="bizCategories"><strong>קטגוריה:</strong>
+						<span id="cat_display"> <?php echo $restaurant['type_rest'];?>	
+					</p>
+					<address class="adr">
+						<span class="street-address"><?php echo $restaurant['address']; ?></span>										
+					</address>
+
+					<span id="bizPhone" class="tel"> <?php echo $restaurant['phone_number']; ?> </span>
 				</div>
-			</div>
-			
-			
+			</td>			
+			<td>
+				<div id="bizPhotos">
+					<div class="clearStyles bizPhotoBox">
+							<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
+							<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height= 200 style="" alt=""></a>
+					</div>
+					<span style="font-size: 10px;"><a rel="nofollow" href="../uploadPic.php">הוסף תמונה</a></span>
+				</div>
+			</td>		
+			</tr>
+			<tr>
+				<td>
+					<div id="bizAdditionalInfo" class="clearfix">
+						<ul>							
+							<li><strong>משלוחים:</strong><?php if($restaurant['delivery']==1){echo  " כן";} else {echo " לא";} ?></li>
+							<li><strong>כשר:</strong><?php if($restaurant['kosher']==1){echo  " כן";} else {echo " לא";} ?></li>
+							<li><strong>גישה לנכים:</strong> <?php if($restaurant['invalid_access']==1){echo  " כן";} else {echo " לא";} ?></li>
+							<li><strong>ידידותי לילדים:</strong> <?php if($restaurant['child_friendly']==1){echo  " כן";} else {echo " לא";} ?></li>
+							<li><strong>אירועים:</strong> <?php if($restaurant['events']==1){echo  " כן";} else {echo " לא";} ?></li>
+							<li><strong>רומנטי:</strong> <?php if($restaurant['romantic']==1){echo  " כן";} else {echo " לא";} ?></li>
+							<li><strong>חניה:</strong> <?php if($restaurant['parking']==1){echo  " כן";} else {echo " לא";} ?></li>
+							<li><strong>אזור עישון:</strong> <?php if($restaurant['smoking']==1){echo  " כן";} else {echo " לא";} ?></li>
+							<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>									
+						</ul>
+					</div>
+				</td>
+				<td>
+					<iframe 
+						src="http://maps.freemap.co.il/api/openlayers/?zoom=9&
+								lat=<?php echo $restaurant['lat']?>&
+								lon=<?php echo $restaurant['lon']?>&
+								marker=true"
+			        	width="300px" height="200px"
+					       scrolling="no"
+					       marginwidth="0" marginheight="0" 
+					       frameborder="1">
+	      			</iframe>
+				</td>					
+			</tr>
+			<tr>
+				<td>
+					<div  id="bizActions" class="clearfix">
+						<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
+						<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php"><img src= "../image/bookmark.png" width=108 height=41></a>
+						<a class="write review" rel="nofollow" 
+							href= "<?php if (!session_is_registered('username')) { 
+											echo ("../login.php?returnUrl=./restaurants/restaurant.php?rest_id=".$rest_id);
+										} else {
+											echo ("writeRestaurantReview.php?rest_id=".$rest_id."&rest_name=".$restaurant['name']);
+										}
+								?>" 
+								id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>
+						
+					</div>
+				</td>				
+			</tr>
+			<tr>
+			<td>
 			<div id="bizReviews">
 				<div id="bizReviewsHeader" class="clearfix">
 					</br>
@@ -169,29 +179,15 @@ $count_reviews = $result_reviews->num_rows;
 							}
 						?>	
 					</div>				
-				</div>
+				</div>	
+			</td>		
+			</tr>	
 
-			</div>
-		</div>
-		
-		<div id="bizSideBar" class="clearfix">
-			<iframe 
-				src="http://maps.freemap.co.il/api/openlayers/?zoom=9&
-						lat=<?php echo $restaurant['lat']?>&
-						lon=<?php echo $restaurant['lon']?>&
-						marker=true"
-	        	width="300px" height="200px"
-			       scrolling="no"
-			       marginwidth="0" marginheight="0" 
-			       frameborder="1">
-      		</iframe>
-		</div>
-	
-	</div>
+	</table>	
 
 </div>
- 
-<div id="footer">	
+
+	<div id="footer">	
 	<div>		
 		<ul id="aboutSite">
 			<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
