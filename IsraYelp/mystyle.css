@@ -196,14 +196,14 @@
 	PADDING-LEFT: 0px;	
 	RIGHT: 7%;	
 	PADDING-BOTTOM: 0px;	
-	MARGIN: 0px 0px 5px;
+	MARGIN: 0px 0px 2px;
 	PADDING-TOP: 0px;	
 	LIST-STYLE-TYPE: none;	
 	POSITION: absolute;	
 	TOP: 0px}
 	
 	#locBar UL LI {	
-	PADDING-LEFT: 5px;	
+	PADDING-RIGHT: 5px;	
 	FLOAT: left;	
 	MARGIN: 0px;
 	ALIGN: right}
@@ -216,7 +216,7 @@
 	DISPLAY: inline;	
 	FONT-WEIGHT: normal;	
 	FONT-SIZE: 12px;	
-	MARGIN: 0px;	
+	MARGIN: 0px 12px;	
 	COLOR: #666}
 	
 	H2 {	
@@ -288,8 +288,8 @@
 	#ex_submit_button {	
 	DISPLAY: block;	
 	BACKGROUND: url("./image/search_button.png") no-repeat;	
-	FLOAT: left;	
-	MARGIN: 14px 0px 0px 5px;	
+	FLOAT: right;	
+	MARGIN: 14px 35px 0px 5px;	
 	WIDTH: 89px;	
 	HEIGHT: 34px}
 	
@@ -306,7 +306,7 @@
 	
 	#external_search FORM P {	
 	FLOAT: right;	
-	MARGIN: 0px 25px 0px 0px;	
+	MARGIN: 0px 40px 0px 0px;	
 	TEXT-ALIGN: right}
 	
 	#external_search FORM INPUT {	

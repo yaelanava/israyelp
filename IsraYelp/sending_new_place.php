@@ -21,8 +21,7 @@
 	$subject = "new place: ".$new_name;
 	$body = $message;
 	if (mail($to, $subject, $body, $new_email)) {
- 		 echo("<p>Message successfully sent!</p>");
+ 		 echo("Message successfully sent!");
  	} else {
- 		 echo("<p>Message delivery failed..</p>");
+ 		 echo("Message delivery failed..");
  	}
-?>

@@ -5,7 +5,7 @@ include './utils/functions.php';
 
 if ((isset($_POST['place_name']) && ('' != $_POST['place_name'])) &&
 	(isset($_POST['place_kind']) && ('' != $_POST['place_kind'])) &&
-	(isset($_POST['city']) && ('' != $_POST['city'])))
+	(isset($_POST['place_city']) && ('' != $_POST['place_city'])))
 	{
 		search();
 	} else {
@@ -14,26 +14,32 @@ if ((isset($_POST['place_name']) && ('' != $_POST['place_name'])) &&
 	}
 
 function search(){
+
 	$name = $_POST['place_name'];
 	$kind = $_POST['place_kind'];
-	$city = $_POST['city'];
-	
-	$_SESSION['place_name']= $name;
-	$_SESSION['place_city']= $city;
+	$city = $_POST['place_city'];
+
 	
 	$mysqli = getMysqliConnection();	
-	$query = "SELECT * FROM `test`.`restaurants` WHERE name='$name'";
+	$query = "SELECT * FROM `test`.`restaurants` WHERE name='$name' or another_name='$name'";
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;
-		
-		if ($count != 0 && $city=="תל-אביב" && $kind=="מסעדה") {
-			//todo
-			header("Location: ./tel-aviv/restaurants/lukas_writeReview.php");		
+	if ($count ==1){
+		$restaurant = mysqli_fetch_assoc($result);
+		$restaurant_id = $restaurant['id'];
+		$restaurant_name = $restaurant['name'];		
+		$city_id = $restaurant['city_id'];
+		$city_name = getCityName($city_id);
+		if ($city==$city_name && $kind=="מסעדה"){			
+			header("Location: ./restaurants/writeRestaurantReview.php?rest_id=".$restaurant_id."&rest_name=".$restaurant_name);
 		}
 		else {
-			header("Location: ./new_place.php");
-			//echo "המקום אינו נמצא במאגר";
-			
+			header("Location: ./new_place.php?place_name=".$name."&place_city=".$city);
 		}
-
 	}
+	else {
+		header("Location: ./new_place.php?place_name=".$name."&place_city=".$city);
+	}
+}
+
+
