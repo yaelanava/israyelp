@@ -24,17 +24,22 @@ function search(){
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;
 	if ($count ==1){
-		$restaurant = mysqli_fetch_assoc($result);
-		$restaurant_id = $restaurant['id'];
-		$restaurant_name = $restaurant['name'];		
-		$city_id = $restaurant['city_id'];
+		$rest = mysqli_fetch_assoc($result);
+		$rest_id = $rest['id'];
+		$rest_name = $rest['name'];		
+		$city_id = $rest['city_id'];
 		$city_name = getCityName($city_id);
+		$rest_url = "./restaurants/restaurant.php?rest_id=".$rest_id;
 		if ($city==$city_name && $kind=="מסעדה"){
 			if ($source == "write_review"){
-				header("Location: ./restaurants/writeRestaurantReview.php?rest_id=".$restaurant_id."&rest_name=".$restaurant_name);			
+				if (!session_is_registered('username')) { 
+							header("Location: ./login.php?returnUrl=".$rest_url);
+						} else {
+							header("Location: ./restaurants/writeRestaurantReview.php?rest_id=".$rest_id."&rest_name=".$rest_name);			
+						}					
 			}
 			if ($source == "main"){
-				header("Location:./restaurants/restaurant.php?rest_id=".$restaurant_id);
+				header("Location:./restaurants/restaurant.php?rest_id=".$rest_id);
 			}
 		}
 		else {
