@@ -27,7 +27,6 @@ $mysqli = new mysqli('localhost', 'administrator', '', 'test');
 //$phone = "03-5617778";
 //				NULL, '$name', '$another_name', '$address', '$city_id', NULL, NULL, '$phone', 'events,meat,mediterranean', '0', '0', '0', '1', '1', '1', '0', '1', '0', '1', '0'
 
-//$address = "קניון עזריאלי קומה 1, תל אביב";
 
 $name = "Black Bar 'n' Burger";
 $another_name = "בלק";

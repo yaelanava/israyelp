@@ -1,10 +1,20 @@
 <?php 
-	session_start();
-	include './utils/functions.php';
+session_start();
+
+include './utils/functions.php';
+
+$user_id=$_SESSION['user_id'];											
+
+//counting how much reviews this user wrote
+$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$user_id'";
+$fav_result = $mysqli->query($fav_query);
+$fav_count = $fav_result->num_rows;
+
 ?>
 
 <head>
-	<title> המועדפים שלי </title>
+	<title> המועדפים שלי | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -40,64 +50,31 @@
 <div id="mainContent">
 	<div id="user_header" align="right">
 		<ul id="userTabs" >
-				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-				<li><a href="./my_reviews.php">ביקורות</a></li> 
-				<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
+			<li><a href="./about_me.php">הפרופיל שלי</a></li> 
+			<li><a href="./my_reviews.php">ביקורות</a></li> 
+			<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
 </div>
 
 <div id="user_details_wrapper">	
-<div id="mainContent">
+<div id="mainContent">	
+	<span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span>
+	<br/>
+	<br/>	
+	<?php 	
+		while ($fav = mysqli_fetch_assoc($fav_result)){		
+			$html = "<div id=\"my_review\">					
+						<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
+							<tr>
+								<td><span><b><a href=".$fav['biz_url']."\">".$fav['biz_name']."</a></b></span></td> 
+							</tr>
+						</table>
+					</div>";
+			echo $html;				
+		}
+	?>	
 	
-
-	<?php
-	$id=$_SESSION['user_id'];											
-	//counting how much reviews this user wrote
-	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-	$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$id'";
-	$fav_result = $mysqli->query($fav_query);
-
-	
-	?>
-	<span><b> יש לך </b></span>
-	<?php 
-	$fav_count = $fav_result->num_rows;
-	echo $fav_count;
-	?>
-	<span><b> מקומות מועדפים </b></span>
-	
-	
-	<?php 
-	
-	echo "<br />";
-	echo "<br />";
-	
-	
-	
-	while ($review = mysqli_fetch_assoc($fav_result)){
-		
-		$html = "<div id=\"my_review\">
-			
-			
-			<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
-				<tr>
-					<td><span> <b> ".$review['restaurant']."</b>"."</span>
-					</td> 
-				</tr>
-			</table>
-			</div>
-		";
-		echo $html;
-		
-			
-	}
-?>	
-	
-	
-	
-
-
 </div>
 </div>
 <div id="footer">	

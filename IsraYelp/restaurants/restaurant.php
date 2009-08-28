@@ -124,7 +124,7 @@ $count_reviews = $result_reviews->num_rows;
 				<td>
 					<div  id="bizActions" class="clearfix">
 						<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
-						<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_id=<?php echo $rest_id?>&biz_name=<?php echo $rest_name?>&biz_type=1&returnUrl=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
+						<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $rest_name?>&biz_url=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
 						<a class="write review" rel="nofollow" 
 							href= "<?php if (!session_is_registered('username')) { 
 											echo ("../login.php?returnUrl=".$rest_url);

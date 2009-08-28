@@ -4,12 +4,25 @@ session_start();
 include './utils/functions.php';
 
 $mysqli = getMysqliConnection();
+
+//extracting the user information 
+$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+$username=$_SESSION['username'];
+$email = $_SESSION['email'];
+$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
+$user_result = $mysqli->query($user_query);
+$row = mysqli_fetch_assoc($user_result);
+$id = $row['id'];
+$city = $row['city'];
+$month = $row['month_added'];
+$year = $row['year_added'];
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>		
-	<title> עליי </title>
+	<title> החשבון שלי | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -20,24 +33,6 @@ $mysqli = getMysqliConnection();
 </head>
 
 <body class= "us" id="IsraYelp_main_body" dir="rtl">
-<?php
-		//extracting the user information 
-		$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-		$name=$_SESSION['username'];
-		$email = $_SESSION['email'];
-		//$my_query = "SELECT * FROM `test`.`users` WHERE username= '$name'";
-		$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
-		$user_result = $mysqli->query($user_query);
-		$row=mysqli_fetch_assoc($user_result);
-		/*$row = $user_result->fetch_row();   		
-		$id=$row[0];
-		$city=$row[3];
-		$added=$row[4]; */
-		$id=$row['id'];
-		$city=$row['city'];
-		$month=$row['month_added'];
-		$year=$row['year_added'];
-?>
 
 <div id="head">
 		<div id="logo">
@@ -51,8 +46,7 @@ $mysqli = getMysqliConnection();
 </div>
 
 <div id="navContainer">
-		<ul>
-			
+		<ul>			
 			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
@@ -74,10 +68,10 @@ $mysqli = getMysqliConnection();
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
 			<div id="about_user_column">
-				
 				<table cellspacing="0" cellpadding="0" border="0" id="user_table">
 					<tr>
 						<td valign="bottom">
+							<h1><?php echo $username?></h1>						
 							<div id="user_pic">
 								<div class="clearStyles photoBox" >
 									<?php $destination="./users_pics/".$id;
@@ -110,9 +104,6 @@ $mysqli = getMysqliConnection();
 							<?php
 								$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$id'";
 								$fav_result = $mysqli->query($fav_query);
-							
-								//echo $name=$_SESSION['username'];
-								//echo $email = $_SESSION['email']; 
 								$fav_count = $fav_result->num_rows;
 								echo $fav_count;
 							?>
