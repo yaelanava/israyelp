@@ -5,7 +5,7 @@ session_start();
 
 include '../utils/functions.php';
 
-$rest_id = $_GET['rest_id'];
+$rest_id = $_GET['biz_id'];
 $rest_url = "./restaurants/restaurant.php?rest_id=".$rest_id;
 
 $mysqli = getMysqliConnection();
@@ -15,7 +15,7 @@ $result_restaurant = $mysqli->query($query_restaurant);
 $restaurant = mysqli_fetch_assoc($result_restaurant);
 $rest_name = $restaurant['name'];	
 
-$query_reviews = "SELECT * FROM `test`.`reviews` WHERE restaurant_id='$rest_id' ORDER BY added DESC";
+$query_reviews = "SELECT * FROM `test`.`reviews` WHERE biz_id='$rest_id' and biz_type='restaurants' ORDER BY added DESC";
 $result_reviews = $mysqli->query($query_reviews);
 $count_reviews = $result_reviews->num_rows;
 											
@@ -127,7 +127,7 @@ $count_reviews = $result_reviews->num_rows;
 							href= "<?php if (!session_is_registered('username')) { 
 											echo ("../login.php?returnUrl=".$rest_url);
 										} else {
-											echo ("writeRestaurantReview.php?rest_id=".$rest_id."&rest_name=".$rest_name);
+											echo ("../writeReviewForm.php?biz_id=".$rest_id."&biz_name=".$rest_name."&biz_type=restaurants");
 										}
 								?>" 
 								id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						

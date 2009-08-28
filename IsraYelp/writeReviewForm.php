@@ -1,21 +1,24 @@
-<?php session_start();
+<?php 
 
-$rest_id = $_GET['rest_id'];
-$rest_name = $_GET['rest_name'];
+session_start();
+
+$biz_id = $_GET['biz_id'];
+$biz_name = $_GET['biz_name'];
+$biz_type = $_GET['biz_type'];
 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title> כתיבת ביקורת | IsraYelp</title>
+	<title> כתוב ביקורת | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
 	
-	<link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="../mystyle.css">  	
+	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 
 <body dir="rtl">
@@ -33,17 +36,17 @@ $rest_name = $_GET['rest_name'];
 
 <div id="navContainer">
 		<ul>			
-			<LI class="header" id="writeReview"><A   href="../write_review.php" >כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A   href="../find_review.php" >חפש ביקורת</A></LI>
+			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 						
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../login.php?logout=1";} else{echo "../login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../profile.php";} else{echo "../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "./login.php?logout=1";} else{echo "./login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "./profile.php";} else{echo "./signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
 <div id="bodyContainer">
-	<H1>כתוב את הביקורת שלך עבור <?php echo $rest_name?></H1>
-	<form method="post" action="./writeareview.php" name="review_rate_form" id="review_rate_form">
+	<H1>כתוב את הביקורת שלך עבור <?php echo $biz_name?></H1>
+	<form method="post" action="./submitReview.php" name="review_rate_form" id="review_rate_form">
 				<dl id="newBizForm">
 					<dt>
 						<strong>דירוג</strong><br/>
@@ -59,7 +62,6 @@ $rest_name = $_GET['rest_name'];
 						<p id="ratingDescription">לחץ על הכוכב כדי לדרג</p>
 					</dd>
 
-
 					<dt class="review"><strong>כותרת</strong><br/>	</dt>
 					<dd class="review">
 						<input type="text" name="title" size=40> 
@@ -74,7 +76,8 @@ $rest_name = $_GET['rest_name'];
 
 		<input type="submit" name="action_select" value="שלח">
 		<input type="button" name="" value="חזור" class="formButton">
-		<input type="hidden" name="rest_id" value="<?php echo $rest_id?>">
+		<input type="hidden" name="biz_id" value="<?php echo $biz_id?>">
+		<input type="hidden" name="biz_type" value="<?php echo $biz_type?>">
 		<em class="smaller grey">* תמיד ניתן לשנות את הביקורת מאוחר יותר</em>
 	</form>
 </div>

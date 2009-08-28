@@ -7,7 +7,11 @@ $city_name = getCityName($city_id);
 
 $mysqli = getMysqliConnection();
 
+$query_restaurants = "SELECT * FROM `test`.`restaurants` WHERE id='$city_id' ORDER BY grading DESC LIMIT 5";
+$result_restaurants = $mysqli->query($query_restaurants);
+
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,20 +62,27 @@ $mysqli = getMysqliConnection();
 				&raquo; מסעדות
 			</p>
 		
-			<div id="top_biz">
-					<div class="clearStyles bizPhotoBox">
-							<a  href="/biz/bakery-mexico-san-jose#hrid:rwiHbJYf8uQWOnSglosPgg"><img src="http://static.px.yelp.com/bphoto/CTZh-CDPji271JkSYxYuBA/ms" style="" alt="Bakery Mexico"></a>
-					</div>
-		
-					<p class="biz_info">1. <a href="restaurant.php?rest_id=1" id="top_biz_name_2" title="lukas"> לוקאס </a> </p>
-					<div class="top_biz_rating">
-						<div class="rating"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">83 ביקורות</em>
-					</div>
-					<p class="smaller">קטגוריה: <a href="./take-away.php">Take Away </a>, <a href="./bar-rest.php"> בר-מסעדה</a>, <a href="./bistro.php">ביסטרו</a>, <a href="./events.php">אירועים</a> </p>
-		
-					<p>"רבותי, חיפשתי מסעדה טובה עם סטייקים איכותיים, וכשראיתי את המחיר בלוקאס, חשבתי פעמיים אם ללכת כי זה נראה חשוד. אבל אנשים, קיבלתי שם את אחד הסטייקים הטובים שאכלתי אי פעם (ואכלתי בהרבה מסעדות שף בשריות). עשוי במידת צלייה מושלמת, בשר איכותי, מחיר מפתיע (600 גר' ב-90 ש"ח אל מול 500 גר' במחיר ממוצע של 120 ש"ח במקומות אחרים). בת זוגתי נהנתה מאוד ממנת כבד העוף שלהם. בקיצור, ממליץ בחום, ללכת וליהנות."</p>
-			</div>
-		
+			<?php 
+				$topRestaurant = mysqli_fetch_assoc($result_restaurants);
+				$topRest_id = $topRestaurant['id'];
+				$image_srs = "./image/$topRest_id.JPG";
+				$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id='$topRest_id' and biz_type='restaurants' ORDER BY added DESC LIMIT 1";
+				$result_restReview = $mysqli->query($query_restReview);
+				$restReview = mysqli_fetch_assoc($result_restReview);
+				$html = "<div id=\"top_biz\">
+							<div class=\"clearStyles bizPhotoBox\">
+								<a  href=\"".$image_srs."\"><img src=\"".$image_srs."\" style=\"\" alt=\"".$topRestaurant['name']."\"></a>
+							</div>
+							<p class=\"biz_info\">1. <a href=\"./restaurant.php?biz_id=$topRest_id\" id=\"top_biz_name_2\"\">".$topRestaurant['name']."</a></p>							
+							<div class=\"top_biz_rating\">
+								<div class=\"rating\"><img class=\"stars_4_half\" width=\"83\" height=\"325\" title=\"4.5 star rating\" alt=\"4.5 star rating\" src=\"../image/stars_map.png\"/></div> <em class=\"smaller\">83 ביקורות</em>
+							</div>
+							<p class=\"smaller\">קטגוריה: <a href=\"./take-away.php\">Take Away </a>, <a href=\"./bar-rest.php\"> בר-מסעדה</a>, <a href=\"./bistro.php\">ביסטרו</a>, <a href=\"./events.php\">אירועים</a></p>
+							<p>".$restReview['review']."</p>
+						</div>";
+				echo $html;
+			?>
+									
 			<ul id="biz_list" class="stripped">
 				<li>
 					<div class="biz_info">

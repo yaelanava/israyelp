@@ -138,7 +138,7 @@ $city_name = getCityName($city_id);
 									if ($first){
 										$html .= "<strong>";
 									}
-									$html .= "<a href=\"./restaurants/restaurant.php?rest_id=".$rest['id']."\">".$rest['name']."</a>";
+									$html .= "<a href=\"./restaurants/restaurant.php?biz_id=".$rest['id']."\">".$rest['name']."</a>";
 									if ($first){
 										$html .= "</strong>";
 										$first = 0;
@@ -318,17 +318,19 @@ $city_name = getCityName($city_id);
 							$result_user = $mysqli->query($query_user);
 							$user = mysqli_fetch_assoc($result_user);
 							
-							$rest_id = $review['restaurant_id'];
-							$query_rest = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
-							$result_rest = $mysqli->query($query_rest);
-							$rest = mysqli_fetch_assoc($result_rest);
+							$biz_id = $review['biz_id'];
+							$biz_type = $review['biz_type'];
+							$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
+							$result = $mysqli->query($query);
+							$biz = mysqli_fetch_assoc($result);
+							$biz_url = "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-1).".php?biz_id=".$biz_id;
 							
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
 											<A href=\"./about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 										</div>								
 										<p>
-											<a href=\"./restaurants/restaurant.php?rest_id=".$rest['id']."\">".$rest['name']."</a> - ".$review['title'] ."
+											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
 											<br/><em class=\"smaller grey\">". $user['username'] ."</em>
 											<br/>".$review['review']."										
 										</p>

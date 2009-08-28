@@ -65,17 +65,18 @@ $rev_count = $rev_result->num_rows;
 			<br/>		
 			<?php 
 				while ($review = mysqli_fetch_assoc($rev_result)){		
-					$rest_id=$review['restaurant_id'];
-					$grading=$review['grading'];
-					$query_rest = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
-					$result_rest = $mysqli->query($query_rest);
-					$rest = mysqli_fetch_assoc($result_rest);
+					$biz_id = $review['biz_id'];
+					$biz_type = $review['biz_type'];
+					$grading = $review['grading'];
+					$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
+					$result = $mysqli->query($query);
+					$biz = mysqli_fetch_assoc($result);
 					
 					$sen="הביקורת נכתבה עבור ";
 					$html = "<div id=\"my_review\">						
 								<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 									<tr>
-										<td><span> <b> ".$sen.$rest['name']."</b>"."</span>
+										<td><span> <b> ".$sen.$biz['name']."</b>"."</span>
 											<DIV class=\"ext_rating\">
 												<DIV class=\"rating\">
 													<IMG class=\"stars_". $grading."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
