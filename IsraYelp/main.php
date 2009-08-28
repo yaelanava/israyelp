@@ -85,16 +85,27 @@ $city_name = getCityName($city_id);
 
 		<p>
 			<label for="find_loc_ext">עיר <em> </em></label>
-			<select name="place_city">
-				<option value="תל אביב" > תל אביב </option>
-				 <option value="ראשון לציון">ראשון לציון</option>
-  				 <option value="ירושלים">ירושלים</option>
-                 <option value="חיפה">חיפה</option>
-   				 <option value="באר שבע">באר שבע</option>
-                 <option value="רחובות">רחובות</option>  
-                 <option value="חדרה">חדרה</option>               
-			</select>
-		</p>
+			
+			
+			<?php 
+			$cities_query = "SELECT * FROM `test`.`cities` ORDER BY id DESC";
+			$cities_result = getMysqliConnection()->query($cities_query);
+			
+			$html = "<select name=\"place_city\">";       		
+			while ($row = mysqli_fetch_assoc($cities_result)){
+				if($row['english_name']=="Tel Aviv"){
+					$html .="<option SELECTED ";
+					$html .= " value=\"".$row['name']."\">".$row['name']."</option>";
+				}
+				else {
+				$html .= "<option value=\"".$row['name']."\">".$row['name']."</option>";
+				}	
+			}			
+			$html .= "</select>";
+			echo $html;
+			?>
+			
+			</p>
 		<input type="hidden" name="source" value="main">
 
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
