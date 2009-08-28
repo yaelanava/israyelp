@@ -1,40 +1,39 @@
 <?php
 session_start();
 
-include '../utils/functions.php';
+include './utils/functions.php';
 
-if (isset($_POST['rest_id']) && ('' != $_POST['rest_id']) && 
-	isset($_POST['title']) && ('' != $_POST['title']) && 
+if (isset($_POST['title']) && ('' != $_POST['title']) && 
 	isset($_POST['review']) && ('' != $_POST['review']) && 
-	isset($_POST['grading']) && ('' != $_POST['grading'])) {
+	isset($_POST['grading']) && ('' != $_POST['grading']) &&
+	isset($_POST['biz_id']) && ('' != $_POST['biz_id']) &&
+	isset($_POST['biz_type']) && ('' != $_POST['biz_type'])) {
 	
-	$city_id = $_SESSION['city_id'];
-	$rest_id = $_POST['rest_id'];
 	$review = $_POST['review'];
 	$grading = $_POST['grading'];
 	$title = $_POST['title'];
-	$useremail = $_SESSION['email']; 
 
-	$rest_url = "./restaurant.php?rest_id=".$rest_id;
+	$biz_id = $_POST['biz_id'];
+	$biz_type = $_POST['biz_type'];
+	
+	$city_id = $_SESSION['city_id'];
+	$user_id = $_SESSION['user_id'];
+		
+	$biz_url = "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-1).".php?biz_id=".$biz_id;
 	
 	$mysqli = getMysqliConnection();
-		
-	$query = "SELECT * FROM `test`.`users` WHERE email='$useremail'";
-	$result = $mysqli->query($query);
-	
-	$user = mysqli_fetch_assoc($result);
-	$userID = $user['id'];
 	
 	$query = "INSERT INTO `test`.`reviews` (
 				id, 
 				city_id,
-				restaurant_id, 
+				biz_id,
+				biz_type, 
 				user_id, 
 				grading, 
 				title, 
 				review
 			) VALUES (
-				NULL , '$city_id', '$rest_id', '$userID', '$grading', '$title', '$review'
+				NULL , '$city_id', '$biz_id', '$biz_type', '$user_id', '$grading', '$title', '$review'
 			);";
 			
 	$result = $mysqli->query($query);
@@ -54,9 +53,9 @@ if (isset($_POST['rest_id']) && ('' != $_POST['rest_id']) &&
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
 	
-	<link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="../mystyle.css">  	
+	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 
 <body dir="rtl">
@@ -70,7 +69,7 @@ if (isset($_POST['rest_id']) && ('' != $_POST['rest_id']) &&
 <div id="bodyContainer_Centered">
 	<p><?php if ($result) {echo "הביקורת נשמרה בהצלחה.";} else {echo "הביקורת לא נשמרה. אנא נסה שוב";}?>
 		<br><br>
-		<a href="<?php echo $rest_url?>">לחץ כאן כדי לחזור לדף המסעדה.</a>
+		<a href="<?php echo $biz_url?>">לחץ כאן כדי לחזור לדף המסעדה.</a>
 	</p>
 </div>
 </body>
