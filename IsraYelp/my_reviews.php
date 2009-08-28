@@ -3,7 +3,15 @@
 session_start();
 
 include './utils/functions.php';
-	
+
+$user_id = $_SESSION['user_id'];											
+
+//counting how much reviews this user wrote
+$mysqli = getMysqliConnection();
+$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
+$rev_result = $mysqli->query($review_query);
+$rev_count = $rev_result->num_rows;
+
 ?>
 
 <head>
@@ -30,8 +38,7 @@ include './utils/functions.php';
 </div>
 
 <div id="navContainer">
-		<ul>
-			
+		<ul>			
 			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
@@ -42,88 +49,53 @@ include './utils/functions.php';
 
 <div id="mainContent">
 	<div id="user_header"  align="right">
-		<ul id="userTabs" >
-			
-				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-				<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
-				<li><a href="./my_favs.php">מועדפים</a></li>
+		<ul id="userTabs" >	
+			<li><a href="./about_me.php">הפרופיל שלי</a></li> 
+			<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
+			<li><a href="./my_favs.php">מועדפים</a></li>
 		</ul> 
 	</div>
 </div>
-	
 
-	<div id="user_details_wrapper">	
+<div id="user_details_wrapper">	
 	<div id="main_content">
-	<div id="rev_fix">
-
-	
-	<?php
-	$id=$_SESSION['user_id'];											
-	//counting how much reviews this user wrote
-	$mysqli = new mysqli('localhost', 'administrator', '', 'test');
-	$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$id'";
-	$rev_result = $mysqli->query($review_query);
-
-	//echo $name=$_SESSION['username'];
-	//echo $email = $_SESSION['email']; 
-	?>
-	<span><b> כתבת כבר </b></span>
-	<?php 
-	$rev_count = $rev_result->num_rows;
-	echo $rev_count;
-	?>
-	<span ><b> ביקורות לאתר </b></span>
-	
-	
-	
-	<?php 
-	
-	echo "<br />";
-	echo "<br />";
-	
-	
-	
-	while ($review = mysqli_fetch_assoc($rev_result)){
-
-		$rest_id=$review['restaurant_id'];
-		$grading=$review['grading'];
-		$query_rest = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
-		$result_rest = $mysqli->query($query_rest);
-		$rest = mysqli_fetch_assoc($result_rest);
-		$query_user = "SELECT * FROM `test`.`users` WHERE id='$id'";
-		$result_user = $mysqli->query($query_user);
-		$user = mysqli_fetch_assoc($result_user);
-		
-		$sen="הביקורת נכתבה עבור ";
-		$html = "<div id=\"my_review\">
-			
-			
-			<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
-				<tr>
-					<td><span> <b> ".$sen.$rest['name']."</b>"."</span>
-							<DIV class=\"ext_rating\">
-								<DIV class=\"rating\">
-									<IMG class=\"stars_". $grading."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
-								</DIV>
-								<EM class=\"smaller\">". $review['added']."</EM> 
-							</DIV>
-					</td> 
-					<td>
-						<span><b>". $review['title']."</b><br>". $review['review']."</span>
-					</td>
-				</tr>
-			</table>
-			</div>
-		";
-		echo $html;
-		
-			
-	}
-?>
-</div>	
+		<div id="rev_fix">
+			<span><b> כתבת כבר </b></span> 	<?php echo $rev_count?> <span ><b> ביקורות לאתר </b></span>
+			<br/>
+			<br/>		
+			<?php 
+				while ($review = mysqli_fetch_assoc($rev_result)){		
+					$rest_id=$review['restaurant_id'];
+					$grading=$review['grading'];
+					$query_rest = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
+					$result_rest = $mysqli->query($query_rest);
+					$rest = mysqli_fetch_assoc($result_rest);
+					
+					$sen="הביקורת נכתבה עבור ";
+					$html = "<div id=\"my_review\">						
+								<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
+									<tr>
+										<td><span> <b> ".$sen.$rest['name']."</b>"."</span>
+											<DIV class=\"ext_rating\">
+												<DIV class=\"rating\">
+													<IMG class=\"stars_". $grading."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
+												</DIV>
+												<EM class=\"smaller\">". $review['added']."</EM> 
+											</DIV>
+										</td> 
+										<td>
+											<span><b>". $review['title']."</b><br>". $review['review']."</span>
+										</td>
+									</tr>
+							</table>
+						</div>";
+					echo $html;			
+				}
+			?>
+		</div>
+	</div>
 </div>
-</div>
-</div>
+
 <div id="footer">	
 	<div>		
 		<ul id="aboutSite">
@@ -149,5 +121,3 @@ include './utils/functions.php';
 		<p> זכויות יוצרים </p>
 	</div>
 </div>
-
-	
