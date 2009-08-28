@@ -1074,8 +1074,7 @@
 	POSITION: relative}
 	
 	#bizInfoHeader {	
-	PADDING-RIGHT: 0px;	
-	PADDING-LEFT: 2px;	
+	PADDING-RIGHT: 2px;	
 	MARGIN-BOTTOM: 5px;	
 	PADDING-BOTTOM: 1px;	
 	PADDING-TOP: 2px}
@@ -1104,7 +1103,7 @@
 		
 	#bizInfoContent {	
 	CLEAR: left;	
-	PADDING-LEFT: 7px}
+	PADDING-RIGHT: 7px}
 	
 	#bizCategories {	
 	PADDING-RIGHT: 0px;	
