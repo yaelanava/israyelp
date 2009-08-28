@@ -46,11 +46,11 @@ function search(){
 			}
 		}
 		else {
-			header("Location: ./new_place.php?place_name=".$name."&place_city=".$city);
+			header("Location: ./new_place.php?place_name=".$name."&place_city=".$city."&place_type=".$kind);
 		}
 	}
 	else {
-		header("Location: ./new_place.php?place_name=".$name."&place_city=".$city);
+		header("Location: ./new_place.php?place_name=".$name."&place_city=".$city."&place_type=".$kind);
 	}
 }
 
