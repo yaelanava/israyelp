@@ -24,11 +24,10 @@ function loginUser(){
 		
 	$query = "SELECT * FROM `test`.`users` WHERE email='$email' and password=PASSWORD('$password')";
 	$result = $mysqli->query($query);
-	$count = $result->num_rows;
-	
-
+	$count = $result->num_rows;	
 	if($count==1){
 		$user = mysqli_fetch_assoc($result);
+		$_SESSION['user_id'] = $user['id'];	
 		$_SESSION['username'] = $user['username'];
 		$_SESSION['email'] = $email;
 		if ($_GET['returnUrl']){

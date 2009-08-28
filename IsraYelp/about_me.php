@@ -5,21 +5,20 @@ include './utils/functions.php';
 
 $mysqli = getMysqliConnection();
 
-//extracting the user information 
-$mysqli = new mysqli('localhost', 'administrator', '', 'test');
 $username=$_SESSION['username'];
-$email = $_SESSION['email'];
-$user_query = "SELECT * FROM `test`.`users` WHERE email= '$email'";
+$user_id = $_SESSION['user_id'];
+
+//extracting the user information 
+$user_query = "SELECT * FROM `test`.`users` WHERE id= '$user_id'";
 $user_result = $mysqli->query($user_query);
-$row = mysqli_fetch_assoc($user_result);
-$id = $row['id'];
-$city = $row['city'];
-$month = $row['month_added'];
-$year = $row['year_added'];
+$user = mysqli_fetch_assoc($user_result);
+$city = $user['city'];
+$month = $user['month_added'];
+$year = $user['year_added'];
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>		
 	<title> החשבון שלי | IsraYelp</title>
@@ -74,7 +73,7 @@ $year = $row['year_added'];
 							<h1><?php echo $username?></h1>						
 							<div id="user_pic">
 								<div class="clearStyles photoBox" >
-									<?php $destination="./users_pics/".$id;
+									<?php $destination="./users_pics/".$user_id;
 										if (!file_exists($destination))
 											$destination="./users_pics/blank_user_medium.gif";
 									?>
@@ -91,18 +90,16 @@ $year = $row['year_added'];
 							<?php
 		
 								//counting how much reviews this user wrote
-								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$id'";
+								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
 								$rev_result = $mysqli->query($review_query);
 								$rev_count = $rev_result->num_rows;
-								echo $rev_count;
-								$_SESSION['user_id']=$id;
-		
+								echo $rev_count;	
 							?>
 						
 							<a href="./my_reviews.php" >ביקורות שנכתבו על ידך</a>
 							<br>
 							<?php
-								$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$id'";
+								$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$user_id'";
 								$fav_result = $mysqli->query($fav_query);
 								$fav_count = $fav_result->num_rows;
 								echo $fav_count;
@@ -151,12 +148,10 @@ $year = $row['year_added'];
 					<?php
 
 						//counting how much reviews this user wrote
-						$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$id'";
+						$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
 						$rev_result = $mysqli->query($review_query);
 						$rev_count = $rev_result->num_rows;
 						echo $rev_count;
-						$_SESSION['user_id']=$id;
-
 					?>
 				
 					<a href="./my_reviews.php" >ביקורות שנכתבו על ידך</a>
