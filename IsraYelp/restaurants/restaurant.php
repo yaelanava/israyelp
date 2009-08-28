@@ -48,8 +48,7 @@ $count_reviews = $result_reviews->num_rows;
 </div>
 
 <div id="navContainer">
-		<ul>
-			
+		<ul>			
 			<LI class="header" id="writeReview"><A href="../write_review.php>כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A href="../find_review.php" >חפש ביקורת</A></LI>
 			
@@ -57,7 +56,6 @@ $count_reviews = $result_reviews->num_rows;
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../about_me.php";} else{echo "../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
-
 
 <div id="bodyContainer">
 	<table>
@@ -137,58 +135,56 @@ $count_reviews = $result_reviews->num_rows;
 				</td>				
 			</tr>
 			<tr>
-			<td>
-			<div id="bizReviews">
-				<div id="bizReviewsHeader" class="clearfix">
-					</br>
-					<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $rest_name?>:</h2>	
-				</div>
-				<br></br>
-				<div id="bizReviewsContent">
-					<div id="bizReviewsInner">
-							<?php 
-							while ($review = mysqli_fetch_assoc($result_reviews)){
-								$userId = $review['user_id'];
-								$query_user = "SELECT * FROM `test`.`users` WHERE id='$userId'";
-								$result_user = $mysqli->query($query_user);
-								$user = mysqli_fetch_assoc($result_user);
-								
-								$html = "<DIV class=\"review externalReview clearfix nonfollowingReview \" >
-											<DIV class=\"wrap\">
-												<DIV class=\"reviewer\">
-													<DIV class=\"mini\">
-														<DIV class=\"photoBoxSm\">
-															<DIV class=\"clearStyles photoBox\">
-																<A href=\"../about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
-															</div>			
+				<td>
+				<div id="bizReviews">
+					<div id="bizReviewsHeader" class="clearfix">
+						</br>
+						<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $rest_name?>:</h2>	
+					</div>
+					<br></br>
+					<div id="bizReviewsContent">
+						<div id="bizReviewsInner">
+								<?php 
+								while ($review = mysqli_fetch_assoc($result_reviews)){
+									$userId = $review['user_id'];
+									$query_user = "SELECT * FROM `test`.`users` WHERE id='$userId'";
+									$result_user = $mysqli->query($query_user);
+									$user = mysqli_fetch_assoc($result_user);
+									
+									$html = "<DIV class=\"review externalReview clearfix nonfollowingReview \" >
+												<DIV class=\"wrap\">
+													<DIV class=\"reviewer\">
+														<DIV class=\"mini\">
+															<DIV class=\"photoBoxSm\">
+																<DIV class=\"clearStyles photoBox\">
+																	<A href=\"../about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
+																</div>			
+															</div>
 														</div>
+														<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"../about_me.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
+														<P class=\"reviewer_info\">". $user['city']."</P>
 													</div>
-													<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"../about_me.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
-													<P class=\"reviewer_info\">". $user['city']."</P>
-												</div>
-												<DIV class=\"ext_rating\">
-													<DIV class=\"rating\">
-														<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../image/stars_map.png\" width=\"83\" />
+													<DIV class=\"ext_rating\">
+														<DIV class=\"rating\">
+															<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../image/stars_map.png\" width=\"83\" />
+														</DIV>
+															<EM class=\"smaller\">". $review['added']."</EM> 
 													</DIV>
-														<EM class=\"smaller\">". $review['added']."</EM> 
-												</DIV>
-													<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['review']."</P>
-											</div>
-										</div>	
-										";
-								echo $html;
-							}
-						?>	
-					</div>				
-				</div>	
-			</td>		
+														<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['review']."</P>
+												</div>
+											</div>	
+											";
+									echo $html;
+								}
+							?>	
+						</div>				
+					</div>	
+				</td>		
 			</tr>	
-
 	</table>	
-
 </div>
 
-	<div id="footer">	
+<div id="footer">	
 	<div>		
 		<ul id="aboutSite">
 			<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
