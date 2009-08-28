@@ -1341,8 +1341,13 @@
 		background-image:url(../i/new/tabs2/round_right_on.gif);
 	}
 	
-	#about_user_column{width:200px;float:right;}
-	#user_details_wrapper{border:margin-top:5px;padding:0px 0px;}
+	#about_user_column{
+	width: 200px;
+	float: center;
+	margin: 0px 0px;}
+	
+	#user_details_wrapper{
+	border:margin-top:5px;padding:0px 0px;}
 	#inner_container{background:url(../i/new/gfx/1x1.gif) repeat-y 205px 0px;}
 	#user_revs{border:margin-top:5px;}	
 		
@@ -1360,7 +1365,7 @@
 	MARGIN-LEFT: auto;	
 	BORDER-LEFT: #ccc 1px solid;	
 	WIDTH: 930px;	
-	MARGIN-RIGHT: 47px;	
+	MARGIN-RIGHT: 133px;	
 	PADDING-TOP: 10px;	
 	BORDER-BOTTOM: #ccc 1px solid} 
 	
