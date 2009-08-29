@@ -3,6 +3,11 @@ session_start();
 
 include './utils/functions.php';
 
+$biz_id = $_POST['biz_id'];
+$biz_type = $_POST['biz_type'];
+$_SESSION['biz_id']=$biz_id;
+$_SESSION['biz_type']=$biz_type;
+
 if (isset($_POST['title']) && ('' != $_POST['title']) && 
 	isset($_POST['review']) && ('' != $_POST['review']) && 
 	isset($_POST['grading']) && ('' != $_POST['grading']) &&
@@ -13,8 +18,6 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	$grading = $_POST['grading'];
 	$title = $_POST['title'];
 
-	$biz_id = $_POST['biz_id'];
-	$biz_type = $_POST['biz_type'];
 	
 	$city_id = $_SESSION['city_id'];
 	$user_id = $_SESSION['user_id'];
@@ -39,8 +42,9 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	$result = $mysqli->query($query);
 		
 } else {
-	echo "חלק מהשדות היו ריקים";
-	die(0);	
+	//echo "חלק מהשדות היו ריקים";
+	//die(0);
+	header("location:submit_fail.php");	
 }
 
 ?>	
