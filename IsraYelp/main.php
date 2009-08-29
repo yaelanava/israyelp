@@ -338,7 +338,7 @@ $city_name = getCityName($city_id);
 							
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./about_me.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+											<A href=\"./user_reviwes.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 										</div>								
 										<p>
 											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
