@@ -67,8 +67,8 @@ $year = $user['year_added'];
 			
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
-			<div id="about_user_column">
-				<table cellspacing="0" cellpadding="0" border="0" id="user_table">
+			
+				<table cellspacing="100" cellpadding="0" border="0" >
 					<tr>
 						<td valign="bottom">
 							<h1><?php echo $username?></h1>						
@@ -125,7 +125,7 @@ $year = $user['year_added'];
 						</td>
 					</tr>																
 				</table>
-			</div>
+			
 		</div>
 	</div>
 </div>		
