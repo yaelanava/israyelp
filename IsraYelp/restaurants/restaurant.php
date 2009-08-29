@@ -6,7 +6,9 @@ session_start();
 include '../utils/functions.php';
 
 $rest_id = $_GET['biz_id'];
-$rest_url = "./restaurants/restaurant.php?rest_id=".$rest_id;
+$biz_type = "restaurants";
+$rest_url = getBizURL($biz_type, $rest_id);
+
 
 $mysqli = getMysqliConnection();
 
@@ -15,7 +17,7 @@ $result_restaurant = $mysqli->query($query_restaurant);
 $restaurant = mysqli_fetch_assoc($result_restaurant);
 $rest_name = $restaurant['name'];	
 
-$query_reviews = "SELECT * FROM `test`.`reviews` WHERE biz_id='$rest_id' and biz_type='restaurants' ORDER BY added DESC";
+$query_reviews = "SELECT * FROM `test`.`reviews` WHERE biz_id='$rest_id' and biz_type='$biz_type' ORDER BY added DESC";
 $result_reviews = $mysqli->query($query_reviews);
 $count_reviews = $result_reviews->num_rows;
 											
@@ -78,71 +80,70 @@ $count_reviews = $result_reviews->num_rows;
 
 					<span id="bizPhone" class="tel"> <?php echo $restaurant['phone_number']; ?> </span>
 				</div>
-			</td>			
+			</td>				
 			<td>
 				<div id="bizPhotos">
 					<div class="clearStyles bizPhotoBox">
 							<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
 							<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height= 200 style="" alt=""></a>
 					</div>
-					<span style="font-size: 10px;"><a rel="nofollow" href="../uploadPic.php">הוסף תמונה</a></span>
 				</div>
 			</td>		
-			</tr>
-			<tr>
-				<td>
-					<div id="bizAdditionalInfo" class="clearfix">
-						<ul>							
-							<li><strong>משלוחים:</strong><?php if($restaurant['delivery']==1){echo  " כן";} else {echo " לא";} ?></li>
-							<li><strong>כשר:</strong><?php if($restaurant['kosher']==1){echo  " כן";} else {echo " לא";} ?></li>
-							<li><strong>גישה לנכים:</strong> <?php if($restaurant['invalid_access']==1){echo  " כן";} else {echo " לא";} ?></li>
-							<li><strong>ידידותי לילדים:</strong> <?php if($restaurant['child_friendly']==1){echo  " כן";} else {echo " לא";} ?></li>
-							<li><strong>אירועים:</strong> <?php if($restaurant['events']==1){echo  " כן";} else {echo " לא";} ?></li>
-							<li><strong>רומנטי:</strong> <?php if($restaurant['romantic']==1){echo  " כן";} else {echo " לא";} ?></li>
-							<li><strong>חניה:</strong> <?php if($restaurant['parking']==1){echo  " כן";} else {echo " לא";} ?></li>
-							<li><strong>אזור עישון:</strong> <?php if($restaurant['smoking']==1){echo  " כן";} else {echo " לא";} ?></li>
-							<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>									
-						</ul>
-					</div>
-				</td>
-				<td>
-					<iframe 
-						src="http://maps.freemap.co.il/api/openlayers/?zoom=9&
-								lat=<?php echo $restaurant['lat']?>&
-								lon=<?php echo $restaurant['lon']?>&
-								marker=true"
-			        	width="300px" height="200px"
-					       scrolling="no"
-					       marginwidth="0" marginheight="0" 
-					       frameborder="1">
-	      			</iframe>
-				</td>					
-			</tr>
-			<tr>
-				<td>
-					<div  id="bizActions" class="clearfix">
-						<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?bizid=54anJf73lEHBItVRPgRgrA&amp;return_url=%2Fbiz%2Fichaat-cafe-sunnyvale-3" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
-						<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $rest_name?>&biz_url=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
-						<a class="write review" rel="nofollow" 
-							href= "<?php if (!session_is_registered('username')) { 
-											echo ("../login.php?returnUrl=".$rest_url);
-										} else {
-											echo ("../writeReviewForm.php?biz_id=".$rest_id."&biz_name=".$rest_name."&biz_type=restaurants");
-										}
-								?>" 
-								id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						
-					</div>
-				</td>				
-			</tr>
-			<tr>
-				<td>
+		</tr>
+		<tr>
+			<td>
+				<div id="bizAdditionalInfo" class="clearfix">
+					<ul>							
+						<li><strong>משלוחים:</strong><?php if($restaurant['delivery']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>כשר:</strong><?php if($restaurant['kosher']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>גישה לנכים:</strong> <?php if($restaurant['invalid_access']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>ידידותי לילדים:</strong> <?php if($restaurant['child_friendly']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>אירועים:</strong> <?php if($restaurant['events']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>רומנטי:</strong> <?php if($restaurant['romantic']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>חניה:</strong> <?php if($restaurant['parking']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>אזור עישון:</strong> <?php if($restaurant['smoking']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>									
+					</ul>
+				</div>
+			</td>
+			<td>
+				<iframe 
+					src="http://maps.freemap.co.il/api/openlayers/?zoom=9&
+							lat=<?php echo $restaurant['lat']?>&
+							lon=<?php echo $restaurant['lon']?>&
+							marker=true"
+		        	width="300px" height="200px"
+				       scrolling="no"
+				       marginwidth="0" marginheight="0" 
+				       frameborder="1">
+	   			</iframe>
+			</td>					
+		</tr>
+		<tr>
+			<td>
+				<div  id="bizActions" class="clearfix">
+					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?biz_id=<?php echo $rest_id?>&return_url=<?php echo $rest_url?>" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
+					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $rest_name?>&biz_url=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
+					<a class="write review" rel="nofollow" 
+						href= "<?php if (!session_is_registered('username')) { 
+										echo ("../login.php?returnUrl=".$rest_url);
+									} else {
+										echo ("../writeReviewForm.php?biz_id=".$rest_id."&biz_name=".$rest_name."&biz_type=restaurants");
+									}
+							?>" 
+							id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						
+				</div>
+			</td>				
+		</tr>
+		<tr>
+			<td>
 				<div id="bizReviews">
 					<div id="bizReviewsHeader" class="clearfix">
 						</br>
 						<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $rest_name?>:</h2>	
 					</div>
-					<br></br>
-					<div id="bizReviewsContent">
+				<br></br>
+				<div id="bizReviewsContent">
 						<div id="bizReviewsInner">
 								<?php 
 								while ($review = mysqli_fetch_assoc($result_reviews)){
@@ -181,7 +182,7 @@ $count_reviews = $result_reviews->num_rows;
 					</div>	
 				</td>		
 			</tr>	
-	</table>	
+	</table>		
 </div>
 
 <div id="footer">	
