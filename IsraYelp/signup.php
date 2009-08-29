@@ -30,8 +30,8 @@ function createUser(){
 		$count = $result->num_rows;
 		
 		if ($count != 0) {
-			echo "משתמש קיים";
-			die(0);		
+			header("location:signup_user_exists.php");	
+			die(0);
 		}
 		$today = getdate();
 		$month_added=$today['mon'];
