@@ -7,7 +7,6 @@ if ((isset($_POST['place_name']) && ('' != $_POST['place_name'])))
 	{
 		search();
 	} else {
-		//echo "חלק מהשדות היו ריקים. בבקשה נסה שנית";
 		header("location:search_fail.php");	
 	}
 
