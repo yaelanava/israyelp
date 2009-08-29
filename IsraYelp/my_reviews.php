@@ -71,11 +71,15 @@ $rev_count = $rev_result->num_rows;
 					$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
 					$result = $mysqli->query($query);
 					$biz = mysqli_fetch_assoc($result);
+					$review_id=$review['id'];
 					
 					$sen="הביקורת נכתבה עבור ";
 					$html = "<div id=\"my_review\">						
-								<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
+								<table cellpadding=\"20\" cellspacing=\"1\" border=\"0\" >
 									<tr>
+										<td>
+											<a href=\"./delete_reviwe.php?reviwe_id=".$review_id."\">מחק ביקורת </a>
+										</td>
 										<td><span> <b> ".$sen.$biz['name']."</b>"."</span>
 											<DIV class=\"ext_rating\">
 												<DIV class=\"rating\">
