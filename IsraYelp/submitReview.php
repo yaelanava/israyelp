@@ -19,7 +19,7 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	$city_id = $_SESSION['city_id'];
 	$user_id = $_SESSION['user_id'];
 		
-	$biz_url = "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-1).".php?biz_id=".$biz_id;
+	$biz_url = getBizURL($biz_type, $biz_id);
 	
 	$mysqli = getMysqliConnection();
 	
