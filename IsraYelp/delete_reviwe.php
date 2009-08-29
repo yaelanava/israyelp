@@ -38,7 +38,7 @@
 <div id="bodyContainer_Centered">
 	<p>הביקורת נמחקה בהצלחה.
 		<br><br>
-		<a href="./about_me.php"   id="Zprofile_footer">.חזור לחשבון שלך</a>
+		<a href="./about_me.php"   id="Zprofile_footer">חזור לחשבון שלי.</a>
 	</p>
 </div>
 
