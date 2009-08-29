@@ -335,6 +335,10 @@ $city_name = getCityName($city_id);
 							$result = $mysqli->query($query);
 							$biz = mysqli_fetch_assoc($result);
 							$biz_url = getBizURL($biz_type, $biz_id);
+							$the_review=$review['review'];
+							$short_rev=substr($the_review,0,99);
+							$len=strlen($the_review);
+							
 							
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
@@ -343,10 +347,21 @@ $city_name = getCityName($city_id);
 										<p>
 											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
 											<br/><em class=\"smaller grey\">". $user['username'] ."</em>
-											<br/>".$review['review']."										
-										</p>
-									</div>";
-							echo $html;	
+											<br/>";
+											
+																				
+										
+									
+							//echo $html;	
+							if($len>100){
+								//print($short_rev);
+								$html .= $short_rev;  
+								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
+							}else 
+								$html .= $the_review;
+							$html .="</p></div>";
+							echo $html;
+							
 						}
 					?>							
 				</div>			
