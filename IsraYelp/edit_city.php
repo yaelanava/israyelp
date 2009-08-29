@@ -7,7 +7,7 @@
 	}
 		
 	else {
-		echo "there was an error";
+		header("location:edit_city_fail.php");	
 		die(0);
 	}
 	$id = $_SESSION['user_id'];
