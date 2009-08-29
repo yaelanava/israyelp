@@ -59,7 +59,7 @@ $rev_count = $rev_result->num_rows;
 	</div>
 	
 	<div id="user_details_wrapper">	
-		<div id="rev_fix">
+	
 			<span><b> כתבת כבר </b></span> 	<?php echo $rev_count?> <span ><b> ביקורות לאתר </b></span>
 			<br/>
 			<br/>		
@@ -93,7 +93,7 @@ $rev_count = $rev_result->num_rows;
 					echo $html;			
 				}
 			?>
-		</div>
+		
 	</div>
 </div>
 
