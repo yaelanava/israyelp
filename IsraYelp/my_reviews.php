@@ -78,6 +78,7 @@ $rev_count = $rev_result->num_rows;
 								<table cellpadding=\"20\" cellspacing=\"1\" border=\"0\" >
 									<tr>
 										<td>
+											<img src=\"./image/delete_rev.png\" height=\"20px\" width=\"20px\">
 											<a href=\"./delete_reviwe.php?reviwe_id=".$review_id."\">מחק ביקורת </a>
 										</td>
 										<td><span> <b> ".$sen.$biz['name']."</b>"."</span>
