@@ -17,11 +17,11 @@
 	$message .= $new_comment;
 	
 	
-	$to = "milaor@gmail.com";
+	$to = "tehila.han@gmail.com";
 	$subject = "new place: ".$new_name;
 	$body = $message;
 	if (mail($to, $subject, $body, $new_email)) {
- 		 echo("Message successfully sent!");
+		header("location:message_sent.php");
  	} else {
- 		 echo("Message delivery failed..");
+ 		 header("location:message_failed.php");
  	}
