@@ -128,7 +128,7 @@ $count_reviews = $result_reviews->num_rows;
 						href= "<?php if (!session_is_registered('username')) { 
 										echo ("../login.php?returnUrl=".$rest_url);
 									} else {
-										echo ("../writeReviewForm.php?biz_id=".$rest_id."&biz_name=".$rest_name."&biz_type=restaurants");
+										echo ("../writeReviewForm.php?biz_id=".$rest_id."&biz_name=".$rest_name."&biz_type=$biz_type");
 									}
 							?>" 
 							id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						
