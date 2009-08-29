@@ -76,7 +76,7 @@ $year = $user['year_added'];
 								<div class="clearStyles photoBox" >
 									<img src="<? echo getUserPictureSrc($user_id, "./") ?>" height="100px" width="100px">
 									<p id="photo_action_link">
-					 					<a href="./upload_pic.php" class="small">העלה תמונה</a>
+					 					<a href="./upload_pic.php" class="small">ערוך תמונה</a>
 					 				</p>
 								</div>
 							</div>	
