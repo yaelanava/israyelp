@@ -48,36 +48,36 @@ $fav_count = $fav_result->num_rows;
 		</ul>
 </div>
 
-<div id="mainContent">
-	<div id="user_header" align="right">
-		<ul id="userTabs" >
-			<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-			<li><a href="./my_reviews.php">ביקורות</a></li> 
-			<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
-		</ul> 
+<div id="bodyContainer">
+	<div id="mainContent">
+		<div id="user_header" align="right">
+			<ul id="userTabs" >
+				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
+				<li><a href="./my_reviews.php">ביקורות</a></li> 
+				<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
+			</ul> 
+		</div>
+	</div>
+	
+	<div id="user_details_wrapper">	
+		<span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span>
+		<br/>
+		<br/>	
+		<?php 	
+			while ($fav = mysqli_fetch_assoc($fav_result)){		
+				$html = "<div id=\"my_review\">					
+							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
+								<tr>
+									<td><span><b><a href=".$fav['biz_url']."\">".$fav['biz_name']."</a></b></span></td> 
+								</tr>
+							</table>
+						</div>";
+				echo $html;				
+			}
+		?>			
 	</div>
 </div>
 
-<div id="user_details_wrapper">	
-<div id="mainContent">	
-	<span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span>
-	<br/>
-	<br/>	
-	<?php 	
-		while ($fav = mysqli_fetch_assoc($fav_result)){		
-			$html = "<div id=\"my_review\">					
-						<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
-							<tr>
-								<td><span><b><a href=".$fav['biz_url']."\">".$fav['biz_name']."</a></b></span></td> 
-							</tr>
-						</table>
-					</div>";
-			echo $html;				
-		}
-	?>	
-	
-</div>
-</div>
 <div id="footer">	
 	<div>		
 		<ul id="aboutSite">

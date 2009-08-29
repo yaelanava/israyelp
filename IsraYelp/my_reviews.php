@@ -47,18 +47,18 @@ $rev_count = $rev_result->num_rows;
 		</ul>
 </div>
 
-<div id="mainContent">
-	<div id="user_header"  align="right">
-		<ul id="userTabs" >	
-			<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-			<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
-			<li><a href="./my_favs.php">מועדפים</a></li>
-		</ul> 
+<div id="bodyContainer">
+	<div id="mainContent">
+		<div id="user_header"  align="right">
+			<ul id="userTabs" >	
+				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
+				<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
+				<li><a href="./my_favs.php">מועדפים</a></li>
+			</ul> 
+		</div>
 	</div>
-</div>
-
-<div id="user_details_wrapper">	
-	<div id="main_content">
+	
+	<div id="user_details_wrapper">	
 		<div id="rev_fix">
 			<span><b> כתבת כבר </b></span> 	<?php echo $rev_count?> <span ><b> ביקורות לאתר </b></span>
 			<br/>
