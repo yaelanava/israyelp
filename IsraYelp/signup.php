@@ -8,8 +8,8 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {
 	createUser();
 } else {
-	echo "חלק מהשדות היו ריקים. בבקשה נסה שנית";
-	die(0);
+	header("location:signup_empty.php");
+	
 }
 
 function createUser(){
@@ -61,16 +61,6 @@ function createUser(){
 		else $month_added='דצמבר';
 		
 		$year_added=$today['year'];
-		/*$query = "INSERT INTO `test`.`users` (
-					`id` ,
-					`username` ,
-					`email` ,
-					`city` ,
-					`password` 
-					)
-				VALUES (
-					NULL , '$username', '$username', '$city', PASSWORD( '$password' ) 
-				)";*/
 		$query="INSERT INTO `test`.`users` (
 					`id` ,
 					`username` ,
