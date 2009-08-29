@@ -42,9 +42,9 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	$result = $mysqli->query($query);
 		
 } else {
-	//echo "חלק מהשדות היו ריקים";
-	//die(0);
+	
 	header("location:submit_fail.php");	
+	die(0);
 }
 
 ?>	
