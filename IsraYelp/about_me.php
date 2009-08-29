@@ -54,16 +54,17 @@ $year = $user['year_added'];
 		</ul>
 </div>
 
-<div id="mainContent">
-	<div id="user_header" class="ieSucks" align="right">
-		<ul id="userTabs" >
-				<li class="selected"><a href="./about_me.php">הפרופיל שלי</a></li> 
-				<li><a href="./my_reviews.php">ביקורות</a></li> 
-				<li><a href="./my_favs.php">מועדפים</a></li>
-		</ul> 
+<div id="bodyContainer">
+	<div id="mainContent">
+		<div id="user_header" class="ieSucks" align="right">
+			<ul id="userTabs" >
+					<li class="selected"><a href="./about_me.php">הפרופיל שלי</a></li> 
+					<li><a href="./my_reviews.php">ביקורות</a></li> 
+					<li><a href="./my_favs.php">מועדפים</a></li>
+			</ul> 
+		</div>
 	</div>
-</div>
-		
+			
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
 			<div id="about_user_column">
@@ -73,11 +74,7 @@ $year = $user['year_added'];
 							<h1><?php echo $username?></h1>						
 							<div id="user_pic">
 								<div class="clearStyles photoBox" >
-									<?php $destination="./users_pics/".$user_id;
-										if (!file_exists($destination))
-											$destination="./users_pics/blank_user_medium.gif";
-									?>
-									<img src="<? echo $destination; ?>" height="100px" width="100px">
+									<img src="<? echo getUserPictureSrc($user_id, "./") ?>" height="100px" width="100px">
 									<p id="photo_action_link">
 					 					<a href="./upload_pic.php" class="small">העלה תמונה</a>
 					 				</p>
@@ -85,10 +82,8 @@ $year = $user['year_added'];
 							</div>	
 						</td>
 						<td>
-							<ul class="stripped" id="user_stats">
-					
-							<?php
-		
+							<ul class="stripped" id="user_stats">					
+							<?php		
 								//counting how much reviews this user wrote
 								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
 								$rev_result = $mysqli->query($review_query);
@@ -104,22 +99,18 @@ $year = $user['year_added'];
 								$fav_count = $fav_result->num_rows;
 								echo $fav_count;
 							?>
-								<a href="./my_favs.php" >מקומות מועדפים</a>
-					
+								<a href="./my_favs.php" >מקומות מועדפים</a>			
 							</ul>
 						</td>
 						<td>
 							<span class="highlight2">מיקום:</span>
 							<?php    					
-		    					if (empty($city))
-		    						echo 'עיר מגוריך אינה ידועה';
-		    					else 
-		    						echo  $city;
-		    					
-		    					echo "<br />";
-		    					
-		    					
-							?>
+			    				if (empty($city))
+			    					echo 'עיר מגוריך אינה ידועה';
+			    				else 
+			    					echo  $city;			    					
+			    					echo "<br />";			    								    				
+								?>
 							<p>					
 								<span class="formLabel"><a href="edit_city.html">ערוך</a></span>
 							</p>
@@ -129,84 +120,20 @@ $year = $user['year_added'];
 							<?php
 								echo "<br />";
 								echo $month." , ".$year;
-								echo "<br />";
-								
+								echo "<br />";							
 							?>
 						</td>
-					</tr>
-					
-					
-					
+					</tr>																
 				</table>
 			</div>
-			</div>
-			</div>	
-			
-
-				<!--<ul class="stripped" id="user_stats">
-					
-					<?php
-
-						//counting how much reviews this user wrote
-						$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
-						$rev_result = $mysqli->query($review_query);
-						$rev_count = $rev_result->num_rows;
-						echo $rev_count;
-					?>
-				
-					<a href="./my_reviews.php" >ביקורות שנכתבו על ידך</a>
-			
-				</ul>
-	
- 				<p id="photo_action_link">
- 					<a href="./upload_pic.php" class="small">העלה תמונה</a>
- 				</p>
- 
- 				<div id="profile_questions">
-					<span class="highlight2">מיקום:</span>
-					
-					
-					<?php    					
-    					if (empty($city))
-    						echo 'עיר מגוריך אינה ידועה';
-    					else 
-    						echo  $city;
-    					
-    					echo "<br />";
-    					
-    					
-					?>
-					<p>					<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
-					</p>
-
-					<span class="highlight2">רשום לאתר מ-</span>
-					<?php
-						echo "<br />";
-						echo $added;
-						echo "<br />";
-						
-					?>
-					
-					<p>					<span class="formLabel"><a href="profile_location?return_url=%2Fuser_details">ערוך</a></span>
-					</p>
-					<span class="highlight2">דברים שאני אוהב</span>
-					
-					<a href="/profile_bio" class="smaller">ערוך</a>
-					
-					<p>עדיין לא אמרת לנו... זה הזמן</p>
-					<a href="/profile_bio">עדכן פרופיל</a><br/>
-				</div>
- 
-		
 		</div>
 	</div>
-</div>
-	
-
---><div id="footer">	
+</div>		
+		
+<div id="footer">	
 	<div>		
 		<ul id="aboutSite">
-			<li>  <a href="http://localhost/IsraYelp/contact_us.html"   id="Zprofile_footer">עלינו</a></li>
+			<li>  <a href="http://localhost/IsraYelp/contact_us.html"  id="Zprofile_footer">עלינו</a></li>
 			<li> | <a href="/faq" >שאלות נפוצות </a></li>
 		</ul>
 	</div>
