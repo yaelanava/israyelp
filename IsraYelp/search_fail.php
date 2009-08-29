@@ -34,7 +34,7 @@ include './utils/functions.php';
 <div id="bodyContainer_Centered">
 	<p>חלק מהשדות היו ריקים.
 		<br><br>
-		<a href="./search.php">נסה שנית.</a>
+		<a href="./main.php">נסה שנית.</a>
 	</p>
 </div>
 </body>
