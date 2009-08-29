@@ -334,7 +334,7 @@ $city_name = getCityName($city_id);
 							$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
 							$result = $mysqli->query($query);
 							$biz = mysqli_fetch_assoc($result);
-							$biz_url = "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-1).".php?biz_id=".$biz_id;
+							$biz_url = getBizURL($biz_type, $biz_id);
 							
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">

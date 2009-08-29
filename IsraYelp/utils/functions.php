@@ -29,6 +29,10 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 	return $html;
 }
 
+function getBizURL($biz_type, $biz_id){
+	return "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-1).".php?biz_id=".$biz_id;
+}
+
 function getUserPictureSrc($user_id, $prefix){
 	$src = $prefix."users_pics/".$user_id;
 	if (!file_exists($src)) {
