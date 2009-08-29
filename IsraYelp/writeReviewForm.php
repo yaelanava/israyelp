@@ -25,7 +25,7 @@ $biz_type = $_GET['biz_type'];
 
 <div id="head">
 		<div id="logo">
-			<A href="../main.php"></A>
+			<A href="./main.php"></A>
 		</div>
 		<div id="register">
 			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
