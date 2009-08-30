@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php session_start();
+include './utils/functions.php';
+
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -61,30 +64,46 @@
 
 		<p>
 			<label for="find_loc_ext">עיר <em> </em></label>
-			<select name="city">
-				<option value="תל-אביב" > תל-אביב </option>
-				 <option value="ירושלים">ירושלים</option>
-  				 <option value="באר-שבע">באר שבע</option>
-                 <option value="חיפה">חיפה</option>
-			</select>
-		</p>
+			
+			
+			<?php 
+			$cities_query = "SELECT * FROM `test`.`cities` ORDER BY id DESC";
+			$cities_result = getMysqliConnection()->query($cities_query);
+			
+			$html = "<select name=\"place_city\">";       		
+			while ($row = mysqli_fetch_assoc($cities_result)){
+				if($row['english_name']=="Tel Aviv"){
+					$html .="<option SELECTED ";
+					$html .= " value=\"".$row['name']."\">".$row['name']."</option>";
+				}
+				else {
+				$html .= "<option value=\"".$row['name']."\">".$row['name']."</option>";
+				}	
+			}			
+			$html .= "</select>";
+			echo $html;
+			?>
+			
+			</p>
+		<input type="hidden" name="source" value="main">
+
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
 
 	</form>
 	</div>
-	
-	
-	
+
 	<br>
 	<h1>חיפוש לפי כותב הביקורת:</h1>
 	<div id="external_search">
-	<form method="get" action="/search" name="external_search"> 
+	<form method="post" action="./present_reviewers.php" name="external_search"> 
 		<p>
 			<label for="find_desc_ext">כינוי <em>כותב הביקורת</em></label> 
 			<input type="text" maxlength="64" id="find_desc_ext" name="find_reviewer" tabindex="1" value="">	
 		</p>
 
-		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3" onclick="document.external_search.rpp.value=Yelp.readRppFromSearchPrefsCookie();">חפש</button>
+		<input type="hidden" name="source" value="find_review">
+
+		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
 	</form>
 	</div>
 	
