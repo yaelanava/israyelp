@@ -3,12 +3,12 @@ session_start();
 
 include './utils/functions.php';
 
-if ((isset($_POST['place_name']) && ('' != $_POST['place_name'])))
+/*if ((isset($_POST['place_name']) && ('' != $_POST['place_name'])))
 	{
 		search();
 	} else {
 		header("location:search_fail.php");	
-	}
+	}*/
 
 function search(){
 
@@ -18,7 +18,9 @@ function search(){
 	$source = $_POST['source'];
 
 	
-	$mysqli = getMysqliConnection();
+	$mysqli = getMysqliConnection();	
+	
+
 	if($kind =="מסעדה")	{
 		$query = "SELECT * FROM `test`.`restaurants` WHERE name='$name' or another_name='$name'";
 	}
