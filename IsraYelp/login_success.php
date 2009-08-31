@@ -1,5 +1,15 @@
+<?php 
+session_start();
+
+if (isset($_GET['returnUrl'])){
+	$returnUrl = $_GET['returnUrl'];
+} else {
+	$returnUrl = "./main.php";
+}
+
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<?php session_start();?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
@@ -10,9 +20,8 @@
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="./mystyle.css"> 
 	<title>הרשמה | IsraYelp</title>
-
-
 </head>
+
 <body  dir="rtl">
 <div id="head">
 		<div id="logo">
@@ -22,8 +31,8 @@
 		<div id="rightEdge"></div>
 </div>
 <div id="bodyContainer_Centered">	
-	<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
-	<a href="./main.php">לחץ כאן כדי להתחיל לגלוש באתר. </a>
+	<p><?php if (session_is_registered('username')) print("אתה מחובר כ-".$_SESSION['username'])."." ?></p>
+	<a href=<?php echo $returnUrl?>>לחץ כאן להמשך גלישה באתר.</a>
 </div>
 </body>
 </html>

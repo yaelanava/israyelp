@@ -21,8 +21,8 @@
 	<link rel="icon" href="../image/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="./mystyle.css"> 
 </head>
-<body class= "us" id="IsraYelp_main_body" dir="rtl">
 
+<body dir="rtl">
 <div id="head">
 		<div id="logo">
 			<A href="./main.php"></A>
