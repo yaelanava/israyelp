@@ -1068,8 +1068,8 @@
 	WIDTH: 450px}
 	
 	#bizPhotos {	
-	MARGIN-TOP: 6px;	
-	FLOAT: right;
+	MARGIN-TOP: 6px;
+	PADDING-RIGHT: 40px;		
 	WIDTH: 70px;	
 	POSITION: relative}
 	
@@ -1079,8 +1079,6 @@
 	PADDING-BOTTOM: 1px;	
 	PADDING-TOP: 2px}
  
-	
-
 	#bizInfoHeader H1 {	
 	FONT-SIZE: 18px;	
 	MARGIN: 4px 5px 5px 4px}
@@ -1099,8 +1097,7 @@
 	FLOAT: right;	
 	MARGIN-RIGHT: 5px}
 	
-	
-		
+
 	#bizInfoContent {	
 	CLEAR: left;	
 	PADDING-RIGHT: 7px}
@@ -1121,7 +1118,8 @@
 	
 	#bizAdditionalInfo {	
 	CLEAR: both;	
-	MARGIN-BOTTOM: 5px}
+	MARGIN-BOTTOM: 5px;
+	MARGIN-RIGHT: 7px}
 	
 	#bizAdditionalInfo UL {	
 	PADDING-RIGHT: 0px;	

@@ -62,37 +62,39 @@ $count_reviews = $result_reviews->num_rows;
 <div id="bodyContainer">
 	<table>
 		<tr>		
-			<td >
-				<div id="bizInfoHeader">
-					<h1 class="fn org"><?php echo $rest_name?></h1>
-					<div id="bizRating">
-						<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="../image/stars_map.png"/></div> 
-						<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
-					</div>
-				</div>
-				<div id="bizInfoContent">
-					<p id="bizCategories"><strong>קטגוריה:</strong>
-						<span id="cat_display"> <?php echo $restaurant['type_rest'];?>	
-					</p>
-					<address class="adr">
-						<span class="street-address"><?php echo $restaurant['address']; ?></span>										
-					</address>
-
-					<span id="bizPhone" class="tel"> <?php echo $restaurant['phone_number']; ?> </span>
-				</div>
-			</td>				
-			<td>
-				<div id="bizPhotos">
-					<div class="clearStyles bizPhotoBox">
-							<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
-							<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height= 200 style="" alt=""></a>
-					</div>
-				</div>
-			</td>		
-		</tr>
-		<tr>
-			<td>
-				<div id="bizAdditionalInfo" class="clearfix">
+			<td style="vertical-align:top">
+				<table>
+					<tr>		
+						<td style="vertical-align:top">
+							<div id="bizInfoHeader">
+								<h1 class="fn org"><?php echo $rest_name?></h1>
+								<div id="bizRating">
+									<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="../image/stars_map.png"/></div> 
+									<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
+								</div>
+							</div>
+							<div id="bizInfoContent">
+								<p id="bizCategories"><strong>קטגוריה:</strong>
+									<span id="cat_display"> <?php echo $restaurant['type_rest'];?>	
+								</p>
+								<address class="adr">
+									<span class="street-address"><?php echo $restaurant['address']; ?></span>										
+								</address>
+			
+								<span id="bizPhone" class="tel"> <?php echo $restaurant['phone_number']; ?> </span>
+						</td>				
+						<td>
+							<div id="bizPhotos"">
+								<div class="clearStyles bizPhotoBox">
+										<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
+										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height=150 style="" alt=""></a>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>				
+				<br></br>			
+					<div id="bizAdditionalInfo" class="clearfix">
 					<ul>							
 						<li><strong>משלוחים:</strong><?php if($restaurant['delivery']==1){echo  " כן";} else {echo " לא";} ?></li>
 						<li><strong>כשר:</strong><?php if($restaurant['kosher']==1){echo  " כן";} else {echo " לא";} ?></li>
@@ -104,85 +106,78 @@ $count_reviews = $result_reviews->num_rows;
 						<li><strong>אזור עישון:</strong> <?php if($restaurant['smoking']==1){echo  " כן";} else {echo " לא";} ?></li>
 						<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>									
 					</ul>
-				</div>
-			</td>
+				</div>				
+				<div  id="bizActions" class="clearfix">
+					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?biz_id=<?php echo $rest_id?>&return_url=<?php echo $rest_url?>" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
+					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $rest_name?>&biz_url=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
+					<a class="write review" rel="nofollow" 
+						href= "<?php if (!session_is_registered('username')) { 
+									echo ("../login.php?returnUrl=".$rest_url);
+									} else {
+									echo ("../writeReviewForm.php?biz_id=".$rest_id."&biz_name=".$rest_name."&biz_type=$biz_type");
+									}
+								?>" 
+						id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						
+				</div>							
+			</td>							
 			<td>
 				<iframe 
 					src="http://maps.freemap.co.il/api/openlayers/?zoom=9&
 							lat=<?php echo $restaurant['lat']?>&
 							lon=<?php echo $restaurant['lon']?>&
 							marker=true"
-		        	width="300px" height="200px"
+		        	width="300px" height="350px"
 				       scrolling="no"
 				       marginwidth="0" marginheight="0" 
 				       frameborder="1">
 	   			</iframe>
-			</td>					
+			</td>							
 		</tr>
-		<tr>
-			<td>
-				<div  id="bizActions" class="clearfix">
-					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?biz_id=<?php echo $rest_id?>&return_url=<?php echo $rest_url?>" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
-					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $rest_name?>&biz_url=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
-					<a class="write review" rel="nofollow" 
-						href= "<?php if (!session_is_registered('username')) { 
-										echo ("../login.php?returnUrl=".$rest_url);
-									} else {
-										echo ("../writeReviewForm.php?biz_id=".$rest_id."&biz_name=".$rest_name."&biz_type=$biz_type");
-									}
-							?>" 
-							id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						
-				</div>
-			</td>				
-		</tr>
-		<tr>
-			<td>
-				<div id="bizReviews">
-					<div id="bizReviewsHeader" class="clearfix">
-						</br>
-						<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $rest_name?>:</h2>	
-					</div>
-				<br></br>
-				<div id="bizReviewsContent">
-						<div id="bizReviewsInner">
-								<?php 
-								while ($review = mysqli_fetch_assoc($result_reviews)){
-									$userId = $review['user_id'];
-									$query_user = "SELECT * FROM `test`.`users` WHERE id='$userId'";
-									$result_user = $mysqli->query($query_user);
-									$user = mysqli_fetch_assoc($result_user);
-									
-									$html = "<DIV class=\"review externalReview clearfix nonfollowingReview \" >
-												<DIV class=\"wrap\">
-													<DIV class=\"reviewer\">
-														<DIV class=\"mini\">
-															<DIV class=\"photoBoxSm\">
-																<DIV class=\"clearStyles photoBox\">
-																	<A href=\"../user_reviwes.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
-																</div>			
-															</div>
-														</div>
-														<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"../user_reviwes.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
-														<P class=\"reviewer_info\">". $user['city']."</P>
-													</div>
-													<DIV class=\"ext_rating\">
-														<DIV class=\"rating\">
-															<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../image/stars_map.png\" width=\"83\" />
-														</DIV>
-															<EM class=\"smaller\">". $review['added']."</EM> 
-													</DIV>
-														<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['review']."</P>
-												</div>
-											</div>	
-											";
-									echo $html;
-								}
-							?>	
-						</div>				
-					</div>	
-				</td>		
-			</tr>	
 	</table>		
+				
+	<div id="bizReviews">
+		<div id="bizReviewsHeader" class="clearfix">
+			</br>
+			<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $rest_name?>:</h2>	
+		</div>
+		<br></br>
+		<div id="bizReviewsContent">
+			<div id="bizReviewsInner">
+				<?php 
+					while ($review = mysqli_fetch_assoc($result_reviews)){
+						$userId = $review['user_id'];
+						$query_user = "SELECT * FROM `test`.`users` WHERE id='$userId'";
+						$result_user = $mysqli->query($query_user);
+						$user = mysqli_fetch_assoc($result_user);
+								
+						$html = "<DIV class=\"review externalReview clearfix nonfollowingReview \" >
+									<DIV class=\"wrap\">
+										<DIV class=\"reviewer\">
+											<DIV class=\"mini\">
+												<DIV class=\"photoBoxSm\">
+													<DIV class=\"clearStyles photoBox\">
+														<A href=\"../user_reviwes.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
+													</div>			
+												</div>
+											</div>
+											<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"../user_reviwes.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
+											<P class=\"reviewer_info\">". $user['city']."</P>
+										</div>
+										<DIV class=\"ext_rating\">
+											<DIV class=\"rating\">
+												<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../image/stars_map.png\" width=\"83\" />
+											</DIV>
+												<EM class=\"smaller\">". $review['added']."</EM> 
+										</DIV>
+											<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['review']."</P>
+									</div>
+								</div>";
+							echo $html;
+						}
+				?>	
+			</div>				
+		</div>
+	</div>	
 </div>
 
 <div id="footer">	
