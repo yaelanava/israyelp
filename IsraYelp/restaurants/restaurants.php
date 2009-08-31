@@ -7,7 +7,7 @@ $city_name = getCityName($city_id);
 
 $mysqli = getMysqliConnection();
 
-$query_restaurants = "SELECT * FROM `test`.`restaurants` WHERE id='$city_id' ORDER BY grading DESC LIMIT 5";
+$query_restaurants = "SELECT * FROM `test`.`restaurants` WHERE city_id='$city_id' ORDER BY grading DESC LIMIT 5";
 $result_restaurants = $mysqli->query($query_restaurants);
 
 ?>
@@ -66,80 +66,75 @@ $result_restaurants = $mysqli->query($query_restaurants);
 				$topRestaurant = mysqli_fetch_assoc($result_restaurants);
 				$topRest_id = $topRestaurant['id'];
 				$image_srs = "./image/$topRest_id.JPG";
-				$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id='$topRest_id' and biz_type='restaurants' ORDER BY added DESC LIMIT 1";
+				$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id=$topRest_id and biz_type='restaurants' ORDER BY added DESC";
 				$result_restReview = $mysqli->query($query_restReview);
+				$count_restReview = $result_restReview->num_rows;
 				$restReview = mysqli_fetch_assoc($result_restReview);
 				$html = "<div id=\"top_biz\">
 							<div class=\"clearStyles bizPhotoBox\">
-								<a  href=\"".$image_srs."\"><img src=\"".$image_srs."\" style=\"\" alt=\"".$topRestaurant['name']."\"></a>
+								<a  href=\"$image_srs\"><img src=\"$image_srs\" width=100 height=150 style=\"\" alt=\"".$topRestaurant['name']."\"></a>
 							</div>
-							<p class=\"biz_info\">1. <a href=\"./restaurant.php?biz_id=$topRest_id\" id=\"top_biz_name_2\"\">".$topRestaurant['name']."</a></p>							
+							<p class=\"biz_info\">1. <a href=\"./restaurant.php?biz_id=$topRest_id\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$topRestaurant['name']."</a></p>							
 							<div class=\"top_biz_rating\">
-								<div class=\"rating\"><img class=\"stars_4_half\" width=\"83\" height=\"325\" title=\"4.5 star rating\" alt=\"4.5 star rating\" src=\"../image/stars_map.png\"/></div> <em class=\"smaller\">83 ביקורות</em>
+								<div class=\"rating\">
+									<img class=\"stars_4_half\" width=\"83\" height=\"325\" title=\"4.5 star rating\" alt=\"4.5 star rating\" src=\"../image/stars_map.png\"/>
+								</div> 
+								<em class=\"smaller\">$count_restReview ביקורות</em>
 							</div>
-							<p class=\"smaller\">קטגוריה: <a href=\"./take-away.php\">Take Away </a>, <a href=\"./bar-rest.php\"> בר-מסעדה</a>, <a href=\"./bistro.php\">ביסטרו</a>, <a href=\"./events.php\">אירועים</a></p>
+							<p class=\"smaller\">קטגוריה:".$topRestaurant['type_rest']."</p>
 							<p>".$restReview['review']."</p>
 						</div>";
 				echo $html;
 			?>
 									
 			<ul id="biz_list" class="stripped">
-				<li>
-					<div class="biz_info">
-						2. <a href="/biz/international-food-bazaar-san-jose#hrid:xaAwZx0xd8eOXKIzWOTDIg" id="top_biz_name_2" class="biz_name" title="International Food Bazaar">בוקצ'ו</a>
-					</div>
-					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">42 ביקורות</em>
-					</div>
-						<p class="smaller">קטגוריה: <a href="./meat.php">בשרים</a>, <a href="./events.php">אירועים</a>, <a href="./italian.php">איטלקי</a></p>
-				</li>
-				<li>
-					<div class="biz_info">
-						3. <a href="/biz/gulzaar-halaal-restaurant-and-bakery-san-jose#hrid:ZKvRBQVsZ4H6MQ7vcnYt9g" id="top_biz_name_3" class="biz_name" title="Gulzaar Halaal Restaurant &amp; Bakery">ברונו</a>
-					</div>
-					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">120 ביקורות</em>
-					</div>
-						<p class="smaller">קטגוריה: <a href="./mideastern.php">ים תיכוני</a>, <a href="./gurme.php">גורמה</a>, <a href="./meat.php">בשרים</a>, <a href="./events.php">אירועים</a> 
-						</p>
-				</li>
-				<li>
-					<div class="biz_info">
-						4. <a href="/biz/penguin-froyo-san-jose#hrid:Bzvz0k_z_KEeca0itRxY-w" id="top_biz_name_4" class="biz_name" title="Penguin Froyo">טורקיז</a>
-					</div>
-					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="http://static.px.yelp.com/static/20090507a/i/new/ico/stars/stars_map.png"/></div> <em class="smaller">189 ביקורות</em>
-					</div>
-						<p class="smaller">קטגוריה: <a href="./fish.php">דגים</a>, <a href="./seafood.php">מאכלי ים</a></p> 
-				</li>
-				<li>
-					<div class="biz_info">
-						5. <a href="/biz/rose-donuts-and-cafe-san-jose-3#hrid:YRCSpDpA__N76eaWH9_o_A" id="top_biz_name_5" class="biz_name" title="Rose Donuts &amp; Cafe">גשן</a>
-					</div>
-					<div class="biz_rating">
-						<div class="rating-small"><img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/></div> <em class="smaller">93 ביקורות</em>
-					</div>
-						<p class="smaller">קטגוריה: <a href="./meat.php">בשרים </a>, <a href="./bar-rest.php"> בר-מסעדה</a>, <a href="./events.php">אירועים</a>, <a href="./chefrest.php">מסעדת-שף</a></p>
-				</li>
-				<li id="top_more_link"><a href="/search?find_loc=San+Jose%2C+CA&amp;cflt=restaurants"><strong>עוד מסעדות בתל-אביב &raquo;</strong></a></li>
-			</ul>
-			
-		</div>
-		<div id="biz_map" style="float:right";>
-		<h2>מפת תל-אביב </h2>
-		    <iframe src="http://maps.freemap.co.il/api/openlayers/?zoom=6&lat=32.06711&lon=34.77177"
-		        width="600px" height="400px"
-		        scrolling="no"
-		        marginwidth="0" marginheight="0" 
-		        frameborder="1">
-      		</iframe>
+				<?php
+					$html = "";
+					$i=2;
+					while ($rest = mysqli_fetch_assoc($result_restaurants)){
+						$rest_id = $rest['id'];
+						$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id=$rest_id and biz_type='restaurants' ORDER BY added DESC";
+						$result_restReview = $mysqli->query($query_restReview);
+						$count_restReview = $result_restReview->num_rows;
+						$html .= "<li>
+									<div class=\"biz_info\">
+										$i. <a href=\"./restaurant.php?biz_id=".$rest_id."\" id=\"top_biz_name_$i\" class=\"biz_name\">".$rest['name']."</a>
+									</div>
+									<div class=\"biz_rating\">
+										<div class=\"rating-small\">
+											<img class=\"stars_4_half\" width=\"83\" height=325 title=\"4.5 star rating\" alt=\"4.5 star rating\" src=\"../image/stars_map.png\"/>
+										</div> 
+										<em class=\"smaller\">$count_restReview ביקורות</em>
+									</div>
+									<p class=\"smaller\">קטגוריה:".$rest['type_rest']."</p>
+								</li>";
+						$i++;
+					}
+					echo $html;
+				?>	
+			</ul>						
 		</div>
 	</div>
 	
+	<div id="biz_map"">
+		<h1>מפת <?php echo $city_name?></h1>
+		<iframe src="http://maps.freemap.co.il/api/openlayers/?
+					zoom=9&
+					lat=<?php echo $topRestaurant['lat']?>&
+					lon=<?php echo $topRestaurant['lon']?>&
+					marker=true"
+		       	width="900px" height="300px"
+		        scrolling="no"
+		        marginwidth="10" marginheight="10" 
+		        frameborder="1">
+		 </iframe>
+	</div>
+
+		
 	<div id="section_content" class="clearfix">
 		<div id="main_column">
 			<div id="sub_cat_lists" class="clearfix">
-				<h2>מסעדות תל-אביב לפי קטגוריות<h2>
+				<h2>מסעדות <?php echo $city_name?> לפי קטגוריות<h2>
 				<ul class="stripped other_sub_cats">
 					<li><a href="./events.php">אירועים</a></li>
 					<li><a href="./bar-rest.php">בר-מסעדה</a></li>
@@ -151,24 +146,18 @@ $result_restaurants = $mysqli->query($query_restaurants);
 					<li><a href="./chefrest.php">מסעדת שף</a></li>
 
 				</ul>
-
-		</div>
-		
-		
-		
-		
+			</div>	
+		</div>	
 	</div>
-	
 </div>
 
 <div id="footer">
-	
 	<div>		
-				<ul id="aboutSite">
-					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
-					<li> | <a href="/about">החשבון שלי</a></li>
-					<li> | <a href="/faq" >שאלות נפוצות </a></li>
-				</ul>
+		<ul id="aboutSite">
+			<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
+			<li> | <a href="/about">החשבון שלי</a></li>
+			<li> | <a href="/faq" >שאלות נפוצות </a></li>
+		</ul>
 	</div>
 
 	<div class="directory">
@@ -191,4 +180,3 @@ $result_restaurants = $mysqli->query($query_restaurants);
 
 </body>
 </html>
-
