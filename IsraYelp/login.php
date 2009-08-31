@@ -17,11 +17,11 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 }
 
 function loginUser(){
-	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$email = mysql_real_escape_string($_POST['email']);
+	$password = mysql_real_escape_string($_POST['password']);
 	
 	$mysqli = getMysqliConnection();	
-		
+	
 	$query = "SELECT * FROM `test`.`users` WHERE email='$email' and password=PASSWORD('$password')";
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;	
