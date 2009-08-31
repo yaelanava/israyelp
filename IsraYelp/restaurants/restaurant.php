@@ -67,9 +67,11 @@ $count_reviews = $result_reviews->num_rows;
 					<tr>		
 						<td style="vertical-align:top">
 							<div id="bizInfoHeader">
-								<h1 class="fn org"><?php echo $rest_name?></h1>
+								<h1><?php echo $rest_name?></h1>
 								<div id="bizRating">
-									<div class="rating"><img class="stars_4 rating average" width="83" height="325" title="4 star rating" alt="4 star rating" src="../image/stars_map.png"/></div> 
+									<div class="rating">
+										<img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/>
+									</div> 
 									<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
 								</div>
 							</div>

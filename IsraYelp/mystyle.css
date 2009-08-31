@@ -864,7 +864,7 @@
 	MARGIN-LEFT:5px;}
 	
 	#top_biz .bizPhotoBox {	
-	FLOAT: left;	
+	FLOAT: right;	
 	MARGIN-BOTTOM: 5px;	
 	MARGIN-LEFT: 10px;
 	MARGIN-TOP: 10px}
@@ -885,9 +885,10 @@
 	
 	#top_biz .rating {	
 	FLOAT: right;	
-	MARGIN-RIGHT: 5px}
+	MARGIN-RIGHT: 5px;
+	MARGIN-LEFT: 5px}
 	
-	DIV.rating {	
+	DIV.rating {
 	OVERFLOW: hidden !important;	
 	WIDTH: 84px;	
 	POSITION: relative;	
@@ -945,7 +946,7 @@
 
 	DIV.rating-small IMG.stars_4_half {	TOP: -302px}
 	
-	DIV.rating-small IMG {	POSITION: absolute}
+	DIV.rating-small IMG {POSITION: absolute}
 	
 	#top_cat_biz #biz_map {	
 	MARGIN-LEFT: 0px;
@@ -1090,7 +1091,7 @@
 	WIDTH: 100%}
 	
 	#bizInfoHeader #bizRating .rating {	
-	FLOAT: left;	
+	FLOAT: right;	
 	MARGIN-RIGHT: 5px} 
 	
 	#bizInfoHeader #bizRating EM {	
