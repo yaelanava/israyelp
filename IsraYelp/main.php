@@ -248,7 +248,7 @@ $city_name = getCityName($city_id);
 								$html .= "</li>";
 							}
 							$html .= "</ol>";
-							$html .= "<p><a href=\"./nightlife/night.php?city_id=".$city_id."\">тег...</a></p>";
+							$html .= "<p><a href=\"./nightlife/nightlife.php?city_id=".$city_id."\">тег...</a></p>";
 							echo $html;
 						?>
 				</div>
