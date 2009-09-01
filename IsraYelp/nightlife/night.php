@@ -100,7 +100,7 @@ $count_reviews = $result_reviews->num_rows;
 					<ul>							
 						<li><strong>שעות: </strong><?php echo $restaurant['hours']?></li>
 						<li><strong>גישה לנכים: </strong> <?php if($restaurant['invalid_access']==1){echo "כן";} else {echo "לא";} ?></li>
-						<li><strong>Happy Hour: </strong><?php echo $restaurant['Happy Hour']?></li>
+						<li><?php echo $restaurant['Happy Hour']?><strong> :Happy Hour</strong></li>
 						<li><strong>חניה: </strong> <?php if($restaurant['parking']==1){echo "כן";} else {echo "לא";} ?></li>
 						<li><strong>אזור עישון: </strong> <?php if($restaurant['smoking']==1){echo "כן";} else {echo "לא";} ?></li>
 						<li><strong>ישיבה בחוץ: </strong> <?php if($restaurant['outside']==1){echo "כן";} else {echo "לא";} ?></li>									

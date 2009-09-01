@@ -150,14 +150,11 @@ $result_restaurants = $mysqli->query($query_restaurants);
 	<div id="sub_cat_lists" class="clearfix">
 		<h2>אתרי בילוי <?php echo $city_name?> לפי קטגוריות<h2>
 		<ul class="stripped other_sub_cats">
-			<li><a href="?city_id=<?php echo $city_id?>&category=events">אירועים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=meat">בשר</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=gourmet">גורמה</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=fish">דגים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=mediterranean">ים-תיכוני</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=sea_food">מאכלי ים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=chef_rest">מסעדת שף</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=take_away">take away</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=Bars">ברים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=Comedy Clubs">קומדי קלאב</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=Karaoke">קריוקי</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=Jazz & Blues">ג'אז ובלוז</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category='Dance Clubs'">מועדוני דאנס</a></li>
 		</ul>
 	</div>	
 </div>
