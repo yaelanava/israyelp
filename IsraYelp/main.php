@@ -320,6 +320,75 @@ $city_name = getCityName($city_id);
 				<H3>ביקורת היום</H3>	
 				<P> נבחרה ע"י חברי האתר! </P>
 				
+					<?php 
+						$today_reviews = "SELECT * FROM `test`.`reviews` ORDER BY added DESC LIMIT 1"; //todo: same city or not?
+						$result_today = $mysqli->query($today_reviews);
+						while ($review = mysqli_fetch_assoc($result_today) ){
+							$user_id_chosen = $review['user_id'];
+							$query_user = "SELECT * FROM `test`.`users` WHERE id='$user_id_chosen'";
+							$result_user = $mysqli->query($query_user);
+							$user = mysqli_fetch_assoc($result_user);
+							
+							$biz_id = $review['biz_id'];
+							$biz_type = $review['biz_type'];
+							$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
+							$result = $mysqli->query($query);
+							$biz = mysqli_fetch_assoc($result);
+							$biz_url = getBizURL($biz_type, $biz_id);
+							
+							$the_review=$review['review'];
+							$short_rev=substr($the_review,0,99);
+							$len=strlen($the_review);
+							
+							$html = "<div class=\"clearfix\">
+										<table>
+											<tr>
+												<td>
+													<DIV class=\"ext_rating\">
+														<DIV class=\"rating\">
+															<IMG class=\"stars_". $review['grading']."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
+														</DIV>
+														<br/>
+														<a href=\"$biz_url\">".$biz['name']."</a> 
+													</DIV>
+												</td>
+												<td>
+													<DIV class=\"clearStyles photoBox\">
+														<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													
+												</td>
+											</tr>
+										</table>
+										<DIV class=\"clearStyles photoBox\">
+											<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+										</div>								
+										<p>
+											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
+											<br/><em class=\"smaller grey\">". $user['username'] ."</em>
+											<br/>";
+											
+																				
+										
+									
+							//echo $html;	
+							if($len>100){
+								//print($short_rev);
+								$html .= $short_rev; 
+								$_SESSION['user_id_rev']=$user['id']; 
+								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
+							}else 
+								$html .= $the_review;
+							$html .="</p></div>";
+							echo $html;
+							
+						}
+					?>				
+				
 				<div id="reviewerInfo">
 					<div class="clearStyles photoBox" >
 					<a   href="/user_details?userid=FRSoGLPQI16pus03avyaSA"><img src="http://static.px.yelp.com/photo/30Ja3pPB0xdGxKviW0ChZw/m" style="" alt="Photo of Gill C." /></a></div>
@@ -357,11 +426,11 @@ $city_name = getCityName($city_id);
 					<h3>ישר מהתנור...</h3>
 					<p>הביקורות האחרונות של חברי האתר</p>
 					<?php 
-						$query_reviews = "SELECT * FROM `test`.`reviews` WHERE city_id='$city_id' ORDER BY added DESC LIMIT 3"; //todo: same city or not?
+						$query_reviews = "SELECT * FROM `test`.`reviews` WHERE city_id='$city_id' ORDER BY added DESC LIMIT 6"; //todo: same city or not?
 						$result_reviews = $mysqli->query($query_reviews);
 						while ($review = mysqli_fetch_assoc($result_reviews) ){
-							$user_id = $review['user_id'];
-							$query_user = "SELECT * FROM `test`.`users` WHERE id='$user_id'";
+							$user_id_late = $review['user_id'];
+							$query_user = "SELECT * FROM `test`.`users` WHERE id='$user_id_late'";
 							$result_user = $mysqli->query($query_user);
 							$user = mysqli_fetch_assoc($result_user);
 							
@@ -379,7 +448,7 @@ $city_name = getCityName($city_id);
 							
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./user_reviwes.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+											<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 										</div>								
 										<p>
 											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
@@ -393,7 +462,7 @@ $city_name = getCityName($city_id);
 							if($len>100){
 								//print($short_rev);
 								$html .= $short_rev; 
-								$_SESSION['user_id']=$user[id]; 
+								$_SESSION['user_id_rev']=$user['id']; 
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
 							}else 
 								$html .= $the_review;
