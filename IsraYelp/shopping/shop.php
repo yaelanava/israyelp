@@ -98,12 +98,12 @@ $count_reviews = $result_reviews->num_rows;
 				<br></br>			
 					<div id="bizAdditionalInfo" class="clearfix">
 					<ul>							
-						<li><strong>שעות:</strong><?php echo $restaurant['hours']?></li>
-						<li><strong>גישה לנכים:</strong> <?php if($restaurant['invalid_access']==1){echo  " כן";} else {echo " לא";} ?></li>
-						<li><strong>חניה:</strong> <?php if($restaurant['parking']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>שעות: </strong><?php echo $restaurant['hours']?></li>
+						<li><strong>גישה לנכים: </strong> <?php if($restaurant['invalid_access']==1){echo  "כן";} else {echo "לא";} ?></li>
+						<li><strong>חניה: </strong> <?php if($restaurant['parking']==1){echo  "כן";} else {echo "לא";} ?></li>
 					</ul>
 				</div>				
-				<div  id="bizActions" class="clearfix">
+				<div id="bizActions" class="clearfix">
 					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?biz_id=<?php echo $rest_id?>&return_url=<?php echo $rest_url?>" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
 					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $rest_name?>&biz_url=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
 					<a class="write review" rel="nofollow" 
