@@ -159,7 +159,7 @@ $result_shopping = $mysqli->query($query_shopping);
 			<li><a href="?city_id=<?php echo $city_id?>&category=Home & Garden">בית וגינה</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=Toy Stores">חנויות צעצועים</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=Drugstores">בתי מרקחת</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Books & Music & Video">ספרים, מוזיקה ווידאו</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=Books&Music&Video">ספרים, מוזיקה ווידאו</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=Office Equipment">ציוד משרדי</a></li>
 		</ul>
 	</div>	
