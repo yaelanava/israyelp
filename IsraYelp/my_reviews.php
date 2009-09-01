@@ -14,6 +14,8 @@ $rev_count = $rev_result->num_rows;
 
 ?>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title> הביקורות שלי | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
@@ -102,28 +104,7 @@ $rev_count = $rev_result->num_rows;
 	</div>
 </div>
 
-<div id="footer">	
-	<div>		
-		<ul id="aboutSite">
-			<li>  <a href="http://localhost/IsraYelp/contact_us.html"   id="Zprofile_footer">עלינו</a></li>
-			<li> | <a href="/faq" >שאלות נפוצות </a></li>
-		</ul>
-	</div>
+<?php echo getFootetHTMLCode()?>
 
-	<div class="directory">
-		<ul>
-			<li class="first"><strong>מפת האתר</strong></li>
-			<li> | <a href="../restaurants.php">תל-אביב</a></li>
-			<li> | <a href="../../jerusalem/restaurants.php">ירושלים</a></li>
-			<li> | <a href="/boston">חיפה</a></li>
-			<li> | <a href="/chicago">באר שבע</a></li>
-			<li> | <a href="/dallas">הרצליה</a></li>
-			<li> | <a href="/denver">אשדוד</a></li>
-			<li> | <a href="/locations">ערים נוספות</a></li>
-		</ul>
-	</div>
-	
-	<div>
-		<p> זכויות יוצרים </p>
-	</div>
-</div>
+</body>
+</html>

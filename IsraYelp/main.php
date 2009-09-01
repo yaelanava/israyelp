@@ -381,35 +381,7 @@ $city_name = getCityName($city_id);
 	</MAP>
 </div>
 
-<div id="footer">
-	
-	<div>		
-				<ul id="aboutSite">
-					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
-					<li> | <a href="/about">החשבון שלי</a></li>
-					<li> | <a href="/faq" >שאלות נפוצות </a></li>
-				</ul>
-	</div>
-
-	<div class="directory">
-		<ul>
-			<li class="first"><strong>מפת האתר</strong></li>
-			<li> | <a href="./main.php?city_id=1">תל-אביב</a></li>
-			<li> | <a href="./main.php?city_id=2">ראשון לציון</a></li>
-			<li> | <a href="./main.php?city_id=3">ירושלים</a></li>
-			<li> | <a href="./main.php?city_id=4">חיפה</a></li>
-			<li> | <a href="./main.php?city_id=5">באר שבע</a></li>
-			<li> | <a href="./main.php?city_id=6">רחובות</a></li>
-			<li> | <a href="./main.php?city_id=7">חדרה</a></li>
-			<li> | <a href="">ערים נוספות</a></li>
-		</ul>
-	</div>
-	
-	<div>
-		<p> זכויות יוצרים </p>
-	</div>
-</div>
-
+<?php echo getFootetHTMLCode()?>
 
 </body>
 </html>
