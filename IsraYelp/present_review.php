@@ -3,7 +3,7 @@
 	include './utils/functions.php';
 	
 	$review_id=$_GET['review_id'];
-	$user_id = $_SESSION['user_id'];
+	$user_id = $_SESSION['user_id_rev'];
 	
 	$mysqli = getMysqliConnection();
 	$review_query = "SELECT * FROM `reviews` WHERE `reviews`.`id` = '$review_id' LIMIT 1";
