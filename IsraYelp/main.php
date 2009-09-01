@@ -117,202 +117,235 @@ $city_name = getCityName($city_id);
 	<div id="column_wrapper" class="clearfix">
 	
 <!--*******************************-->
-		<div id="rightColumn">
-		
-			<div id="bestOfYelpModule" class="clearfix external" >					
-				<div id="best_cats">
-					<h3>המקומות הטובים ביותר ב<?php echo $city_name?>:</h3>			
-					<div class="clearfix">
-						<div class="bestCat">
-							<h4 style="margin-bottom:0px;" title="מסעדות"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a></h4>
-							<em>
-								<?php 
-									$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='restaurants'";
-									$result = $mysqli->query($query);
-									$count = $result->num_rows;
-									echo $count;
-								?>  
-								ביקורות							
-							</em>														
-							
-							<?php 
-								$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
-								$result = $mysqli->query($query);
-								$html = "";
-								$first = 1;								
-								while ($rest = mysqli_fetch_assoc($result)){
-									$rest_url = "./restaurants/restaurant.php?biz_id=".$rest['id'];
-									if ($first){
-										$image_srs = "./restaurants/image/".$rest['id'].".JPG";						
-										$html = "<div class=\"clearStyles bizPhotoBox\">
-													<a  href=\"$rest_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$rest['name']."\"></a>
-												</div>";
-										$html .= "<ol>";			
-									}
-									$html .= "<li>";
-									if ($first){
-										$html .= "<strong>";
-									}
-									$html .= "<a href=\"$rest_url\"\">".$rest['name']."</a>";
-									if ($first){
-										$html .= "</strong>";
-										$first = 0;
-									}
-									$html .= "</li>";
-								}
-								$html .= "</ol>";
-								$html .= "<p><a href=\"./restaurants/restaurants.php?city_id=".$city_id."\">עוד...</a></p>";
-								echo $html;
-							?>														
-						</div>
+<div id="rightColumn">		
+	<div id="bestOfYelpModule" class="clearfix external" >					
+		<div id="best_cats">
+			<h3>המקומות הטובים ביותר ב<?php echo $city_name?>:</h3>			
+			<div class="clearfix">
+				<div class="bestCat">
+					<h4 style="margin-bottom:0px;" title="מסעדות"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a></h4>
+					<em>
+						<?php 
+							$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='restaurants'";
+							$result = $mysqli->query($query);
+							$count = $result->num_rows;
+							echo $count;
+						?>  
+						ביקורות							
+					</em>														
+					
+					<?php 
+						$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+						$result = $mysqli->query($query);
+						$html = "";
+						$first = 1;								
+						while ($rest = mysqli_fetch_assoc($result)){
+							$rest_url = "./restaurants/restaurant.php?biz_id=".$rest['id'];
+							if ($first){
+								$image_srs = "./restaurants/image/".$rest['id'].".JPG";						
+								$html = "<div class=\"clearStyles bizPhotoBox\">
+											<a  href=\"$rest_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$rest['name']."\"></a>
+										</div>";
+								$html .= "<ol>";			
+							}
+							$html .= "<li>";
+							if ($first){
+								$html .= "<strong>";
+							}
+							$html .= "<a href=\"$rest_url\"\">".$rest['name']."</a>";
+							if ($first){
+								$html .= "</strong>";
+								$first = 0;
+							}
+							$html .= "</li>";
+						}
+						$html .= "</ol>";
+						$html .= "<p><a href=\"./restaurants/restaurants.php?city_id=".$city_id."\">עוד...</a></p>";
+						echo $html;
+					?>														
+				</div>
 
-					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="./shopping/shopping.php?city_id=<?php echo $city_id?>">קניות</a></h4>
-						<em>
-								<?php 
-									$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='shopping'";
-									$result = $mysqli->query($query);
-									$count = $result->num_rows;
-									echo $count;
-								?>  
-								ביקורות							
-							</em>											
-						
-							<?php 
-								$query = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+				<div class="bestCat">
+					<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="./shopping/shopping.php?city_id=<?php echo $city_id?>">קניות</a></h4>
+					<em>
+						<?php 
+							$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='shopping'";
 								$result = $mysqli->query($query);
-								$first = 1;
-								$html="";								
-								while ($shop = mysqli_fetch_assoc($result)){
-									$shop_url = "./shopping/shop.php?biz_id=".$shop['id'];
-									if ($first){
-										$image_srs = "./shopping/image/".$shop['id'].".JPG";						
-										$html = "<div class=\"clearStyles bizPhotoBox\">
-													<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
-												</div>";
-										$html .= "<ol>";			
-									}
-									$html .= "<li>";
-									if ($first){
-										$html .= "<strong>";
-									}
-									$html .= "<a href=\"$shop_url\"\">".$shop['name']."</a>";
-									if ($first){
-										$html .= "</strong>";
-										$first = 0;
-									}
-									$html .= "</li>";
+								$count = $result->num_rows;
+								echo $count;
+							?>  
+							ביקורות							
+						</em>											
+					
+						<?php 
+							$query = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+							$result = $mysqli->query($query);
+							$first = 1;
+							$html="";								
+							while ($shop = mysqli_fetch_assoc($result)){
+								$shop_url = "./shopping/shop.php?biz_id=".$shop['id'];
+								if ($first){
+									$image_srs = "./shopping/image/".$shop['id'].".JPG";						
+									$html = "<div class=\"clearStyles bizPhotoBox\">
+												<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
+											</div>";
+									$html .= "<ol>";			
 								}
-								$html .= "</ol>";
-								$html .= "<p><a href=\"./shopping/shopping.php?city_id=".$city_id."\">עוד...</a></p>";
-								echo $html;
+								$html .= "<li>";
+								if ($first){
+									$html .= "<strong>";
+								}
+								$html .= "<a href=\"$shop_url\"\">".$shop['name']."</a>";
+								if ($first){
+									$html .= "</strong>";
+									$first = 0;
+								}
+								$html .= "</li>";
+							}
+							$html .= "</ol>";
+							$html .= "<p><a href=\"./shopping/shopping.php?city_id=".$city_id."\">עוד...</a></p>";
+							echo $html;
 						?>
 					</div>										
 				</div>
-					
+				
 				<div class="clearfix">
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="מקומות בילוי"><a href="/c/sf/nightlife">חיי לילה</a></h4>
-						<em>965 ביקורות</em>
-						<div class="clearStyles bizPhotoBox">
-							<a  href="/biz/cairo-nights-san-francisco"><img src="http://static.px.yelp.com/bphoto/JWNZlCwcSOrLtvpll4Om0A/m" style="" alt="Cairo Nights, San Francisco"></a>
-						</div>
-							<ol>
-							<li><strong><a   href="/biz/cairo-nights-san-francisco">ראשון</a></strong></li>
-							<li><a rel="nofolzlow" href="/biz/the-sisters-of-perpetual-indulgence-inc-san-francisco">שני</a></li>
-							<li><a   href="/biz/sunshine-coast-san-francisco">שלישי</a></li>
-							<li><a   href="/biz/great-american-music-hall-san-francisco">רביעי</a></li>
-							<li><a   href="/biz/sedusa-studios-campbell">חמישי</a></li>
-							</ol>
-							<p><a href="/c/sf/nightlife">עוד...</a></p>
-					</div>
-						
-					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="אתרי ספא ויופי"><a href="/c/sf/beautysvc">יופי וספא</a></h4>
-						<em>1843 ביקורות</em>
-						
-						<div class="clearStyles bizPhotoBox">
-							<a  href="/biz/urban-allure-san-francisco"><img src="http://static.px.yelp.com/bphoto/r4hH874MVyjpQ1vcNTWOow/m" style="" alt="Urban Allure, San Francisco"></a>
-						</div>
-							<ol>
-							<li><strong><a   href="/biz/urban-allure-san-francisco">ראשון</a> </strong>  </li>
-							<li><a   href="/biz/gentle-star-medspa-san-francisco">שני</a> </li>
-							<li><a   href="/biz/earthbody-advanced-therapies-san-francisco">שלישי</a></li>
-							<li><a   href="/biz/nevas-beauty-san-francisco">רביעי</a></li>
-							<li><a   href="/biz/alisha-valverde-skincare-medical-skin-aesthetics-san-francisco">חמישי</a></li>
-							</ol>
-							<p><a href="/c/sf/beautysvc">עוד...</a></p>
-					</div>
-				</div>				
-				</div>	
-					
-					<div id="cat_list">	
-						<h4 class="ieSucks">חפש לפי קטגוריה</h4>
-						<ul class="stripped ieSucks">								
-							<li class="shopping"><a href="./shopping/shopping.php?city_id="<<?php echo $city_id?>">קניות</a> 
-								<?php 
-									$query = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id";
-									$result = $mysqli->query($query);
-									$count = $result->num_rows;
-									echo $count;
-								?> 
-							</li>
-							<li class="restaurants"><a href="./restaurants/restaurants.php?city_id="<?php echo $city_id?>">מסעדות</a>  										
-								<?php 
-									$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id";
-									$result = $mysqli->query($query);
-									$count = $result->num_rows;
-									echo $count;
-								?>  
-							</li>
-							<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
-							<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>
-							<li class="beautysvc"><a href="/c/sf/beautysvc">יופי וספא</a>  1870 </li>
-							<li class="homeservices"><a href="/c/sf/homeservices">שירותים עד הבית</a> 1522  </li>
-							<li class="localservices"><a href="/c/sf/localservices">שירותים מקומיים</a>  1477 </li>
-							<li class="eventservices"><a href="/c/sf/eventservices">אירועים</a> 1277  </li>
-							<li class="arts"><a href="/c/sf/arts">בידור</a> 1153  </li>
-<!--							<li class="active"><a href="/c/sf/active">Active Life</a> 1114</li>-->
-							<li class="nightlife"><a href="/c/sf/nightlife">חיי לילה</a> 977  </li>
-<!--							<li class="auto"><a href="/c/sf/auto">Automotive</a> 829</li>-->
-							<li class="hotelstravel"><a href="/c/sf/hotelstravel">טיולים ובתי מלון</a> 754  </li>
-							<li class="professional"><a href="/c/sf/professional">שירותים מקצועיים</a> 751  </li>
-							<li class="education"><a href="/c/sf/education">השכלה</a> 608  </li>
-<!--							<li class="realestate"><a href="/c/sf/realestate">Real Estate</a> 480</li>-->
-							<li class="pets">  <a href="/c/sf/pets">חיות מחמד</a> 367 </li>
-							<li class="financialservices"><a href="/c/sf/financialservices">שירותים פיננסיים</a> 359  </li>
-							<li class="publicservicesgovt"><a href="/c/sf/publicservicesgovt">שירותים ציבוריים</a> 336  </li>
-<!--							<li class="localflavor"><a href="/c/sf/localflavor">Local Flavor</a> 319</li>-->
-<!--							<li class="massmedia"><a href="/c/sf/massmedia">Mass Media</a> 199</li>-->
-<!--							<li class="religiousorgs"> 149 <a href="/c/sf/religiousorgs">ארגונים דתיים</a> </li>-->
-						
-						</ul>
-						<p style="font-size:1px;clear:both;margin:0px;">&nbsp;</p>
-					</div>
-				</div> 
+						<h4 style="margin-bottom:0px;" title="מקומות בילוי"><a href="./nightlife/nightlife.php?city_id=<?php echo $city_id?>">חיי לילה</a></h4>
+						<em>
+							<?php 
+								$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='nightlife'";
+								$result = $mysqli->query($query);
+								$count = $result->num_rows;
+								echo $count;
+							?>  
+							ביקורות							
+						</em>			
 
-
-				<div id="topYelpersModule" class="external">
-					<h3>מבקרים נבחרים</h3>
-					<br>
-					<?php 						
-						$query = "SELECT * FROM `test`.`users` ORDER BY RAND() LIMIT 6";
-						$result = $mysqli->query($query);
-						while ($user = mysqli_fetch_assoc($result)){
-							$html = "<div>
-									<P><A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\">".$user['username']."</A></P>
-									<div class=\"clearStyles photoBox\">
-										<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
-									</div>
-									<div></div>			
-									</div>";
+						<?php 
+							$query = "SELECT * FROM `test`.`nightlife` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+							$result = $mysqli->query($query);
+							$first = 1;
+							$html="";								
+							while ($shop = mysqli_fetch_assoc($result)){
+								$shop_url = "./nightlife/night.php?biz_id=".$shop['id'];
+								if ($first){
+									$image_srs = "./shopping/image/".$shop['id'].".JPG";						
+									$html = "<div class=\"clearStyles bizPhotoBox\">
+												<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
+											</div>";
+									$html .= "<ol>";			
+								}
+								$html .= "<li>";
+								if ($first){
+									$html .= "<strong>";
+								}
+								$html .= "<a href=\"$shop_url\"\">".$shop['name']."</a>";
+								if ($first){
+									$html .= "</strong>";
+									$first = 0;
+								}
+								$html .= "</li>";
+							}
+							$html .= "</ol>";
+							$html .= "<p><a href=\"./nightlife/night.php?city_id=".$city_id."\">עוד...</a></p>";
 							echo $html;
-						}										
-					?>							
+						?>
 				</div>
+						
+				<div class="bestCat">
+					<h4 style="margin-bottom:0px;" title="אתרי ספא ויופי"><a href="/c/sf/beautysvc">יופי וספא</a></h4>
+					<em>1843 ביקורות</em>
+					
+					<div class="clearStyles bizPhotoBox">
+						<a  href="/biz/urban-allure-san-francisco"><img src="http://static.px.yelp.com/bphoto/r4hH874MVyjpQ1vcNTWOow/m" style="" alt="Urban Allure, San Francisco"></a>
+					</div>
+						<ol>
+						<li><strong><a   href="/biz/urban-allure-san-francisco">ראשון</a> </strong>  </li>
+						<li><a   href="/biz/gentle-star-medspa-san-francisco">שני</a> </li>
+						<li><a   href="/biz/earthbody-advanced-therapies-san-francisco">שלישי</a></li>
+						<li><a   href="/biz/nevas-beauty-san-francisco">רביעי</a></li>
+						<li><a   href="/biz/alisha-valverde-skincare-medical-skin-aesthetics-san-francisco">חמישי</a></li>
+						</ol>
+						<p><a href="/c/sf/beautysvc">עוד...</a></p>
+				</div>
+			</div>				
+		</div>	
+					
+		<div id="cat_list">	
+			<h4 class="ieSucks">חפש לפי קטגוריה</h4>
+			<ul class="stripped ieSucks">								
+				<li class="shopping"><a href="./shopping/shopping.php?city_id=<<?php echo $city_id?>">קניות</a> 
+					<?php 
+						$query = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id";
+						$result = $mysqli->query($query);
+						$count = $result->num_rows;
+						echo $count;
+					?> 
+				</li>
+				<li class="restaurants"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a>  										
+					<?php 
+						$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id";
+						$result = $mysqli->query($query);
+						$count = $result->num_rows;
+						echo $count;
+					?>  
+				</li>
+				<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
+				<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>
+				<li class="beautysvc"><a href="/c/sf/beautysvc">יופי וספא</a>  1870 </li>
+				<li class="homeservices"><a href="/c/sf/homeservices">שירותים עד הבית</a> 1522  </li>
+				<li class="localservices"><a href="/c/sf/localservices">שירותים מקומיים</a>  1477 </li>
+				<li class="eventservices"><a href="/c/sf/eventservices">אירועים</a> 1277  </li>
+				<li class="arts"><a href="/c/sf/arts">בידור</a> 1153  </li>
+<!--			<li class="active"><a href="/c/sf/active">Active Life</a> 1114</li>-->
+				<li class="nightlife"><a href="./nightlife/nightlife.php?city_id=<?php echo $city_id?>">חיי לילה</a> 
+				 	<?php 
+						$query = "SELECT * FROM `test`.`nightlife` WHERE city_id=$city_id";
+						$result = $mysqli->query($query);
+						$count = $result->num_rows;
+						echo $count;
+					?>   
+				</li>
+<!--			<li class="auto"><a href="/c/sf/auto">Automotive</a> 829</li>-->
+				<li class="hotelstravel"><a href="/c/sf/hotelstravel">טיולים ובתי מלון</a> 754  </li>
+				<li class="professional"><a href="/c/sf/professional">שירותים מקצועיים</a> 751  </li>
+				<li class="education"><a href="/c/sf/education">השכלה</a> 608  </li>
+<!--			<li class="realestate"><a href="/c/sf/realestate">Real Estate</a> 480</li>-->
+				<li class="pets">  <a href="/c/sf/pets">חיות מחמד</a> 367 </li>
+				<li class="financialservices"><a href="/c/sf/financialservices">שירותים פיננסיים</a> 359  </li>
+				<li class="publicservicesgovt"><a href="/c/sf/publicservicesgovt">שירותים ציבוריים</a> 336  </li>
+<!--			<li class="localflavor"><a href="/c/sf/localflavor">Local Flavor</a> 319</li>-->
+<!--			<li class="massmedia"><a href="/c/sf/massmedia">Mass Media</a> 199</li>-->
+<!--			<li class="religiousorgs"> 149 <a href="/c/sf/religiousorgs">ארגונים דתיים</a> </li>-->					
+			</ul>
+						
+			<p style="font-size:1px;clear:both;margin:0px;">&nbsp;</p>
 		</div>
+	</div> 
+
+	<div id="topYelpersModule" class="external">
+		<h3>מבקרים נבחרים</h3>
+		<br>
+			<?php 						
+				$query = "SELECT * FROM `test`.`users` ORDER BY RAND() LIMIT 6";
+				$result = $mysqli->query($query);
+				while ($user = mysqli_fetch_assoc($result)){
+					$html = "<div>
+							<P><A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\">".$user['username']."</A></P>
+							<div class=\"clearStyles photoBox\">
+								<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
+							</div>
+							<div></div>			
+							</div>";
+					echo $html;
+				}										
+			?>							
+		</div>
+</div>
+
+
 <!--*******************************-->
-		
 		
 		<div id="leftColumn">
 			<div class="clearfix" id="reviewPicksModule">
