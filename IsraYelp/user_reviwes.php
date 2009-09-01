@@ -4,7 +4,7 @@ session_start();
 
 include './utils/functions.php';
 
-echo $user_id_rev = $_GET['user_id_rev'];
+$user_id_rev = $_GET['user_id_rev'];
 											
 //counting how much reviews this user wrote
 $mysqli = getMysqliConnection();
