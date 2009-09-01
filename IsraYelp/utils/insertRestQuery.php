@@ -1,6 +1,8 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'administrator', '', 'test');
+include './functions.php';
+
+$mysqli = getMysqliConnection();
 	
 //$name = "мечас";
 //$city_id = 1;
@@ -43,7 +45,7 @@ $query = "INSERT INTO `test`.`restaurants` (
 				`lat` ,
 				`lon` ,
 				`phone_number` ,
-				`type_rest` ,
+				`category` ,
 				`grading` ,
 				`num_critiques` ,
 				`delivery` ,

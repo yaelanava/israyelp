@@ -127,7 +127,7 @@ $city_name = getCityName($city_id);
 							<h4 style="margin-bottom:0px;" title="מסעדות"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a></h4>
 							<em>
 								<?php 
-									$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id";
+									$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='restaurants'";
 									$result = $mysqli->query($query);
 									$count = $result->num_rows;
 									echo $count;
@@ -164,23 +164,49 @@ $city_name = getCityName($city_id);
 								echo $html;
 							?>														
 						</div>
-				
+
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="/c/sf/shopping">קניות</a></h4>
-						<em>4115 ביקורות</em>
+						<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="./shopping/shopping.php?city_id=<?php echo $city_id?>">קניות</a></h4>
+						<em>
+								<?php 
+									$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='shopping'";
+									$result = $mysqli->query($query);
+									$count = $result->num_rows;
+									echo $count;
+								?>  
+								ביקורות							
+							</em>											
 						
-						<div class="clearStyles bizPhotoBox">
-						<a  href="/biz/diannes-old-and-new-estates-san-francisco-2"><img src="http://static.px.yelp.com/bphoto/Tm0CoFsSJrbe1wXWvTATwA/m" style="" alt=""></a>
-						</div>
-							<ol>
-							<li><strong><a   href="/biz/diannes-old-and-new-estates-san-francisco-2">ראשון</a></strong></li>
-							<li><a   href="/biz/not-just-flowers-san-francisco">שני</a></li>
-							<li><a   href="/biz/my-trick-pony-san-francisco">שלישי</a></li>
-							<li><a   href="/biz/xapno-san-francisco">רביעי</a></li>
-							<li><a   href="/biz/keetsa-mattress-san-francisco">חמישי</a></li>
-							</ol>
-							<p><a href="/c/sf/shopping">עוד...</a></p>
-						</div>
+							<?php 
+								$query = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+								$result = $mysqli->query($query);
+								$first = 1;
+								$html="";								
+								while ($shop = mysqli_fetch_assoc($result)){
+									$shop_url = "./shopping/shop.php?biz_id=".$shop['id'];
+									if ($first){
+										$image_srs = "./shopping/image/".$shop['id'].".JPG";						
+										$html = "<div class=\"clearStyles bizPhotoBox\">
+													<a  href=\"$shop_url\"><img src=\"$image_srs\" alt=\"".$shop['name']."\" witdh=100 height=100></a>
+												</div>";
+										$html .= "<ol>";			
+									}
+									$html .= "<li>";
+									if ($first){
+										$html .= "<strong>";
+									}
+									$html .= "<a href=\"$shop_url\"\">".$shop['name']."</a>";
+									if ($first){
+										$html .= "</strong>";
+										$first = 0;
+									}
+									$html .= "</li>";
+								}
+								$html .= "</ol>";
+								$html .= "<p><a href=\"./shopping/shopping.php?city_id=".$city_id."\">עוד...</a></p>";
+								echo $html;
+						?>
+					</div>										
 				</div>
 					
 				<div class="clearfix">
@@ -222,8 +248,15 @@ $city_name = getCityName($city_id);
 					<div id="cat_list">	
 						<h4 class="ieSucks">חפש לפי קטגוריה</h4>
 						<ul class="stripped ieSucks">								
-							<li class="shopping"><a href="/c/sf/shopping">קניות</a> 4165 </li>
-							<li class="restaurants"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a>  										
+							<li class="shopping"><a href="./shopping/shopping.php?city_id="<<?php echo $city_id?>">קניות</a> 
+								<?php 
+									$query = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id";
+									$result = $mysqli->query($query);
+									$count = $result->num_rows;
+									echo $count;
+								?> 
+							</li>
+							<li class="restaurants"><a href="./restaurants/restaurants.php?city_id="<?php echo $city_id?>">מסעדות</a>  										
 								<?php 
 									$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id";
 									$result = $mysqli->query($query);
