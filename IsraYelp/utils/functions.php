@@ -30,7 +30,8 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 }
 
 function getBizURL($biz_type, $biz_id){
-	return "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-1).".php?biz_id=".$biz_id;
+	$i = $biz_type==="restaurants" ? 1 : 4;
+	return "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-$i).".php?biz_id=".$biz_id;
 }
 
 function getUserPictureSrc($user_id, $prefix){
@@ -48,7 +49,7 @@ function getCityName($city_id){
 	return $city['name'];
 }
 
-function getFootetHTMLCode(){
+function getFooterHTMLCode(){
 	$myAccount_link = session_is_registered('username') 
 					  ? "http://localhost/IsraYelp/about_me.php" 
 					  : "http://localhost/IsraYelp/signup.html";

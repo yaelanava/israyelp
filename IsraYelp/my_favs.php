@@ -80,7 +80,7 @@ $fav_count = $fav_result->num_rows;
 	</div>
 </div>
 
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>

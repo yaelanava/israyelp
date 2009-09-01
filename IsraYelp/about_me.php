@@ -130,7 +130,7 @@ $year = $user['year_added'];
 	</div>
 </div>		
 		
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>

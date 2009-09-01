@@ -162,7 +162,7 @@ $result_restaurants = $mysqli->query($query_restaurants);
 	</div>	
 </div>
 
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>
