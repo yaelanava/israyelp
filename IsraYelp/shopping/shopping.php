@@ -165,7 +165,7 @@ $result_shopping = $mysqli->query($query_shopping);
 	</div>	
 </div>
 
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>

@@ -182,7 +182,7 @@ $count_reviews = $result_reviews->num_rows;
 	</div>	
 </div>
 
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>

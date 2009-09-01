@@ -104,7 +104,7 @@ $rev_count = $rev_result->num_rows;
 	</div>
 </div>
 
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>

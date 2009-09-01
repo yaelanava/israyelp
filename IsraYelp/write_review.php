@@ -89,7 +89,7 @@ include './utils/functions.php';
 	</div>
 </div>
 
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>

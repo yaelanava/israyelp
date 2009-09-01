@@ -156,7 +156,7 @@ $user_name=$user['username'];
 </div>
 </div>
 
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>

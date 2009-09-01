@@ -486,7 +486,7 @@ $city_name = getCityName($city_id);
 	</MAP>
 </div>
 
-<?php echo getFootetHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>
