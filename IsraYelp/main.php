@@ -133,23 +133,26 @@ $city_name = getCityName($city_id);
 									echo $count;
 								?>  
 								ביקורות							
-							</em>			
-					
-							<div class="clearStyles bizPhotoBox">
-								<a  href="/biz/san-francisco-meats-and-delicatessen-san-francisco-2"><img src="http://static.px.yelp.com/bphoto/JfEZplImdPEBuE1BNc767A/m"  alt="San Francisco Meats &amp; Delicatessen, San Francisco"></a>
-							</div>
+							</em>														
 							
 							<?php 
 								$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
 								$result = $mysqli->query($query);
-								$first = 1;
-								$html = "<ol>";			
+								$first = 1;								
 								while ($rest = mysqli_fetch_assoc($result)){
+									$rest_url = "./restaurants/restaurant.php?biz_id=".$rest['id'];
+									if ($first){
+										$image_srs = "./restaurants/image/".$rest['id'].".JPG";						
+										$html = "<div class=\"clearStyles bizPhotoBox\">
+													<a  href=\"$rest_url\"><img src=\"$image_srs\" alt=\"".$rest['name']."\" witdh=100 height=100></a>
+												</div>";
+										$html .= "<ol>";			
+									}
 									$html .= "<li>";
 									if ($first){
 										$html .= "<strong>";
 									}
-									$html .= "<a href=\"./restaurants/restaurant.php?biz_id=".$rest['id']."\">".$rest['name']."</a>";
+									$html .= "<a href=\"$rest_url\"\">".$rest['name']."</a>";
 									if ($first){
 										$html .= "</strong>";
 										$first = 0;
