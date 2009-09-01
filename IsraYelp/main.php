@@ -340,68 +340,42 @@ $city_name = getCityName($city_id);
 							$short_rev=substr($the_review,0,99);
 							$len=strlen($the_review);
 							
-							$html = "<div class=\"clearfix\">
-										<table>
-											<tr>
-												<td>
-													<DIV class=\"ext_rating\">
-														<DIV class=\"rating\">
-															<IMG class=\"stars_". $review['grading']."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
-														</DIV>
-														<br/>
-														<a href=\"$biz_url\">".$biz['name']."</a> 
-													</DIV>
-												</td>
-												<td>
-													<DIV class=\"clearStyles photoBox\">
-														<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													
-												</td>
-											</tr>
-										</table>
-										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
-										</div>								
+							$html =  "<div id=\"reviewerInfo\">
+										<div class=\"clearStyles photoBox\" >
+											<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\">
+											<IMG style=\"WIDTH: 50px; HEIGHT: 50px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+										</div>
 										<p>
-											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
-											<br/><em class=\"smaller grey\">". $user['username'] ."</em>
-											<br/>";
-											
-																				
-										
+											<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\">" .$user['username'] ."</A> 
+										</p>
+									</div>
+								
+									<div id=\"reviewPick\">
+										<div class=\"rating\">
+										<IMG class=\"stars_". $review['grading']."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
 									
-							//echo $html;	
+									</div>
+									<p>
+										<a href=\"$biz_url\">".$biz['name']."</a>
+									</p>
+									<p style=\"padding-top:.3em;\">";
+					
 							if($len>100){
-								//print($short_rev);
-								$html .= $short_rev; 
-								$_SESSION['user_id_rev']=$user['id']; 
-								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
-							}else 
-								$html .= $the_review;
-							$html .="</p></div>";
+										//print($short_rev);
+										$html .= $short_rev; 
+										$_SESSION['user_id_rev']=$user['id']; 
+										$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
+									}else 
+										$html .= $the_review;
+							
+							$html .="
+									</div>	";
+							
 							echo $html;
 							
 						}
 					?>				
 				
-				<div id="reviewerInfo">
-					<div class="clearStyles photoBox" >
-					<a   href="/user_details?userid=FRSoGLPQI16pus03avyaSA"><img src="http://static.px.yelp.com/photo/30Ja3pPB0xdGxKviW0ChZw/m" style="" alt="Photo of Gill C." /></a></div>
-					<p><a   href="/user_details?userid=FRSoGLPQI16pus03avyaSA">שם המבקר</a></p>
-				</div>
-				
-				<div id="reviewPick">
-					<div class="rating"><img class="stars_5" width="83" height="325" title="5 star rating" alt="5 star rating" src="./image/stars_map.png"/></div>
-					<p><a   href="/biz/joanns-cafe-south-san-francisco#hrid:P2l_hXqjw900yLKb-5BGeQ">שם המקום</a></p>
-					<p style="padding-top:.3em;">כאן תהיה ביקורת שתבחר בדרך כלשהי, כל יום ביקורת אחרת</p>
-					<a   href="/biz/joanns-cafe-south-san-francisco#hrid:P2l_hXqjw900yLKb-5BGeQ" > המשך&raquo; </a>
-					
-				</div>	
 			</div>
 			
 			<div id="recent_offers">
@@ -426,7 +400,7 @@ $city_name = getCityName($city_id);
 					<h3>ישר מהתנור...</h3>
 					<p>הביקורות האחרונות של חברי האתר</p>
 					<?php 
-						$query_reviews = "SELECT * FROM `test`.`reviews` WHERE city_id='$city_id' ORDER BY added DESC LIMIT 6"; //todo: same city or not?
+						$query_reviews = "SELECT * FROM `test`.`reviews` WHERE city_id='$city_id' ORDER BY added DESC LIMIT 3"; //todo: same city or not?
 						$result_reviews = $mysqli->query($query_reviews);
 						while ($review = mysqli_fetch_assoc($result_reviews) ){
 							$user_id_late = $review['user_id'];
