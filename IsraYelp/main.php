@@ -230,7 +230,7 @@ $city_name = getCityName($city_id);
 							while ($shop = mysqli_fetch_assoc($result)){
 								$shop_url = "./nightlife/night.php?biz_id=".$shop['id'];
 								if ($first){
-									$image_srs = "./shopping/image/".$shop['id'].".JPG";						
+									$image_srs = "./nightlife/image/".$shop['id'].".JPG";						
 									$html = "<div class=\"clearStyles bizPhotoBox\">
 												<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
 											</div>";
