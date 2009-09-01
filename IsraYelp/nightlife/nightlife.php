@@ -12,16 +12,16 @@ $categoryQureyOrNull = $category ? " and category LIKE ('%$category%')" : "";
 
 $mysqli = getMysqliConnection();
 
-$query_shopping = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id $categoryQureyOrNull
+$query_restaurants = "SELECT * FROM `test`.`nightlife` WHERE city_id=$city_id $categoryQureyOrNull
  					  ORDER BY grading DESC LIMIT 5";
-$result_shopping = $mysqli->query($query_shopping);
+$result_restaurants = $mysqli->query($query_restaurants);
 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>אתרי קניות ב<?php echo $city_name?> | IsraYelp</title>
+	<title>מסעדות ב<?php echo $city_name?> | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -44,10 +44,11 @@ $result_shopping = $mysqli->query($query_shopping);
 		<div id="rightEdge"></div>
 </div>
 
+
 <div id="navContainer">
 		<ul>			
-			<LI class="header" id="writeReview"><A href="../write_review.php" >כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A href="../find_review.php" >חפש ביקורת</A></LI>
+			<LI class="header" id="writeReview"><A   href="../write_review.php" >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A   href="../find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../login.php?logout=1";} else{echo "../login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../about_me.php";} else{echo "../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
@@ -56,31 +57,31 @@ $result_shopping = $mysqli->query($query_shopping);
 
 <div id="mainContent" class="category_browse">
 	<div id="locBar">
-		<?php echo getLocBarHtmlCode($city_id, $city_name, "./shopping.php");?>		
+		<?php echo getLocBarHtmlCode($city_id, $city_name, "./nightlife.php");?>		
 	</div>
 
 	<div id="top_cat_biz">
 		<div id="top_biz_lists" class="clearfix">
 			<br/>
-			<h1>אתרי קניות ב<?php echo $city_name?> </h1>
+			<h1>אתרי בילוי ב<?php echo $city_name?> </h1>
 			<p id="breadcrumbs">קטגוריה: 
 				<a href="../main.php"><?php echo $city_name?></a> 
 				&raquo;		
 				<?php 
 					if ($category) {
-						echo "<a href=\"?city_id=$city_id\">קניות</a>
+						echo "<a href=\"?city_id=$city_id\">חיי לילה</a>
 								&raquo; $category"; 
 					} else {
-						echo "קניות";
+						echo "חיי לילה";
 					}
 				?>					
 			</p>
 		
 			<?php 
-				$topRestaurant = mysqli_fetch_assoc($result_shopping);
+				$topRestaurant = mysqli_fetch_assoc($result_restaurants);
 				$topRest_id = $topRestaurant['id'];
 				$image_srs = "./image/$topRest_id.JPG";
-				$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id=$topRest_id and biz_type='shopping' ORDER BY added DESC";
+				$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id=$topRest_id and biz_type='nightlife' ORDER BY added DESC";
 				$result_restReview = $mysqli->query($query_restReview);
 				if ($result_restReview) {						
 					$count_restReview = $result_restReview->num_rows;
@@ -89,7 +90,7 @@ $result_shopping = $mysqli->query($query_shopping);
 								<div class=\"clearStyles bizPhotoBox\">
 									<a  href=\"$image_srs\"><img src=\"$image_srs\" width=100 height=150 style=\"\" alt=\"".$topRestaurant['name']."\"></a>
 								</div>
-								<p class=\"biz_info\">1. <a href=\"./restaurant.php?biz_id=$topRest_id\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$topRestaurant['name']."</a></p>							
+								<p class=\"biz_info\">1. <a href=\"./night.php?biz_id=$topRest_id\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$topRestaurant['name']."</a></p>							
 								<div class=\"top_biz_rating\">
 									<div class=\"rating\">
 										<img class=\"stars_4_half\" width=\"83\" height=\"325\" title=\"4.5 star rating\" alt=\"4.5 star rating\" src=\"../image/stars_map.png\"/>
@@ -107,14 +108,14 @@ $result_shopping = $mysqli->query($query_shopping);
 				<?php
 					$html = "";
 					$i=2;
-					while ($rest = mysqli_fetch_assoc($result_shopping)){
+					while ($rest = mysqli_fetch_assoc($result_restaurants)){
 						$rest_id = $rest['id'];
-						$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id=$rest_id and biz_type='shopping' ORDER BY added DESC";
+						$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id=$rest_id and biz_type='nightlife' ORDER BY added DESC";
 						$result_restReview = $mysqli->query($query_restReview);
 						$count_restReview = $result_restReview->num_rows;
 						$html .= "<li>
 									<div class=\"biz_info\">
-										$i. <a href=\"./restaurant.php?biz_id=".$rest_id."\" id=\"top_biz_name_$i\" class=\"biz_name\">".$rest['name']."</a>
+										$i. <a href=\"./night.php?biz_id=".$rest_id."\" id=\"top_biz_name_$i\" class=\"biz_name\">".$rest['name']."</a>
 									</div>
 									<div class=\"biz_rating\">
 										<div class=\"rating-small\">
@@ -147,20 +148,16 @@ $result_shopping = $mysqli->query($query_shopping);
 	</div>	
 
 	<div id="sub_cat_lists" class="clearfix">
-		<h2>אתרי קניות ב<?php echo $city_name?> לפי קטגוריות<h2>
+		<h2>אתרי בילוי <?php echo $city_name?> לפי קטגוריות<h2>
 		<ul class="stripped other_sub_cats">
-			<li><a href="?city_id=<?php echo $city_id?>&category=Shopping Centers">מרכזי קניות</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Antiques">עתיקות</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Fashion">אופנה</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Electronics">אלקטרוניקה</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Jewelry">תכשיטים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Flowers & Gifts">פרחים ומתנות</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Computers">מחשבים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Home & Garden">בית וגינה</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Toy Stores">חנויות צעצועים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Drugstores">בתי מרקחת</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Books & Music & Video">ספרים, מוזיקה ווידאו</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Office Equipment">ציוד משרדי</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=events">אירועים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=meat">בשר</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=gourmet">גורמה</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=fish">דגים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=mediterranean">ים-תיכוני</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=sea_food">מאכלי ים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=chef_rest">מסעדת שף</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=take_away">take away</a></li>
 		</ul>
 	</div>	
 </div>

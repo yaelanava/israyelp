@@ -6,7 +6,7 @@ session_start();
 include '../utils/functions.php';
 
 $rest_id = $_GET['biz_id'];
-$biz_type = "shopping";
+$biz_type = "nightlife";
 $rest_url = getBizURL($biz_type, $rest_id);
 
 
@@ -89,7 +89,7 @@ $count_reviews = $result_reviews->num_rows;
 							<div id="bizPhotos"">
 								<div class="clearStyles bizPhotoBox">
 										<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
-										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height=150 style="" alt=""></a>
+										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=200 height=150 style="" alt=""></a>
 								</div>
 							</div>
 						</td>
@@ -99,11 +99,14 @@ $count_reviews = $result_reviews->num_rows;
 					<div id="bizAdditionalInfo" class="clearfix">
 					<ul>							
 						<li><strong>שעות: </strong><?php echo $restaurant['hours']?></li>
-						<li><strong>גישה לנכים: </strong> <?php if($restaurant['invalid_access']==1){echo  "כן";} else {echo "לא";} ?></li>
-						<li><strong>חניה: </strong> <?php if($restaurant['parking']==1){echo  "כן";} else {echo "לא";} ?></li>
+						<li><strong>גישה לנכים: </strong> <?php if($restaurant['invalid_access']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>Happy Hour: </strong><?php echo $restaurant['Happy Hour']?></li>
+						<li><strong>חניה: </strong> <?php if($restaurant['parking']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>אזור עישון: </strong> <?php if($restaurant['smoking']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>ישיבה בחוץ: </strong> <?php if($restaurant['outside']==1){echo "כן";} else {echo "לא";} ?></li>									
 					</ul>
 				</div>				
-				<div id="bizActions" class="clearfix">
+				<div  id="bizActions" class="clearfix">
 					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?biz_id=<?php echo $rest_id?>&return_url=<?php echo $rest_url?>" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
 					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $rest_name?>&biz_url=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
 					<a class="write review" rel="nofollow" 
