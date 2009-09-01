@@ -54,12 +54,7 @@ include './utils/functions.php';
 		</p>
 		<p>
 			<label for="find_loc_ext">סוג המקום <em> </em></label>
-			<select name="place_kind">
- 				 <option value="מסעדה" >מסעדה</option>
-				 <option value="בית-קפה">בית-קפה</option>
-  				 <option value="מספרה">מספרה</option>
-                 <option value="בית קולנוע">בית קולנוע</option>
-			</select>
+			<?php echo getTypesHTMLCode()?>
 		</p>
 
 		<p>
