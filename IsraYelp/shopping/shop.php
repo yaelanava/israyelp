@@ -6,13 +6,13 @@ session_start();
 include '../utils/functions.php';
 
 $rest_id = $_GET['biz_id'];
-$biz_type = "restaurants";
+$biz_type = "shopping";
 $rest_url = getBizURL($biz_type, $rest_id);
 
 
 $mysqli = getMysqliConnection();
 
-$query_restaurant = "SELECT * FROM `test`.`restaurants` WHERE id='$rest_id'";
+$query_restaurant = "SELECT * FROM `test`.`$biz_type` WHERE id='$rest_id'";
 $result_restaurant = $mysqli->query($query_restaurant);
 $restaurant = mysqli_fetch_assoc($result_restaurant);
 $rest_name = $restaurant['name'];	
@@ -98,15 +98,9 @@ $count_reviews = $result_reviews->num_rows;
 				<br></br>			
 					<div id="bizAdditionalInfo" class="clearfix">
 					<ul>							
-						<li><strong>משלוחים:</strong><?php if($restaurant['delivery']==1){echo  " כן";} else {echo " לא";} ?></li>
-						<li><strong>כשר:</strong><?php if($restaurant['kosher']==1){echo  " כן";} else {echo " לא";} ?></li>
+						<li><strong>שעות:</strong><?php echo $restaurant['hours']?></li>
 						<li><strong>גישה לנכים:</strong> <?php if($restaurant['invalid_access']==1){echo  " כן";} else {echo " לא";} ?></li>
-						<li><strong>ידידותי לילדים:</strong> <?php if($restaurant['child_friendly']==1){echo  " כן";} else {echo " לא";} ?></li>
-						<li><strong>אירועים:</strong> <?php if($restaurant['events']==1){echo  " כן";} else {echo " לא";} ?></li>
-						<li><strong>רומנטי:</strong> <?php if($restaurant['romantic']==1){echo  " כן";} else {echo " לא";} ?></li>
 						<li><strong>חניה:</strong> <?php if($restaurant['parking']==1){echo  " כן";} else {echo " לא";} ?></li>
-						<li><strong>אזור עישון:</strong> <?php if($restaurant['smoking']==1){echo  " כן";} else {echo " לא";} ?></li>
-						<li><strong>ישיבה בחוץ:</strong> <?php if($restaurant['outside']==1){echo  " כן";} else {echo " לא";} ?></li>									
 					</ul>
 				</div>				
 				<div  id="bizActions" class="clearfix">
