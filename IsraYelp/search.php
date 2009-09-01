@@ -42,7 +42,7 @@ function search($query,$biz_url_prefix,$biz_type){
 	$mysqli = getMysqliConnection();
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;
-	echo $count;
+
 	if ($count == 1){
 		$biz = mysqli_fetch_assoc($result);
 		$biz_id = $biz['id'];
@@ -62,21 +62,21 @@ function search($query,$biz_url_prefix,$biz_type){
 		}
 	}
 	else if ($count > 1){
-			while ($biz = mysqli_fetch_assoc($result)){		
-			$html .= "				
-						<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
-							<tr>
-								<td><span><b><a href=".$biz['biz_url']."\">".$biz['biz_name']."</a></b></span></td> 
-							</tr>
-						</table>
-					";
-			echo $html;				
-		}
+/*		$html="";
+		while ($biz = mysqli_fetch_assoc($result)){		
+		$html .= "	<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
+						<tr>
+							<td><span><b><a href=".$biz['biz_url']."\">".$biz['biz_name']."</a></b></span></td> 
+						</tr>
+					</table>";
+		}		
+		$_SESSION['local_html']=$html;*/
+		header("Location: ./present_places.php?count=".$count);
 	}
 
 	else {
 		header("Location: ./new_place.php?place_name=".$name."&place_city=".$city."&place_type=".$kind);
 	}
 }
-
 ?>
+
