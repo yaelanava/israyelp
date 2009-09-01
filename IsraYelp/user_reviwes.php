@@ -4,15 +4,15 @@ session_start();
 
 include './utils/functions.php';
 
-$user_id = $_GET['user_id'];
+echo $user_id_rev = $_GET['user_id_rev'];
 											
 //counting how much reviews this user wrote
 $mysqli = getMysqliConnection();
-$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
+$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id_rev'";
 $rev_result = $mysqli->query($review_query);
 $rev_count = $rev_result->num_rows;
 
-$user_query = "SELECT * FROM `test`.`users` WHERE id='$user_id'";
+$user_query = "SELECT * FROM `test`.`users` WHERE id='$user_id_rev'";
 $user_result = $mysqli->query($user_query);
 $user=mysqli_fetch_assoc($user_result);
 $user_name=$user['username'];
