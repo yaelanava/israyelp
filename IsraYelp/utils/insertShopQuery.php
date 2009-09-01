@@ -4,11 +4,11 @@ include './functions.php';
 
 $mysqli = getMysqliConnection();
 
-$name = "קניון רוטשילד";
-$another_name = "Rotchiled";
-$city_id = 2;
-$address = "רוטשילד 45, ראשון לציון";
-$phone = "03-9500765";
+$name = "מרכז עזריאלי";
+$another_name = "Azrieli";
+$city_id = 1;
+$address = "דרך מנחם בגין 132, תל אביב";
+$phone = "03-6081199";
 $type = "Shopping Centers";
 $hours = "09:00-22:00";
 
