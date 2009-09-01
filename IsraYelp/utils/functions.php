@@ -43,10 +43,17 @@ function getUserPictureSrc($user_id, $prefix){
 }
 
 function getCityName($city_id){
-	$city_query = "SELECT * FROM `test`.`cities` WHERE id=$city_id";
+	$city_query = "SELECT * FROM `test`.`cities` WHERE id='$city_id'";
 	$city_result = getMysqliConnection()->query($city_query);
 	$city = mysqli_fetch_assoc($city_result);
 	return $city['name'];
+}
+
+function getCityID($city_name){
+	$city_query = "SELECT * FROM `test`.`cities` WHERE name='$city_name'";
+	$city_result = getMysqliConnection()->query($city_query);
+	$city = mysqli_fetch_assoc($city_result);
+	return $city['id'];
 }
 
 function getFooterHTMLCode(){
@@ -80,6 +87,15 @@ function getFooterHTMLCode(){
 					<p> זכויות יוצרים </p>
 				</div>
 			</div>";
+	return $html;
+}
+
+//here we can add some new types 
+function getTypesHTMLCode(){
+	$html = "	<select name=\"place_kind\">
+ 				 <option value=\"מסעדה\" >מסעדה</option>
+ 				 <option value=\"אתר קניות\" >אתר קניות</option>
+ 				 </select>";
 	return $html;
 }
 
