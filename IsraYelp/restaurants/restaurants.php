@@ -1,13 +1,19 @@
-<?php session_start();
+<?php 
+
+session_start();
 
 include '../utils/functions.php';
 
 $city_id = $_GET['city_id'];
 $city_name = getCityName($city_id);
 
+$category = isset($_GET['category']) ? $_GET['category'] : 0;
+$categoryQureyOrNull = $category ? " and type_rest LIKE ('%$category%')" : "";
+
 $mysqli = getMysqliConnection();
 
-$query_restaurants = "SELECT * FROM `test`.`restaurants` WHERE city_id='$city_id' ORDER BY grading DESC LIMIT 5";
+$query_restaurants = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id $categoryQureyOrNull
+ 					  ORDER BY grading DESC LIMIT 5";
 $result_restaurants = $mysqli->query($query_restaurants);
 
 ?>
@@ -32,7 +38,7 @@ $result_restaurants = $mysqli->query($query_restaurants);
 			<A href="../main.php"></A>
 		</div>
 		<div id="register">
-			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
+			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-".$_SESSION['username']) ?></p>
 		</div>
 		<div id="leftEdge"></div>
 		<div id="rightEdge"></div>
@@ -44,8 +50,8 @@ $result_restaurants = $mysqli->query($query_restaurants);
 			<LI class="header" id="writeReview"><A   href="../write_review.php" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="../find_review.php" >חפש ביקורת</A></LI>
 			
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "../login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "../about_me.php";} else{echo "../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "../login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../about_me.php";} else{echo "../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -58,8 +64,17 @@ $result_restaurants = $mysqli->query($query_restaurants);
 		<div id="top_biz_lists" class="clearfix">
 			<br/>
 			<h1>מסעדות ב<?php echo $city_name?> </h1>
-			<p id="breadcrumbs">קטגוריה: <a href="../main.php"><?php echo $city_name?></a> 
-				&raquo; מסעדות
+			<p id="breadcrumbs">קטגוריה: 
+				<a href="../main.php"><?php echo $city_name?></a> 
+				&raquo;		
+				<?php 
+					if ($category) {
+						echo "<a href=\"?city_id=$city_id\">מסעדות</a>
+								&raquo; $category"; 
+					} else {
+						echo "מסעדות";
+					}
+				?>					
 			</p>
 		
 			<?php 
@@ -68,23 +83,25 @@ $result_restaurants = $mysqli->query($query_restaurants);
 				$image_srs = "./image/$topRest_id.JPG";
 				$query_restReview = "SELECT * FROM `test`.`reviews` WHERE biz_id=$topRest_id and biz_type='restaurants' ORDER BY added DESC";
 				$result_restReview = $mysqli->query($query_restReview);
-				$count_restReview = $result_restReview->num_rows;
-				$restReview = mysqli_fetch_assoc($result_restReview);
-				$html = "<div id=\"top_biz\">
-							<div class=\"clearStyles bizPhotoBox\">
-								<a  href=\"$image_srs\"><img src=\"$image_srs\" width=100 height=150 style=\"\" alt=\"".$topRestaurant['name']."\"></a>
-							</div>
-							<p class=\"biz_info\">1. <a href=\"./restaurant.php?biz_id=$topRest_id\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$topRestaurant['name']."</a></p>							
-							<div class=\"top_biz_rating\">
-								<div class=\"rating\">
-									<img class=\"stars_4_half\" width=\"83\" height=\"325\" title=\"4.5 star rating\" alt=\"4.5 star rating\" src=\"../image/stars_map.png\"/>
-								</div> 
-								<em class=\"smaller\">$count_restReview ביקורות</em>
-							</div>
-							<p class=\"smaller\">קטגוריה:".$topRestaurant['type_rest']."</p>
-							<p>".$restReview['review']."</p>
-						</div>";
-				echo $html;
+				if ($result_restReview) {						
+					$count_restReview = $result_restReview->num_rows;
+					$restReview = mysqli_fetch_assoc($result_restReview);
+					$html = "<div id=\"top_biz\">
+								<div class=\"clearStyles bizPhotoBox\">
+									<a  href=\"$image_srs\"><img src=\"$image_srs\" width=100 height=150 style=\"\" alt=\"".$topRestaurant['name']."\"></a>
+								</div>
+								<p class=\"biz_info\">1. <a href=\"./restaurant.php?biz_id=$topRest_id\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$topRestaurant['name']."</a></p>							
+								<div class=\"top_biz_rating\">
+									<div class=\"rating\">
+										<img class=\"stars_4_half\" width=\"83\" height=\"325\" title=\"4.5 star rating\" alt=\"4.5 star rating\" src=\"../image/stars_map.png\"/>
+									</div> 
+									<em class=\"smaller\">$count_restReview ביקורות</em>
+								</div>
+								<p class=\"smaller\">קטגוריה:".$topRestaurant['type_rest']."</p>
+								<p>".$restReview['review']."</p>
+							</div>";
+					echo $html;
+				}
 			?>
 									
 			<ul id="biz_list" class="stripped">
@@ -114,47 +131,41 @@ $result_restaurants = $mysqli->query($query_restaurants);
 				?>	
 			</ul>						
 		</div>
-	</div>
-	
-	<div id="biz_map"">
-		<h1>מפת <?php echo $city_name?></h1>
-		<iframe src="http://maps.freemap.co.il/api/openlayers/?
-					zoom=9&
-					lat=<?php echo $topRestaurant['lat']?>&
-					lon=<?php echo $topRestaurant['lon']?>&
-					marker=true"
-		       	width="900px" height="300px"
-		        scrolling="no"
-		        marginwidth="10" marginheight="10" 
-		        frameborder="1">
-		 </iframe>
-	</div>
-
 		
-	<div id="section_content" class="clearfix">
-		<div id="main_column">
-			<div id="sub_cat_lists" class="clearfix">
-				<h2>מסעדות <?php echo $city_name?> לפי קטגוריות<h2>
-				<ul class="stripped other_sub_cats">
-					<li><a href="./events.php">אירועים</a></li>
-					<li><a href="./bar-rest.php">בר-מסעדה</a></li>
-					<li><a href="./meat.php">בשר</a></li>
-					<li><a href="./gurme.php">גורמה</a></li>
-					<li><a href="./fish.php">דגים</a></li>
-					<li><a href="./mideastern.php">ים-תיכוני</a></li>
-					<li><a href="./seafood">מאכלי ים</a></li>
-					<li><a href="./chefrest.php">מסעדת שף</a></li>
-
-				</ul>
-			</div>	
+		<div id="biz_map"">
+			<h2>מפת <?php echo $city_name?></h2>
+			<iframe src="http://maps.freemap.co.il/api/openlayers/?
+						zoom=9&
+						lat=<?php echo $topRestaurant['lat']?>&
+						lon=<?php echo $topRestaurant['lon']?>&
+						marker=true"
+					width="900" height="350"		       	
+			        scrolling="no"
+			        marginwidth="10" marginheight="10" 
+			        frameborder="1">
+			 </iframe>
 		</div>	
-	</div>
+	</div>	
+
+	<div id="sub_cat_lists" class="clearfix">
+		<h2>מסעדות <?php echo $city_name?> לפי קטגוריות<h2>
+		<ul class="stripped other_sub_cats">
+			<li><a href="?city_id=<?php echo $city_id?>&category=events">אירועים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=meat">בשר</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=gourmet">גורמה</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=fish">דגים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=mediterranean">ים-תיכוני</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=sea_food">מאכלי ים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=chef_rest">מסעדת שף</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=take_away">take away</a></li>
+		</ul>
+	</div>	
 </div>
 
 <div id="footer">
 	<div>		
 		<ul id="aboutSite">
-			<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
+			<li>   <a href="/signup">עלינו</a></li>
 			<li> | <a href="/about">החשבון שלי</a></li>
 			<li> | <a href="/faq" >שאלות נפוצות </a></li>
 		</ul>

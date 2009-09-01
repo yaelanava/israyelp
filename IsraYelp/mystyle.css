@@ -948,9 +948,9 @@
 	
 	DIV.rating-small IMG {POSITION: absolute}
 	
-	#top_cat_biz #biz_map {	
-	MARGIN-LEFT: 0px;
-	WIDTH: 300px;	
+	#top_cat_biz #biz_map {
+	PADDING-TOP: 20px;
+	WIDTH: 910px;	
 	POSITION: right;	
 	FLOAT: right;
 	HEIGHT: 400px;
@@ -960,22 +960,12 @@
 	float: right;
 	}
 	
-	.category_browse #main_column {	
-	DISPLAY: inline;	
-	FLOAT: right;	
-	MARGIN: 0px 0px 0px 15px;	
-	OVERFLOW: hidden;	
-	WIDTH: 585px} 
-	
-	.category_browse #section_content {	
-	CLEAR: both;
-	}
-	
-	#sub_cat_lists {	
-	MARGIN-RIGHT: 5px;
+	#sub_cat_lists {
+	PADDING-TOP: 20px;	
+	MARGIN-RIGHT: 10px;
 	MARGIN-BOTTOM: 12px;	
 	PADDING-BOTTOM: 10px;	
-	WIDTH: 570px;
+	WIDTH: 910px;
 	FLOAT: right;
 	BORDER-TOP: #ccc 1px solid	}
 	
