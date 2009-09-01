@@ -89,7 +89,7 @@ $count_reviews = $result_reviews->num_rows;
 							<div id="bizPhotos"">
 								<div class="clearStyles bizPhotoBox">
 										<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
-										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height=150 style="" alt=""></a>
+										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=200 height=150 style="" alt=""></a>
 								</div>
 							</div>
 						</td>

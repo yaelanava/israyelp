@@ -138,13 +138,14 @@ $city_name = getCityName($city_id);
 							<?php 
 								$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
 								$result = $mysqli->query($query);
+								$html = "";
 								$first = 1;								
 								while ($rest = mysqli_fetch_assoc($result)){
 									$rest_url = "./restaurants/restaurant.php?biz_id=".$rest['id'];
 									if ($first){
 										$image_srs = "./restaurants/image/".$rest['id'].".JPG";						
 										$html = "<div class=\"clearStyles bizPhotoBox\">
-													<a  href=\"$rest_url\"><img src=\"$image_srs\" alt=\"".$rest['name']."\" witdh=100 height=100></a>
+													<a  href=\"$rest_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$rest['name']."\"></a>
 												</div>";
 										$html .= "<ol>";			
 									}
@@ -187,7 +188,7 @@ $city_name = getCityName($city_id);
 									if ($first){
 										$image_srs = "./shopping/image/".$shop['id'].".JPG";						
 										$html = "<div class=\"clearStyles bizPhotoBox\">
-													<a  href=\"$shop_url\"><img src=\"$image_srs\" alt=\"".$shop['name']."\" witdh=100 height=100></a>
+													<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
 												</div>";
 										$html .= "<ol>";			
 									}
