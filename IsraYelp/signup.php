@@ -36,27 +36,27 @@ function createUser(){
 		$today = getdate();
 		$month_added=$today['mon'];
 		
-		if ($month_added=1)
+		if ($month_added==1)
 			$month_added='ינואר';
-		elseif ($month_added=2)
+		elseif ($month_added==2)
 			$month_added='פברואר';
-		elseif ($month_added=3)
+		elseif ($month_added==3)
 			$month_added='מרץ';
-		elseif ($month_added=4)
+		elseif ($month_added==4)
 			$month_added='אפריל';
-		elseif ($month_added=5)
+		elseif ($month_added==5)
 			$month_added='מאי';
-		elseif ($month_added=6)
+		elseif ($month_added==6)
 			$month_added='יוני';
-		elseif ($month_added=7)
+		elseif ($month_added==7)
 			$month_added='יולי';
-		elseif ($month_added=8)
+		elseif ($month_added==8)
 			$month_added='אוגוסט';
-		elseif ($month_added=9)
+		elseif ($month_added==9)
 			$month_added='ספטמבר';
-		elseif ($month_added=10)
+		elseif ($month_added==10)
 			$month_added='אוקטובר';
-		elseif ($month_added=11)
+		elseif ($month_added==11)
 			$month_added='נובמבר';		
 		else $month_added='דצמבר';
 		
