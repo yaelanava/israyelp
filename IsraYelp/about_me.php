@@ -15,6 +15,7 @@ $user = mysqli_fetch_assoc($user_result);
 $city = $user['city'];
 $month = $user['month_added'];
 $year = $user['year_added'];
+$email=$user['email'];
 
 ?>
 
@@ -106,13 +107,30 @@ $year = $user['year_added'];
 							<span class="highlight2">מיקום:</span>
 							<?php    					
 			    				if (empty($city))
+			    				{
+			    					echo "<br/>";
 			    					echo 'עיר מגוריך אינה ידועה';
+			    				}
 			    				else 
+			    				{
+			    					echo "<br/>";
 			    					echo  $city;			    					
-			    					echo "<br />";			    								    				
+			    					echo "<br />";
+			    				}			    								    				
 								?>
 							<p>					
-								<span class="formLabel"><a href="edit_city.html">ערוך</a></span>
+								<span class="formLabel"><a href="edit_city.php">ערוך</a></span>
+							</p>
+						</td>
+						<td>
+							<span class="highlight2">האימייל שלך: </span>
+							<?php	
+								echo "<br/>";
+								echo  $email;
+								echo "<br/>"; 
+							?>
+							<p>					
+								<span class="formLabel"><a href="edit_email.php">ערוך</a></span>
 							</p>
 						</td>
 						<td>
@@ -130,7 +148,7 @@ $year = $user['year_added'];
 	</div>
 </div>		
 		
-<?php echo getFooterHTMLCode()?>
+<?php echo getFootetHTMLCode()?>
 
 </body>
 </html>
