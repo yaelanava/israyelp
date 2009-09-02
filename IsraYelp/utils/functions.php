@@ -95,8 +95,28 @@ function getTypesHTMLCode(){
 	$html = "	<select name=\"place_kind\">
  				 <option value=\"מסעדה\" >מסעדה</option>
  				 <option value=\"אתר קניות\" >אתר קניות</option>
+ 				 <option value=\"מקום בילוי\" >מקום בילוי</option>
  				 </select>";
 	return $html;
 }
+
+function getCitiesHTMLCode(){
+	$cities_query = "SELECT * FROM `test`.`cities` ORDER BY id DESC";
+	$cities_result = getMysqliConnection()->query($cities_query);
+	
+	$html = "<select name=\"place_city\">";       		
+	while ($row = mysqli_fetch_assoc($cities_result)){
+		if($row['english_name']=="Tel Aviv"){
+			$html .="<option SELECTED ";
+			$html .= " value=\"".$row['name']."\">".$row['name']."</option>";
+		}
+		else {
+		$html .= "<option value=\"".$row['name']."\">".$row['name']."</option>";
+		}	
+	}			
+	$html .= "</select>";
+	return $html;
+}
+
 
 ?>

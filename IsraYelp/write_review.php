@@ -59,23 +59,7 @@ include './utils/functions.php';
 
 		<p>
 			<label for="find_loc_ext">עיר <em> </em></label>
-			<?php 
-			$cities_query = "SELECT * FROM `test`.`cities` ORDER BY id DESC";
-			$cities_result = getMysqliConnection()->query($cities_query);
-			
-			$html = "<select name=\"place_city\">";       		
-			while ($row = mysqli_fetch_assoc($cities_result)){
-				if($row['english_name']=="Tel Aviv"){
-					$html .="<option SELECTED ";
-					$html .= " value=\"".$row['name']."\">".$row['name']."</option>";
-				}
-				else {
-				$html .= "<option value=\"".$row['name']."\">".$row['name']."</option>";
-				}	
-			}			
-			$html .= "</select>";
-			echo $html;
-			?>
+			<?php echo getCitiesHTMLCode();?>
 		</p>
 		<input type="hidden" name="source" value="write_review">
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
