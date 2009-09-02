@@ -30,8 +30,15 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 }
 
 function getBizURL($biz_type, $biz_id){
-	$i = $biz_type==="restaurants" ? 1 : 4;
-	return "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-$i).".php?biz_id=".$biz_id;
+	//$i = $biz_type==="restaurants" ? 1 : 4;
+	//return "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-$i).".php?biz_id=".$biz_id;
+	if ($biz_type=="restaurants"){
+		return "./restaurants/restaurant.php?biz_id=".$biz_id;
+	}
+	else if ($biz_type=="shopping"){
+		return "./shopping/shop.php?biz_id=".$biz_id;		
+	}
+	return "";
 }
 
 function getUserPictureSrc($user_id, $prefix){
