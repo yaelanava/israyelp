@@ -125,5 +125,20 @@ function getCitiesHTMLCode(){
 	return $html;
 }
 
+function check_email($email)
+{
+	$atom = '[-a-z0-9!#$%&\'*+/=?^_`{|}~]';    // allowed characters for part before "at" character
+	$domain = '([a-z]([-a-z0-9]*[a-z0-9]+)?)'; 
+    //$atom = '[-a-z0-9!#$%&\'*+/=?^_`{|}~]'; 
+    //$domain = '[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])'; 
+    $regex = '^' . $atom . '+' .         // One or more atom characters.
+			'(\.' . $atom . '+)*'.               // Followed by zero or more dot separated sets of one or more atom characters.
+			'@'.                                 // Followed by an "at" character.
+			'(' . $domain . '{1,63}\.)+'.        // Followed by one or max 63 domain characters (dot separated).
+			$domain . '{2,63}'.                  // Must be followed by one set consisting a period of two
+			'$';                
+	return eregi($regex, $email);
+    //return eregi("^$atom+(\\.$atom+)*@($domain?\\.)+$domain\$", $email);
+}
 
 ?>
