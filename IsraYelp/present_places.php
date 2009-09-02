@@ -8,7 +8,7 @@ $user_id=$_SESSION['user_id'];
 $result = $_GET['result'];
 $count = $_GET['count'];
 
-//$local_html=$_SESSION['local_html'];
+$local_html=$_SESSION['local_html'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -52,7 +52,7 @@ $count = $_GET['count'];
 		<br/>
 		<br/>	
 		<?php 	
-		//	echo $local_html;
+			echo $_SESSION['local_html'];
 		?>			
 </div>
 
