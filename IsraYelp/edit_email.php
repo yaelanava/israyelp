@@ -2,9 +2,10 @@
 	session_start();
 	include './utils/functions.php';
 	
+	$error_msg = 0;
 	
-	if (isset($_POST['new_city']) && ('' != $_POST['new_city'])) {
-		$new_city=mysql_real_escape_string($_POST['new_city']);
+	if (isset($_POST['new_email']) && ('' != $_POST['new_email'])) {
+		$new_email=mysql_real_escape_string($_POST['new_email']);
 		$id = $_SESSION['user_id'];
 		
 		$mysqli = getMysqliConnection();	
@@ -13,7 +14,7 @@
 		//$user_update = mysqli_fetch_assoc($result_user_edit);
 		
 		//$update_query="UPDATE `test`.`users` SET `city` = '$new_city',WHERE `users`.`id` ='$id'";
-		$update_query="UPDATE `test`.`users` SET `city` = '$new_city' WHERE `users`.`id` =$id LIMIT 1 ;";
+		$update_query="UPDATE `test`.`users` SET `email` = '$new_email' WHERE `users`.`id` =$id LIMIT 1 ;";
 		$mysqli->query($update_query);
 		header("location:edit_successes.php");	
 	}
@@ -34,7 +35,7 @@
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="./mystyle.css"> 
 			
-	<title>עדכון עיר | IsraYelp</title>
+	<title>עדכון אימייל | IsraYelp</title>
 
 </head>
 <body>
@@ -48,18 +49,18 @@
 <div id="bodyContainer" dir="rtl">
 	<div class="box" >
 			
-			<form method="post" action="edit_city.php" >
+			<form method="post" action="edit_email.php" >
 				
 				<table  border="0" align="center">
 						<tr>
-							<td><H1 >עדכון עיר מגוריך</H1></td> 
+							<td><H1 >עדכון האימייל</H1></td> 
 						</tr>
 						<tr>
 							<td>אנא הכנס את <br>
-							עיר מגוריך החדשה:
+							כתובת האימייל המעודכנת:
 							</td> 
-							<td><input name="new_city" size="35"></td>
-							<?php if (isset($_POST['new_city']) && ('' == $_POST['new_city'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>
+							<td><input name="new_email" size="35"></td>
+							<?php if (isset($_POST['new_email']) && ('' == $_POST['new_email'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>
 						</tr>
 						<tr>
 							<td></td>
@@ -80,27 +81,3 @@
 	</div> 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
