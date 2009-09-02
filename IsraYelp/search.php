@@ -34,6 +34,16 @@ if ($kind=="אתר קניות"){
 		search($query,$biz_type,$title,$html);		
 	}	
 }
+if ($kind=="מקום בילוי"){
+	if ('' == $_POST['place_name']){
+		header("location: ./nightlife/night.php?city_id=".$city_id);		}
+	else{
+		$name = $_POST['place_name'];		
+		$query = "SELECT * FROM `test`.`nightlife` WHERE city_id='$city_id' and name LIKE '%$name%' or another_name LIKE '%$name%' ";
+		$biz_type = "nightlife";
+		search($query,$biz_type,$title,$html);		
+	}	
+}
 
 
 
@@ -81,14 +91,15 @@ function search($query,$biz_type,&$title,&$html){
 					die(0);
 				}
 				else{
-					$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$biz_type;				
+					$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$biz_type;
+							
 				}
 			}
 			else if ($source == "main"){
 				$url = $biz_url;
 			}
 			$biz_address = $biz['address'];
-			$html .= "<li><span><b><a href=".$url.">".$biz_name."</a></b></span>".", ".$biz_address."</li>" ;	
+			$html .= "<li><span><b><a href=".$url.">".$biz_name."</a></b></span>".", ".$biz_address."</li>" ;
 		}	
 		$html .= "</ul>";	
 	}
