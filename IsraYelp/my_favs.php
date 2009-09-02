@@ -70,7 +70,7 @@ $fav_count = $fav_result->num_rows;
 				$html = "<div id=\"my_review\">					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
-									<td><span><b><a href=".$fav['biz_url']."\">".$fav['biz_name']."</a></b></span></td> 
+									<td><span><b><a href=".$fav['biz_url'].">".$fav['biz_name']."</a></b></span></td> 
 								</tr>
 							</table>
 						</div>";
