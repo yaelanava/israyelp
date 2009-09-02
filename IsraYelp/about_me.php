@@ -147,8 +147,9 @@ $email=$user['email'];
 		</div>
 	</div>
 </div>		
-		
-<?php echo getFootetHTMLCode()?>
+
+
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>
