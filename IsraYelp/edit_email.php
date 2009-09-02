@@ -6,7 +6,9 @@
 	
 	if (isset($_POST['new_email']) && ('' != $_POST['new_email'])) {
 		$new_email=mysql_real_escape_string($_POST['new_email']);
-		$id = $_SESSION['user_id'];
+		if(check_email($new_email))
+		{
+			$id = $_SESSION['user_id'];
 		
 		$mysqli = getMysqliConnection();	
 		//$user_query = "SELECT * FROM `test`.`users` WHERE id='$id'";
@@ -17,6 +19,10 @@
 		$update_query="UPDATE `test`.`users` SET `email` = '$new_email' WHERE `users`.`id` =$id LIMIT 1 ;";
 		$mysqli->query($update_query);
 		header("location:edit_successes.php");	
+		}
+		else
+			$error_msg="האימייל שהכנסת אינו תקין, נסה שוב";
+		
 	}
 		
 	
@@ -50,10 +56,12 @@
 	<div class="box" >
 			
 			<form method="post" action="edit_email.php" >
-				
 				<table  border="0" align="center">
-						<tr>
-							<td><H1 >עדכון האימייל</H1></td> 
+						<tr>						
+							<td>
+								<H1 >עדכון האימייל</H1>
+								<?php if ($error_msg) echo "<p style=\"color:red;\">$error_msg<p/>"?>
+							</td> 
 						</tr>
 						<tr>
 							<td>אנא הכנס את <br>
