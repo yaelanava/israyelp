@@ -23,7 +23,6 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	$user_id = $_SESSION['user_id'];
 		
 	$biz_url = getBizURL($biz_type, $biz_id);
-	
 	$mysqli = getMysqliConnection();
 	
 	$query = "INSERT INTO `test`.`reviews` (
@@ -65,7 +64,7 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 <body dir="rtl">
 <div id="head">
 		<div id="logo">
-			<A href="../main.php">Yelp</A>
+			<A href="./main.php">Yelp</A>
 		</div>
 		<div id="leftEdge"></div>
 		<div id="rightEdge"></div>
@@ -73,7 +72,8 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 <div id="bodyContainer_Centered">
 	<p><?php if ($result) {echo "הביקורת נשמרה בהצלחה.";} else {echo "הביקורת לא נשמרה. אנא נסה שוב";}?>
 		<br><br>
-		<a href="<?php echo $biz_url?>">לחץ כאן כדי לחזור לדף המסעדה.</a>
+		
+		<a href="<?php echo $biz_url;?>">לחץ כאן כדי לחזור לדף המסעדה.</a>
 	</p>
 </div>
 </body>
