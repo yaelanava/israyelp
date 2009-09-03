@@ -91,6 +91,7 @@ function search($query,$biz_type,&$title,&$html){
 					die(0);
 				}
 				else{
+			
 					$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$biz_type;
 							
 				}
