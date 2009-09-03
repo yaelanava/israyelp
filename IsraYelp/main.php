@@ -327,8 +327,6 @@ $city_name = getCityName($city_id);
 		
 		<div id="leftColumn">
 			<div class="clearfix" id="reviewPicksModule">
-				<A class="floatLink" href="http://www.yelp.com/browse/reviews/picks">
-				<IMG height="39"  width="74"  alt="Archive" src="./image/archive_button.png" ></A> 
 				<H3>ביקורת היום</H3>	
 				<P> נבחרה ע"י חברי האתר! </P>
 				
