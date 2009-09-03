@@ -362,8 +362,8 @@ $city_name = getCityName($city_id);
 								
 									<div id=\"reviewPick\">
 										<div class=\"rating\">
-										<IMG class=\"stars_". $review['grading']."\" height=\"325\" alt=\"". $review['grading'] ."λελαιν\" src=\"./image/stars_map.png\" width=\"83\" />
-									
+										<IMG class=\"stars_". $review['grading']." height=\"325\" alt=\"". $review['grading'] ."λελαιν\" src=\"./image/stars_map.png\" width=\"83\" />
+							
 									</div>
 									<p>
 										<a href=\"$biz_url\">".$biz['name']."</a>
