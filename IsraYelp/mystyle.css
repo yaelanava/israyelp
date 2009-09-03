@@ -349,7 +349,7 @@
 	MARGIN-TOP: 5px;	
 	PADDING-LEFT: 5px;	
 	MARGIN-BOTTOM: 0px;	
-	PADDING-BOTTOM: 5px;	
+	PADDING-BOTTOM: 14px;	
 	BORDER-BOTTOM: #ccc 1px solid;	}
 	
 	#reviewPicksModule #reviewPick {	
@@ -378,11 +378,11 @@
 	
 	#reviewPicksModule #reviewerInfo {	
 	FLOAT: left;	
-	WIDTH: 110px}
+	WIDTH: 100px}
 	
 	#reviewPicksModule #reviewerInfo P {	
-	MARGIN-BOTTOM: 5px;
-	WIDTH: 105px}
+	MARGIN-BOTTOM: 10px;
+	WIDTH: 100px}
 	
 	DIV.clearStyles {	
 	MARGIN: 0px;	
