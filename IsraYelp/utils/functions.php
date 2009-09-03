@@ -70,8 +70,7 @@ function getFooterHTMLCode(){
 	$html = "<div id=\"footer\">	
 				<div>		
 					<ul id=\"aboutSite\">
-						<li>   <a href=\"\">עלינו</a></li>
-						<li> | <a href=\"$myAccount_link\">החשבון שלי</a></li>
+						<li><a href=\"$myAccount_link\">החשבון שלי</a></li>
 						<li> | <a href=\"http://localhost/IsraYelp/faq.php\" >שאלות נפוצות </a></li>
 					</ul>
 				</div>
