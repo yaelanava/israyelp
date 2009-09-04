@@ -18,7 +18,6 @@ $register_since = $user['register_since'];
 $email=$user['email'];
 
 //ratings graph
-
 for ($i=1; $i < 6; $i++){
 	$query = "SELECT * FROM `reviews` WHERE user_id=$user_id and grading=$i";
 	$result = $mysqli->query($query);
