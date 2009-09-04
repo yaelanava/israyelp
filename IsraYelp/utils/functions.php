@@ -117,8 +117,7 @@ function getCitiesHTMLCode(){
 	return $html;
 }
 
-function check_email($email)
-{
+function check_email($email) {
 	$atom = '[-a-z0-9!#$%&\'*+/=?^_`{|}~]';    // allowed characters for part before "at" character
 	$domain = '([a-z]([-a-z0-9]*[a-z0-9]+)?)'; 
     $regex = '^' . $atom . '+' .         // One or more atom characters.
@@ -129,5 +128,33 @@ function check_email($email)
 			'$';                
 	return eregi($regex, $email);
 }
+
+function getMonth($month){
+	if ($month==1)
+		$month='ינואר';	
+	elseif ($month==2)
+		$month='פברואר';
+	elseif ($month==3)
+		$month='מרץ';
+	elseif ($month==4)
+		$month='אפריל';
+	elseif ($month==5)
+		$month='מאי';
+	elseif ($month==6)
+		$month='יוני';
+	elseif ($month==7)
+		$month='יולי';
+	elseif ($month==8)
+		$month='אוגוסט';
+	elseif ($month==9)
+		$month='ספטמבר';
+	elseif ($month==10)
+		$month='אוקטובר';
+	elseif ($month==11)
+		$month='נובמבר';		
+	else $month='דצמבר';
+	
+	return $month;
+} 
 
 ?>
