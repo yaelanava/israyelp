@@ -42,7 +42,7 @@
 		$reviewer = $_POST['find_reviewer'];
 		
 		$mysqli = getMysqliConnection();
-		$query = "SELECT * FROM `test`.`users` WHERE username='$reviewer'";
+		$query = "SELECT * FROM `users` WHERE username='$reviewer'";
 		$result = $mysqli->query($query);	
 		$count = $result->num_rows;
 		

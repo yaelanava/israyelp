@@ -11,12 +11,7 @@
 			$id = $_SESSION['user_id'];
 		
 		$mysqli = getMysqliConnection();	
-		//$user_query = "SELECT * FROM `test`.`users` WHERE id='$id'";
-		//$result_user_edit=$mysqli->query($user_query);
-		//$user_update = mysqli_fetch_assoc($result_user_edit);
-		
-		//$update_query="UPDATE `test`.`users` SET `city` = '$new_city',WHERE `users`.`id` ='$id'";
-		$update_query="UPDATE `test`.`users` SET `email` = '$new_email' WHERE `users`.`id` =$id LIMIT 1 ;";
+		$update_query="UPDATE `users` SET `email` = '$new_email' WHERE `users`.`id` =$id LIMIT 1 ;";
 		$mysqli->query($update_query);
 		header("location:edit_successes.php");	
 		}

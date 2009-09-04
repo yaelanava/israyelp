@@ -11,13 +11,13 @@
 	$review = mysqli_fetch_assoc($result_reviews);
 	$the_review=$review['review'];
 	
-	$query_user = "SELECT * FROM `test`.`users` WHERE id='$user_id'";
+	$query_user = "SELECT * FROM `users` WHERE id='$user_id'";
 	$result_user = $mysqli->query($query_user);
 	$user = mysqli_fetch_assoc($result_user);
 	
 	$biz_id = $review['biz_id'];
 	$biz_type = $review['biz_type'];
-	$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
+	$query = "SELECT * FROM `$biz_type` WHERE id='$biz_id'";
 	$result = $mysqli->query($query);
 	$biz = mysqli_fetch_assoc($result);
 	$biz_url = getBizURL($biz_type, $biz_id);
