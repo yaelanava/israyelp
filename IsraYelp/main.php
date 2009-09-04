@@ -346,10 +346,6 @@ $city_name = getCityName($city_id);
 							$biz_url = getBizURL($biz_type, $biz_id);
 							
 							$review = $review['review'];
-							if (strlen($review) > 100){
-								$review = substr($review,0,99);
-								$short = true;
-							}
 							
 							$html =  "<div id=\"reviewerInfo\">
 										<div class=\"clearStyles photoBox\" >
@@ -367,12 +363,15 @@ $city_name = getCityName($city_id);
 										</div>
 										<p><a href=\"$biz_url\">".$biz['name']."</a></p>
 										<p style=\"padding-top:.3em;\">";
-							$html .= $review; 
-							if ($short){
-									$_SESSION['user_id_rev']=$user['id']; 
-									$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
+							if (strlen($review) > 100){
+								$review = substr($review,0,99);
+								$_SESSION['user_id_rev'] = $user['id'];
+								$html .= $review; 								
+								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
+							} else {
+								$html .= $review; 							
 							}
-							$html .="</div>";
+							$html .="<p></div>";
 														
 							echo $html;							
 						}
@@ -417,11 +416,8 @@ $city_name = getCityName($city_id);
 							$biz = mysqli_fetch_assoc($result);
 							$biz_url = getBizURL($biz_type, $biz_id);
 							
-							$the_review=$review['review'];
-							$short_rev=substr($the_review,0,99);
-							$len=strlen($the_review);
-							
-							
+							$review = $review['review'];
+						
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
 											<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
@@ -430,15 +426,17 @@ $city_name = getCityName($city_id);
 											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
 											<br/><em class=\"smaller grey\">". $user['username'] ."</em>
 											<br/>";																																														
-							if($len>100){
-								$html .= $short_rev; 
-								$_SESSION['user_id_rev']=$user['id']; 
+							if (strlen($review) > 100){
+								$review = substr($review,0,99);
+								$_SESSION['user_id_rev'] = $user['id'];
+								$html .= $review; 								
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
-							}else 
-								$html .= $the_review;
+							} else {
+								$html .= $review; 							
+							}
 							$html .="</p></div>";
-							echo $html;
 							
+							echo $html;							
 						}
 					?>							
 				</div>			
