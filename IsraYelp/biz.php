@@ -55,7 +55,7 @@ $result_reviews = $mysqli->query($query_reviews);
 			<LI class="header" id="findReview"><A href="./find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "./login.php?logout=1";} else{echo "./login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "./about_me.php";} else{echo "./signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id'].";";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -148,7 +148,7 @@ $result_reviews = $mysqli->query($query_reviews);
 											<DIV class=\"mini\">
 												<DIV class=\"photoBoxSm\">
 													<DIV class=\"clearStyles photoBox\">
-														<A href=\"./user_reviwes.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+														<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 													</div>			
 												</div>
 											</div>
