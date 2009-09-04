@@ -6,16 +6,22 @@ require_once 'HTML_graph.php';
 
 $mysqli = getMysqliConnection();
 
-$username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
+$external_user=$_GET['external_user'];
+
+$same_user=0;
+if($external_user-$user_id==0)
+	$same_user=1;
+$_SESSION['same_user']=$same_user;
 
 //extracting the user information 
-$user_query = "SELECT * FROM `users` WHERE id= $user_id";
+$user_query = "SELECT * FROM `users` WHERE id= $external_user";
 $user_result = $mysqli->query($user_query);
 $user = mysqli_fetch_assoc($user_result);
 $city = $user['city'];
 $register_since = $user['register_since'];
 $email=$user['email'];
+$username=$user['username'];
 
 //ratings graph
 for ($i=1; $i < 6; $i++){
@@ -79,23 +85,33 @@ $bar->SetBorderColor("E8E8D0");
 </div>
 
 <div id="bodyContainer">
-	<div id="user_header" class="ieSucks" align="right">
-		<ul id="userTabs" >
-				<li class="selected"><a href="./about_me.php">הפרופיל שלי</a></li> 
-				<li><a href="./my_reviews.php">ביקורות</a></li>
-				<li><a href="./my_favs.php">מועדפים</a></li>				
+	<div id="mainContent">
+		<div id="user_header" class="ieSucks" align="right">
+			<ul id="userTabs" >
+					<?php 
+						$html="
+								<li class=\"selected\"><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
+								<li><a href=\"./my_reviews.php?external_user=".$external_user."\">ביקורות</a></li> ";
+						if ($same_user){
+							$html .= "<li><a href=\"./my_favs.php?external_user=".$external_user."\">מועדפים</a></li>";	
+						}
+						echo $html;
+					?>
+							
 			</ul> 
+		</div>
 	</div>
 			
 	<div id="user_details_wrapper">
-		<div id="inner_container" class="clearfix">				
+		<div id="inner_container" class="clearfix">	
+			
 				<table cellspacing="50" cellpadding="10" border="0" >
 					<tr>
 						<td valign="bottom">
 							<h1><?php echo $username?></h1>						
 							<div id="user_pic">
 								<div class="clearStyles photoBox" >
-									<img src="<? echo getUserPictureSrc($user_id, "./") ?>" height="100px" width="100px">
+									<img src="<? echo getUserPictureSrc($external_user, "./") ?>" height="100px" width="100px">
 									<p id="photo_action_link">
 					 					<a href="./upload_pic.php" class="small">ערוך תמונה</a>
 					 				</p>
@@ -106,35 +122,48 @@ $bar->SetBorderColor("E8E8D0");
 							<ul class="stripped" id="user_stats">					
 							<?php		
 								//counting how much reviews this user wrote
-								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
+								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$external_user'";
 								$rev_result = $mysqli->query($review_query);
 								$rev_count = $rev_result->num_rows;
-								echo $rev_count;	
+								echo $rev_count. " ";
+								$html = "<a href=\"./my_reviews.php?external_user=".$external_user."\">";
+								if($same_user)
+									$html .= "ביקורות שנכתבו על ידך </a>";
+								else $html .= "ביקורות שנכתבו על ידי $username </a>";
+								echo $html;	
 							?>
 						
-							<a href="./my_reviews.php" >ביקורות שנכתבו על ידך</a>
+							
 							<br>
 							<?php
-								$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$user_id'";
+								$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$external_user'";
 								$fav_result = $mysqli->query($fav_query);
 								$fav_count = $fav_result->num_rows;
-								echo $fav_count;
-							?>
-								<a href="./my_favs.php" >מקומות מועדפים</a>			
+								
+								$html = "<a href=\"./my_favs.php?external_user=".$external_user."\">";
+								if(!$same_user)
+									$html .= "ל- $username $fav_count מקומות מועדפים</a>";
+								else
+								$html .= "מקומות מועדפים </a>";
+								echo $html;
+							?>		
 							</ul>
 						</td>
 						<td>
 							<span class="highlight2">מיקום:</span>
-							<?php     					
-			    				if (empty($city)) {
+							<?php    					
+			    				if (empty($city))
+			    				{
 			    					echo "<br/>";
 			    					echo 'עיר מגוריך אינה ידועה';
-			    				} else {
+			    				}
+			    				else 
+			    				{
 			    					echo "<br/>";
 			    					echo  $city;			    					
 			    					echo "<br />";
 			    				}			    								    				
-							?>
+								?>
 							<p>					
 								<span class="formLabel"><a href="edit_city.php">ערוך</a></span>
 							</p>
