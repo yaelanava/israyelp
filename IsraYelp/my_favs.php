@@ -5,7 +5,12 @@ include './utils/functions.php';
 
 $mysqli = getMysqliConnection();
 
-$user_id=$_SESSION['user_id'];											
+$user_id=$_SESSION['user_id'];
+
+$external_user=$_GET['external_user'];
+$same_user=0;
+if($external_user-$user_id==0)
+	$same_user=1;
 
 //counting how much reviews this user wrote
 $fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
@@ -50,28 +55,37 @@ $fav_count = $fav_result->num_rows;
 </div>
 
 <div id="bodyContainer">
-	<div id="user_header" align="right">
+	<div id="mainContent">
+		<div id="user_header" align="right">
 			<ul id="userTabs" >
-			<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-			<li><a href="./my_reviews.php">ביקורות</a></li> 
-			<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
-		</ul> 
+				
+				<?php 
+					$html="
+							<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
+							<li><a href=\"./my_reviews.php?external_user=".$external_user."\">ביקורות</a></li> ";
+					if ($same_user){
+						$html .= "<li class=\"selected\"><a href=\"./my_favs.php?external_user=".$external_user."\">מועדפים</a></li>";
+					}
+					echo $html;
+				?>
+			</ul> 
+		</div>
 	</div>
 	
 	<div id="user_details_wrapper">	
+		<span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span>
 		<br/>
-		<h1><span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span></h1>
 		<br/>	
 		<?php 	
 			while ($fav = mysqli_fetch_assoc($fav_result)){		
-				$html = "<div>					
+				$html = "<div id=\"my_review\">					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td><span><b><a href=".$fav['biz_url'].">".$fav['biz_name']."</a></b></span></td> 
 								</tr>
 							</table>
 						</div>";
-				echo $html;
+				echo $html;				
 			}
 		?>			
 	</div>
