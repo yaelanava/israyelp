@@ -309,7 +309,7 @@ $city_name = getCityName($city_id);
 				$result = $mysqli->query($query);
 				while ($user = mysqli_fetch_assoc($result)){
 					$html = "<div>
-							<P><A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\">".$user['username']."</A></P>
+							<P><A href=\"./about_me.php?external_user=".$user['id']."\">".$user['username']."</A></P>
 							<div class=\"clearStyles photoBox\">
 								<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
 							</div>
@@ -353,11 +353,11 @@ $city_name = getCityName($city_id);
 							
 							$html =  "<div id=\"reviewerInfo\">
 										<div class=\"clearStyles photoBox\" >
-											<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\">
+											<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\">
 											<IMG style=\"WIDTH: 50px; HEIGHT: 50px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 										</div>
 										<p>
-											<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\">" .$user['username'] ."</A> 
+											<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\">" .$user['username'] ."</A> 
 										</p>
 									</div>
 								
@@ -424,7 +424,7 @@ $city_name = getCityName($city_id);
 							
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./user_reviwes.php?user_id_rev=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+											<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 										</div>								
 										<p>
 											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
