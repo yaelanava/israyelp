@@ -1,12 +1,38 @@
 <?php 
-	session_start();
-	include './utils/functions.php';
+
+session_start();
 	
-	$review_id=$_GET['reviwe_id'];
+include './utils/functions.php';
 	
-	$mysqli = getMysqliConnection();
-	$delete_query = "DELETE FROM `reviews` WHERE `reviews`.`id` = '$review_id' LIMIT 1";
-	$mysqli->query($delete_query);	
+$mysqli = getMysqliConnection();
+	
+$review_id = $_GET['review_id'];
+
+//find review
+$query = "SELECT * FROM `reviews` WHERE id=$review_id LIMIT 1";
+$result = $mysqli->query($query);
+$review = mysqli_fetch_assoc($result);
+$grading = $review['grading'];	
+$biz_type = $review['biz_type'];
+$biz_id = $review['biz_id'];
+
+//delete review
+$query = "DELETE FROM `reviews` WHERE id=$review_id LIMIT 1";
+$result = $mysqli->query($query);	
+	
+if ($result) {
+	//update biz grading
+	$query = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
+	$result = $mysqli->query($query);
+	$biz = mysqli_fetch_assoc($result);
+	
+	$oldGrading = $biz['grading'];
+	$num_reviews = $biz['num_reviews'];
+	$newGrading = ceil(($oldGrading*$num_reviews - $grading) / --$num_reviews);
+	
+	$query = "UPDATE `$biz_type` SET `grading`='$newGrading', `num_reviews`='$num_reviews' WHERE id=$biz_id LIMIT 1";	
+	$result = $mysqli->query($query);		
+}
 	
 ?>
 
@@ -38,7 +64,7 @@
 <div id="bodyContainer_Centered">
 	<p>הביקורת נמחקה בהצלחה.
 		<br><br>
-		<a href="./about_me.php"   id="Zprofile_footer">חזור לחשבון שלי.</a>
+		<a href="./about_me.php" id="Zprofile_footer">חזור לחשבון שלי.</a>
 	</p>
 </div>
 

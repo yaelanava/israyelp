@@ -1294,7 +1294,13 @@
 	#topYelpersModule H3 {	
 	MARGIN-BOTTOM: 0px}
 	
-	#user_header{WIDTH: 930px;}
+	#user_header{
+	WIDTH: 920px;
+	BORDER-RIGHT: #ccc 1px solid;	
+	BORDER-LEFT: #ccc 1px solid;	
+	BORDER-TOP: #ccc 1px solid;	
+	BORDER-BOTTOM: #ccc 1px solid;	
+	}
 	
 	ul#userTabs{
 	margin:0px 0px 0px 15px;
@@ -1340,9 +1346,16 @@
 	#user_revs{border:margin-top:5px;}	
 		
 	#my_review {	
-	BORDER-BOTTOM: #ccc 1px solid}
+	BORDER-TOP: #ccc 1px solid;
+	PADDING-BOTTOM: 10px;	
+	}
 	
-	#user_pic{margin-top:15px}	
+	#my_review #delete_review{
+	PADDING-RIGHT: 20px;
+	}
+	
+	#user_pic {
+	margin-top:15px}	
 	
 	#user_table {	
 	BORDER-RIGHT: #ccc 1px solid;	
@@ -1378,7 +1391,6 @@
 		PADDING-LEFT: 1px;	
 		PADDING-RIGHT: 1px;
 		BORDER-BOTTOM: #ccc 1px solid;	
-	
 	}	
 	
 	

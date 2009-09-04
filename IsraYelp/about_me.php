@@ -55,19 +55,15 @@ $email=$user['email'];
 </div>
 
 <div id="bodyContainer">
-	<div id="mainContent">
-		<div id="user_header" class="ieSucks" align="right">
-			<ul id="userTabs" >
-					<li class="selected"><a href="./about_me.php">הפרופיל שלי</a></li> 
-					<li><a href="./my_reviews.php">ביקורות</a></li> 
-					<li><a href="./my_favs.php">מועדפים</a></li>
+	<div id="user_header" class="ieSucks" align="right">
+		<ul id="userTabs" >
+				<li class="selected"><a href="./about_me.php">הפרופיל שלי</a></li> 
+				<li><a href="./my_reviews.php">ביקורות</a></li> 
 			</ul> 
-		</div>
 	</div>
 			
 	<div id="user_details_wrapper">
-		<div id="inner_container" class="clearfix">	
-			
+		<div id="inner_container" class="clearfix">				
 				<table cellspacing="50" cellpadding="10" border="0" >
 					<tr>
 						<td valign="bottom">
@@ -142,7 +138,6 @@ $email=$user['email'];
 						</td>
 					</tr>																
 				</table>
-			
 		</div>
 	</div>
 </div>		

@@ -69,7 +69,7 @@ $count_reviews = $result_reviews->num_rows;
 								<h1><?php echo $biz_name?></h1>
 								<div id="bizRating">
 									<div class="rating">
-										<img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/>
+										<img class="stars_<?php echo $biz['grading']?>" width="83" height="325" title="<?php echo $biz['grading']?> כוכבים" alt="<?php echo $biz['grading']?> כוכבים" src="../image/stars_map.png"/>
 									</div> 
 									<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
 								</div>
@@ -166,7 +166,7 @@ $count_reviews = $result_reviews->num_rows;
 										</div>
 										<DIV class=\"ext_rating\">
 											<DIV class=\"rating\">
-												<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../image/stars_map.png\" width=\"83\" />
+												<IMG class=\"stars_". $review['grading'] ."\" title=\"".$review['grading']." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../image/stars_map.png\" width=\"83\" />
 											</DIV>
 												<EM class=\"smaller\">". $review['added']."</EM> 
 										</DIV>

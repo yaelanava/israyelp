@@ -25,7 +25,7 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	$biz_url = getBizURL($biz_type, $biz_id);
 	$mysqli = getMysqliConnection();
 	
-	$query = "INSERT INTO `test`.`reviews` (
+	$query = "INSERT INTO `reviews` (
 				id, 
 				city_id,
 				biz_id,
@@ -39,10 +39,24 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 			);";
 			
 	$result = $mysqli->query($query);
+	
+	if ($result) {
+		//update biz grading
+		$query = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
+		$result = $mysqli->query($query);
+		$biz = mysqli_fetch_assoc($result);
+		
+		$oldGrading = $biz['grading'];
+		$num_reviews = $biz['num_reviews'];
+		
+		$newGrading = ceil(($oldGrading*$num_reviews + $grading) / ++$num_reviews);
+		
+		$query = "UPDATE `$biz_type` SET `grading`='$newGrading', `num_reviews`='$num_reviews' WHERE id=$biz_id LIMIT 1";	
+		$result = $mysqli->query($query);		
+	}
 		
 } else {
-	
-	header("location:submit_fail.php");	
+	header("Location: submit_fail.php");	
 	die(0);
 }
 
