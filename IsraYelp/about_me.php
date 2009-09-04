@@ -58,7 +58,8 @@ $email=$user['email'];
 	<div id="user_header" class="ieSucks" align="right">
 		<ul id="userTabs" >
 				<li class="selected"><a href="./about_me.php">הפרופיל שלי</a></li> 
-				<li><a href="./my_reviews.php">ביקורות</a></li> 
+				<li><a href="./my_reviews.php">ביקורות</a></li>
+				<li><a href="./my_favs.php">מועדפים</a></li>				
 			</ul> 
 	</div>
 			
