@@ -35,7 +35,10 @@
 <div id="bodyContainer_Centered">
 	<p>התמונה הועלתה בהצלחה.
 		<br><br>
-		<a href="./about_me.php"   id="Zprofile_footer">.חזור לחשבון שלך</a>
+		<?php
+			$html = "<A href=\"./about_me.php?external_user=".$user_id."\"> חזור לחשבון שלי </A>"; 
+			echo $html;
+		?>
 	</p>
 </div>
 </body>
