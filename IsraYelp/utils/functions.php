@@ -57,7 +57,7 @@ function getCityID($city_name){
 
 function getFooterHTMLCode(){
 	$myAccount_link = session_is_registered('username') 
-					  ? "./about_me.php" 
+					  ? "./about_me.php?external_user=".$_SESSION['user_id']."" 
 					  : "./signup.php";
 	$html = "<div id=\"footer\">	
 				<div>		
