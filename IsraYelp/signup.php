@@ -24,24 +24,22 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 			$result = $mysqli->query($query);
 			$count = $result->num_rows;			
 			if ($count != 0) {
-				header("location:signup_user_exists.php");	
+				header("Location: signup_user_exists.php");	
 				die(0);
 			}
 			$today = getdate();
-			$month_added = $today['mon'];							
-			$year_added = $today['year'];
+			$register_since = getMonth($today['mon']).", ".$today['year'];
 			
 			$query = "INSERT INTO `users` (
 						`id` ,
 						`username` ,
 						`email` ,
 						`city` ,
-						`year_added` ,
-						`month_added` ,
+						`register_since` ,
 						`password`
 						)
 					VALUES (
-						NULL , '$username', '$email', '$city', '$year_added', '$month_added', PASSWORD('$password')
+						NULL , '$username', '$email', '$city', '$register_since', PASSWORD('$password')
 					)";
 					
 			$result = $mysqli->query($query);
