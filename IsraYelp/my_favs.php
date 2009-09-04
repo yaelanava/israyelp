@@ -55,7 +55,6 @@ $fav_count = $fav_result->num_rows;
 </div>
 
 <div id="bodyContainer">
-	<div id="mainContent">
 		<div id="user_header" align="right">
 			<ul id="userTabs" >
 				
@@ -70,7 +69,6 @@ $fav_count = $fav_result->num_rows;
 				?>
 			</ul> 
 		</div>
-	</div>
 	
 	<div id="user_details_wrapper">	
 		<span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span>

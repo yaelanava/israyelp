@@ -7,6 +7,7 @@ include './utils/functions.php';
 $user_id = $_SESSION['user_id'];											
 
 $external_user=$_GET['external_user'];
+$ext_user_name=$_SESSION['ext_user_name'];
 
 $same_user=0;
 if($external_user-$user_id==0)
@@ -24,7 +25,7 @@ $rev_count = $rev_result->num_rows;
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title> הביקורות שלי | IsraYelp</title>
+	<title> ביקורות | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -52,15 +53,20 @@ $rev_count = $rev_result->num_rows;
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id'].";";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
 <div id="bodyContainer">
-	<div id="mainContent">
 		<div id="user_header"  align="right">
 			<ul id="userTabs" >	
-				<?php 
+				<?php
+					if($same_user)
+						$html = "<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
+						";
+					else 
+					 	$html = "<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל של $ext_user_name</a></li>		 
+						";
 					$html="
 							<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
 							<li class=\"selected\"><a href=\"./my_reviews.php?external_user=".$external_user."\">ביקורות</a></li> ";
@@ -68,17 +74,24 @@ $rev_count = $rev_result->num_rows;
 						$html .= "<li><a href=\"./my_favs.php?external_user=".$external_user."\">מועדפים</a></li>";	
 					}
 					echo $html;
-				?>
-				
+				?>			
 			</ul> 
 		</div>
-	</div>
 	
-	<div id="user_details_wrapper">		
-			<br/>
-			<H1>כתבת כבר <?php echo $rev_count?> ביקורות לאתר</H1>
-			<br/>		
+	
+	<div id="user_details_wrapper">			
 			<?php 
+				if($same_user){
+					$html = "<br/>
+							<H1>כתבת כבר $rev_count ביקורות לאתר</H1>
+							<br/>";
+				}else{
+					$html = "<br/>
+							<H1> $ext_user_name כתב כבר $rev_count ביקורות לאתר</H1>
+							<br/>";
+				}
+				echo $html;
+							
 				while ($review = mysqli_fetch_assoc($rev_result)){		
 					$biz_id = $review['biz_id'];
 					$biz_type = $review['biz_type'];
@@ -106,12 +119,14 @@ $rev_count = $rev_result->num_rows;
 											<span><b>". $review['title']."</b><br>". $review['review']."</span>
 										</td>										
 									</tr>
-							</table>
-							<div id=\"delete_review\" style=\"padding-left:20px\">
-								<img src=\"./image/delete_rev.png\" height=\"10px\" width=\"10px\">
-								<a href=\"./delete_reviwe.php?review_id=".$review_id."\">מחק ביקורת </a>
-							</div>
-						</div>";
+							</table>";
+							if($same_user){
+								$html .= "<div id=\"delete_review\" style=\"padding-left:20px\">
+										<img src=\"./image/delete_rev.png\" height=\"10px\" width=\"10px\">
+										<a href=\"./delete_reviwe.php?review_id=".$review_id."\">מחק ביקורת </a>
+										</div>";
+							}
+							$html .="</div>";
 					echo $html;			
 				}
 			?>
