@@ -28,6 +28,9 @@
 <div id="bodyContainer_Centered">
 	<p>העדכון הושלם בהצלחה.
 		<br><br>
-		<a href="./about_me.php"   id="Zprofile_footer">.חזור לחשבון שלך</a>
+		<?php
+			$html = "<A href=\"./about_me.php?external_user=".$_SESSION['user_id']."\">חזור לחשבון שלך.</A>"; 
+			echo $html;
+		?>
 	</p>
 </div>
