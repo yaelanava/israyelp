@@ -40,8 +40,7 @@ $fav_count = $fav_result->num_rows;
 </div>
 
 <div id="navContainer">
-		<ul>
-			
+		<ul>			
 			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
@@ -51,19 +50,17 @@ $fav_count = $fav_result->num_rows;
 </div>
 
 <div id="bodyContainer">
-	<div id="mainContent">
-		<div id="user_header" align="right">
+	<div id="user_header" align="right">
 			<ul id="userTabs" >
-				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-				<li><a href="./my_reviews.php">ביקורות</a></li> 
-				<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
-			</ul> 
-		</div>
+			<li><a href="./about_me.php">הפרופיל שלי</a></li> 
+			<li><a href="./my_reviews.php">ביקורות</a></li> 
+			<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
+		</ul> 
 	</div>
 	
 	<div id="user_details_wrapper">	
-		<span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span>
 		<br/>
+		<h1><span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span></h1>
 		<br/>	
 		<?php 	
 			while ($fav = mysqli_fetch_assoc($fav_result)){		

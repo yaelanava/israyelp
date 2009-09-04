@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Israel');
 
 $to = "yael.amar@gmail.com";
 $subject = "My subject";

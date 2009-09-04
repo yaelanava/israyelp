@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 include './utils/functions.php';
 
 if ($_GET['city_id']){
@@ -436,7 +435,7 @@ $city_name = getCityName($city_id);
 							}
 							$html .="</p></div>";
 							
-							echo $html;							
+							echo $html;											
 						}
 					?>							
 				</div>			

@@ -8,7 +8,7 @@ $user_id = $_SESSION['user_id'];
 
 //counting how much reviews this user wrote
 $mysqli = getMysqliConnection();
-$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
+$review_query = "SELECT * FROM `reviews` WHERE user_id=$user_id";
 $rev_result = $mysqli->query($review_query);
 $rev_count = $rev_result->num_rows;
 
@@ -50,40 +50,35 @@ $rev_count = $rev_result->num_rows;
 </div>
 
 <div id="bodyContainer">
-	<div id="mainContent">
-		<div id="user_header"  align="right">
-			<ul id="userTabs" >	
-				<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-				<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
-				<li><a href="./my_favs.php">מועדפים</a></li>
-			</ul> 
-		</div>
+	<div id="user_header"  align="right">
+		<ul id="userTabs" >	
+			<li><a href="./about_me.php">הפרופיל שלי</a></li> 
+			<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
+			<li><a href="./my_favs.php">מועדפים</a></li>
+		</ul> 
 	</div>
 	
-	<div id="user_details_wrapper">	
-	
-			<span><b> כתבת כבר </b></span> 	<?php echo $rev_count?> <span ><b> ביקורות לאתר </b></span>
+	<div id="user_details_wrapper">		
 			<br/>
+			<H1>כתבת כבר <?php echo $rev_count?> ביקורות לאתר</H1>
 			<br/>		
 			<?php 
 				while ($review = mysqli_fetch_assoc($rev_result)){		
 					$biz_id = $review['biz_id'];
 					$biz_type = $review['biz_type'];
+					$biz_url = getBizURL($biz_type, $biz_id);
+										
 					$grading = $review['grading'];
-					$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
-					$result = $mysqli->query($query);
-					$biz = mysqli_fetch_assoc($result);
 					$review_id=$review['id'];
 					
-					$sen="הביקורת נכתבה עבור ";
+					$query = "SELECT * FROM `$biz_type` WHERE id='$biz_id' LIMIT 1";
+					$result = $mysqli->query($query);
+					$biz = mysqli_fetch_assoc($result);
+					
 					$html = "<div id=\"my_review\">						
 								<table cellpadding=\"20\" cellspacing=\"1\" border=\"0\" >
-									<tr>
-										<td>
-											<img src=\"./image/delete_rev.png\" height=\"20px\" width=\"20px\">
-											<a href=\"./delete_reviwe.php?reviwe_id=".$review_id."\">מחק ביקורת </a>
-										</td>
-										<td><span> <b> ".$sen.$biz['name']."</b>"."</span>
+									<tr>										
+										<td width=200><span><b>הביקורת נכתבה עבור </b><a href=\"$biz_url\">".$biz['name']."</a>"."</span>
 											<DIV class=\"ext_rating\">
 												<DIV class=\"rating\">
 													<IMG class=\"stars_". $grading."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
@@ -93,9 +88,13 @@ $rev_count = $rev_result->num_rows;
 										</td> 
 										<td>
 											<span><b>". $review['title']."</b><br>". $review['review']."</span>
-										</td>
+										</td>										
 									</tr>
 							</table>
+							<div id=\"delete_review\" style=\"padding-left:20px\">
+								<img src=\"./image/delete_rev.png\" height=\"10px\" width=\"10px\">
+								<a href=\"./delete_reviwe.php?review_id=".$review_id."\">מחק ביקורת </a>
+							</div>
 						</div>";
 					echo $html;			
 				}
