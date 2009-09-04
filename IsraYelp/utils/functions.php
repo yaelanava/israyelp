@@ -30,7 +30,8 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 }
 
 function getBizURL($biz_type, $biz_id){
-	return "http://localhost/IsraYelp/".$biz_type."/biz.php?biz_id=".$biz_id;
+	//return "http://localhost/IsraYelp/".$biz_type."/biz.php?biz_id=".$biz_id;	
+	return "./".$biz_type."/biz.php?biz_id=".$biz_id;
 }
 
 function getUserPictureSrc($user_id, $prefix){
