@@ -10,16 +10,17 @@ $biz_url = $_GET['biz_url'];
 
 $user_id = $_SESSION['user_id'];		
 
-$query = "SELECT * FROM `test`.`favorites` WHERE user_id='$user_id' and biz_url='$biz_url'";
+$query = "SELECT * FROM `favorites` WHERE user_id='$user_id' and biz_url='$biz_url'";
 $result = $mysqli->query($query);
 $count = $result->num_rows;
 if ($count == 0) {
-	$query = "INSERT INTO `test`.`favorites` (
+	$name = mysql_real_escape_string($biz_name);
+	$query = "INSERT INTO .`favorites` (
 				`user_id` ,
 				`biz_name` ,
 				`biz_url` 	
 			)VALUES (
-				'$user_id' , '$biz_name', '$biz_url'
+				'$user_id' , '$name', '$biz_url'
 			);";
 	$result = $mysqli->query($query);	
 	if 	($result) {

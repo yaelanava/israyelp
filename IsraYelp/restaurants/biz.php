@@ -1,22 +1,22 @@
+
 <?php 
 
 session_start();
 
 include '../utils/functions.php';
 
-$rest_id = $_GET['biz_id'];
-$biz_type = "shopping";
-$rest_url = getBizURL($biz_type, $rest_id);
-
+$biz_id = $_GET['biz_id'];
+$biz_type = "restaurants";
+$biz_url = getBizURL($biz_type, $biz_id);
 
 $mysqli = getMysqliConnection();
 
-$query_restaurant = "SELECT * FROM `test`.`$biz_type` WHERE id='$rest_id'";
-$result_restaurant = $mysqli->query($query_restaurant);
-$restaurant = mysqli_fetch_assoc($result_restaurant);
-$rest_name = $restaurant['name'];	
+$query_biz = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
+$result_biz = $mysqli->query($query_biz);
+$biz = mysqli_fetch_assoc($result_biz);
+$biz_name = $biz['name'];	
 
-$query_reviews = "SELECT * FROM `test`.`reviews` WHERE biz_id='$rest_id' and biz_type='$biz_type' ORDER BY added DESC";
+$query_reviews = "SELECT * FROM `reviews` WHERE biz_id=$biz_id and biz_type='$biz_type' ORDER BY added DESC";
 $result_reviews = $mysqli->query($query_reviews);
 $count_reviews = $result_reviews->num_rows;
 											
@@ -25,7 +25,7 @@ $count_reviews = $result_reviews->num_rows;
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title><?php echo $rest_name?> | IsraYelp</title>
+	<title><?php echo $biz_name?> | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -42,7 +42,7 @@ $count_reviews = $result_reviews->num_rows;
 			<A href="../main.php"></A>
 		</div>
 		<div id="register">
-			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username'])?></p>
+			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-".$_SESSION['username'])?></p>
 		</div>
 		<div id="leftEdge"></div>
 		<div id="rightEdge"></div>
@@ -66,7 +66,7 @@ $count_reviews = $result_reviews->num_rows;
 					<tr>		
 						<td style="vertical-align:top">
 							<div id="bizInfoHeader">
-								<h1><?php echo $rest_name?></h1>
+								<h1><?php echo $biz_name?></h1>
 								<div id="bizRating">
 									<div class="rating">
 										<img class="stars_4_half" width="83" height="325" title="4.5 star rating" alt="4.5 star rating" src="../image/stars_map.png"/>
@@ -76,19 +76,19 @@ $count_reviews = $result_reviews->num_rows;
 							</div>
 							<div id="bizInfoContent">
 								<p id="bizCategories"><strong>קטגוריה:</strong>
-									<span id="cat_display"> <?php echo $restaurant['category'];?>	
+									<span id="cat_display"> <?php echo $biz['category'];?>	
 								</p>
 								<address class="adr">
-									<span class="street-address"><?php echo $restaurant['address']; ?></span>										
+									<span class="street-address"><?php echo $biz['address']; ?></span>										
 								</address>
 			
-								<span id="bizPhone" class="tel"> <?php echo $restaurant['phone_number']; ?> </span>
+								<span id="bizPhone" class="tel"> <?php echo $biz['phone_number']; ?> </span>
 						</td>				
 						<td>
 							<div id="bizPhotos"">
 								<div class="clearStyles bizPhotoBox">
-										<?php $imageFileSrc = "./image/".$rest_id.".jpg";?>
-										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=150 height=150 style="" alt=""></a>
+										<?php $imageFileSrc = "./image/".$biz_id.".jpg";?>
+										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=200 height=150 style="" alt=""></a>
 								</div>
 							</div>
 						</td>
@@ -97,19 +97,25 @@ $count_reviews = $result_reviews->num_rows;
 				<br></br>			
 					<div id="bizAdditionalInfo" class="clearfix">
 					<ul>							
-						<li><strong>שעות: </strong><?php echo $restaurant['hours']?></li>
-						<li><strong>גישה לנכים: </strong> <?php if($restaurant['invalid_access']==1){echo "כן";} else {echo "לא";} ?></li>
-						<li><strong>חניה: </strong> <?php if($restaurant['parking']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>משלוחים: </strong><?php if($biz['delivery']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>כשר: </strong><?php if($biz['kosher']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>גישה לנכים: </strong> <?php if($biz['invalid_access']==1){echo  "כן";} else {echo "לא";} ?></li>
+						<li><strong>ידידותי לילדים: </strong> <?php if($biz['child_friendly']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>אירועים: </strong> <?php if($biz['events']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>רומנטי: </strong> <?php if($biz['romantic']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>חניה: </strong> <?php if($biz['parking']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>אזור עישון: </strong> <?php if($biz['smoking']==1){echo "כן";} else {echo "לא";} ?></li>
+						<li><strong>ישיבה בחוץ: </strong> <?php if($biz['outside']==1){echo "כן";} else {echo "לא";} ?></li>									
 					</ul>
 				</div>				
 				<div  id="bizActions" class="clearfix">
-					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?biz_id=<?php echo $rest_id?>&return_url=<?php echo $rest_url?>" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
-					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $rest_name?>&biz_url=<?php echo $rest_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
+					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?biz_id=<?php echo $biz_id?>&return_url=<?php echo $biz_url?>" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
+					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $biz_name?>&biz_url=<?php echo $biz_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
 					<a class="write review" rel="nofollow" 
 						href= "<?php if (!session_is_registered('username')) { 
-									echo ("../login.php?returnUrl=".$rest_url);
+									echo ("../login.php?returnUrl=".$biz_url);
 									} else {
-									echo ("../writeReviewForm.php?biz_id=".$rest_id."&biz_name=".$rest_name."&biz_type=$biz_type");
+									echo ("../writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$biz_type");
 									}
 								?>" 
 						id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						
@@ -118,8 +124,8 @@ $count_reviews = $result_reviews->num_rows;
 			<td>
 				<iframe 
 					src="http://maps.freemap.co.il/api/openlayers/?zoom=9&
-							lat=<?php echo $restaurant['lat']?>&
-							lon=<?php echo $restaurant['lon']?>&
+							lat=<?php echo $biz['lat']?>&
+							lon=<?php echo $biz['lon']?>&
 							marker=true"
 		        	width="300px" height="350px"
 				       scrolling="no"
@@ -133,7 +139,7 @@ $count_reviews = $result_reviews->num_rows;
 	<div id="bizReviews">
 		<div id="bizReviewsHeader" class="clearfix">
 			</br>
-			<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $rest_name?>:</h2>	
+			<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $biz_name?>:</h2>	
 		</div>
 		<br></br>
 		<div id="bizReviewsContent">
@@ -141,7 +147,7 @@ $count_reviews = $result_reviews->num_rows;
 				<?php 
 					while ($review = mysqli_fetch_assoc($result_reviews)){
 						$userId = $review['user_id'];
-						$query_user = "SELECT * FROM `test`.`users` WHERE id='$userId'";
+						$query_user = "SELECT * FROM `users` WHERE id=$userId";
 						$result_user = $mysqli->query($query_user);
 						$user = mysqli_fetch_assoc($result_user);
 								
@@ -167,8 +173,8 @@ $count_reviews = $result_reviews->num_rows;
 											<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['review']."</P>
 									</div>
 								</div>";
-						echo $html;
-					}
+							echo $html;
+						}
 				?>	
 			</div>				
 		</div>
