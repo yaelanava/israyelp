@@ -12,7 +12,6 @@ $external_user=$_GET['external_user'];
 $same_user=0;
 if($external_user-$user_id==0)
 	$same_user=1;
-$_SESSION['same_user']=$same_user;
 
 //extracting the user information 
 $user_query = "SELECT * FROM `users` WHERE id= $external_user";
@@ -22,6 +21,7 @@ $city = $user['city'];
 $register_since = $user['register_since'];
 $email=$user['email'];
 $username=$user['username'];
+$_SESSION['ext_user_name']=$username;
 
 //ratings graph
 for ($i=1; $i < 6; $i++){
@@ -85,7 +85,6 @@ $bar->SetBorderColor("E8E8D0");
 </div>
 
 <div id="bodyContainer">
-	<div id="mainContent">
 		<div id="user_header" class="ieSucks" align="right">
 			<ul id="userTabs" >
 					<?php 
@@ -100,7 +99,6 @@ $bar->SetBorderColor("E8E8D0");
 							
 			</ul> 
 		</div>
-	</div>
 			
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
@@ -112,9 +110,16 @@ $bar->SetBorderColor("E8E8D0");
 							<div id="user_pic">
 								<div class="clearStyles photoBox" >
 									<img src="<? echo getUserPictureSrc($external_user, "./") ?>" height="100px" width="100px">
-									<p id="photo_action_link">
-					 					<a href="./upload_pic.php" class="small">ערוך תמונה</a>
-					 				</p>
+									
+										<?php 
+											if($same_user){
+												$html = "<p id=\"photo_action_link\">
+														<a href=\"./upload_pic.php\" class=\"small\">ערוך תמונה</a>
+							 							</p>";
+												echo $html;
+											}
+										?>
+					 					
 								</div>
 							</div>	
 						</td>
