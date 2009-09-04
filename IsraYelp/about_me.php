@@ -9,13 +9,37 @@ $username = $_SESSION['username'];
 $user_id = $_SESSION['user_id'];
 
 //extracting the user information 
-$user_query = "SELECT * FROM `test`.`users` WHERE id= '$user_id'";
+$user_query = "SELECT * FROM `users` WHERE id= $user_id";
 $user_result = $mysqli->query($user_query);
 $user = mysqli_fetch_assoc($user_result);
 $city = $user['city'];
 $month = $user['month_added'];
 $year = $user['year_added'];
 $email=$user['email'];
+
+if ($month==1)
+	$month='ינואר';
+elseif ($month==2)
+	$month='פברואר';
+elseif ($month==3)
+	$month='מרץ';
+elseif ($month==4)
+	$month='אפריל';
+elseif ($month==5)
+	$month='מאי';
+elseif ($month==6)
+	$month='יוני';
+elseif ($month==7)
+	$month='יולי';
+elseif ($month==8)
+	$month='אוגוסט';
+elseif ($month==9)
+	$month='ספטמבר';
+elseif ($month==10)
+	$month='אוקטובר';
+elseif ($month==11)
+	$month='נובמבר';		
+else $month='דצמבר';
 
 ?>
 
