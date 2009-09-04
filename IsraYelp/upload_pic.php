@@ -64,6 +64,17 @@
 				<input type="submit" value="העלה תמונה">
 			</td>
 		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<br>
+				<?php
+					$html = "<A href=\"./about_me.php?external_user=".$_SESSION['user_id']."\"> התחרטת? חזור לחשבון שלך.</A>"; 
+					echo $html;
+				?>
+			</td>
+								
+		</tr>
 
 		
 	</table>
