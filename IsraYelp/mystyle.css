@@ -1397,5 +1397,9 @@
 	#margin_fix_rev{
 		MARGIN-RIGHT: 0px;
 	}	
+	#send_a_message{
+		BORDER-TOP: #ccc 1px solid;
+		PADDING-RIGHT: 250px;	
+	}
 	
 	
