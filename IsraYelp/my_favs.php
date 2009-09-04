@@ -64,14 +64,14 @@ $fav_count = $fav_result->num_rows;
 		<br/>	
 		<?php 	
 			while ($fav = mysqli_fetch_assoc($fav_result)){		
-				$html = "<div id=\"my_review\">					
+				$html = "<div>					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td><span><b><a href=".$fav['biz_url'].">".$fav['biz_name']."</a></b></span></td> 
 								</tr>
 							</table>
 						</div>";
-				echo $html;				
+				echo $html;
 			}
 		?>			
 	</div>

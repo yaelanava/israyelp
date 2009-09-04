@@ -2,6 +2,7 @@
 session_start();
 
 include './utils/functions.php';
+require_once 'HTML_graph.php';
 
 $mysqli = getMysqliConnection();
 
@@ -15,6 +16,30 @@ $user = mysqli_fetch_assoc($user_result);
 $city = $user['city'];
 $register_since = $user['register_since'];
 $email=$user['email'];
+
+//ratings graph
+
+for ($i=1; $i < 6; $i++){
+	$query = "SELECT * FROM `reviews` WHERE user_id=$user_id and grading=$i";
+	$result = $mysqli->query($query);
+	$ratings[$i] = $result->num_rows;
+}
+
+$text = array("5","4","3","2","1");
+$value = array($ratings[5],$ratings[4],$ratings[3],$ratings[2],$ratings[1]);
+
+$bar = new HTML_graph();
+$bar->set($text, $value, 200, 10, 0, "FFB164", "E8E8D0",0);
+$bar->SetTitle("התפלגויות דירוגים");
+$bar->SetBgColour("FFE4B5");
+$bar->SetPercentage(false);
+$bar->SetTextFontColor("000000");
+$bar->SetTextFontSize("x-small");
+$bar->SetNumberFontColor("CC0000");
+$bar->SetNumberFontSize("x-small");
+$bar->SetBorderStyle("outset");
+$bar->SetBorderWidth("small");
+$bar->SetBorderColor("E8E8D0");
 
 ?>
 
@@ -101,19 +126,16 @@ $email=$user['email'];
 						</td>
 						<td>
 							<span class="highlight2">מיקום:</span>
-							<?php    					
-			    				if (empty($city))
-			    				{
+							<?php     					
+			    				if (empty($city)) {
 			    					echo "<br/>";
 			    					echo 'עיר מגוריך אינה ידועה';
-			    				}
-			    				else 
-			    				{
+			    				} else {
 			    					echo "<br/>";
 			    					echo  $city;			    					
 			    					echo "<br />";
 			    				}			    								    				
-								?>
+							?>
 							<p>					
 								<span class="formLabel"><a href="edit_city.php">ערוך</a></span>
 							</p>
@@ -139,6 +161,7 @@ $email=$user['email'];
 						</td>
 					</tr>																
 				</table>
+				<?php echo $bar->horizontal();?>
 		</div>
 	</div>
 </div>		
