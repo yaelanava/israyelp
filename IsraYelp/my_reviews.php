@@ -6,6 +6,13 @@ include './utils/functions.php';
 
 $user_id = $_SESSION['user_id'];											
 
+$external_user=$_GET['external_user'];
+
+$same_user=0;
+if($external_user-$user_id==0)
+	$same_user=1;
+
+
 //counting how much reviews this user wrote
 $mysqli = getMysqliConnection();
 $review_query = "SELECT * FROM `reviews` WHERE user_id=$user_id";
@@ -50,12 +57,21 @@ $rev_count = $rev_result->num_rows;
 </div>
 
 <div id="bodyContainer">
-	<div id="user_header"  align="right">
-		<ul id="userTabs" >	
-			<li><a href="./about_me.php">הפרופיל שלי</a></li> 
-			<li class="selected"><a href="./my_reviews.php">ביקורות</a></li> 
-			<li><a href="./my_favs.php">מועדפים</a></li>
-		</ul> 
+	<div id="mainContent">
+		<div id="user_header"  align="right">
+			<ul id="userTabs" >	
+				<?php 
+					$html="
+							<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
+							<li class=\"selected\"><a href=\"./my_reviews.php?external_user=".$external_user."\">ביקורות</a></li> ";
+					if ($same_user){
+						$html .= "<li><a href=\"./my_favs.php?external_user=".$external_user."\">מועדפים</a></li>";	
+					}
+					echo $html;
+				?>
+				
+			</ul> 
+		</div>
 	</div>
 	
 	<div id="user_details_wrapper">		
