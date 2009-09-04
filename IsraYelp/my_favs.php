@@ -8,7 +8,7 @@ $mysqli = getMysqliConnection();
 $user_id=$_SESSION['user_id'];											
 
 //counting how much reviews this user wrote
-$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$user_id'";
+$fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
 $fav_result = $mysqli->query($fav_query);
 $fav_count = $fav_result->num_rows;
 

@@ -1,27 +1,28 @@
 <?php
 
 include './utils/functions.php';
-$error_msg=0;
+
+$error_msg = 0;
 
 if (isset($_POST['username']) && ('' != $_POST['username']) && 
 	isset($_POST['email']) && ('' != $_POST['email']) &&
 	isset($_POST['password']) && ('' != $_POST['password']) &&
 	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {
+	
 	if(check_email($_POST['email'])){
-		$username = $_POST['username'];
+		$username = mysql_real_escape_string($_POST['username']);
 		$email = $_POST['email'];
-		$city = $_POST['city'];
+		$city = mysql_real_escape_string($_POST['city']);
 		$password = $_POST['password'];
 		$confirmed_password = $_POST['confirmed_password'];
 
 		if ($password !== $confirmed_password) {
-			$error_msg = "הסיסמאות לא תואמות";		
+			$error_msg = ".הסיסמאות לא תואמות";		
 		} else {
 			$mysqli = getMysqliConnection();						
-			$query = "SELECT * FROM `test`.`users` WHERE email='$email'";
+			$query = "SELECT * FROM `users` WHERE email='$email'";
 			$result = $mysqli->query($query);
-			$count = $result->num_rows;
-			
+			$count = $result->num_rows;			
 			if ($count != 0) {
 				header("location:signup_user_exists.php");	
 				die(0);
@@ -53,8 +54,9 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 				$month_added='נובמבר';		
 			else $month_added='דצמבר';
 			
-			$year_added=$today['year'];
-			$query="INSERT INTO `test`.`users` (
+			$year_added = $today['year'];
+			
+			$query = "INSERT INTO `users` (
 						`id` ,
 						`username` ,
 						`email` ,
@@ -63,10 +65,9 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 						`month_added` ,
 						`password`
 						)
-						VALUES (
+					VALUES (
 						NULL , '$username', '$email', '$city', '$year_added', '$month_added', PASSWORD( '$password' )
-						)";
-					
+					)";
 					
 			$result = $mysqli->query($query);
 			if 	($result) {
@@ -75,10 +76,9 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 				header("Location: signup_failure.html");				
 			}
 		}
-	}
-		//createUser();
-	else 
-		$error_msg="האימייל שהכנסת אינו תקין, נסה שוב";	
+	} else { 
+		$error_msg="דוא'ל לא תקין.";
+	}	
 } 
 
 ?>
@@ -150,32 +150,7 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 </div>
 </div>
 
-<div id="footer">
-	
-	<div>		
-				<ul id="aboutSite">
-					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
-					<li> | <a href="/about">החשבון שלי</a></li>
-					<li> | <a href="/faq" >שאלות נפוצות </a></li>
-				</ul>
-	</div>
+<?php echo getFooterHTMLCode()?>
 
-	<div class="directory">
-		<ul>
-			<li class="first"><strong>מפת האתר</strong></li>
-			<li> | <a href="../restaurants.php">תל-אביב</a></li>
-			<li> | <a href="../../jerusalem/restaurants.php">ירושלים</a></li>
-			<li> | <a href="/boston">חיפה</a></li>
-			<li> | <a href="/chicago">באר שבע</a></li>
-			<li> | <a href="/dallas">הרצליה</a></li>
-			<li> | <a href="/denver">אשדוד</a></li>
-			<li> | <a href="/locations">ערים נוספות</a></li>
-		</ul>
-	</div>
-	
-	<div>
-		<p> זכויות יוצרים </p>
-	</div>
-</div>
 </body>
 </html>

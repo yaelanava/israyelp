@@ -15,7 +15,7 @@ function getMysqliConnection(){
 }
 
 function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
-	$other_cities_query = "SELECT * FROM `test`.`cities` WHERE id!=$city_id ORDER BY id DESC";
+	$other_cities_query = "SELECT * FROM `cities` WHERE id!=$city_id ORDER BY id DESC";
 	$other_cities_result = getMysqliConnection()->query($other_cities_query);
 	
 	$html = "<H1>".$city_name."</H1>";
@@ -30,15 +30,7 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 }
 
 function getBizURL($biz_type, $biz_id){
-	//$i = $biz_type==="restaurants" ? 1 : 4;
-	//return "./".$biz_type."/".substr($biz_type,0,strlen($biz_type)-$i).".php?biz_id=".$biz_id;
-	if ($biz_type=="restaurants"){
-		return "./restaurants/restaurant.php?biz_id=".$biz_id;
-	}
-	else if ($biz_type=="shopping"){
-		return "./shopping/shop.php?biz_id=".$biz_id;		
-	}
-	return "";
+	return "http://localhost/IsraYelp/".$biz_type."/biz.php?biz_id=".$biz_id;
 }
 
 function getUserPictureSrc($user_id, $prefix){
@@ -50,14 +42,14 @@ function getUserPictureSrc($user_id, $prefix){
 }
 
 function getCityName($city_id){
-	$city_query = "SELECT * FROM `test`.`cities` WHERE id='$city_id'";
+	$city_query = "SELECT * FROM `cities` WHERE id='$city_id'";
 	$city_result = getMysqliConnection()->query($city_query);
 	$city = mysqli_fetch_assoc($city_result);
 	return $city['name'];
 }
 
 function getCityID($city_name){
-	$city_query = "SELECT * FROM `test`.`cities` WHERE name='$city_name'";
+	$city_query = "SELECT * FROM `cities` WHERE name='$city_name'";
 	$city_result = getMysqliConnection()->query($city_query);
 	$city = mysqli_fetch_assoc($city_result);
 	return $city['id'];
@@ -107,7 +99,7 @@ function getTypesHTMLCode(){
 }
 
 function getCitiesHTMLCode(){
-	$cities_query = "SELECT * FROM `test`.`cities` ORDER BY id DESC";
+	$cities_query = "SELECT * FROM `cities` ORDER BY id DESC";
 	$cities_result = getMysqliConnection()->query($cities_query);
 	
 	$html = "<select name=\"place_city\">";       		
@@ -128,8 +120,6 @@ function check_email($email)
 {
 	$atom = '[-a-z0-9!#$%&\'*+/=?^_`{|}~]';    // allowed characters for part before "at" character
 	$domain = '([a-z]([-a-z0-9]*[a-z0-9]+)?)'; 
-    //$atom = '[-a-z0-9!#$%&\'*+/=?^_`{|}~]'; 
-    //$domain = '[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])'; 
     $regex = '^' . $atom . '+' .         // One or more atom characters.
 			'(\.' . $atom . '+)*'.               // Followed by zero or more dot separated sets of one or more atom characters.
 			'@'.                                 // Followed by an "at" character.
@@ -137,7 +127,6 @@ function check_email($email)
 			$domain . '{2,63}'.                  // Must be followed by one set consisting a period of two
 			'$';                
 	return eregi($regex, $email);
-    //return eregi("^$atom+(\\.$atom+)*@($domain?\\.)+$domain\$", $email);
 }
 
 ?>

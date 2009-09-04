@@ -38,7 +38,7 @@ $city_name = getCityName($city_id);
 			<A href="./main.php"></A>
 		</div>
 		<div id="register">
-			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
+			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-".$_SESSION['username']) ?></p>
 		</div>
 		<div id="leftEdge"></div>
 		<div id="rightEdge"></div>
@@ -104,7 +104,7 @@ $city_name = getCityName($city_id);
 					<h4 style="margin-bottom:0px;" title="מסעדות"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a></h4>
 					<em>
 						<?php 
-							$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='restaurants'";
+							$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='restaurants'";
 							$result = $mysqli->query($query);
 							$count = $result->num_rows;
 							echo $count;
@@ -113,12 +113,12 @@ $city_name = getCityName($city_id);
 					</em>														
 					
 					<?php 
-						$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+						$query = "SELECT * FROM `restaurants` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
 						$result = $mysqli->query($query);
 						$html = "";
 						$first = 1;								
 						while ($rest = mysqli_fetch_assoc($result)){
-							$rest_url = "./restaurants/restaurant.php?biz_id=".$rest['id'];
+							$rest_url = "./restaurants/biz.php?biz_id=".$rest['id'];
 							if ($first){
 								$image_srs = "./restaurants/image/".$rest['id'].".JPG";						
 								$html = "<div class=\"clearStyles bizPhotoBox\">
@@ -147,21 +147,20 @@ $city_name = getCityName($city_id);
 					<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="./shopping/shopping.php?city_id=<?php echo $city_id?>">קניות</a></h4>
 					<em>
 						<?php 
-							$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='shopping'";
+							$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='shopping'";
 								$result = $mysqli->query($query);
 								$count = $result->num_rows;
 								echo $count;
 							?>  
 							ביקורות							
-						</em>											
-					
+						</em>																
 						<?php 
-							$query = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+							$query = "SELECT * FROM `shopping` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
 							$result = $mysqli->query($query);
 							$first = 1;
 							$html="";								
 							while ($shop = mysqli_fetch_assoc($result)){
-								$shop_url = "./shopping/shop.php?biz_id=".$shop['id'];
+								$shop_url = "./shopping/biz.php?biz_id=".$shop['id'];
 								if ($first){
 									$image_srs = "./shopping/image/".$shop['id'].".JPG";						
 									$html = "<div class=\"clearStyles bizPhotoBox\">
@@ -192,7 +191,7 @@ $city_name = getCityName($city_id);
 						<h4 style="margin-bottom:0px;" title="מקומות בילוי"><a href="./nightlife/nightlife.php?city_id=<?php echo $city_id?>">חיי לילה</a></h4>
 						<em>
 							<?php 
-								$query = "SELECT * FROM `test`.`reviews` WHERE city_id=$city_id and biz_type='nightlife'";
+								$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='nightlife'";
 								$result = $mysqli->query($query);
 								$count = $result->num_rows;
 								echo $count;
@@ -201,12 +200,12 @@ $city_name = getCityName($city_id);
 						</em>			
 
 						<?php 
-							$query = "SELECT * FROM `test`.`nightlife` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+							$query = "SELECT * FROM `nightlife` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
 							$result = $mysqli->query($query);
 							$first = 1;
 							$html="";								
 							while ($shop = mysqli_fetch_assoc($result)){
-								$shop_url = "./nightlife/night.php?biz_id=".$shop['id'];
+								$shop_url = "./nightlife/biz.php?biz_id=".$shop['id'];
 								if ($first){
 									$image_srs = "./nightlife/image/".$shop['id'].".JPG";						
 									$html = "<div class=\"clearStyles bizPhotoBox\">
@@ -255,7 +254,7 @@ $city_name = getCityName($city_id);
 			<ul class="stripped ieSucks">								
 				<li class="shopping"><a href="./shopping/shopping.php?city_id=<<?php echo $city_id?>">קניות</a> 
 					<?php 
-						$query = "SELECT * FROM `test`.`shopping` WHERE city_id=$city_id";
+						$query = "SELECT * FROM `shopping` WHERE city_id=$city_id";
 						$result = $mysqli->query($query);
 						$count = $result->num_rows;
 						echo $count;
@@ -263,7 +262,7 @@ $city_name = getCityName($city_id);
 				</li>
 				<li class="restaurants"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a>  										
 					<?php 
-						$query = "SELECT * FROM `test`.`restaurants` WHERE city_id=$city_id";
+						$query = "SELECT * FROM `restaurants` WHERE city_id=$city_id";
 						$result = $mysqli->query($query);
 						$count = $result->num_rows;
 						echo $count;
@@ -279,7 +278,7 @@ $city_name = getCityName($city_id);
 <!--			<li class="active"><a href="/c/sf/active">Active Life</a> 1114</li>-->
 				<li class="nightlife"><a href="./nightlife/nightlife.php?city_id=<?php echo $city_id?>">חיי לילה</a> 
 				 	<?php 
-						$query = "SELECT * FROM `test`.`nightlife` WHERE city_id=$city_id";
+						$query = "SELECT * FROM `nightlife` WHERE city_id=$city_id";
 						$result = $mysqli->query($query);
 						$count = $result->num_rows;
 						echo $count;
@@ -306,7 +305,7 @@ $city_name = getCityName($city_id);
 		<h3>מבקרים נבחרים</h3>
 		<br>
 			<?php 						
-				$query = "SELECT * FROM `test`.`users` ORDER BY RAND() LIMIT 6";
+				$query = "SELECT * FROM `users` ORDER BY RAND() LIMIT 6";
 				$result = $mysqli->query($query);
 				while ($user = mysqli_fetch_assoc($result)){
 					$html = "<div>
@@ -331,24 +330,26 @@ $city_name = getCityName($city_id);
 				<P> נבחרה ע"י חברי האתר! </P>
 				
 					<?php 
-						$today_reviews = "SELECT * FROM `test`.`reviews` ORDER BY added DESC LIMIT 1"; //todo: same city or not?
+						$today_reviews = "SELECT * FROM `reviews` ORDER BY added DESC LIMIT 1"; //todo: same city or not?
 						$result_today = $mysqli->query($today_reviews);
 						while ($review = mysqli_fetch_assoc($result_today) ){
 							$user_id_chosen = $review['user_id'];
-							$query_user = "SELECT * FROM `test`.`users` WHERE id='$user_id_chosen'";
+							$query_user = "SELECT * FROM `users` WHERE id=$user_id_chosen";
 							$result_user = $mysqli->query($query_user);
 							$user = mysqli_fetch_assoc($result_user);
 							
 							$biz_id = $review['biz_id'];
 							$biz_type = $review['biz_type'];
-							$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
+							$query = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
 							$result = $mysqli->query($query);
 							$biz = mysqli_fetch_assoc($result);
 							$biz_url = getBizURL($biz_type, $biz_id);
 							
-							$the_review=$review['review'];
-							$short_rev=substr($the_review,0,99);
-							$len=strlen($the_review);
+							$review = $review['review'];
+							if (strlen($review) > 100){
+								$review = substr($review,0,99);
+								$short = true;
+							}
 							
 							$html =  "<div id=\"reviewerInfo\">
 										<div class=\"clearStyles photoBox\" >
@@ -362,27 +363,18 @@ $city_name = getCityName($city_id);
 								
 									<div id=\"reviewPick\">
 										<div class=\"rating\">
-										<IMG class=\"stars_". $review['grading']." height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
-							
-									</div>
-									<p>
-										<a href=\"$biz_url\">".$biz['name']."</a>
-									</p>
-									<p style=\"padding-top:.3em;\">";
-					
-							if($len>100){
-										//print($short_rev);
-										$html .= $short_rev; 
-										$_SESSION['user_id_rev']=$user['id']; 
-										$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
-									}else 
-										$html .= $the_review;
-							
-							$html .="
-									</div>	";
-							
-							echo $html;
-							
+											<IMG class=\"stars_". $review['grading']." height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />							
+										</div>
+										<p><a href=\"$biz_url\">".$biz['name']."</a></p>
+										<p style=\"padding-top:.3em;\">";
+							$html .= $review; 
+							if ($short){
+									$_SESSION['user_id_rev']=$user['id']; 
+									$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
+							}
+							$html .="</div>";
+														
+							echo $html;							
 						}
 					?>				
 				
@@ -410,17 +402,17 @@ $city_name = getCityName($city_id);
 					<h3>ישר מהתנור...</h3>
 					<p>הביקורות האחרונות של חברי האתר</p>
 					<?php 
-						$query_reviews = "SELECT * FROM `test`.`reviews` WHERE city_id='$city_id' ORDER BY added DESC LIMIT 3"; //todo: same city or not?
+						$query_reviews = "SELECT * FROM `reviews` WHERE city_id=$city_id ORDER BY added DESC LIMIT 3"; //todo: same city or not?
 						$result_reviews = $mysqli->query($query_reviews);
 						while ($review = mysqli_fetch_assoc($result_reviews) ){
 							$user_id_late = $review['user_id'];
-							$query_user = "SELECT * FROM `test`.`users` WHERE id='$user_id_late'";
+							$query_user = "SELECT * FROM `users` WHERE id=$user_id_late";
 							$result_user = $mysqli->query($query_user);
 							$user = mysqli_fetch_assoc($result_user);
 							
 							$biz_id = $review['biz_id'];
 							$biz_type = $review['biz_type'];
-							$query = "SELECT * FROM `test`.`$biz_type` WHERE id='$biz_id'";
+							$query = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
 							$result = $mysqli->query($query);
 							$biz = mysqli_fetch_assoc($result);
 							$biz_url = getBizURL($biz_type, $biz_id);
@@ -437,14 +429,8 @@ $city_name = getCityName($city_id);
 										<p>
 											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
 											<br/><em class=\"smaller grey\">". $user['username'] ."</em>
-											<br/>";
-											
-																				
-										
-									
-							//echo $html;	
+											<br/>";																																														
 							if($len>100){
-								//print($short_rev);
 								$html .= $short_rev; 
 								$_SESSION['user_id_rev']=$user['id']; 
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";

@@ -19,7 +19,7 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 	
 	$mysqli = getMysqliConnection();	
 	
-	$query = "SELECT * FROM `test`.`users` WHERE email='$email' and password=PASSWORD('$password')";
+	$query = "SELECT * FROM `users` WHERE email='$email' and password=PASSWORD('$password')";
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;	
 	if ($count == 1){
