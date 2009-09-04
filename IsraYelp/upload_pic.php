@@ -34,7 +34,7 @@
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.html";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "./about_me.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id'].";";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -72,33 +72,7 @@
 
 </div>
 
-<div id="footer">
-	
-	<div>		
-				<ul id="aboutSite">
-					<li>  <a href="/signup"   id="Zprofile_footer">עלינו</a></li>
-					<li> | <a href="/about">החשבון שלי</a></li>
-					<li> | <a href="/faq" >שאלות נפוצות </a></li>
-				</ul>
-	</div>
-
-	<div class="directory">
-		<ul>
-			<li class="first"><strong>מפת האתר</strong></li>
-			<li> | <a href="../restaurants.php">תל-אביב</a></li>
-			<li> | <a href="../../jerusalem/restaurants.php">ירושלים</a></li>
-			<li> | <a href="/boston">חיפה</a></li>
-			<li> | <a href="/chicago">באר שבע</a></li>
-			<li> | <a href="/dallas">הרצליה</a></li>
-			<li> | <a href="/denver">אשדוד</a></li>
-			<li> | <a href="/locations">ערים נוספות</a></li>
-		</ul>
-	</div>
-	
-	<div>
-		<p> זכויות יוצרים </p>
-	</div>
-</div>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>
