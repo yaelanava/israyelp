@@ -70,11 +70,12 @@ $fav_count = $fav_result->num_rows;
 			</ul> 
 		</div>
 	
-	<div id="user_details_wrapper">	
-		<span><b> יש לך </b></span> <?php echo $fav_count;?> <span><b> מקומות מועדפים </b></span>
-		<br/>
-		<br/>	
-		<?php 	
+	<div id="user_details_wrapper">		
+		<?php 
+			$html = "<br/>
+					<H1>יש לך $fav_count מקומות מועדפים</H1>
+					<br/>";	
+			echo $html;
 			while ($fav = mysqli_fetch_assoc($fav_result)){		
 				$html = "<div id=\"my_review\">					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
