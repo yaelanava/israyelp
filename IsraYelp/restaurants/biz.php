@@ -15,10 +15,10 @@ $query_biz = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
 $result_biz = $mysqli->query($query_biz);
 $biz = mysqli_fetch_assoc($result_biz);
 $biz_name = $biz['name'];	
+$num_reviews = $biz['num_reviews'];
 
 $query_reviews = "SELECT * FROM `reviews` WHERE biz_id=$biz_id and biz_type='$biz_type' ORDER BY added DESC";
 $result_reviews = $mysqli->query($query_reviews);
-$count_reviews = $result_reviews->num_rows;
 											
 ?>
 
@@ -71,7 +71,7 @@ $count_reviews = $result_reviews->num_rows;
 									<div class="rating">
 										<img class="stars_<?php echo $biz['grading']?>" width="83" height="325" title="<?php echo $biz['grading']?> כוכבים" alt="<?php echo $biz['grading']?> כוכבים" src="../image/stars_map.png"/>
 									</div> 
-									<em>מבוסס על <span class="count"> <?php echo $count_reviews;?> </span> ביקורות</em>
+									<em>מבוסס על <span class="count"> <?php echo $num_reviews;?> </span> ביקורות</em>
 								</div>
 							</div>
 							<div id="bizInfoContent">
@@ -139,7 +139,7 @@ $count_reviews = $result_reviews->num_rows;
 	<div id="bizReviews">
 		<div id="bizReviewsHeader" class="clearfix">
 			</br>
-			<h2 id="total_reviews">	<?php echo $count_reviews; ?> ביקורות עבור <?php echo $biz_name?>:</h2>	
+			<h2 id="total_reviews">	<?php echo $num_reviews; ?> ביקורות עבור <?php echo $biz_name?>:</h2>	
 		</div>
 		<br></br>
 		<div id="bizReviewsContent">
