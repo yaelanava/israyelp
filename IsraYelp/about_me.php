@@ -215,7 +215,30 @@ $bar->SetBorderColor("E8E8D0");
 						</td>
 					</tr>																
 				</table>
-				<?php echo $bar->horizontal();?>
+				<?php
+					if($same_user) 
+						echo $bar->horizontal();
+					else{
+						$html = "<div class=\"box\" id=\"send_a_message\" >
+									<h1> כתוב ל- $username הודעה </h1>
+										<form method=\"post\" action=\"sending_new_place.php\" align=\"center\">
+											<dl id=\"newBizForm\">
+												<dt class=\"review\"><strong>כותרת ההודעה</strong><br/>	</dt>
+												<dd class=\"review\">
+													<input type=\"text\" name=\"title\" size=\"40\"> 
+													<br>
+												</dd>
+												
+												<dt class=\"review\"><strong><br>תוכן ההודעה</strong>		</dt>
+												<dd class=\"review\">
+													<textarea cols=\"40\" rows=\"8\" class=\"form400\"  name=\"review\"></textarea>
+												</dd>
+											</dl>	
+										</form>
+									</div>";
+						echo $html;
+					}
+				?>
 		</div>
 	</div>
 </div>		
