@@ -83,6 +83,9 @@ $fav_count = $fav_result->num_rows;
 								</tr>
 							</table>
 						</div>";
+				/*$biz_address = $fav['address'];
+				$html .= "<li><span><b><a href=".$url.">".$fav['biz_name']."</a></b></span>".", ".$biz_address."</li>" ;
+		*/
 				echo $html;				
 			}
 		?>			
