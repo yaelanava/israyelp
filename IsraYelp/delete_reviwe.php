@@ -7,6 +7,7 @@ include './utils/functions.php';
 $mysqli = getMysqliConnection();
 	
 $review_id = $_GET['review_id'];
+$user_id = $_SESSION['user_id'];
 
 //find review
 $query = "SELECT * FROM `reviews` WHERE id=$review_id LIMIT 1";
@@ -64,7 +65,11 @@ if ($result) {
 <div id="bodyContainer_Centered">
 	<p>הביקורת נמחקה בהצלחה.
 		<br><br>
-		<a href="./about_me.php" id="Zprofile_footer">חזור לחשבון שלי.</a>
+		<?php
+			$html = "<A href=\"./about_me.php?external_user=".$user_id."\"> חזור לחשבון שלי </A>"; 
+			echo $html;
+		?>
+		
 	</p>
 </div>
 
