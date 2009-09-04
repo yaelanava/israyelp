@@ -105,7 +105,7 @@ $bar->SetBorderColor("E8E8D0");
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
 			
-				<table cellspacing="50" cellpadding="10" border="0" >
+				<table cellspacing="50" cellpadding="1" border="0" >
 					<tr>
 						<td valign="bottom">
 							<h1><?php echo $username?></h1>						
@@ -143,7 +143,7 @@ $bar->SetBorderColor("E8E8D0");
 								
 								$html = "<a href=\"./my_favs.php?external_user=".$external_user."\">";
 								if(!$same_user)
-									$html .= "ל- $username $fav_count מקומות מועדפים</a>";
+									$html .= "ל- $username  יש $fav_count מקומות מועדפים</a>";
 								else
 									$html .= "יש לך $fav_count מקומות מועדפים </a>";
 								echo $html;
@@ -156,33 +156,48 @@ $bar->SetBorderColor("E8E8D0");
 			    				if (empty($city))
 			    				{
 			    					echo "<br/>";
-			    					echo 'עיר מגוריך אינה ידועה';
+			    					if($same_user)
+			    						echo 'עיר מגוריך אינה ידועה';
+			    					else 
+			    						echo 'לא ידוע';
 			    				}
 			    				else 
 			    				{
 			    					echo "<br/>";
 			    					echo  $city;			    					
 			    					echo "<br />";
-			    				}			    								    				
+			    				}
+			    				if($same_user){
+			    					$html = "<p><span class=\"formLabel\">
+			    							<a href=\"edit_city.php\">ערוך</a></span></p>";	
+			    					echo $html;		    								    				
+			    				}
 								?>
-							<p>					
-								<span class="formLabel"><a href="edit_city.php">ערוך</a></span>
-							</p>
 						</td>
 						<td>
-							<span class="highlight2">האימייל שלך: </span>
-							<?php	
+							<?php
+								if($same_user)
+									$html = "<span class=\"highlight2\"> כתובת הדואר שלך:</span>";
+								else 
+								$html = "<span class=\"highlight2\">כתובת הדואר של $username היא: </span>";
+								echo $html;	
 								echo "<br/>";
 								echo  $email;
 								echo "<br/>"; 
+								if($same_user){
+			    					$html = "<p><span class=\"formLabel\">
+			    							<a href=\"edit_email.php\">ערוך</a></span></p>";	
+			    					echo $html;		    								    				
+			    				}
 							?>
-							<p>					
-								<span class="formLabel"><a href="edit_email.php">ערוך</a></span>
-							</p>
 						</td>
 						<td>
-							<span class="highlight2">רשום לאתר מ-</span>
 							<?php
+								if($same_user)
+									$html = "<span class=\"highlight2\">אתה רשום לאתר מ-</span>";
+								else 
+									$html ="<span class=\"highlight2\">$username רשום לאתר מ-</span>";
+								echo $html;
 								echo "<br />";
 								echo $register_since;
 								echo "<br />";							
