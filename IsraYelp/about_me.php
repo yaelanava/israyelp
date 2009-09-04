@@ -2,7 +2,7 @@
 session_start();
 
 include './utils/functions.php';
-require_once 'HTML_graph.php';
+require_once './utils/Html_graph.php';
 
 $mysqli = getMysqliConnection();
 
@@ -125,8 +125,9 @@ $bar->SetBorderColor("E8E8D0");
 								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$external_user'";
 								$rev_result = $mysqli->query($review_query);
 								$rev_count = $rev_result->num_rows;
-								echo $rev_count. " ";
+								
 								$html = "<a href=\"./my_reviews.php?external_user=".$external_user."\">";
+								$html .= $rev_count. " ";
 								if($same_user)
 									$html .= "ביקורות שנכתבו על ידך </a>";
 								else $html .= "ביקורות שנכתבו על ידי $username </a>";
@@ -144,7 +145,7 @@ $bar->SetBorderColor("E8E8D0");
 								if(!$same_user)
 									$html .= "ל- $username $fav_count מקומות מועדפים</a>";
 								else
-								$html .= "מקומות מועדפים </a>";
+									$html .= "יש לך $fav_count מקומות מועדפים </a>";
 								echo $html;
 							?>		
 							</ul>
