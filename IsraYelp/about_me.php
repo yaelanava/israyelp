@@ -80,16 +80,21 @@ $bar->SetBorderColor("E8E8D0");
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php";} else{echo "signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id'].";";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
 <div id="bodyContainer">
 		<div id="user_header" class="ieSucks" align="right">
 			<ul id="userTabs" >
-					<?php 
-						$html="
-								<li class=\"selected\"><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
+					<?php
+						if($same_user)
+							$html = "<li class=\"selected\"><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
+							";
+						else 
+						 	$html = "<li class=\"selected\"><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל של $username</a></li>		 
+							"; 
+						$html .="
 								<li><a href=\"./my_reviews.php?external_user=".$external_user."\">ביקורות</a></li> ";
 						if ($same_user){
 							$html .= "<li><a href=\"./my_favs.php?external_user=".$external_user."\">מועדפים</a></li>";	
