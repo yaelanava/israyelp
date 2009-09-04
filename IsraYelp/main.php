@@ -120,7 +120,7 @@ $city_name = getCityName($city_id);
 						while ($rest = mysqli_fetch_assoc($result)){
 							$rest_url = getBizURL($biz_type, $rest['id']);
 							if ($first){
-								$image_srs = "./biz_pics/$biz_type/".$rest['id'].".JPG";						
+								$image_srs = "./biz_pics/$biz_type/".$rest['id'].".jpg";						
 								$html = "<div class=\"clearStyles bizPhotoBox\">
 											<a  href=\"$rest_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$rest['name']."\"></a>
 										</div>";
@@ -163,7 +163,7 @@ $city_name = getCityName($city_id);
 							while ($shop = mysqli_fetch_assoc($result)){
 								$shop_url = getBizURL($biz_type, $shop['id']);
 								if ($first){
-									$image_srs = "./biz_pics/$biz_type/".$shop['id'].".JPG";						
+									$image_srs = "./biz_pics/$biz_type/".$shop['id'].".jpg";						
 									$html = "<div class=\"clearStyles bizPhotoBox\">
 												<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
 											</div>";
@@ -209,7 +209,7 @@ $city_name = getCityName($city_id);
 							while ($night = mysqli_fetch_assoc($result)){
 								$night_url = getBizURL($biz_type, $night['id']);
 								if ($first){
-									$image_srs = "./biz_pics/$biz_type/".$night['id'].".JPG";						
+									$image_srs = "./biz_pics/$biz_type/".$night['id'].".jpg";						
 									$html = "<div class=\"clearStyles bizPhotoBox\">
 												<a  href=\"$night_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$night['name']."\"></a>
 											</div>";

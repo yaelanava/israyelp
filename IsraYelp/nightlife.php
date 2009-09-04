@@ -87,7 +87,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 				if ($result_BizReview) {						
 					$BizReview = mysqli_fetch_assoc($result_BizReview);
 					$biz_url = getBizURL($biz_type, $topBiz_id);
-					$image_srs = "./biz_pics/$biz_type/$topBiz_id.JPG";
+					$image_srs = "./biz_pics/$biz_type/$topBiz_id.jpg";
 					
 					$html = "<div id=\"top_biz\">
 								<div class=\"clearStyles bizPhotoBox\">
