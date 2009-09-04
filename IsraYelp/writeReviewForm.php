@@ -78,7 +78,7 @@ $biz_type = $_GET['biz_type'];
 		<input type="button" name="" value="חזור" class="formButton">
 		<input type="hidden" name="biz_id" value="<?php echo $biz_id?>">
 		<input type="hidden" name="biz_type" value="<?php echo $biz_type?>">
-		<em class="smaller grey">* תמיד ניתן לשנות את הביקורת מאוחר יותר</em>
+		<em class="smaller grey">* תמיד ניתן למחוק את הביקורת מאוחר יותר</em>
 	</form>
 </div>
 
