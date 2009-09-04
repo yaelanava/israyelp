@@ -3,10 +3,11 @@
 
 session_start();
 
-include '../utils/functions.php';
+include './utils/functions.php';
+include './utils/TypesUtils.php';
 
 $biz_id = $_GET['biz_id'];
-$biz_type = "shopping";
+$biz_type = $_GET['biz_type'];
 $biz_url = getBizURL($biz_type, $biz_id);
 
 $mysqli = getMysqliConnection();
@@ -30,16 +31,16 @@ $result_reviews = $mysqli->query($query_reviews);
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
 	
-	<link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="../mystyle.css">  	
+	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 
 <body dir="rtl">
 
 <div id="head">
 		<div id="logo">
-			<A href="../main.php"></A>
+			<A href="./main.php"></A>
 		</div>
 		<div id="register">
 			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-".$_SESSION['username'])?></p>
@@ -50,11 +51,11 @@ $result_reviews = $mysqli->query($query_reviews);
 
 <div id="navContainer">
 		<ul>			
-			<LI class="header" id="writeReview"><A href="../write_review.php>כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A href="../find_review.php" >חפש ביקורת</A></LI>
+			<LI class="header" id="writeReview"><A href="./write_review.php>כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A href="./find_review.php" >חפש ביקורת</A></LI>
 			
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../login.php?logout=1";} else{echo "../login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "../about_me.php";} else{echo "../signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "./login.php?logout=1";} else{echo "./login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "./about_me.php";} else{echo "./signup.html?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -69,9 +70,9 @@ $result_reviews = $mysqli->query($query_reviews);
 								<h1><?php echo $biz_name?></h1>
 								<div id="bizRating">
 									<div class="rating">
-										<img class="stars_<?php echo $biz['grading']?>" width="83" height="325" title="<?php echo $biz['grading']?> כוכבים" alt="<?php echo $biz['grading']?> כוכבים" src="../image/stars_map.png"/>
+										<img class="stars_<?php echo $biz['grading']?>" width="83" height="325" title="<?php echo $biz['grading']?> כוכבים" alt="<?php echo $biz['grading']?> כוכבים" src="./image/stars_map.png"/>
 									</div> 
-									<em>מבוסס על <span class="count"> <?php echo $num_reviews;?> </span> ביקורות</em>
+									<em>מבוסס על <span class="count"> <?php echo $num_reviews?> </span> ביקורות</em>
 								</div>
 							</div>
 							<div id="bizInfoContent">
@@ -87,7 +88,7 @@ $result_reviews = $mysqli->query($query_reviews);
 						<td>
 							<div id="bizPhotos"">
 								<div class="clearStyles bizPhotoBox">
-										<?php $imageFileSrc = "./image/".$biz_id.".jpg";?>
+										<?php $imageFileSrc = "./biz_pics/$biz_type/$biz_id.jpg";?>
 										<a  href="<?php echo $imageFileSrc?>"><img src="<?php echo $imageFileSrc?>" width=200 height=150 style="" alt=""></a>
 								</div>
 							</div>
@@ -95,24 +96,20 @@ $result_reviews = $mysqli->query($query_reviews);
 					</tr>
 				</table>				
 				<br></br>			
-					<div id="bizAdditionalInfo" class="clearfix">
-					<ul>							
-						<li><strong>שעות: </strong><?php echo $biz['hours']?></li>
-						<li><strong>גישה לנכים: </strong> <?php if($biz['invalid_access']==1){echo "כן";} else {echo "לא";} ?></li>
-						<li><strong>חניה: </strong> <?php if($biz['parking']==1){echo "כן";} else {echo "לא";} ?></li>
-					</ul>
+				<div id="bizAdditionalInfo" class="clearfix">
+						<?php echo getBizAdditionalInfo($biz_type, $biz);?>
 				</div>				
 				<div  id="bizActions" class="clearfix">
-					<a class="send-to-friend" rel="nofollow"  href="../send_to_friend.php?biz_id=<?php echo $biz_id?>&return_url=<?php echo $biz_url?>" id="bizShare"><img src= "../image/send2friend.png" width=108 height=41></a>
-					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="../bookmark.php?biz_name=<?php echo $biz_name?>&biz_url=<?php echo $biz_url?>"><img src= "../image/bookmark.png" width=108 height=41></a>
+					<a class="send-to-friend" rel="nofollow"  href="./send_to_friend.php?biz_id=<?php echo $biz_id?>&return_url=<?php echo $biz_url?>" id="bizShare"><img src= "./image/send2friend.png" width=108 height=41></a>
+					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="./bookmark.php?biz_name=<?php echo $biz_name?>&biz_url=<?php echo $biz_url?>"><img src= "./image/bookmark.png" width=108 height=41></a>
 					<a class="write review" rel="nofollow" 
 						href= "<?php if (!session_is_registered('username')) { 
-									echo ("../login.php?returnUrl=".$biz_url);
+									echo ("./login.php?returnUrl=".$biz_url);
 									} else {
-									echo ("../writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$biz_type");
+									echo ("./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$biz_type");
 									}
 								?>" 
-						id="bizWriteReview"><img src= "../image/write.png" width=108 height=41></a>						
+						id="bizWriteReview"><img src= "./image/write.png" width=108 height=41></a>						
 				</div>							
 			</td>							
 			<td>
@@ -133,7 +130,7 @@ $result_reviews = $mysqli->query($query_reviews);
 	<div id="bizReviews">
 		<div id="bizReviewsHeader" class="clearfix">
 			</br>
-			<h2 id="total_reviews">	<?php echo $num_reviews; ?> ביקורות עבור <?php echo $biz_name?>:</h2>	
+			<h2 id="total_reviews">	<?php echo $num_reviews; ?> ביקורות עבור <?php echo $biz_name?></h2>	
 		</div>
 		<br></br>
 		<div id="bizReviewsContent">
@@ -151,16 +148,16 @@ $result_reviews = $mysqli->query($query_reviews);
 											<DIV class=\"mini\">
 												<DIV class=\"photoBoxSm\">
 													<DIV class=\"clearStyles photoBox\">
-														<A href=\"../user_reviwes.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "../")."\"></A>
+														<A href=\"./user_reviwes.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 													</div>			
 												</div>
 											</div>
-											<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"../user_reviwes.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
+											<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"./user_reviwes.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
 											<P class=\"reviewer_info\">". $user['city']."</P>
 										</div>
 										<DIV class=\"ext_rating\">
 											<DIV class=\"rating\">
-												<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"../image/stars_map.png\" width=\"83\" />
+												<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
 											</DIV>
 												<EM class=\"smaller\">". $review['added']."</EM> 
 										</DIV>

@@ -55,7 +55,7 @@ $city_name = getCityName($city_id);
 	
 <div id="bodyContainer">
 	<div id="locBar">
-		<?php echo getLocBarHtmlCode($city_id, $city_name, "./main.php");?>
+		<?php echo getLocBarHtmlCode($city_id, $city_name, "main");?>
 	</div>
  
  	<?php 
@@ -100,7 +100,8 @@ $city_name = getCityName($city_id);
 			<h3>המקומות הטובים ביותר ב<?php echo $city_name?>:</h3>			
 			<div class="clearfix">
 				<div class="bestCat">
-					<h4 style="margin-bottom:0px;" title="מסעדות"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a></h4>
+					<?php $biz_type = "restaurants";?>
+					<h4 style="margin-bottom:0px;" title="מסעדות"><a href="<?php echo "./$biz_type.php?city_id=$city_id"?>">מסעדות</a></h4>
 					<em>
 						<?php 
 							$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='restaurants'";
@@ -112,14 +113,14 @@ $city_name = getCityName($city_id);
 					</em>														
 					
 					<?php 
-						$query = "SELECT * FROM `restaurants` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+						$query = "SELECT * FROM `$biz_type` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
 						$result = $mysqli->query($query);
 						$html = "";
 						$first = 1;								
 						while ($rest = mysqli_fetch_assoc($result)){
-							$rest_url = "./restaurants/biz.php?biz_id=".$rest['id'];
+							$rest_url = getBizURL($biz_type, $rest['id']);
 							if ($first){
-								$image_srs = "./restaurants/image/".$rest['id'].".JPG";						
+								$image_srs = "./biz_pics/$biz_type/".$rest['id'].".JPG";						
 								$html = "<div class=\"clearStyles bizPhotoBox\">
 											<a  href=\"$rest_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$rest['name']."\"></a>
 										</div>";
@@ -137,13 +138,14 @@ $city_name = getCityName($city_id);
 							$html .= "</li>";
 						}
 						$html .= "</ol>";
-						$html .= "<p><a href=\"./restaurants/restaurants.php?city_id=".$city_id."\">עוד...</a></p>";
+						$html .= "<p><a href=\"./$biz_type.php?city_id=".$city_id."\">עוד...</a></p>";
 						echo $html;
 					?>														
 				</div>
 
 				<div class="bestCat">
-					<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="./shopping/shopping.php?city_id=<?php echo $city_id?>">קניות</a></h4>
+					<?php $biz_type = "shopping"?>
+					<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="<?php echo "./$biz_type.php?city_id=$city_id"?>">קניות</a></h4>
 					<em>
 						<?php 
 							$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='shopping'";
@@ -154,14 +156,14 @@ $city_name = getCityName($city_id);
 							ביקורות							
 						</em>																
 						<?php 
-							$query = "SELECT * FROM `shopping` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+							$query = "SELECT * FROM `$biz_type` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
 							$result = $mysqli->query($query);
 							$first = 1;
 							$html="";								
 							while ($shop = mysqli_fetch_assoc($result)){
-								$shop_url = "./shopping/biz.php?biz_id=".$shop['id'];
+								$shop_url = getBizURL($biz_type, $shop['id']);
 								if ($first){
-									$image_srs = "./shopping/image/".$shop['id'].".JPG";						
+									$image_srs = "./biz_pics/$biz_type/".$shop['id'].".JPG";						
 									$html = "<div class=\"clearStyles bizPhotoBox\">
 												<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
 											</div>";
@@ -179,7 +181,7 @@ $city_name = getCityName($city_id);
 								$html .= "</li>";
 							}
 							$html .= "</ol>";
-							$html .= "<p><a href=\"./shopping/shopping.php?city_id=".$city_id."\">עוד...</a></p>";
+							$html .= "<p><a href=\"./$biz_type.php?city_id=".$city_id."\">עוד...</a></p>";
 							echo $html;
 						?>
 					</div>										
@@ -187,7 +189,8 @@ $city_name = getCityName($city_id);
 				
 				<div class="clearfix">
 					<div class="bestCat">
-						<h4 style="margin-bottom:0px;" title="מקומות בילוי"><a href="./nightlife/nightlife.php?city_id=<?php echo $city_id?>">חיי לילה</a></h4>
+						<?php $biz_type = "nightlife"?>
+						<h4 style="margin-bottom:0px;" title="מקומות בילוי"><a href="<?php echo "./$biz_type.php?city_id=$city_id"?>">חיי לילה</a></h4>
 						<em>
 							<?php 
 								$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='nightlife'";
@@ -199,16 +202,16 @@ $city_name = getCityName($city_id);
 						</em>			
 
 						<?php 
-							$query = "SELECT * FROM `nightlife` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+							$query = "SELECT * FROM `$biz_type` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
 							$result = $mysqli->query($query);
 							$first = 1;
 							$html="";								
-							while ($shop = mysqli_fetch_assoc($result)){
-								$shop_url = "./nightlife/biz.php?biz_id=".$shop['id'];
+							while ($night = mysqli_fetch_assoc($result)){
+								$night_url = getBizURL($biz_type, $night['id']);
 								if ($first){
-									$image_srs = "./nightlife/image/".$shop['id'].".JPG";						
+									$image_srs = "./biz_pics/$biz_type/".$night['id'].".JPG";						
 									$html = "<div class=\"clearStyles bizPhotoBox\">
-												<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
+												<a  href=\"$night_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$night['name']."\"></a>
 											</div>";
 									$html .= "<ol>";			
 								}
@@ -216,7 +219,7 @@ $city_name = getCityName($city_id);
 								if ($first){
 									$html .= "<strong>";
 								}
-								$html .= "<a href=\"$shop_url\"\">".$shop['name']."</a>";
+								$html .= "<a href=\"$night_url\"\">".$night['name']."</a>";
 								if ($first){
 									$html .= "</strong>";
 									$first = 0;
@@ -224,7 +227,7 @@ $city_name = getCityName($city_id);
 								$html .= "</li>";
 							}
 							$html .= "</ol>";
-							$html .= "<p><a href=\"./nightlife/nightlife.php?city_id=".$city_id."\">עוד...</a></p>";
+							$html .= "<p><a href=\"./$biz_type.php?city_id=".$city_id."\">עוד...</a></p>";
 							echo $html;
 						?>
 				</div>
@@ -251,7 +254,7 @@ $city_name = getCityName($city_id);
 		<div id="cat_list">	
 			<h4 class="ieSucks">חפש לפי קטגוריה</h4>
 			<ul class="stripped ieSucks">								
-				<li class="shopping"><a href="./shopping/shopping.php?city_id=<<?php echo $city_id?>">קניות</a> 
+				<li class="shopping"><a href="./shopping.php?city_id=<?php echo $city_id?>">קניות</a> 
 					<?php 
 						$query = "SELECT * FROM `shopping` WHERE city_id=$city_id";
 						$result = $mysqli->query($query);
@@ -259,7 +262,7 @@ $city_name = getCityName($city_id);
 						echo $count;
 					?> 
 				</li>
-				<li class="restaurants"><a href="./restaurants/restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a>  										
+				<li class="restaurants"><a href="./restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a>  										
 					<?php 
 						$query = "SELECT * FROM `restaurants` WHERE city_id=$city_id";
 						$result = $mysqli->query($query);
@@ -275,7 +278,7 @@ $city_name = getCityName($city_id);
 				<li class="eventservices"><a href="/c/sf/eventservices">אירועים</a> 1277  </li>
 				<li class="arts"><a href="/c/sf/arts">בידור</a> 1153  </li>
 <!--			<li class="active"><a href="/c/sf/active">Active Life</a> 1114</li>-->
-				<li class="nightlife"><a href="./nightlife/nightlife.php?city_id=<?php echo $city_id?>">חיי לילה</a> 
+				<li class="nightlife"><a href="./nightlife.php?city_id=<?php echo $city_id?>">חיי לילה</a> 
 				 	<?php 
 						$query = "SELECT * FROM `nightlife` WHERE city_id=$city_id";
 						$result = $mysqli->query($query);
