@@ -22,7 +22,7 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 	$html .= "<ul>";
 	$html .= "<li><A href=\"\">עוד...</A></li>"; //todo: replace href 			
 	while ($row = mysqli_fetch_assoc($other_cities_result)){
-		$html .= "<li><A href=\"".$url_prefix."?city_id=".$row['id']."\">".$row['name']."</A> | </li>";
+		$html .= "<li><A href=\"./$url_prefix.php?city_id=".$row['id']."\">".$row['name']."</A> | </li>";
 	}			
 	$html .= "<li id=\"locBar_title\">ערים אחרות:</li>";
 	$html .= "</ul>";
@@ -30,8 +30,7 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 }
 
 function getBizURL($biz_type, $biz_id){
-	//return "http://localhost/IsraYelp/".$biz_type."/biz.php?biz_id=".$biz_id;	
-	return "./".$biz_type."/biz.php?biz_id=".$biz_id;
+	return "./biz.php?biz_type=$biz_type&biz_id=$biz_id";
 }
 
 function getUserPictureSrc($user_id, $prefix){
