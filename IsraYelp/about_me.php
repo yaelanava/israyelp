@@ -186,18 +186,15 @@ $bar->SetBorderColor("E8E8D0");
 						</td>
 						<td>
 							<?php
-								if($same_user)
-									$html = "<span class=\"highlight2\"> כתובת הדואר שלך:</span>";
-								else 
-								$html = "<span class=\"highlight2\">כתובת הדואר של $username היא: </span>";
-								echo $html;	
-								echo "<br/>";
-								echo  $email;
-								echo "<br/>"; 
 								if($same_user){
-			    					$html = "<p><span class=\"formLabel\">
-			    							<a href=\"edit_email.php\">ערוך</a></span></p>";	
-			    					echo $html;		    								    				
+									$html = "<span class=\"highlight2\"> כתובת הדואר שלך:</span>";
+									echo $html;	
+									echo "<br/>";
+									echo  $email;
+									echo "<br/>"; 
+				    				$html = "<p><span class=\"formLabel\">
+				    						<a href=\"edit_email.php\">ערוך</a></span></p>";	
+				    				echo $html;		    								    				
 			    				}
 							?>
 						</td>
@@ -216,9 +213,9 @@ $bar->SetBorderColor("E8E8D0");
 					</tr>																
 				</table>
 				<?php
-					if($same_user) 
-						echo $bar->horizontal();
-					else{
+					
+					echo $bar->horizontal();
+					if(!$same_user){
 						$html = "<div class=\"box\" id=\"send_a_message\" >
 									<h1> כתוב ל- $username הודעה </h1>
 										<form method=\"post\" action=\"sending_new_place.php\" align=\"center\">
