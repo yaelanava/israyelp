@@ -30,7 +30,7 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 }
 
 function getBizURL($biz_type, $biz_id){
-	return "./biz.php?biz_type=$biz_type&biz_id=$biz_id";
+	return "./biz.php?biz_type=".$biz_type."&biz_id=".$biz_id;
 }
 
 function getUserPictureSrc($user_id, $prefix){
