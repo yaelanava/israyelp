@@ -25,7 +25,7 @@ $_SESSION['ext_user_name']=$username;
 
 //ratings graph
 for ($i=1; $i < 6; $i++){
-	$query = "SELECT * FROM `reviews` WHERE user_id=$user_id and grading=$i";
+	$query = "SELECT * FROM `reviews` WHERE user_id=$external_user and grading=$i";
 	$result = $mysqli->query($query);
 	$ratings[$i] = $result->num_rows;
 }
@@ -80,7 +80,7 @@ $bar->SetBorderColor("E8E8D0");
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
 			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id'].";";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$user_id."";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -108,9 +108,9 @@ $bar->SetBorderColor("E8E8D0");
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">	
 			
-				<table cellspacing="50" cellpadding="1" border="0" >
+				<table cellspacing="20" cellpadding="1" border="0" >
 					<tr>
-						<td valign="bottom">
+						<td width=150>
 							<h1><?php echo $username?></h1>						
 							<div id="user_pic">
 								<div class="clearStyles photoBox" >
@@ -128,7 +128,7 @@ $bar->SetBorderColor("E8E8D0");
 								</div>
 							</div>	
 						</td>
-						<td>
+						<td width=200>
 							<ul class="stripped" id="user_stats">					
 							<?php		
 								//counting how much reviews this user wrote
@@ -160,7 +160,7 @@ $bar->SetBorderColor("E8E8D0");
 							?>		
 							</ul>
 						</td>
-						<td>
+						<td width=100>
 							<span class="highlight2">מיקום:</span>
 							<?php    					
 			    				if (empty($city))
@@ -184,21 +184,22 @@ $bar->SetBorderColor("E8E8D0");
 			    				}
 								?>
 						</td>
-						<td>
-							<?php
-								if($same_user){
-									$html = "<span class=\"highlight2\"> כתובת הדואר שלך:</span>";
-									echo $html;	
-									echo "<br/>";
-									echo  $email;
-									echo "<br/>"; 
-				    				$html = "<p><span class=\"formLabel\">
-				    						<a href=\"edit_email.php\">ערוך</a></span></p>";	
-				    				echo $html;		    								    				
-			    				}
-							?>
-						</td>
-						<td>
+						
+						<?php
+							if($same_user){
+								$html = "<td width=150>
+								<span class=\"highlight2\"> כתובת הדואר שלך:</span>";
+								echo $html;	
+								echo "<br/>";
+								echo  $email;
+								echo "<br/>"; 
+			    				$html = "<p><span class=\"formLabel\">
+			    						<a href=\"edit_email.php\">ערוך</a></span></p></td>";	
+			    				echo $html;		    								    				
+		    				}
+						?>
+						
+						<td width=200>
 							<?php
 								if($same_user)
 									$html = "<span class=\"highlight2\">אתה רשום לאתר מ-</span>";
@@ -210,11 +211,18 @@ $bar->SetBorderColor("E8E8D0");
 								echo "<br />";							
 							?>
 						</td>
+						<?php
+							if(!$same_user){
+								$html = "<td width=150>";
+								echo $html;	
+								echo $bar->horizontal();
+			    				$html = "</td>";
+								echo $html;	    								    				
+		    				}
+						?>
 					</tr>																
 				</table>
 				<?php
-					
-					echo $bar->horizontal();
 					if(!$same_user){
 						$html = "<div class=\"box\" id=\"send_a_message\" >
 									<h1> כתוב ל- $username הודעה </h1>
@@ -233,6 +241,12 @@ $bar->SetBorderColor("E8E8D0");
 											</dl>	
 										</form>
 									</div>";
+						echo $html;
+					}else{
+						$html = "<div class=\"box\" id=\"table_distribution\" >";
+						echo $html;
+						echo $bar->horizontal(); 
+						$html = "</div>";
 						echo $html;
 					}
 				?>
