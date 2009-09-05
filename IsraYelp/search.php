@@ -57,7 +57,7 @@ else {
 				}
 				else{
 			
-					$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$kind;
+					$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$kind";
 							
 				}
 			}
@@ -70,7 +70,7 @@ else {
 		$html .= "</ul>";	
 	}
 	else {
-		header("Location: ./new_place.php?place_name=".$name."&place_city=".$city."&place_type=".$kind);
+		header("Location: ./new_place.php?place_name=".$name."&place_city=".$city);
 		die(0);
 	}	
 }
