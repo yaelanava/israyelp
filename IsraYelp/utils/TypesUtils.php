@@ -40,7 +40,8 @@ function getBizAdditionalInfo($type, $biz) {
 			$html= "<ul>							
 						<li><strong>שעות: </strong>".$biz['hours']."</li>
 						<li><strong>גישה לנכים: </strong>".$biz['invalid_access']."</li>
-						<li><strong>חניה: </strong>".$biz['parking']."</li>			
+						<li><strong>חניה: </strong>".$biz['parking']."</li>	
+						<li><strong>אירועים: </strong>".$biz['events']."</li>			
 					</ul>";
 			break;
 	}
