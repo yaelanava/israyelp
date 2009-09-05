@@ -299,14 +299,14 @@ $city_name = getCityName($city_id);
 						echo $count;
 					?>  
 				</li>
-				<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
-				<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>
-				<li class="beautysvc"><a href="/c/sf/beautysvc">יופי וספא</a>  1870 </li>
-				<li class="homeservices"><a href="/c/sf/homeservices">שירותים עד הבית</a> 1522  </li>
-				<li class="localservices"><a href="/c/sf/localservices">שירותים מקומיים</a>  1477 </li>
-				<li class="eventservices"><a href="/c/sf/eventservices">אירועים</a> 1277  </li>
-				<li class="arts"><a href="/c/sf/arts">בידור</a> 1153  </li>
-<!--			<li class="active"><a href="/c/sf/active">Active Life</a> 1114</li>-->
+				<li class="beauty"><a href="./beauty.php?city_id=<?php echo $city_id?>">יופי וספא</a>
+					<?php 
+						$query = "SELECT * FROM `beauty` WHERE city_id=$city_id";
+						$result = $mysqli->query($query);
+						$count = $result->num_rows;
+						echo $count;
+					?>  
+				</li>
 				<li class="nightlife"><a href="./nightlife.php?city_id=<?php echo $city_id?>">חיי לילה</a> 
 				 	<?php 
 						$query = "SELECT * FROM `nightlife` WHERE city_id=$city_id";
@@ -314,19 +314,26 @@ $city_name = getCityName($city_id);
 						$count = $result->num_rows;
 						echo $count;
 					?>   
-				</li>
-<!--			<li class="auto"><a href="/c/sf/auto">Automotive</a> 829</li>-->
+				</li><!--				
+				<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
+				<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>				
+				<li class="homeservices"><a href="/c/sf/homeservices">שירותים עד הבית</a> 1522  </li>
+				<li class="localservices"><a href="/c/sf/localservices">שירותים מקומיים</a>  1477 </li>
+				<li class="eventservices"><a href="/c/sf/eventservices">אירועים</a> 1277  </li>
+				<li class="arts"><a href="/c/sf/arts">בידור</a> 1153  </li>
+			<li class="active"><a href="/c/sf/active">Active Life</a> 1114</li>
+			<li class="auto"><a href="/c/sf/auto">Automotive</a> 829</li>
 				<li class="hotelstravel"><a href="/c/sf/hotelstravel">טיולים ובתי מלון</a> 754  </li>
 				<li class="professional"><a href="/c/sf/professional">שירותים מקצועיים</a> 751  </li>
 				<li class="education"><a href="/c/sf/education">השכלה</a> 608  </li>
-<!--			<li class="realestate"><a href="/c/sf/realestate">Real Estate</a> 480</li>-->
+			<li class="realestate"><a href="/c/sf/realestate">Real Estate</a> 480</li>
 				<li class="pets">  <a href="/c/sf/pets">חיות מחמד</a> 367 </li>
 				<li class="financialservices"><a href="/c/sf/financialservices">שירותים פיננסיים</a> 359  </li>
 				<li class="publicservicesgovt"><a href="/c/sf/publicservicesgovt">שירותים ציבוריים</a> 336  </li>
-<!--			<li class="localflavor"><a href="/c/sf/localflavor">Local Flavor</a> 319</li>-->
-<!--			<li class="massmedia"><a href="/c/sf/massmedia">Mass Media</a> 199</li>-->
-<!--			<li class="religiousorgs"> 149 <a href="/c/sf/religiousorgs">ארגונים דתיים</a> </li>-->					
-			</ul>
+			<li class="localflavor"><a href="/c/sf/localflavor">Local Flavor</a> 319</li>
+			<li class="massmedia"><a href="/c/sf/massmedia">Mass Media</a> 199</li>
+			<li class="religiousorgs"> 149 <a href="/c/sf/religiousorgs">ארגונים דתיים</a> </li>					
+			--></ul>
 						
 			<p style="font-size:1px;clear:both;margin:0px;">&nbsp;</p>
 		</div>
