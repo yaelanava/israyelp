@@ -231,23 +231,52 @@ $city_name = getCityName($city_id);
 							echo $html;
 						?>
 				</div>
-						
-				<div class="bestCat">
-					<h4 style="margin-bottom:0px;" title="אתרי ספא ויופי"><a href="/c/sf/beautysvc">יופי וספא</a></h4>
-					<em>1843 ביקורות</em>
-					
-					<div class="clearStyles bizPhotoBox">
-						<a  href="/biz/urban-allure-san-francisco"><img src="http://static.px.yelp.com/bphoto/r4hH874MVyjpQ1vcNTWOow/m" style="" alt="Urban Allure, San Francisco"></a>
-					</div>
-						<ol>
-						<li><strong><a   href="/biz/urban-allure-san-francisco">ראשון</a> </strong>  </li>
-						<li><a   href="/biz/gentle-star-medspa-san-francisco">שני</a> </li>
-						<li><a   href="/biz/earthbody-advanced-therapies-san-francisco">שלישי</a></li>
-						<li><a   href="/biz/nevas-beauty-san-francisco">רביעי</a></li>
-						<li><a   href="/biz/alisha-valverde-skincare-medical-skin-aesthetics-san-francisco">חמישי</a></li>
-						</ol>
-						<p><a href="/c/sf/beautysvc">עוד...</a></p>
+
+					<div class="bestCat">
+						<?php $biz_type = "beauty"?>
+						<h4 style="margin-bottom:0px;" title="אתרי יופי וספא"><a href="<?php echo "./$biz_type.php?city_id=$city_id"?>">יופי וספא</a></h4>
+						<em>
+							<?php 
+								$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='beauty'";
+								$result = $mysqli->query($query);
+								$count = $result->num_rows;
+								echo $count;
+							?>  
+							ביקורות							
+						</em>			
+
+						<?php 
+							$query = "SELECT * FROM `$biz_type` WHERE city_id=$city_id ORDER BY grading DESC LIMIT 5";
+							$result = $mysqli->query($query);
+							$first = 1;
+							$html="";								
+							while ($beauty = mysqli_fetch_assoc($result)){
+								$beauty_url = getBizURL($biz_type, $beauty['id']);
+								if ($first){
+									$image_srs = "./biz_pics/$biz_type/".$beauty['id'].".jpg";						
+									$html = "<div class=\"clearStyles bizPhotoBox\">
+												<a  href=\"$beauty_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$beauty['name']."\"></a>
+											</div>";
+									$html .= "<ol>";			
+								}
+								$html .= "<li>";
+								if ($first){
+									$html .= "<strong>";
+								}
+								$html .= "<a href=\"$beauty_url\"\">".$beauty['name']."</a>";
+								if ($first){
+									$html .= "</strong>";
+									$first = 0;
+								}
+								$html .= "</li>";
+							}
+							$html .= "</ol>";
+							$html .= "<p><a href=\"./$biz_type.php?city_id=".$city_id."\">עוד...</a></p>";
+							echo $html;
+						?>
 				</div>
+						
+
 			</div>				
 		</div>	
 					

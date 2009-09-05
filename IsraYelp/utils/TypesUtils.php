@@ -35,6 +35,14 @@ function getBizAdditionalInfo($type, $biz) {
 						<li><strong>ישיבה בחוץ: </strong>".$biz['outside']."</li>									
 					</ul>";
 			break;
+			
+		case "beauty":
+			$html= "<ul>							
+						<li><strong>שעות: </strong>".$biz['hours']."</li>
+						<li><strong>גישה לנכים: </strong>".$biz['invalid_access']."</li>
+						<li><strong>חניה: </strong>".$biz['parking']."</li>			
+					</ul>";
+			break;
 	}
 	return $html;
 }
