@@ -3,56 +3,21 @@ session_start();
 
 include './utils/functions.php';
 
-
-
-
+$name = $_POST['place_name'];
 $kind = $_POST['place_kind'];
 $city = $_POST['place_city'];
+$source = $_POST['source'];
 $city_id = getCityID($city);
-$title = "";
-$html = "";
 
-if ($kind=="מסעדה"){
-	if ('' == $_POST['place_name']){
-		header("location: ./restaurants/restaurants.php?city_id=".$city_id);	
-	}
-	else{
-		$name = $_POST['place_name'];
-		$query = "SELECT * FROM `test`.`restaurants` WHERE  city_id='$city_id' and  name LIKE '%$name%' or another_name LIKE '%$name%'";
-		$biz_url_prefix = "./restaurants/restaurant.php?biz_id=";
-		$biz_type = "restaurants";		
-		search($query,$biz_type,$title,$html);	
-	}	
+
+
+if ('' == $_POST['place_name']){
+	header ("location: ./".$kind.".php?city_id=".$city_id);
+	die(0);
 }
-if ($kind=="אתר קניות"){
-	if ('' == $_POST['place_name']){
-		header("location: ./shopping/shopping.php?city_id=".$city_id);		}
-	else{
-		$name = $_POST['place_name'];		
-		$query = "SELECT * FROM `test`.`shopping` WHERE city_id='$city_id' and name LIKE '%$name%' or another_name LIKE '%$name%' ";
-		$biz_type = "shopping";
-		search($query,$biz_type,$title,$html);		
-	}	
-}
-if ($kind=="מקום בילוי"){
-	if ('' == $_POST['place_name']){
-		header("location: ./nightlife/night.php?city_id=".$city_id);		}
-	else{
-		$name = $_POST['place_name'];		
-		$query = "SELECT * FROM `test`.`nightlife` WHERE city_id='$city_id' and name LIKE '%$name%' or another_name LIKE '%$name%' ";
-		$biz_type = "nightlife";
-		search($query,$biz_type,$title,$html);		
-	}	
-}
-
-
-
-function search($query,$biz_type,&$title,&$html){
+else {
 	$name = $_POST['place_name'];
-	$kind = $_POST['place_kind'];
-	$city = $_POST['place_city'];
-	$source = $_POST['source'];
-	
+	$query = "SELECT * FROM `$kind` WHERE  city_id='$city_id' and  name LIKE '%$name%' or another_name LIKE '%$name%'";
 	$mysqli = getMysqliConnection();
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;
@@ -61,7 +26,7 @@ function search($query,$biz_type,&$title,&$html){
 		$biz = mysqli_fetch_assoc($result);
 		$biz_id = $biz['id'];
 		$biz_name = $biz['name'];		
-		$biz_url = getBizURL($biz_type, $biz_id);
+		$biz_url = getBizURL($kind, $biz_id);
 		
 		if ($source == "write_review"){
 			if (!session_is_registered('username')) { 
@@ -69,7 +34,7 @@ function search($query,$biz_type,&$title,&$html){
 					die(0);
 				} 
 			else {
-					header("Location: ./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$biz_type);
+					header("Location: ./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$kind);
 					die(0);								
 				}					
 		}
@@ -80,11 +45,11 @@ function search($query,$biz_type,&$title,&$html){
 	}
 	else if ($count > 1){
 		$title = "<span><b> נמצאו </b></span>".$count."<span><b> מקומות מתאימים: </b></span>";
-		$html .= "<ul>";
+		$html = "<ul>";
 		while ($biz = mysqli_fetch_assoc($result)){		
 			$biz_id = $biz['id'];
 			$biz_name = $biz['name'];
-			$biz_url = getBizURL($biz_type, $biz_id);				
+			$biz_url = getBizURL($kind, $biz_id);				
 			if ($source == "write_review"){
 				if (!session_is_registered('username')) { 
 					header("Location: ./login.php?returnUrl=".$biz_url);
@@ -92,7 +57,7 @@ function search($query,$biz_type,&$title,&$html){
 				}
 				else{
 			
-					$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$biz_type;
+					$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$kind;
 							
 				}
 			}
@@ -104,13 +69,12 @@ function search($query,$biz_type,&$title,&$html){
 		}	
 		$html .= "</ul>";	
 	}
-
-
 	else {
 		header("Location: ./new_place.php?place_name=".$name."&place_city=".$city."&place_type=".$kind);
 		die(0);
-	}
+	}	
 }
+
 ?>
 
 
