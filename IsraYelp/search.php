@@ -26,11 +26,11 @@ else {
 		$biz = mysqli_fetch_assoc($result);
 		$biz_id = $biz['id'];
 		$biz_name = $biz['name'];		
-		$biz_url = getBizURL($kind, $biz_id);
+		$biz_urli = getBizURL($kind, $biz_id);
 		
 		if ($source == "write_review"){
 			if (!session_is_registered('username')) { 
-					header("Location: ./login.php?returnUrl=".$biz_url);
+					header("Location: ./login.php?returnUrl=".$biz_urli);
 					die(0);
 				} 
 			else {
@@ -39,7 +39,7 @@ else {
 				}					
 		}
 		else if ($source == "main"){
-			header("Location:".$biz_url);
+			header("Location:".$biz_urli);
 			die(0);
 		}
 	}
@@ -49,10 +49,10 @@ else {
 		while ($biz = mysqli_fetch_assoc($result)){		
 			$biz_id = $biz['id'];
 			$biz_name = $biz['name'];
-			$biz_url = getBizURL($kind, $biz_id);				
+			$biz_urli = getBizURL($kind, $biz_id);				
 			if ($source == "write_review"){
 				if (!session_is_registered('username')) { 
-					header("Location: ./login.php?returnUrl=".$biz_url);
+					header("Location: ./login.php?returnUrl=".$biz_urli);
 					die(0);
 				}
 				else{
@@ -62,7 +62,7 @@ else {
 				}
 			}
 			else if ($source == "main"){
-				$url = $biz_url;
+				$url = $biz_urli;
 			}
 			$biz_address = $biz['address'];
 			$html .= "<li><span><b><a href=".$url.">".$biz_name."</a></b></span>".", ".$biz_address."</li>" ;
