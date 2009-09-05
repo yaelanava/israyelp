@@ -34,7 +34,7 @@ include './utils/functions.php';
 <div id="bodyContainer_Centered">
 	<p>חלק מהשדות היו ריקים.
 		<br><br>
-		<a href="<?php echo $biz_url?>">חזור לדף המסעדה.</a>
+		<a href="<?php echo $biz_url?>">חזור לדף המקום.</a>
 	</p>
 </div>
 </body>

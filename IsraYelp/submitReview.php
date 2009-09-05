@@ -87,7 +87,7 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	<p><?php if ($result) {echo "הביקורת נשמרה בהצלחה.";} else {echo "הביקורת לא נשמרה. אנא נסה שוב";}?>
 		<br><br>
 		
-		<a href="<?php echo $biz_url;?>">לחץ כאן כדי לחזור לדף המסעדה.</a>
+		<a href="<?php echo $biz_url;?>">לחץ כאן כדי לחזור לדף המקום.</a>
 	</p>
 </div>
 </body>
