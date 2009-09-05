@@ -199,7 +199,7 @@ $bar->SetBorderColor("E8E8D0");
 		    				}
 						?>
 						
-						<td width=200>
+						<td width=100>
 							<?php
 								if($same_user)
 									$html = "<span class=\"highlight2\">אתה רשום לאתר מ-</span>";
