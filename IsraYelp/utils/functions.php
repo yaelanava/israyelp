@@ -91,9 +91,9 @@ function getFooterHTMLCode(){
 //here we can add some new types 
 function getTypesHTMLCode(){
 	$html = "	<select name=\"place_kind\">
- 				 <option value=\"מסעדה\" >מסעדה</option>
- 				 <option value=\"אתר קניות\" >אתר קניות</option>
- 				 <option value=\"מקום בילוי\" >מקום בילוי</option>
+				<option value=\"restaurants\" >מסעדה</option>
+				<option value=\"shopping\" >אתר קניות</option>
+				<option value=\"nightlife\" >מקום בילוי</option>
  				 </select>";
 	return $html;
 }
