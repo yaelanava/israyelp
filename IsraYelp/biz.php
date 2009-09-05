@@ -77,13 +77,14 @@ $result_reviews = $mysqli->query($query_reviews);
 							</div>
 							<div id="bizInfoContent">
 								<p id="bizCategories"><strong>קטגוריה:</strong>
-									<span id="cat_display"> <?php echo $biz['category'];?>	
+									<span id="cat_display"> <?php echo $biz['category'];?>	</span>
 								</p>
 								<address class="adr">
 									<span class="street-address"><?php echo $biz['address']; ?></span>										
-								</address>
-			
+								</address>			
 								<span id="bizPhone" class="tel"> <?php echo $biz['phone_number']; ?> </span>
+								<p><a href="<?php echo "http://".$biz['link']?>"><?php echo $biz['link']?></a></p>
+								
 						</td>				
 						<td>
 							<div id="bizPhotos"">
