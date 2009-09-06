@@ -6,8 +6,8 @@ session_start();
 include './utils/functions.php';
 include './utils/TypesUtils.php';
 
-$biz_id = $_GET['biz_id'];
 $biz_type = $_GET['biz_type'];
+$biz_id = $_GET['biz_id'];
 $biz_url = getBizURL($biz_type, $biz_id);
 
 $mysqli = getMysqliConnection();
