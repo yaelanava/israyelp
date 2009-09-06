@@ -7,7 +7,6 @@ $mysqli = getMysqliConnection();
 
 $biz_name = $_GET['biz_name'];
 $biz_url = $_GET['biz_url'];
-
 $user_id = $_SESSION['user_id'];		
 
 $query = "SELECT * FROM `favorites` WHERE user_id='$user_id' and biz_url='$biz_url'";
