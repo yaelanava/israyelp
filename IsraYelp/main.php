@@ -383,7 +383,7 @@ $city_name = getCityName($city_id);
 							$biz = mysqli_fetch_assoc($result);
 							$biz_url = getBizURL($biz_type, $biz_id);
 							
-							$review = $review['review'];
+							$rev = $review['review'];
 							
 							$html =  "<div id=\"reviewerInfo\">
 										<div class=\"clearStyles photoBox\" >
@@ -401,13 +401,13 @@ $city_name = getCityName($city_id);
 										</div>
 										<p><a href=\"$biz_url\">".$biz['name']."</a></p>
 										<p style=\"padding-top:.3em;\">";
-							if (strlen($review) > 100){
-								$review = substr($review,0,99);
+							if (strlen($rev) > 100){
+								$rev = substr($rev,0,99);
 								$_SESSION['user_id_rev'] = $user['id'];
-								$html .= $review; 								
+								$html .= $rev; 								
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
 							} else {
-								$html .= $review; 							
+								$html .= $rev; 							
 							}
 							$html .="<p></div>";
 														
