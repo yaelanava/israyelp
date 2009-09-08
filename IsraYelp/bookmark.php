@@ -5,30 +5,34 @@ include './utils/functions.php';
 
 $mysqli = getMysqliConnection();	
 
-$biz_name = $_GET['biz_name'];
-$biz_url = $_GET['biz_url'];
+$fav_biz_id = $_GET['fav_biz_id'];
+$fav_biz_type = $_GET['fav_biz_type'];
 $user_id = $_SESSION['user_id'];		
+$biz_url = getBizURL($fav_biz_type, $fav_biz_id);
 
-$query = "SELECT * FROM `favorites` WHERE user_id='$user_id' and biz_url='$biz_url'";
+
+$query = "SELECT * FROM `favorites` WHERE user_id='$user_id' 
+		and biz_type='$fav_biz_type' 
+		and biz_id='$fav_biz_id'";
 $result = $mysqli->query($query);
 $count = $result->num_rows;
 if ($count == 0) {
-	$name = mysql_real_escape_string($biz_name);
+	$type_name = mysql_real_escape_string($fav_biz_type);
 	$query = "INSERT INTO .`favorites` (
 				`user_id` ,
-				`biz_name` ,
-				`biz_url` 	
+				`biz_id` ,
+				`biz_type` 	
 			)VALUES (
-				'$user_id' , '$name', '$biz_url'
+				'$user_id' , '$fav_biz_id', '$type_name'
 			);";
 	$result = $mysqli->query($query);	
 	if 	($result) {
-		$bookmark_msg = "'".$biz_name."' נרשם בהצלחה כמקום מועדף.";
+		$bookmark_msg = "המקום נרשם בהצלחה כמועדף.";
 	} else {
-		$bookmark_msg = "פעולת סימון '".$biz_name."' כמקום מועדף נכשלה. אנא נסה שוב.";		
+		$bookmark_msg = "פעולת סימון כמקום מועדף נכשלה, אנא נסה שוב.";		
 	}		
 } else {
-	$bookmark_msg = "'".$biz_name."' כבר נמצא ברשימת המקומות המועדפים עלייך.";			
+	$bookmark_msg = "מקום זה כבר נמצא ברשימת המקומות המועדפים עלייך.";			
 }
 ?>
 
