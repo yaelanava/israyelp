@@ -327,7 +327,17 @@ $city_name = getCityName($city_id);
 						$count = $result->num_rows;
 						echo $count;
 					?>   
-				</li><!--				
+				</li>
+				<li class="hotelstravel"><a href="./hotels.php?city_id=<?php echo $city_id?>">בתי מלון</a> 
+					<?php 
+						$query = "SELECT * FROM `hotels` WHERE city_id=$city_id";
+						$result = $mysqli->query($query);
+						$count = $result->num_rows;
+						echo $count;
+					?> 
+				</li>
+				
+				<!--				
 				<li class="health"><a href="/c/sf/health">רפואה ושירותי בריאות</a> 2511  </li>
 				<li class="food"><a href="/c/sf/food">מזון</a> 2486  </li>				
 				<li class="homeservices"><a href="/c/sf/homeservices">שירותים עד הבית</a> 1522  </li>
