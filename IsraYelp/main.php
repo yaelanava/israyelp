@@ -45,8 +45,21 @@ $city_name = getCityName($city_id);
 	
 <div id="navContainer">
 		<ul>			
-			<LI class="header" id="writeReview"><A href="./write_review.php" >כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A href="./find_review.php" >חפש ביקורת</A></LI>
+			<LI class="header" id="writeReview">
+				<A href= "<?php if (!session_is_registered('username')) { 
+									echo ("./login.php");
+									} else {
+									echo ("./writeReview.php");
+									}
+								?>" >
+				כתוב ביקורת
+				</A> | 
+			</LI>
+			<LI class="header" id="findReview">
+				<A href= "./find_review.php">
+				חפש ביקורת
+				</A>
+			</LI>
 			
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id']."";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
