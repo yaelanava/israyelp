@@ -96,6 +96,7 @@ function getTypesHTMLCode(){
 				<option value=\"shopping\" >אתר קניות</option>
 				<option value=\"nightlife\" >מקום בילוי</option>
 				<option value=\"beauty\" >מכון יופי וספא</option>
+				<option value=\"hotels\" >בתי מלון</option>
  				 </select>";
 	return $html;
 }
