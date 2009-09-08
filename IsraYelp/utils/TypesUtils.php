@@ -44,6 +44,19 @@ function getBizAdditionalInfo($type, $biz) {
 						<li><strong>אירועים: </strong>".$biz['events']."</li>			
 					</ul>";
 			break;
+		case "hotels":
+			$html= "<ul>							
+						<li><strong>חדרים לנכים: </strong>".$biz['invalid_access']."</li>
+						<li><strong>ספא: </strong>".$biz['spa']."</li>
+						<li><strong>חניה: </strong>".$biz['parking']."</li>	
+						<li><strong>בריכה: </strong>".$biz['pool']."</li>
+						<li><strong>כשר: </strong>".$biz['kosher']."</li>
+						<li><strong>מועדון לילדים: </strong>".$biz['kids_club']."</li>
+						<li><strong>חיבור לאינטרנט: </strong>".$biz['intranet']."</li>	
+						<li><strong>טלוויזיה: </strong>".$biz['tv']."</li>	
+						<li><strong>מיני בר: </strong>".$biz['mini_bar']."</li>						
+					</ul>";
+			break;	
 	}
 	return $html;
 }
