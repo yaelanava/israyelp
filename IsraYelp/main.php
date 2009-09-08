@@ -435,7 +435,6 @@ $city_name = getCityName($city_id);
 			</div>
 										
 				<div id="freshListsModule">
-					<a class="floatLink"><img src="./image/more_button.png" alt="Search lists"></a>
 					<h3>ישר מהתנור...</h3>
 					<p>הביקורות האחרונות של חברי האתר</p>
 					<?php 
