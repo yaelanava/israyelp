@@ -441,20 +441,29 @@ $city_name = getCityName($city_id);
 			</div>
 			
 			<div id="recent_offers">
-				<a href="/specialoffers" class="floatLink"><img height="39"  width="74" src="./image/more_button.png" alt="More" ></a>
+				<img height="60"  width="60" src="./image/present.jpg" align="left">
 				<h3> מבצעים והנחות </h3>
-				<ul class="stripped">
-					<li>
-						<h4><a href="/biz/cary-lane-san-francisco"  >פיצה דומינוס</a></h4>
-						<p>  הנחה על פיצה משפחתית </p>
-						<p class="grey">ההתחלה של ההודעה המקורית...</p>
-					</li>
-					<li>
-						<h4><a href="/biz/amisha-indian-cuisine-san-francisco"  >מרכז הטיפוח</a></h4>
-						<p>מסאז' שני בחצי מחיר</p>
-						<p class="grey">ההתחלה של ההודעה המקורית...</p>
-					</li>
-				</ul>
+					<?php 
+						$today_coupons = "SELECT * FROM `coupons` WHERE city_id=$city_id ORDER BY id DESC LIMIT 2 "; 
+						$result_coupons = $mysqli->query($today_coupons);
+						$html = "<ul class=\"stripped\">";
+						while ($coupon = mysqli_fetch_assoc($result_coupons) ){
+							$biz_id = $coupon['biz_id'];				
+							$biz_type = $coupon['biz_type']; 
+							$coupon_text = $coupon['coupon'];
+							$query = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
+							$result = $mysqli->query($query);
+							$biz = mysqli_fetch_assoc($result);
+							$biz_name = $biz['name'];
+							$biz_url = getBizURL($biz_type, $biz_id);
+							$html .= "<li>
+								<h4><a href=".$biz_url.">".$biz_name."</a></h4>							
+								<p>".$coupon_text."</p>
+								</li>";
+						}
+						$html .="</ul>";
+						echo $html;
+					?>
 			</div>
 										
 				<div id="freshListsModule">
