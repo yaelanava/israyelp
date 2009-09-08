@@ -18,9 +18,13 @@ $biz = mysqli_fetch_assoc($result_biz);
 $biz_name = $biz['name'];	
 $num_reviews = $biz['num_reviews'];
 
+
 $query_reviews = "SELECT * FROM `reviews` WHERE biz_id=$biz_id and biz_type='$biz_type' ORDER BY added DESC";
 $result_reviews = $mysqli->query($query_reviews);
-											
+
+
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
