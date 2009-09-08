@@ -107,7 +107,8 @@ $result_reviews = $mysqli->query($query_reviews);
 						href= "<?php if (!session_is_registered('username')) { 
 									echo ("./login.php?returnUrl=".$biz_url);
 									} else {
-									echo ("./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$biz_type");
+									//echo ("./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$biz_type");
+									echo ("./writeReviewForm.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									}
 								?>" 
 						id="bizWriteReview"><img src= "./image/write.png" width=108 height=41></a>						
