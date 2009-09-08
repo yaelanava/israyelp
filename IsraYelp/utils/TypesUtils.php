@@ -54,7 +54,8 @@ function getBizAdditionalInfo($type, $biz) {
 						<li><strong>מועדון לילדים: </strong>".$biz['kids_club']."</li>
 						<li><strong>חיבור לאינטרנט: </strong>".$biz['intranet']."</li>	
 						<li><strong>טלוויזיה: </strong>".$biz['tv']."</li>	
-						<li><strong>מיני בר: </strong>".$biz['mini_bar']."</li>						
+						<li><strong>מיני בר: </strong>".$biz['mini_bar']."</li>	
+						<li><strong>מכון כושר: </strong>".$biz['jim']."</li>						
 					</ul>";
 			break;	
 	}
