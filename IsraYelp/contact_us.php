@@ -15,7 +15,7 @@ include './utils/functions.php';
 	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 
-<<body dir="rtl">
+<body dir="rtl">
 <div id="head">
 		<div id="logo">
 			<A href="./main.php"></A>
