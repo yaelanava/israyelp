@@ -76,11 +76,24 @@ $fav_count = $fav_result->num_rows;
 					<H1>יש לך $fav_count מקומות מועדפים</H1>
 					<br/>";	
 			echo $html;
-			while ($fav = mysqli_fetch_assoc($fav_result)){		
+			while ($fav = mysqli_fetch_assoc($fav_result)){	
+				$fav_biz_id=$fav['biz_id'];
+				$fav_biz_type=$fav['biz_type'];
+				$biz_url = getBizURL($fav_biz_type, $fav_biz_id);
+				
+				$query_biz = "SELECT * FROM `$fav_biz_type` WHERE id=$fav_biz_id";
+				$result_biz = $mysqli->query($query_biz);
+				$biz = mysqli_fetch_assoc($result_biz);	
+				$biz_address = $biz['address'];
+				
 				$html = "<div id=\"my_review\">					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
-									<td><span><b><a href=".$fav['biz_url'].">".$fav['biz_name']."</a></b></span></td> 
+									<td>
+										<span><b><a href=".$biz_url.">".$biz['name']."</a></b></span>
+										".", ".$biz_address."
+									</td>
+									 
 								</tr>
 							</table>
 						</div>";
