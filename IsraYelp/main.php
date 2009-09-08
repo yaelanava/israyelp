@@ -378,7 +378,7 @@ $city_name = getCityName($city_id);
 		<div id="leftColumn">
 			<div class="clearfix" id="reviewPicksModule">
 				<H3>ביקורת היום</H3>	
-				<P> נבחרה ע"י חברי האתר! </P>
+				<p></p>
 				
 					<?php 
 						$today_reviews = "SELECT * FROM `reviews` ORDER BY added DESC LIMIT 1"; //todo: same city or not?
