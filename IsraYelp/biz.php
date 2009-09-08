@@ -102,16 +102,25 @@ $result_reviews = $mysqli->query($query_reviews);
 				</div>				
 				<div  id="bizActions" class="clearfix">
 					<a class="send-to-friend" rel="nofollow"  href="./send_to_friend.php?biz_id=<?php echo $biz_id?>&return_url=<?php echo $biz_url?>" id="bizShare"><img src= "./image/send2friend.png" width=108 height=41></a>
-					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" href="./bookmark.php?fav_biz_type=<?php echo $biz_type?>&fav_biz_id=<?php echo $biz_id?>"><img src= "./image/bookmark.png" width=108 height=41></a>
+					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" 
+					href="<?php if (!session_is_registered('username')) { 
+							
+									echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
+									} else {
+									echo ("./bookmark.php?fav_biz_type=".$biz_type."&fav_biz_id=".$biz_id);
+									}
+								?>">
+					<img src= "./image/bookmark.png" width=108 height=41></a>
 					<a class="write review" rel="nofollow" 
 						href= "<?php if (!session_is_registered('username')) { 
-									echo ("./login.php?returnUrl=".$biz_url);
+							
+									echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									} else {
 									//echo ("./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$biz_type");
 									echo ("./writeReviewForm.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									}
 								?>" 
-						id="bizWriteReview"><img src= "./image/write.png" width=108 height=41></a>						
+						id="bizWriteReview"><img src= "./image/write.png" width=108 height=41></a>			
 				</div>							
 			</td>							
 			<td>
