@@ -1,10 +1,16 @@
 <?php 
 
 session_start();
+include './utils/functions.php';
 
 $biz_id = $_GET['biz_id'];
-$biz_name = $_GET['biz_name'];
 $biz_type = $_GET['biz_type'];
+
+$mysqli = getMysqliConnection();
+$query_biz = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
+$result_biz = $mysqli->query($query_biz);
+$biz = mysqli_fetch_assoc($result_biz);
+$biz_name = $biz['name'];	
 
 ?>
 

@@ -34,7 +34,8 @@ else {
 					die(0);
 				} 
 			else {
-					header("Location: ./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$kind);
+					//header("Location: ./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=".$kind);
+					header("Location:./writeReviewForm.php?biz_type=".$kind."&biz_id=".$biz_id);				
 					die(0);								
 				}					
 		}
@@ -57,8 +58,9 @@ else {
 				}
 				else{
 			
-					$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$kind";
-							
+					//$url = "./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$kind";
+					$url = "./writeReviewForm.php?biz_type=".$kind."&biz_id=".$biz_id;
+					
 				}
 			}
 			else if ($source == "main"){
