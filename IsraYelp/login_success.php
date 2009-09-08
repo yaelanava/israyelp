@@ -1,8 +1,9 @@
 <?php 
 session_start();
+include './utils/functions.php';
 
-if (isset($_GET['returnUrl'])){
-	$returnUrl = $_GET['returnUrl'];
+if (isset($_GET['biz_id'])&&isset($_GET['biz_type'])){
+	$returnUrl = getBizURL($_GET['biz_type'], $_GET['biz_id']);
 } else {
 	$returnUrl = "./main.php";
 }
