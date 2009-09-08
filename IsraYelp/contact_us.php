@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include './utils/functions.php';
 ?>
 
 <html>
@@ -79,6 +80,6 @@ session_start();
 
 	<br/>
 </div>
-
+<?php echo getFooterHTMLCode()?>
 </body>
 </html>
