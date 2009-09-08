@@ -28,8 +28,8 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 		$_SESSION['username'] = $user['username'];
 		$_SESSION['email'] = $email;
 		
-		if (isset($_GET['returnUrl'])){
-			header("Location: login_success.php?returnUrl=".$_GET['returnUrl']);	
+		if (isset($_GET['biz_id'])&&isset($_GET['biz_type'])){
+			header("Location: login_success.php?biz_type=".$_GET['biz_type']."&biz_id=".$_GET['biz_id']);	
 		} else {
 			header("Location: login_success.php");	
 		}
@@ -65,7 +65,11 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 <div id="bodyContainer" dir="rtl">
 	<div class="box" style="width:450px;margin-right:10px;float:right;margin-top:10px;text-align:right;border-left:#ccc 1px solid;margin-left:30px;">
 			<H1>התחברות</H1>
-			<form method="post" action="login.php<?php if (isset($_GET['returnUrl'])) echo "?returnUrl=".$_GET['returnUrl']?>" >
+			<form method="post" 
+				action="login.php<?php 
+						if (isset($_GET['biz_id'])&&isset($_GET['biz_type'])) 
+						echo "?biz_type=".$_GET['biz_type']."&biz_id=".$_GET['biz_id']
+						?>" >
 				<p>אנא הכנס את הדוא"ל והסיסמא.<p/>
 				<?php if ($error_msg) echo "<p style=\"color:red;\">$error_msg<p/>"?>
 				<table  border="0">
