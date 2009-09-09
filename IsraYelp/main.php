@@ -441,7 +441,7 @@ $city_name = getCityName($city_id);
 			</div>
 			
 			<div id="recent_offers">
-				<img height="60"  width="60" src="./image/present.jpg" align="left">
+				<img height="50"  width="50" src="./image/present.jpg" align="left">
 				<h3> מבצעים והנחות </h3>
 					<?php 
 						$today_coupons = "SELECT * FROM `coupons` WHERE city_id=$city_id ORDER BY id DESC LIMIT 2 "; 
