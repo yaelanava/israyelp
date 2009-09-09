@@ -10,7 +10,7 @@
             strtolower($real_namr)));
 		$allowedExtensions = array("jpg","jpeg","gif","png");
 		if(!in_array($ending, $allowedExtensions))
-			$error_msg="הקובץ שהעלאת אינו בעל סיומת מתאימה, נסה שוב";
+			$error_msg="הקובץ שהעלאת אינו בעל סיומת מתאימה, נסה שוב.";
 		else{
 			$destination = "./users_pics/".$id;
 			copy($temp_name, $destination);
@@ -47,7 +47,7 @@
 			if($error_msg){
 				$html= "$error_msg
 				<br><br>
-				<A href=\"./upload_pic.php\"> נסה שוב </A>"; 
+				<A href=\"./about_me.php?external_user=".$_SESSION['user_id']."\"> נסה שוב </A>"; 
 			}
 			else{
 				$html ="התמונה הועלתה בהצלחה.
