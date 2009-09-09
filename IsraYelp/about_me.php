@@ -23,6 +23,11 @@ $email=$user['email'];
 $username=$user['username'];
 $_SESSION['ext_user_name']=$username;
 
+//extracting the real user information
+$real_user_query = "SELECT * FROM `users` WHERE id= $user_id";
+$real_user_result = $mysqli->query($real_user_query);
+$real_user = mysqli_fetch_assoc($real_user_result);
+
 //ratings graph
 for ($i=1; $i < 6; $i++){
 	$query = "SELECT * FROM `reviews` WHERE user_id=$external_user and grading=$i";
@@ -215,7 +220,7 @@ $graph = $bar->horizontal();
 					if(!$same_user){
 						$html = "<div class=\"box\" id=\"send_a_message\" >
 									<h1> כתוב ל- $username הודעה </h1>
-										<form method=\"post\" action=\"sending_new_place.php\" align=\"center\">
+										<form method=\"post\" action=\"send_message_to_user.php\" align=\"center\">
 											<dl id=\"newBizForm\">
 												<dt class=\"review\"><strong>כותרת ההודעה</strong><br/>	</dt>
 												<dd class=\"review\">
@@ -225,9 +230,14 @@ $graph = $bar->horizontal();
 												
 												<dt class=\"review\"><strong><br>תוכן ההודעה</strong>		</dt>
 												<dd class=\"review\">
-													<textarea cols=\"40\" rows=\"8\" class=\"form400\"  name=\"review\"></textarea>
+													<textarea cols=\"40\" rows=\"8\" class=\"form400\"  name=\"message\"></textarea>
 												</dd>
-											</dl>	
+											</dl>
+											<input type=\"submit\" name=\"action_select\" value=\"שלח\">
+											<input type=\"hidden\" name=\"real_user_email\" value=".$real_user['email'].">
+											<input type=\"hidden\" name=\"ext_user_email\" value=".$email.">
+											<input type=\"hidden\" name=\"real_name\" value=".$real_user['username'].">	
+											<input type=\"hidden\" name=\"ext_id\" value=".$external_user.">
 										</form>
 									</div>";
 						echo $html;
