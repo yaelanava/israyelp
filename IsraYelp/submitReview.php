@@ -5,8 +5,6 @@ include './utils/functions.php';
 
 $biz_id = $_POST['biz_id'];
 $biz_type = $_POST['biz_type'];
-$_SESSION['biz_id']=$biz_id;
-$_SESSION['biz_type']=$biz_type;
 
 if (isset($_POST['title']) && ('' != $_POST['title']) && 
 	isset($_POST['review']) && ('' != $_POST['review']) && 
@@ -56,8 +54,7 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	}
 		
 } else {
-	header("Location: submit_fail.php");	
-	die(0);
+	header("Location: writeReviewForm.php?biz_type=$biz_type&biz_id=$biz_id&error");	
 }
 
 ?>	
