@@ -49,7 +49,7 @@ $city_name = getCityName($city_id);
 				<A href= "<?php if (!session_is_registered('username')) { 
 									echo ("./login.php");
 									} else {
-									echo ("./write_review.php");
+									echo ("./writeReview.php");
 									}
 								?>" >
 				כתוב ביקורת
@@ -157,11 +157,11 @@ $city_name = getCityName($city_id);
 				</div>
 
 				<div class="bestCat">
-					<?php $biz_type = "shopping"?>
-					<h4 style="margin-bottom:0px;" title="אתרי קניות"><a href="<?php echo "./$biz_type.php?city_id=$city_id"?>">קניות</a></h4>
+					<?php $biz_type = "hotels"?>
+					<h4 style="margin-bottom:0px;" title="בתי מלון"><a href="<?php echo "./$biz_type.php?city_id=$city_id"?>">בתי מלון</a></h4>
 					<em>
 						<?php 
-							$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='shopping'";
+							$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='hotels'";
 								$result = $mysqli->query($query);
 								$count = $result->num_rows;
 								echo $count;
@@ -173,12 +173,12 @@ $city_name = getCityName($city_id);
 							$result = $mysqli->query($query);
 							$first = 1;
 							$html="";								
-							while ($shop = mysqli_fetch_assoc($result)){
-								$shop_url = getBizURL($biz_type, $shop['id']);
+							while ($hotel = mysqli_fetch_assoc($result)){
+								$hotel_url = getBizURL($biz_type, $hotel['id']);
 								if ($first){
-									$image_srs = "./biz_pics/$biz_type/".$shop['id'].".jpg";						
+									$image_srs = "./biz_pics/$biz_type/".$hotel['id'].".jpg";						
 									$html = "<div class=\"clearStyles bizPhotoBox\">
-												<a  href=\"$shop_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$shop['name']."\"></a>
+												<a  href=\"$hotel_url\"><img src=\"$image_srs\" width=120 height=100 alt=\"".$hotel['name']."\"></a>
 											</div>";
 									$html .= "<ol>";			
 								}
@@ -186,7 +186,7 @@ $city_name = getCityName($city_id);
 								if ($first){
 									$html .= "<strong>";
 								}
-								$html .= "<a href=\"$shop_url\"\">".$shop['name']."</a>";
+								$html .= "<a href=\"$hotel_url\"\">".$hotel['name']."</a>";
 								if ($first){
 									$html .= "</strong>";
 									$first = 0;
