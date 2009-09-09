@@ -66,6 +66,19 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 		<div id="top_biz_lists" class="clearfix">
 			<br/>
 			<h1>בתי מלון ב<?php echo $city_name?> </h1>
+			<p id="breadcrumbs">קטגוריה: 
+				<a href="./main.php?city_id=<?php echo $city_id?>"><?php echo $city_name?></a> 
+				&raquo;		
+				<?php 
+					if ($category) {
+						echo "<a href=\"?city_id=$city_id\">בתי מלון</a>
+								&raquo; $category"; 
+					} else {
+						echo "בתי מלון";
+					}
+				?>					
+			</p>
+		
 			<?php 
 				$topBiz = mysqli_fetch_assoc($result_top_bizs);
 				$topBiz_id = $topBiz['id'];
@@ -86,6 +99,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 									</div> 
 									<em class=\"smaller\">".$topBiz['num_reviews']." ביקורות</em>
 								</div>
+								<p class=\"smaller\">קטגוריה:".$topBiz['category']."</p>
 								<p>".$BizReview['review']."</p>
 							</div>";
 					echo $html;
@@ -108,6 +122,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 										</div> 
 										<em class=\"smaller\">".$biz['num_reviews']." ביקורות</em>
 									</div>
+									<p class=\"smaller\">קטגוריה:".$biz['category']."</p>
 								</li>";
 						$i++;
 					}
@@ -129,7 +144,17 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 			        frameborder="1">
 			 </iframe>
 		</div>	
-	</div>		
+	</div>	
+
+	<div id="sub_cat_lists" class="clearfix">
+		<h2>אתרי ספא ויופי ב<?php echo $city_name?> לפי קטגוריות<h2>
+		<ul class="stripped other_sub_cats">
+			<li><a href="?city_id=<?php echo $city_id?>&category=Hair Salons">עיצוב שיער</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=Hair removal">הסרת שיער</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=Day Spas">ספא</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=Nail Salons">בניית ציפורניים</a></li>
+		</ul>
+	</div>	
 </div>
 
 <?php echo getFooterHTMLCode()?>
