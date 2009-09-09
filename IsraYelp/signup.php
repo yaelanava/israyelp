@@ -9,8 +9,9 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 	isset($_POST['password']) && ('' != $_POST['password']) &&
 	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {
 	
-	if(check_email($_POST['email'])){
+	if(check_email($_POST['email'])){		
 		$username = mysql_real_escape_string($_POST['username']);
+		//mysql_escape_string 
 		$email = $_POST['email'];
 		$city = mysql_real_escape_string($_POST['city']);
 		$password = $_POST['password'];
