@@ -49,7 +49,7 @@ $city_name = getCityName($city_id);
 				<A href= "<?php if (!session_is_registered('username')) { 
 									echo ("./login.php");
 									} else {
-									echo ("./writeReview.php");
+									echo ("./write_review.php");
 									}
 								?>" >
 				כתוב ביקורת
