@@ -2,58 +2,70 @@
 
 include './utils/functions.php';
 
-$error_msg = 0;
+$mysqli = getMysqliConnection();						
 
-if (isset($_POST['username']) && ('' != $_POST['username']) && 
+$password_error = false;
+$mail_error = false;
+
+if (isset($_POST['password']) && ('' != $_POST['password']) && 
+	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {
+
+	$password = $_POST['password'];
+	$confirmed_password = $_POST['confirmed_password'];
+		
+	if ($password !== $confirmed_password) {
+		$password_error = "* סיסמאות לא תואמות";			
+	}
+}
+
+if (isset($_POST['email']) && ('' != $_POST['email'])){
+	$email = $_POST['email'];
+	if (!check_email($_POST['email'])) {
+		$mail_error = "* דוא'ל לא תקין";
+	} else {
+		$query = "SELECT * FROM `users` WHERE email='$email'";
+		$result = $mysqli->query($query);
+		$count = $result->num_rows;			
+		if ($count != 0) {
+			$mail_error = "* דוא'ל כבר קיים במערכת";							
+		}
+	}			
+} else {
+	$mail_error = "* שדה חובה";
+}
+
+if (!$password_error && !$mail_error &&
+	isset($_POST['username']) && ('' != $_POST['username']) && 
 	isset($_POST['email']) && ('' != $_POST['email']) &&
 	isset($_POST['password']) && ('' != $_POST['password']) &&
 	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {
-	
-	if(check_email($_POST['email'])){		
-		$username = mysql_real_escape_string($_POST['username']);
-		//mysql_escape_string 
-		$email = $_POST['email'];
-		$city = mysql_real_escape_string($_POST['city']);
-		$password = $_POST['password'];
-		$confirmed_password = $_POST['confirmed_password'];
-
-		if ($password !== $confirmed_password) {
-			$error_msg = ".הסיסמאות לא תואמות";		
-		} else {
-			$mysqli = getMysqliConnection();						
-			$query = "SELECT * FROM `users` WHERE email='$email'";
-			$result = $mysqli->query($query);
-			$count = $result->num_rows;			
-			if ($count != 0) {
-				header("Location: signup_user_exists.php");	
-				die(0);
-			}
-			$today = getdate();
-			$register_since = getMonth($today['mon']).", ".$today['year'];
 			
-			$query = "INSERT INTO `users` (
-						`id` ,
-						`username` ,
-						`email` ,
-						`city` ,
-						`register_since` ,
-						`password`
-						)
-					VALUES (
-						NULL , '$username', '$email', '$city', '$register_since', PASSWORD('$password')
-					)";
-					
-			$result = $mysqli->query($query);
-			if 	($result) {
-				header("Location: signup_ssuccess.html");				
-			} else {
-				header("Location: signup_failure.html");				
-			}
-		}
-	} else { 
-		$error_msg="דוא'ל לא תקין.";
-	}	
-} 
+	//mysql_escape_string 
+	$username = mysql_real_escape_string($_POST['username']);
+	$email = mysql_real_escape_string($_POST['email']);
+	$city = mysql_real_escape_string($_POST['city']);		
+	$today = getdate();
+	$register_since = getMonth($today['mon']).", ".$today['year'];
+		
+	$query = "INSERT INTO `users` (
+				`id` ,
+				`username` ,
+				`email` ,
+				`city` ,
+				`register_since` ,
+				`password`
+				)
+			VALUES (
+				NULL , '$username', '$email', '$city', '$register_since', PASSWORD('$password')
+			)";
+			
+	$result = $mysqli->query($query);
+	if 	($result) {
+		header("Location: signup_ssuccess.html");				
+	} else {
+		header("Location: signup_failure.html");				
+	}
+}	
 
 ?>
 
@@ -83,39 +95,47 @@ if (isset($_POST['username']) && ('' != $_POST['username']) &&
 <div id="bodyContainer">
 <H1>צור את הפרופיל שלך</H1>
 <div class="box" id="signupForm">
-	<form method="post" action="signup.php" >
-		<?php if ($error_msg) echo "<p style=\"color:red;\">$error_msg<p/>"?>
+	<form method="post" action="signup.php" >		
 		<table cellpadding="5" cellspacing="5" border="0">
 				<tr>
-					<td>* שם משתמש:</td> 
-					<td><input name="username" size="40"></td>
+					<td>שם משתמש:</td> 
+					<td><input name="username" size="40" <?php if (isset($_POST['username'])) echo "value=\"".$_POST['username']."\""?>></td>
 					<?php if (isset($_POST['username']) && ('' == $_POST['username'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>
 				</tr>
 				<tr>
-					<td>* דוא"ל:</td>
-					<td> <input name="email" size="40"></td>
-					<?php if (isset($_POST['email']) && ('' == $_POST['email'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>
+					<td>דוא"ל:</td>
+					<td> <input name="email" size="40" <?php if (isset($_POST['email'])) echo "value=\"".$_POST['email']."\""?>></td>
+					<?php if ($mail_error) echo "<td style=\"color:red;\">$mail_error<td/>"?>
 				</tr>
 				<tr>
 					<td>עיר:</td>
-					<td> <input name="city"  size="40"></td>					
+					<td> <input name="city"  size="40" <?php if (isset($_POST['city'])) echo "value=\"".$_POST['city']."\""?>></td>		
 				</tr>
 				<tr>
-					<td>* סיסמא:</td>
-					<td> <input name="password" type="password" size="40"></td>
-					<?php if (isset($_POST['password']) && ('' == $_POST['password'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>			
+					<td>סיסמא:</td>
+					<td> <input name="password" type="password" size="40" <?php if (isset($_POST['password'])) echo "value=\"".$_POST['password']."\""?>></td>
+					<?php 
+						if ($password_error) {
+							echo "<td style=\"color:red;\">$password_error<td/>";
+						} else if (isset($_POST['password']) && ('' == $_POST['password'])) {
+							echo "<td style=\"color:red;\">* שדה חובה</td>";
+						}
+					?>
 				</tr>
 				<tr>
-					<td>* אשר סיסמא:</td>
-					<td> <input name="confirmed_password" type="password" size="40"></td>
-					<?php if (isset($_POST['confirmed_password']) && ('' == $_POST['confirmed_password'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>					
+					<td>אשר סיסמא:</td>
+					<td> <input name="confirmed_password" type="password" size="40" <?php if (isset($_POST['confirmed_password'])) echo "value=\"".$_POST['confirmed_password']."\""?>></td>
+					<?php 
+						if ($password_error) {
+							echo "<td style=\"color:red;\">$password_error<td/>";
+						} else if (isset($_POST['confirmed_password']) && ('' == $_POST['confirmed_password'])) {
+							echo "<td style=\"color:red;\">* שדה חובה</td>";
+						}
+					?>
 				</tr>
 				<tr>
-					<td><em class="smaller grey">* שדות חובה </em></td>				
-				</tr>
-				<tr>
-					<td style="text-align:right;"> <input type="submit" value="הרשמה"></td>
 					<td></td>
+					<td style="text-align:left;"> <br/> <input type="submit" value="הרשמה"></td>
 				</tr>
 				
 		</table>		
