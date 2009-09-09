@@ -46,6 +46,7 @@ $bar->SetBorderStyle("outset");
 $bar->SetBorderWidth("small");
 $bar->SetBorderColor("E8E8D0");
 
+$graph = $bar->horizontal();
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -106,15 +107,18 @@ $bar->SetBorderColor("E8E8D0");
 		</div>
 			
 	<div id="user_details_wrapper">
-		<div id="inner_container" class="clearfix">	
-			
-				<table cellspacing="20" cellpadding="1" border="0" >
+		<div id="inner_container" class="clearfix">				
+				<table cellspacing="20" cellpadding="1" border="0">
 					<tr>
-						<td width=150>
-							<h1><?php echo $username?></h1>						
+						<td width=300>
+							<h1><?php echo $username?></h1>	
+						</td>					
+					</tr>
+					<tr style="vertical-align:top">
+						<td>
 							<div id="user_pic">
-								<div class="clearStyles photoBox" >
-									<img src="<? echo getUserPictureSrc($external_user, "./") ?>" height="100px" width="100px">
+								<div class="clearStyles photoBox">
+									<img src="<? echo getUserPictureSrc($external_user, "./") ?>" height="150px" width="150px">
 									
 										<?php 
 											if($same_user){
@@ -123,12 +127,11 @@ $bar->SetBorderColor("E8E8D0");
 							 							</p>";
 												echo $html;
 											}
-										?>
-					 					
+										?>					 					
 								</div>
 							</div>	
 						</td>
-						<td width=200>
+						<td width=300>
 							<ul class="stripped" id="user_stats">					
 							<?php		
 								//counting how much reviews this user wrote
@@ -139,44 +142,46 @@ $bar->SetBorderColor("E8E8D0");
 								$html = "<a href=\"./my_reviews.php?external_user=".$external_user."\">";
 								$html .= $rev_count. " ";
 								if($same_user)
-									$html .= "ביקורות שנכתבו על ידך </a>";
-								else $html .= "ביקורות שנכתבו על ידי $username </a>";
+									$html .= "ביקורות נכתבו על ידך </a>";
+								else $html .= "ביקורות נכתבו על ידי $username </a>";
 								echo $html;	
-							?>
-						
-							
-							<br>
-							<?php
-								$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$external_user'";
-								$fav_result = $mysqli->query($fav_query);
-								$fav_count = $fav_result->num_rows;
-								
-								$html = "<a href=\"./my_favs.php?external_user=".$external_user."\">";
-								if(!$same_user)
-									$html .= "ל- $username  יש $fav_count מקומות מועדפים</a>";
-								else
-									$html .= "יש לך $fav_count מקומות מועדפים </a>";
-								echo $html;
+
+								if ($same_user){
+									echo "<br></br>";
+									$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$external_user'";
+									$fav_result = $mysqli->query($fav_query);
+									$fav_count = $fav_result->num_rows;
+									
+									$html = "<a href=\"./my_favs.php?external_user=".$external_user."\">";
+									if(!$same_user)
+										$html .= "ל- $username  יש $fav_count מקומות מועדפים</a>";
+									else
+										$html .= "יש לך $fav_count מקומות מועדפים </a>";
+									echo $html;
+								}
 							?>		
 							</ul>
 						</td>
-						<td width=100>
-							<span class="highlight2">מיקום:</span>
+						
+						<td>
+							<?php echo $graph;?>
+						</td>
+					</tr>	
+					
+					<tr>
+						<td>
+							<span id="highlight2">מיקום: </span>
 							<?php    					
-			    				if (empty($city))
-			    				{
-			    					echo "<br/>";
+			    				if (empty($city)) {
 			    					if($same_user)
 			    						echo 'עיר מגוריך אינה ידועה';
 			    					else 
-			    						echo 'לא ידוע';
-			    				}
-			    				else 
-			    				{
-			    					echo "<br/>";
+			    						echo 'לא ידוע';			    				
+			    				} else {
 			    					echo  $city;			    					
 			    					echo "<br />";
 			    				}
+			    				
 			    				if($same_user){
 			    					$html = "<p><span class=\"formLabel\">
 			    							<a href=\"edit_city.php\">ערוך</a></span></p>";	
@@ -184,43 +189,27 @@ $bar->SetBorderColor("E8E8D0");
 			    				}
 								?>
 						</td>
+					</tr>
 						
-						<?php
-							if($same_user){
-								$html = "<td width=150>
-								<span class=\"highlight2\"> כתובת הדואר שלך:</span>";
-								echo $html;	
-								echo "<br/>";
-								echo  $email;
-								echo "<br/>"; 
-			    				$html = "<p><span class=\"formLabel\">
-			    						<a href=\"edit_email.php\">ערוך</a></span></p></td>";	
-			    				echo $html;		    								    				
-		    				}
-						?>
-						
-						<td width=100>
-							<?php
-								if($same_user)
-									$html = "<span class=\"highlight2\">אתה רשום לאתר מ-</span>";
-								else 
-									$html ="<span class=\"highlight2\">$username רשום לאתר מ-</span>";
-								echo $html;
-								echo "<br />";
-								echo $register_since;
-								echo "<br />";							
-							?>
+					<?php
+						if($same_user){
+							$html = "<tr>
+							<td>
+							<span id=\"highlight2\"> כתובת הדואר שלך: </span>";
+							echo $html;	
+							echo  $email;
+							echo "<br/>"; 
+			    			$html = "<p><span class=\"formLabel\">
+			    					<a href=\"edit_email.php\">ערוך</a></span></p></td></tr>";	
+			    			echo $html;		    								    				
+		    			}
+					?>
+					<tr>
+						<td>
+							<span id="highlight2">רשום לאתר מ:</span>
+							<?php echo $register_since;?>
 						</td>
-						<?php
-							if(!$same_user){
-								$html = "<td width=150>";
-								echo $html;	
-								echo $bar->horizontal();
-			    				$html = "</td>";
-								echo $html;	    								    				
-		    				}
-						?>
-					</tr>																
+					</tr>															
 				</table>
 				<?php
 					if(!$same_user){
@@ -241,12 +230,6 @@ $bar->SetBorderColor("E8E8D0");
 											</dl>	
 										</form>
 									</div>";
-						echo $html;
-					}else{
-						$html = "<div class=\"box\" id=\"table_distribution\" >";
-						echo $html;
-						echo $bar->horizontal(); 
-						$html = "</div>";
 						echo $html;
 					}
 				?>

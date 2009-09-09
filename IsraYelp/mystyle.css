@@ -1331,7 +1331,7 @@
 	}
 	
 	#user_pic {
-	margin-top:15px}	
+	margin-top:0px}	
 	
 	#user_table {	
 	BORDER-RIGHT: #ccc 1px solid;	
@@ -1382,6 +1382,9 @@
 		PADDING-RIGHT: 350px;
 	}
 	
+#highlight2 {
+	font-weight: bold;
+}
 
 	
 	
