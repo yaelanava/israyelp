@@ -1146,31 +1146,7 @@
 	PADDING-TOP: 18px;	
 	HEIGHT: 0px}
 	
-/*	#bizActions A.send-to-friend {	
-	BACKGROUND: url(./image/send2friend.jpg) no-repeat}
-	
-	#bizActions A.bookmark {	
-	BACKGROUND-POSITION: 0px -360px}
-	
-	A.bookmark {	
-	PADDING-LEFT: 18px;	
-	BACKGROUND: url(../i/new/ico/ico_map.gif) no-repeat -1px -50px;	
-	PADDING-BOTTOM: 2px}
 
-	
-	#bizActions A.review {	
-	PADDING-RIGHT: 0px;	
-	PADDING-LEFT: 0px;	
-	PADDING-BOTTOM: 0px;	
-	MARGIN: 0px 0px 0px 7px;	
-	WIDTH: 150px;	
-	PADDING-TOP: 23px} 
-
-	
-	#bizActions A.write {	
-	BACKGROUND-POSITION: 0px -180px}
-*/	
-	
 	#bizReviewsHeader {
 	Margin-right: 0px;	
 	PADDING-RIGHT: 0px;	
@@ -1405,5 +1381,7 @@
 		BORDER-TOP: #ccc 1px solid;
 		PADDING-RIGHT: 350px;
 	}
+	
+
 	
 	
