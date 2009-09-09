@@ -1,25 +1,27 @@
 <?php
-	session_start();
-	include './utils/functions.php';
-	$error_msg=0;
-	if (isset($_FILES['image']) && ('' != $_FILES['image'])) {
-		$id = $_SESSION['user_id'];
-		$temp_name = $_FILES['image']['tmp_name'];
-		$real_namr= $_FILES['image']['name'];;
-		$ending=end(explode(".",
-            strtolower($real_namr)));
-		$allowedExtensions = array("jpg","jpeg","gif","png");
-		if(!in_array($ending, $allowedExtensions))
-			$error_msg="הקובץ שהעלאת אינו בעל סיומת מתאימה, נסה שוב.";
-		else{
-			$destination = "./users_pics/".$id;
-			copy($temp_name, $destination);
-		}
+session_start();
+
+include './utils/functions.php';
+
+$id = $_SESSION['user_id'];
+
+$error_msg = 0;
+
+if (isset($_FILES['image']) && ('' != $_FILES['image']['name'])) {
+	$real_name = $_FILES['image']['name'];	
+	$ending = end(explode(".", strtolower($real_name)));
+	$allowedExtensions = array("jpg","jpeg","gif","png");
+	if (!in_array($ending, $allowedExtensions)) {
+		$error_msg="הקובץ שהעלאת אינו בעל סיומת מתאימה.";
+	} else {
+		$temp_name = $_FILES['image']['tmp_name'];		
+		$destination = "./users_pics/".$id;
+		copy($temp_name, $destination);
 	}
-	else {
-		header("location:upload_failed.php");	
-		die(0);
-	}
+} else {
+	$error_msg = "חובה לבחור קובץ.";	
+}
+
 ?>
 
 <html>
@@ -44,15 +46,15 @@
 </div>
 <div id="bodyContainer_Centered">
 	<p> <?php
-			if($error_msg){
+			if ($error_msg) {
 				$html= "$error_msg
 				<br><br>
-				<A href=\"./about_me.php?external_user=".$_SESSION['user_id']."\"> נסה שוב </A>"; 
+				<A href=\"./upload_pic.php\"> נסה שנית. </A>"; 
 			}
 			else{
 				$html ="התמונה הועלתה בהצלחה.
 				<br><br>
-				<A href=\"./about_me.php?external_user=".$_SESSION['user_id']."\"> חזור לחשבון שלי </A>"; 
+				<A href=\"./about_me.php?external_user=$id\"> חזור לחשבון שלי. </A>"; 
 			}
 			echo $html;
 	?>
