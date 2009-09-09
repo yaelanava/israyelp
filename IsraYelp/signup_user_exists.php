@@ -29,7 +29,7 @@ include './utils/functions.php';
 <div id="bodyContainer_Centered">
 	<p>קיים כבר משתמש תחת האימייל שהזנת.
 		<br><br>
-		<a href="./signup.html">נסה שנית.</a>
+		<a href="./signup.php">נסה שנית.</a>
 	</p>
 </div>
 </body>
