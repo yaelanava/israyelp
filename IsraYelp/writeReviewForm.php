@@ -3,6 +3,11 @@
 session_start();
 include './utils/functions.php';
 
+$error = false;
+if (isset($_GET['error'])) {
+	$error = true;
+}
+
 $biz_id = $_GET['biz_id'];
 $biz_type = $_GET['biz_type'];
 
@@ -10,7 +15,7 @@ $mysqli = getMysqliConnection();
 $query_biz = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
 $result_biz = $mysqli->query($query_biz);
 $biz = mysqli_fetch_assoc($result_biz);
-$biz_name = $biz['name'];	
+$biz_name = $biz['name'];
 
 ?>
 
@@ -52,11 +57,10 @@ $biz_name = $biz['name'];
 
 <div id="bodyContainer">
 	<H1>כתוב את הביקורת שלך עבור <?php echo $biz_name?></H1>
+	<?php if ($error) echo "<br/><p style=\"color:red\">* חובה למלא את כל השדות.</p>"?>
 	<form method="post" action="./submitReview.php" name="review_rate_form" id="review_rate_form">
 				<dl id="newBizForm">
-					<dt>
-						<strong>דירוג</strong><br/>
-					</dt>
+					<dt><strong>דירוג</strong><br/></dt>
 					<dd class="clearfix">
 						<div id="starRating">
 							<input type="radio" name="grading" value="1" /> 1
@@ -65,23 +69,17 @@ $biz_name = $biz['name'];
 							<input type="radio" name="grading" value="4" /> 4
 							<input type="radio" name="grading" value="5" /> 5
 						</div>
-						<p id="ratingDescription">לחץ על הכוכב כדי לדרג</p>
-					</dd>
-
-					<dt class="review"><strong>כותרת</strong><br/>	</dt>
-					<dd class="review">
-						<input type="text" name="title" size=40> 
-						<br>
+<!--						<p id="ratingDescription">לחץ על הכוכב כדי לדרג</p>-->
 					</dd>
 					
-					<dt class="review"><strong><br>הביקורת שלך</strong>		</dt>
-					<dd class="review">
-						<textarea cols="40" rows="8" class="form400"  name="review"></textarea>
-					</dd>
+					<dt class="review"><br/><strong>כותרת</strong></dt>
+					<dd class="review"><input type="text" name="title" size=50></dd>			
+					
+					<dt class="review"><br/><strong>הביקורת שלך</strong></dt>
+					<dd class="review"><textarea cols="40" rows="8" class="form400"  name="review"></textarea></dd>
 				</dl>
 
 		<input type="submit" name="action_select" value="שלח">
-		<input type="button" name="" value="חזור" class="formButton">
 		<input type="hidden" name="biz_id" value="<?php echo $biz_id?>">
 		<input type="hidden" name="biz_type" value="<?php echo $biz_type?>">
 		<em class="smaller grey">* תמיד ניתן למחוק את הביקורת מאוחר יותר</em>
