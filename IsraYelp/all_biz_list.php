@@ -87,7 +87,7 @@ $result_bizs = $mysqli->query($query_bizs);
 							$biz_id = $biz['id'];
 							$biz_url = getBizURL($biz_type, $biz_id);
 							$image_srs = "./biz_pics/$biz_type/$biz_id.jpg";
-							$html = "<li><div>
+							$html = "<li><div id=\"top_biz\">
 										<div class=\"clearStyles bizPhotoBox\">
 											<a  href=\"$image_srs\"><img src=\"$image_srs\" width=70 height=70 style=\"\" alt=\"".$biz['name']."\"></a>
 										</div>
