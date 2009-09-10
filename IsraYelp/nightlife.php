@@ -59,7 +59,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 
 <div id="mainContent" class="category_browse">
 	<div id="locBar">
-		<?php echo getLocBarHtmlCode($city_id, $city_name, $biz_type);?>		
+		<?php echo getLocBarHtmlCode($city_id, $city_name, $biz_type.".php?");?>		
 	</div>
 
 	<div id="top_cat_biz">
@@ -80,36 +80,33 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 			</p>
 		
 			<?php 
-				$topBiz = mysqli_fetch_assoc($result_top_bizs);
-				$topBiz_id = $topBiz['id'];
-				$query_BizReview = "SELECT * FROM `reviews` WHERE biz_id=$topBiz_id and biz_type='$biz_type' ORDER BY added DESC LIMIT 1";
-				$result_BizReview = $mysqli->query($query_BizReview);
-				if ($result_BizReview) {						
-					$BizReview = mysqli_fetch_assoc($result_BizReview);
-					$biz_url = getBizURL($biz_type, $topBiz_id);
-					$image_srs = "./biz_pics/$biz_type/$topBiz_id.jpg";
-					
-					$html = "<div id=\"top_biz\">
-								<div class=\"clearStyles bizPhotoBox\">
-									<a  href=\"$image_srs\"><img src=\"$image_srs\" width=100 height=150 style=\"\" alt=\"".$topBiz['name']."\"></a>
-								</div>
-								<p class=\"biz_info\">1. <a href=\"$biz_url\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$topBiz['name']."</a></p>							
-								<div class=\"top_biz_rating\">
-									<div class=\"rating\">
-										<img class=\"stars_".$topBiz['grading']."\" width=\"83\" height=\"325\" src=\"./image/stars_map.png\"/>
-									</div> 
-									<em class=\"smaller\">".$topBiz['num_reviews']." ביקורות</em>
-								</div>
-								<p class=\"smaller\">קטגוריה:".$topBiz['category']."</p>
-								<p>".$BizReview['review']."</p>
-							</div>";
-					echo $html;
-				}
-			?>
-									
-			<ul id="biz_list" class="stripped">
-				<?php
-					$html = "";
+				if ($result_top_bizs->num_rows > 0) {
+					$topBiz = mysqli_fetch_assoc($result_top_bizs);
+					$topBiz_id = $topBiz['id'];
+					$query_BizReview = "SELECT * FROM `reviews` WHERE biz_id=$topBiz_id and biz_type='$biz_type' ORDER BY added DESC LIMIT 1";
+					$result_BizReview = $mysqli->query($query_BizReview);
+					if ($result_BizReview) {						
+						$BizReview = mysqli_fetch_assoc($result_BizReview);
+						$biz_url = getBizURL($biz_type, $topBiz_id);
+						$image_srs = "./biz_pics/$biz_type/$topBiz_id.jpg";
+						$html = "<div id=\"top_biz\">
+									<div class=\"clearStyles bizPhotoBox\">
+										<a  href=\"$image_srs\"><img src=\"$image_srs\" width=100 height=150 style=\"\" alt=\"".$topBiz['name']."\"></a>
+									</div>
+									<p class=\"biz_info\">1. <a href=\"$biz_url\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$topBiz['name']."</a></p>							
+									<div class=\"top_biz_rating\">
+										<div class=\"rating\">
+											<img class=\"stars_".$topBiz['grading']."\" width=\"83\" height=\"325\" src=\"./image/stars_map.png\"/>
+										</div> 
+										<em class=\"smaller\">".$topBiz['num_reviews']." ביקורות</em>
+									</div>
+									<p class=\"smaller\">קטגוריה:".$topBiz['category']."</p>
+									<p>".$BizReview['review']."</p>
+								</div>";
+						echo $html;
+					}
+	
+					$html = "<ul id=\"biz_list\" class=\"stripped\">";
 					$i=2;
 					while ($biz = mysqli_fetch_assoc($result_top_bizs)){
 						$biz_url = getBizURL($biz_type, $biz['id']);
@@ -119,17 +116,27 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 									</div>
 									<div class=\"biz_rating\">
 										<div class=\"rating-small\">
-											<img class=\"stars_4_half\" width=\"83\" height=325 title=\"4.5 star rating\" alt=\"4.5 star rating\" src=\"./image/stars_map.png\"/>
+											<img class=\"stars_".$biz['grading']."\" width=\"83\" height=325 src=\"./image/stars_map.png\"/>
 										</div> 
 										<em class=\"smaller\">".$biz['num_reviews']." ביקורות</em>
 									</div>
 									<p class=\"smaller\">קטגוריה:".$biz['category']."</p>
 								</li>";
-						$i++;
-					}
+							$i++;						}
+					$html .= "</ul>";
 					echo $html;
-				?>	
-			</ul>						
+					
+					if ($result_top_bizs->num_rows > 5) {
+						$html = "<div style=\"text-align: left\">
+									<a href=\"./all_biz_list.php?biz_type=$biz_type&city_id=$city_id".(($category) ? "&category=$category" : "")."\">לרשימה המלאה...</a>
+								</div>";
+						echo $html;
+					}					
+				} else {
+					echo "<b>לא נמצאו מקומות.</b>";
+					echo "<br></br>";					
+				}
+			?>
 		</div>
 		
 		<div id="biz_map"">
