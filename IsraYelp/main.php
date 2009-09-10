@@ -114,7 +114,7 @@ $city_name = getCityName($city_id);
 			<div class="clearfix">
 				<div class="bestCat">
 					<?php $biz_type = "restaurants";?>
-					<h4 style="margin-bottom:0px;" title="מסעדות"><a href="<?php echo "./$biz_type.php?city_id=$city_id"?>">מסעדות</a></h4>
+					<h4 style="margin-bottom:0px;" title="מסעדות ובתי קפה"><a href="<?php echo "./$biz_type.php?city_id=$city_id"?>">מסעדות ובתי קפה</a></h4>
 					<em>
 						<?php 
 							$query = "SELECT * FROM `reviews` WHERE city_id=$city_id and biz_type='restaurants'";
@@ -304,7 +304,7 @@ $city_name = getCityName($city_id);
 						echo $count;
 					?> 
 				</li>
-				<li class="restaurants"><a href="./restaurants.php?city_id=<?php echo $city_id?>">מסעדות</a>  										
+				<li class="restaurants"><a href="./restaurants.php?city_id=<?php echo $city_id?>">מסעדות ובתי קפה</a>  										
 					<?php 
 						$query = "SELECT * FROM `restaurants` WHERE city_id=$city_id";
 						$result = $mysqli->query($query);
