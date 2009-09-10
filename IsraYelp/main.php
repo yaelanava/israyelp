@@ -492,22 +492,23 @@ $city_name = getCityName($city_id);
 						
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
-										</div>								
-										<p>
-											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
-											<br/><em class=\"smaller grey\">". $user['username'] ."</em>
+											<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>". 
+											"<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</a>" .		
+										"</div>								
+										<p>ביקורת עבור: 
+											<a href=\"$biz_url\">".$biz['name']."</a><br>
+											<u>".$review['title'] ."</u>
+											
 											<br/>";																																														
 							if (strlen($rev) > 100){
 								$rev = substr($rev,0,99);
 								$_SESSION['user_id_rev'] = $user['id'];
-								$html .= $rev; 								
+								$html .= "<em>".$rev."</em>"; 								
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
 							} else {
-								$html .= $rev; 							
+								$html .= "<em>".$rev."</em>"; 							
 							}
-							$html .="</p></div>";
-							
+							$html .="</p></div><br>";							
 							echo $html;											
 						}
 					?>							
