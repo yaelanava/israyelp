@@ -494,8 +494,8 @@ $city_name = getCityName($city_id);
 										<DIV class=\"clearStyles photoBox\">
 											<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>". 
 											"<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</a>" .		
-										"</div>								
-										<p>ביקורת עבור: 
+											"</div>								
+											<p>ביקורת עבור: 
 											<a href=\"$biz_url\">".$biz['name']."</a><br>
 											<u>".$review['title'] ."</u>
 											
