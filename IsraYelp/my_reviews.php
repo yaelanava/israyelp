@@ -125,7 +125,7 @@ $rev_count = $rev_result->num_rows;
 							</table>";
 							if($same_user){
 								$html .= "<div id=\"delete_review\" style=\"padding-left:20px\">
-										<img src=\"./image/delete_rev.png\" height=\"10px\" width=\"10px\">
+										<a href=\"./delete_reviwe.php?review_id=".$review_id."\"><img src=\"./image/delete_rev.png\" height=\"10px\" width=\"10px\"></a>
 										<a href=\"./delete_reviwe.php?review_id=".$review_id."\">מחק ביקורת </a>
 										</div>";
 							}
