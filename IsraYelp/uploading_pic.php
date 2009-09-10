@@ -54,7 +54,7 @@ if (isset($_FILES['image']) && ('' != $_FILES['image']['name'])) {
 			else{
 				$html ="התמונה הועלתה בהצלחה.
 				<br><br>
-				<A href=\"./about_me.php?external_user=$id\"> חזור לחשבון שלי. </A>"; 
+				<A href=\"./profile.php?external_user=$id\"> חזור לחשבון שלי. </A>"; 
 			}
 			echo $html;
 	?>
