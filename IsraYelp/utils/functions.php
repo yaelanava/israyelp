@@ -20,7 +20,7 @@ function getLocBarHtmlCode($city_id, $city_name, $url_prefix){
 	
 	$html = "<H1>".$city_name."</H1>";
 	$html .= "<ul>";
-	$html .= "<li><A href=\"\">עוד...</A></li>"; //todo: replace href 			
+	$html .= "<li>עוד...</li>"; //todo: replace href 			
 	while ($row = mysqli_fetch_assoc($other_cities_result)){
 		$html .= "<li><A href=\"./".$url_prefix."city_id=".$row['id']."\">".$row['name']."</A> | </li>";
 	}			
@@ -77,13 +77,12 @@ function getFooterHTMLCode(){
 						<li> | <a href=\"./main.php?city_id=4\">חיפה</a></li>
 						<li> | <a href=\"./main.php?city_id=5\">באר שבע</a></li>
 						<li> | <a href=\"./main.php?city_id=6\">רחובות</a></li>
-						<li> | <a href=\"./main.php?city_id=7\">חדרה</a></li>
-						<li> | <a href=\"\">ערים נוספות</a></li>
+						<li> | <a href=\"./main.php?city_id=7\">חדרה</a></li>						
 					</ul>
 				</div>
 	
 				<div>
-					<p> זכויות יוצרים </p>
+					<p> &copy; כל הזכויות שמורות | סדנה בפיתוח אפקליקציות web עם php, אוניברסיטת תל-אביב </p>
 				</div>
 			</div>";
 	return $html;
