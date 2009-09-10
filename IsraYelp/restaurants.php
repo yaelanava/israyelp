@@ -139,23 +139,11 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 			?>
 		</div>
 		
-		<div id="biz_map"">
-			<h2>מפת <?php echo $city_name?></h2>
-			<iframe src="http://maps.freemap.co.il/api/openlayers/?
-						zoom=9&
-						lat=<?php echo $topBiz['lat']?>&
-						lon=<?php echo $topBiz['lon']?>&
-						marker=true"
-					width="900" height="350"		       	
-			        scrolling="no"
-			        marginwidth="10" marginheight="10" 
-			        frameborder="1">
-			 </iframe>
-		</div>	
+
 	</div>	
 
 	<div id="sub_cat_lists" class="clearfix">
-		<h2>מסעדות ובתי קפה <?php echo $city_name?> לפי קטגוריות<h2>
+		<h2>מסעדות ובתי קפה ב<?php echo $city_name?> לפי קטגוריות:<h2>
 		<ul class="stripped other_sub_cats">
 			<li><a href="?city_id=<?php echo $city_id?>&category=events">אירועים</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=meat">בשר</a></li>
