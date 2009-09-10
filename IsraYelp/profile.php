@@ -13,8 +13,10 @@ if (isset($_GET['user_id'])){
 }
 
 $same_user = false;
-if ($user_id === $_SESSION['user_id']){
-	$same_user = true;
+if (isset($_SESSION['user_id'])){
+	if ($user_id === $_SESSION['user_id']){
+		$same_user = true;
+	}
 }
 
 //extracting the user information 
@@ -26,7 +28,7 @@ $register_since = $user['register_since'];
 $email = $user['email'];
 $username = $user['username'];
 
-if (!$same_user) {
+if (isset($_SESSION['user_id']) && !$same_user) {
 	$_SESSION['ext_user_name'] = $username;
 
 	$current_user_id = $_SESSION['user_id'];
@@ -34,6 +36,7 @@ if (!$same_user) {
 	$user_result = $mysqli->query($user_query);
 	$current_user = mysqli_fetch_assoc($user_result);
 }
+
 
 //ratings graph
 for ($i=1; $i < 6; $i++){
@@ -148,7 +151,7 @@ $graph = $bar->horizontal();
 								$rev_result = $mysqli->query($review_query);
 								$rev_count = $rev_result->num_rows;
 								
-								$html = "<a href=\"./my_reviews.php?external_user=".$user_id."\">";
+								$html = "<a href=\"./my_reviews.php?user_id=".$user_id."\">";
 								$html .= $rev_count. " ";
 								if($same_user)
 									$html .= "ביקורות נכתבו על ידך </a>";
@@ -161,7 +164,7 @@ $graph = $bar->horizontal();
 									$fav_result = $mysqli->query($fav_query);
 									$fav_count = $fav_result->num_rows;
 									
-									$html = "<a href=\"./my_favs.php?user_id=".$user_id."\">יש לך $fav_count מקומות מועדפים </a>";
+									$html = "<a href=\"./my_favs.php\">יש לך $fav_count מקומות מועדפים </a>";
 									echo $html;
 								}
 							?>		
@@ -213,7 +216,7 @@ $graph = $bar->horizontal();
 					</tr>															
 				</table>
 				<?php
-					if(!$same_user){
+					if(isset($_SESSION['user_id']) && !$same_user){
 						$html = "<div class=\"box\" id=\"send_a_message\" >
 									<h1> כתוב ל- $username הודעה </h1>
 										<form method=\"post\" action=\"send_message_to_user.php\" align=\"center\">
