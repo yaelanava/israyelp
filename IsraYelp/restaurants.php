@@ -23,7 +23,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>מסעדות ב<?php echo $city_name?> | IsraYelp</title>
+	<title>מסעדות ובתי קפה ב<?php echo $city_name?> | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -65,16 +65,16 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 	<div id="top_cat_biz">
 		<div id="top_biz_lists" class="clearfix">
 			<br/>
-			<h1>מסעדות ב<?php echo $city_name?> </h1>
+			<h1>מסעדות ובתי קפה ב<?php echo $city_name?> </h1>
 			<p id="breadcrumbs">קטגוריה: 
 				<a href="./main.php?city_id=<?php echo $city_id?>"><?php echo $city_name?></a> 
 				&raquo;		
 				<?php 
 					if ($category) {
-						echo "<a href=\"?city_id=$city_id\">מסעדות</a>
+						echo "<a href=\"?city_id=$city_id\">מסעדות ובתי קפה</a>
 								&raquo; $category"; 
 					} else {
-						echo "מסעדות";
+						echo "מסעדות ובתי קפה";
 					}
 				?>					
 			</p>
@@ -147,7 +147,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 	</div>	
 
 	<div id="sub_cat_lists" class="clearfix">
-		<h2>מסעדות <?php echo $city_name?> לפי קטגוריות<h2>
+		<h2>מסעדות ובתי קפה <?php echo $city_name?> לפי קטגוריות<h2>
 		<ul class="stripped other_sub_cats">
 			<li><a href="?city_id=<?php echo $city_id?>&category=events">אירועים</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=meat">בשר</a></li>
