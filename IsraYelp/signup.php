@@ -20,7 +20,7 @@ if (isset($_POST['password']) && ('' != $_POST['password']) &&
 
 if (isset($_POST['email']) && ('' != $_POST['email'])){
 	$email = $_POST['email'];
-	if (!check_email($_POST['email'])) {
+	if (!check_email($email)) {
 		$mail_error = "* דוא'ל לא תקין";
 	} else {
 		$query = "SELECT * FROM `users` WHERE email='$email'";
@@ -39,9 +39,9 @@ if (!$password_error && !$mail_error &&
 	isset($_POST['confirmed_password']) && ('' != $_POST['confirmed_password'])) {
 			
 	//mysql_escape_string 
-	$username = mysql_real_escape_string($_POST['username']);
-	$email = mysql_real_escape_string($_POST['email']);
-	$city = mysql_real_escape_string($_POST['city']);		
+	$username = mysql_escape_string($_POST['username']);
+	$email = mysql_escape_string($_POST['email']);
+	$city = mysql_escape_string($_POST['city']);		
 	$today = getdate();
 	$register_since = getMonth($today['mon']).", ".$today['year'];
 		
