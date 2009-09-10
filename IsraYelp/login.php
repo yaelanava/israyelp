@@ -84,8 +84,8 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 							<?php if (isset($_POST['password']) && ('' == $_POST['password'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>										
 						</tr>
 						<tr>
-							<td> <a href=forgot.html>שכחת את הסיסמא?</a></td>
 							<td></td>					
+							<td> <a href=forgot.html>שכחת את הסיסמא?</a></td>
 						</tr>
 						<tr>
 							<td></td>					
