@@ -440,31 +440,34 @@ $city_name = getCityName($city_id);
 				
 			</div>
 			
-			<div id="recent_offers">
-				<img height="50"  width="50" src="./image/present.jpg" align="left">
-				<h3> מבצעים והנחות </h3>
-					<?php 
+			
+			<?php 
 						$today_coupons = "SELECT * FROM `coupons` WHERE city_id=$city_id ORDER BY id DESC LIMIT 2 "; 
 						$result_coupons = $mysqli->query($today_coupons);
-						$html = "<ul class=\"stripped\">";
-						while ($coupon = mysqli_fetch_assoc($result_coupons) ){
-							$biz_id = $coupon['biz_id'];				
-							$biz_type = $coupon['biz_type']; 
-							$coupon_text = $coupon['coupon'];
-							$query = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
-							$result = $mysqli->query($query);
-							$biz = mysqli_fetch_assoc($result);
-							$biz_name = $biz['name'];
-							$biz_url = getBizURL($biz_type, $biz_id);
-							$html .= "<li>
-								<h4><a href=".$biz_url.">".$biz_name."</a></h4>							
-								<p>".$coupon_text."</p>
-								</li>";
+						$num_coupons = $result_coupons->num_rows;
+						if ($num_coupons>0){
+							$html = "<div id=\"recent_offers\"><img height=\"50\"  width=\"50\" src=\"./image/present.jpg\" align=\"left\">
+									<h3> מבצעים והנחות </h3>
+									<ul class=\"stripped\">";
+							while ($coupon = mysqli_fetch_assoc($result_coupons) ){
+								$biz_id = $coupon['biz_id'];				
+								$biz_type = $coupon['biz_type']; 
+								$coupon_text = $coupon['coupon'];
+								$query = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
+								$result = $mysqli->query($query);
+								$biz = mysqli_fetch_assoc($result);
+								$biz_name = $biz['name'];
+								$biz_url = getBizURL($biz_type, $biz_id);
+								$html .= "<li>
+									<h4><a href=".$biz_url.">".$biz_name."</a></h4>							
+									<p>".$coupon_text."</p>
+									</li>";
+							}
+							$html .="</ul></div>";
+							echo $html;
 						}
-						$html .="</ul>";
-						echo $html;
-					?>
-			</div>
+				?>
+			
 										
 				<div id="freshListsModule">
 					<h3>ישר מהתנור...</h3>
