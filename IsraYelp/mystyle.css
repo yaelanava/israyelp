@@ -975,7 +975,7 @@
 	WIDTH: 180px;	}
 	
 	#sub_cat_lists .other_sub_cats LI {	
-	MARGIN-BOTTOM: 3px}
+	MARGIN-BOTTOM: 0px}
 	
 	#sub_cat_lists H2 {
 	margin-top:5px;
@@ -986,7 +986,6 @@
 	width:570px;
 	FONT-SIZE: 14px}
 	
-	/********for a restaurant*********/
 	#bizReviewWrapper {	
 	BORDER-RIGHT: #ccc 1px solid;	
 	BORDER-TOP: #ccc 1px solid;	
