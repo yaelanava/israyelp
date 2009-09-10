@@ -30,8 +30,6 @@ if (isset($_POST['email']) && ('' != $_POST['email'])){
 			$mail_error = "* דוא'ל כבר קיים במערכת";							
 		}
 	}			
-} else {
-	$mail_error = "* שדה חובה";
 }
 
 if (!$password_error && !$mail_error &&
@@ -105,7 +103,13 @@ if (!$password_error && !$mail_error &&
 				<tr>
 					<td>דוא"ל:</td>
 					<td> <input name="email" size="40" <?php if (isset($_POST['email'])) echo "value=\"".$_POST['email']."\""?>></td>
-					<?php if ($mail_error) echo "<td style=\"color:red;\">$mail_error<td/>"?>
+					<?php 
+						if ($mail_error) {
+							echo "<td style=\"color:red;\">$mail_error<td/>";
+						} else if (isset($_POST['email']) && ('' == $_POST['email'])) {
+							echo "<td style=\"color:red;\">* שדה חובה</td>";
+						}
+					?>					
 				</tr>
 				<tr>
 					<td>עיר:</td>
