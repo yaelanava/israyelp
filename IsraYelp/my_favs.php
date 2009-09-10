@@ -5,12 +5,7 @@ include './utils/functions.php';
 
 $mysqli = getMysqliConnection();
 
-$user_id=$_SESSION['user_id'];
-
-$external_user=$_GET['external_user'];
-$same_user=0;
-if($external_user-$user_id==0)
-	$same_user=1;
+$user_id = $_SESSION['user_id'];
 
 //counting how much reviews this user wrote
 $fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
@@ -49,24 +44,17 @@ $fav_count = $fav_result->num_rows;
 			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id']."";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.php?";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
 <div id="bodyContainer">
 		<div id="user_header" align="right">
 			<ul id="userTabs" >
-				
-				<?php 
-					$html="
-							<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
-							<li><a href=\"./my_reviews.php?external_user=".$external_user."\">ביקורות</a></li> ";
-					if ($same_user){
-						$html .= "<li class=\"selected\"><a href=\"./my_favs.php?external_user=".$external_user."\">מועדפים</a></li>";
-					}
-					echo $html;
-				?>
+				<li><a href="./profile.php">פרופיל</a></li>		 
+				<li><a href="./my_reviews.php">ביקורות</a></li>
+				<li class="selected"><a href="./my_favs.php">מועדפים</a></li>					
 			</ul> 
 		</div>
 	

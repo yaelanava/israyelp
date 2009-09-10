@@ -4,15 +4,18 @@ session_start();
 
 include './utils/functions.php';
 
-$user_id = $_SESSION['user_id'];											
+if (isset($_GET['user_id'])){
+	$user_id = $_GET['user_id'];
+} else {
+	$user_id = $_SESSION['user_id'];	
+}
 
-$external_user=$_GET['external_user'];
-$ext_user_name=$_SESSION['ext_user_name'];
+$same_user = false;
+if ($user_id === $_SESSION['user_id']){
+	$same_user = true;
+}
 
-$same_user=0;
-if($external_user-$user_id==0)
-	$same_user=1;
-
+$ext_user_name = $_SESSION['ext_user_name'];
 
 //counting how much reviews this user wrote
 $mysqli = getMysqliConnection();
@@ -52,8 +55,8 @@ $rev_count = $rev_result->num_rows;
 			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id']."";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.php?";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -62,16 +65,12 @@ $rev_count = $rev_result->num_rows;
 			<ul id="userTabs" >	
 				<?php
 					if($same_user)
-						$html = "<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
-						";
+						$html = "<li><a href=\"./profile.php\">פרופיל</a></li>";
 					else 
-					 	$html = "<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל של $ext_user_name</a></li>		 
-						";
-					$html="
-							<li><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
-							<li class=\"selected\"><a href=\"./my_reviews.php?external_user=".$external_user."\">ביקורות</a></li> ";
+					 	$html = "<li><a href=\"./profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
+					$html .= "<li class=\"selected\"><a href=\"./my_reviews.php?user_id=".$user_id."\">ביקורות</a></li>";
 					if ($same_user){
-						$html .= "<li><a href=\"./my_favs.php?external_user=".$external_user."\">מועדפים</a></li>";	
+						$html .= "<li><a href=\"./my_favs.php\">מועדפים</a></li>";	
 					}
 					echo $html;
 				?>			
