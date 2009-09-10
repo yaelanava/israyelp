@@ -14,7 +14,7 @@ if (isset($_GET['user_id'])){
 
 $same_user = false;
 if (isset($_SESSION['user_id'])){
-	if ($user_id === $_SESSION['user_id']){
+	if ($user_id == $_SESSION['user_id']){
 		$same_user = true;
 	}
 }
@@ -27,10 +27,9 @@ $city = $user['city'];
 $register_since = $user['register_since'];
 $email = $user['email'];
 $username = $user['username'];
+$_SESSION['watched_user_name'] = $username;
 
 if (isset($_SESSION['user_id']) && !$same_user) {
-	$_SESSION['ext_user_name'] = $username;
-
 	$current_user_id = $_SESSION['user_id'];
 	$user_query = "SELECT * FROM `users` WHERE id=$current_user_id";
 	$user_result = $mysqli->query($user_query);
@@ -99,34 +98,30 @@ $graph = $bar->horizontal();
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.php?";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
-
-<div id="bodyContainer">
-		<div id="user_header" class="ieSucks" align="right">
-			<ul id="userTabs" >
-					<?php
-						if($same_user)
-							$html = "<li class=\"selected\"><a href=\"./profile.php\"\">פרופיל</a></li>";
-						else 
-						 	$html = "<li class=\"selected\"><a href=\"./profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
-						$html .="<li><a href=\"./my_reviews.php?user_id=".$user_id."\">ביקורות</a></li> ";
-						if ($same_user){
-							$html .= "<li><a href=\"./my_favs.php\">מועדפים</a></li>";	
-						}
-						echo $html;
-					?>
-							
-			</ul> 
+<div id="bodyContainer">			
+		<div id="userTabs">
+			<ul> 
+				<?php
+					if($same_user)
+						$html = "<li class=\"selected\"><a href=\"./profile.php\"\">פרופיל</a></li>";
+					else 
+					 	$html = "<li class=\"selected\"><a href=\"./profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
+					$html .="<li><a href=\"./my_reviews.php?user_id=".$user_id."\">ביקורות</a></li> ";
+					if ($same_user){
+						$html .= "<li><a href=\"./my_favs.php\">מועדפים</a></li>";	
+						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
+					}
+					echo $html;
+				?>							
+			</ul> 	
 		</div>
-			
+		<div id="user_header" align="right">
+			<h1>הפרופיל של <?php echo $username?></h1>			
+		</div>
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">				
-				<table cellspacing="20" cellpadding="1" border="0">
-					<tr>
-						<td width=300>
-							<h1><?php echo $username?></h1>	
-						</td>					
-					</tr>
-					<tr style="vertical-align:top">
+				<table cellspacing="20" cellpadding="1" border="0">					
+					<tr width=300 style="vertical-align:top">
 						<td>
 							<div id="user_pic">
 								<div class="clearStyles photoBox">
@@ -168,12 +163,9 @@ $graph = $bar->horizontal();
 									echo $html;
 								}
 							?>		
-							</ul>
-						</td>
-						
-						<td>
-							<?php echo $graph;?>
-						</td>
+							</ul>							
+							<?php echo $graph;?>							
+						</td>				
 					</tr>	
 					
 					<tr>

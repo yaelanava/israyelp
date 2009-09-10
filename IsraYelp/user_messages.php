@@ -10,16 +10,16 @@ $user_id = $_SESSION['user_id'];
 $watched_user_name = $_SESSION['watched_user_name'];
 
 //counting how much reviews this user wrote
-$fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
-$fav_result = $mysqli->query($fav_query);
-$fav_count = $fav_result->num_rows;
+$query = "SELECT * FROM `messages` WHERE recipient_id='$user_id'";
+$result = $mysqli->query($query);
+$count = $result->num_rows;
 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title> המועדפים שלי | IsraYelp</title>
+	<title> ההודעות שלי | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -52,13 +52,12 @@ $fav_count = $fav_result->num_rows;
 </div>
 
 <div id="bodyContainer">
-		<div id="userTabs">
-			<ul> 
+		<div id="userTabs" >
+			<ul>	
 				<li><a href="./profile.php">פרופיל</a></li>		 
 				<li><a href="./my_reviews.php">ביקורות</a></li>
-				<li class="selected"><a href="./my_favs.php">מועדפים</a></li>
-				<li><a href="./user_messages.php">הודעות</a></li>					
-								
+				<li><a href="./my_favs.php">מועדפים</a></li>
+				<li class="selected"><a href="./user_messages.php">הודעות</a></li>										
 			</ul> 
 		</div>
 		<div id="user_header" align="right">
@@ -67,27 +66,24 @@ $fav_count = $fav_result->num_rows;
 	<div id="user_details_wrapper">		
 		<?php 
 			$html = "<br/>
-					<H1>יש לך $fav_count מקומות מועדפים</H1>
+					<H1>יש לך $count הודעות</H1>
 					<br/>";	
 			echo $html;
-			while ($fav = mysqli_fetch_assoc($fav_result)){	
-				$fav_biz_id=$fav['biz_id'];
-				$fav_biz_type=$fav['biz_type'];
-				$biz_url = getBizURL($fav_biz_type, $fav_biz_id);
+			while ($msg = mysqli_fetch_assoc($result)){	
+				$sender_id = $msg['sender_id'];
 				
-				$query_biz = "SELECT * FROM `$fav_biz_type` WHERE id=$fav_biz_id";
-				$result_biz = $mysqli->query($query_biz);
-				$biz = mysqli_fetch_assoc($result_biz);	
-				$biz_address = $biz['address'];
+				$query_sender = "SELECT * FROM `users` WHERE id=$sender_id";
+				$result_sender = $mysqli->query($query_sender);
+				$sender = mysqli_fetch_assoc($result_sender);	
+				$sender_name = $sender['username'];
 				
 				$html = "<div id=\"my_review\">					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
-										<span><b><a href=".$biz_url.">".$biz['name']."</a></b></span>
-										".", ".$biz_address."
+										<span><b><a href=\"./profile.php?user_id=$sender_id/.\">$sender_name</a></b></span>
 									</td>
-									 
+									 <td>".$msg['message']."
 								</tr>
 							</table>
 						</div>";
