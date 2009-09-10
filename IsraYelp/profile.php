@@ -6,31 +6,38 @@ require_once './utils/Html_graph.php';
 
 $mysqli = getMysqliConnection();
 
-$user_id = $_SESSION['user_id'];
-$external_user=$_GET['external_user'];
+if (isset($_GET['user_id'])){
+	$user_id = $_GET['user_id'];
+} else {
+	$user_id = $_SESSION['user_id'];
+}
 
-$same_user=0;
-if($external_user-$user_id==0)
-	$same_user=1;
+$same_user = false;
+if ($user_id === $_SESSION['user_id']){
+	$same_user = true;
+}
 
 //extracting the user information 
-$user_query = "SELECT * FROM `users` WHERE id= $external_user";
+$user_query = "SELECT * FROM `users` WHERE id=$user_id";
 $user_result = $mysqli->query($user_query);
 $user = mysqli_fetch_assoc($user_result);
 $city = $user['city'];
 $register_since = $user['register_since'];
-$email=$user['email'];
-$username=$user['username'];
-$_SESSION['ext_user_name']=$username;
+$email = $user['email'];
+$username = $user['username'];
 
-//extracting the real user information
-$real_user_query = "SELECT * FROM `users` WHERE id= $user_id";
-$real_user_result = $mysqli->query($real_user_query);
-$real_user = mysqli_fetch_assoc($real_user_result);
+if (!$same_user) {
+	$_SESSION['ext_user_name'] = $username;
+
+	$current_user_id = $_SESSION['user_id'];
+	$user_query = "SELECT * FROM `users` WHERE id=$current_user_id";
+	$user_result = $mysqli->query($user_query);
+	$current_user = mysqli_fetch_assoc($user_result);
+}
 
 //ratings graph
 for ($i=1; $i < 6; $i++){
-	$query = "SELECT * FROM `reviews` WHERE user_id=$external_user and grading=$i";
+	$query = "SELECT * FROM `reviews` WHERE user_id=$user_id and grading=$i";
 	$result = $mysqli->query($query);
 	$ratings[$i] = $result->num_rows;
 }
@@ -39,7 +46,7 @@ $text = array("5","4","3","2","1");
 $value = array($ratings[5],$ratings[4],$ratings[3],$ratings[2],$ratings[1]);
 
 $bar = new HTML_graph();
-$bar->set($text, $value, 200, 10, 0, "FFB164", "E8E8D0",0);
+$bar->set($text, $value, 150, 10, 0, "FFB164", "E8E8D0",0);
 $bar->SetTitle("התפלגויות דירוגים");
 $bar->SetBgColour("FFE4B5");
 $bar->SetPercentage(false);
@@ -85,8 +92,8 @@ $graph = $bar->horizontal();
 			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
 			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
 			
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$user_id."";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.php?";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -95,15 +102,12 @@ $graph = $bar->horizontal();
 			<ul id="userTabs" >
 					<?php
 						if($same_user)
-							$html = "<li class=\"selected\"><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל שלי</a></li>		 
-							";
+							$html = "<li class=\"selected\"><a href=\"./profile.php\"\">פרופיל</a></li>";
 						else 
-						 	$html = "<li class=\"selected\"><a href=\"./about_me.php?external_user=".$external_user."\">הפרופיל של $username</a></li>		 
-							"; 
-						$html .="
-								<li><a href=\"./my_reviews.php?external_user=".$external_user."\">ביקורות</a></li> ";
+						 	$html = "<li class=\"selected\"><a href=\"./profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
+						$html .="<li><a href=\"./my_reviews.php?user_id=".$user_id."\">ביקורות</a></li> ";
 						if ($same_user){
-							$html .= "<li><a href=\"./my_favs.php?external_user=".$external_user."\">מועדפים</a></li>";	
+							$html .= "<li><a href=\"./my_favs.php\">מועדפים</a></li>";	
 						}
 						echo $html;
 					?>
@@ -123,12 +127,12 @@ $graph = $bar->horizontal();
 						<td>
 							<div id="user_pic">
 								<div class="clearStyles photoBox">
-									<img src="<? echo getUserPictureSrc($external_user, "./") ?>" height="150px" width="150px">
+									<img src="<? echo getUserPictureSrc($user_id, "./") ?>" height="150px" width="150px">
 									
 										<?php 
 											if($same_user){
 												$html = "<p id=\"photo_action_link\">
-														<a href=\"./upload_pic.php\" class=\"small\">ערוך תמונה</a>
+														<a href=\"./uploadUserPictureForm.php\" class=\"small\">ערוך תמונה</a>
 							 							</p>";
 												echo $html;
 											}
@@ -140,11 +144,11 @@ $graph = $bar->horizontal();
 							<ul class="stripped" id="user_stats">					
 							<?php		
 								//counting how much reviews this user wrote
-								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$external_user'";
+								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
 								$rev_result = $mysqli->query($review_query);
 								$rev_count = $rev_result->num_rows;
 								
-								$html = "<a href=\"./my_reviews.php?external_user=".$external_user."\">";
+								$html = "<a href=\"./my_reviews.php?external_user=".$user_id."\">";
 								$html .= $rev_count. " ";
 								if($same_user)
 									$html .= "ביקורות נכתבו על ידך </a>";
@@ -153,15 +157,11 @@ $graph = $bar->horizontal();
 
 								if ($same_user){
 									echo "<br></br>";
-									$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$external_user'";
+									$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$user_id'";
 									$fav_result = $mysqli->query($fav_query);
 									$fav_count = $fav_result->num_rows;
 									
-									$html = "<a href=\"./my_favs.php?external_user=".$external_user."\">";
-									if(!$same_user)
-										$html .= "ל- $username  יש $fav_count מקומות מועדפים</a>";
-									else
-										$html .= "יש לך $fav_count מקומות מועדפים </a>";
+									$html = "<a href=\"./my_favs.php?user_id=".$user_id."\">יש לך $fav_count מקומות מועדפים </a>";
 									echo $html;
 								}
 							?>		
@@ -178,13 +178,9 @@ $graph = $bar->horizontal();
 							<span id="highlight2">מיקום: </span>
 							<?php    					
 			    				if (empty($city)) {
-			    					if($same_user)
-			    						echo 'עיר מגוריך אינה ידועה';
-			    					else 
-			    						echo 'לא ידוע';			    				
+		    						echo 'לא ידוע';			    				
 			    				} else {
 			    					echo  $city;			    					
-			    					echo "<br />";
 			    				}
 			    				
 			    				if($same_user){
@@ -192,7 +188,7 @@ $graph = $bar->horizontal();
 			    							<a href=\"edit_city.php\">ערוך</a></span></p>";	
 			    					echo $html;		    								    				
 			    				}
-								?>
+							?>
 						</td>
 					</tr>
 						
@@ -234,10 +230,10 @@ $graph = $bar->horizontal();
 												</dd>
 											</dl>
 											<input type=\"submit\" name=\"action_select\" value=\"שלח\">
-											<input type=\"hidden\" name=\"real_user_email\" value=".$real_user['email'].">
+											<input type=\"hidden\" name=\"real_user_email\" value=".$current_user['email'].">
 											<input type=\"hidden\" name=\"ext_user_email\" value=".$email.">
-											<input type=\"hidden\" name=\"real_name\" value=".$real_user['username'].">	
-											<input type=\"hidden\" name=\"ext_id\" value=".$external_user.">
+											<input type=\"hidden\" name=\"real_name\" value=".$current_user['username'].">	
+											<input type=\"hidden\" name=\"ext_id\" value=".$user_id.">
 										</form>
 									</div>";
 						echo $html;

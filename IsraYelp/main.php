@@ -61,8 +61,8 @@ $city_name = getCityName($city_id);
 				</A>
 			</LI>
 			
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id']."";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.php?";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 	
@@ -370,7 +370,7 @@ $city_name = getCityName($city_id);
 				$result = $mysqli->query($query);
 				while ($user = mysqli_fetch_assoc($result)){
 					$html = "<div>
-							<P><A href=\"./about_me.php?external_user=".$user['id']."\">".$user['username']."</A></P>
+							<P><A href=\"./profile.php?user_id=".$user['id']."\">".$user['username']."</A></P>
 							<div class=\"clearStyles photoBox\">
 								<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
 							</div>
@@ -414,7 +414,7 @@ $city_name = getCityName($city_id);
 											<IMG style=\"WIDTH: 50px; HEIGHT: 50px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 										</div>
 										<p>
-											<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\">" .$user['username'] ."</A> 
+											<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\">" .$user['username'] ."</A> 
 										</p>
 									</div>
 								
@@ -489,7 +489,7 @@ $city_name = getCityName($city_id);
 						
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+											<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 										</div>								
 										<p>
 											<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."

@@ -5,7 +5,7 @@ $error_msg = 0;
 
 include './utils/functions.php';
 
-if (isset($_GET['logout']) && $_GET['logout']){
+if (isset($_GET['logout'])){
 	session_destroy();
 	header("Location: main.php");
 	die(0);				
