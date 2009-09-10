@@ -62,4 +62,29 @@ function getBizAdditionalInfo($type, $biz) {
 	return $html;
 }
 
+function getTypeName($type) {
+	switch ($type){
+		case "restaurants":
+			$type = "מסעדות ובתי קפה";
+			break;
+		
+		case "shopping":
+			$type = "אתרי קניות";
+			break;
+			
+		case "nightlife":
+			$type = "מקומות בילוי";
+			break;
+			
+		case "beauty":
+			$type = "אתרי ספא ויופי";
+			break;
+		case "hotels":
+			$type = "מלונות";
+			break;	
+	}
+	return $type;
+}
+
+
 ?>

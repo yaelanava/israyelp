@@ -68,7 +68,7 @@ $city_name = getCityName($city_id);
 	
 <div id="bodyContainer">
 	<div id="locBar">
-		<?php echo getLocBarHtmlCode($city_id, $city_name, "main");?>
+		<?php echo getLocBarHtmlCode($city_id, $city_name, "./main.php?");?>
 	</div>
  
  	<?php 
