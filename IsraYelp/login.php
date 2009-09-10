@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-$error_msg = 0;
-
 include './utils/functions.php';
 
 if (isset($_GET['logout'])){
@@ -11,11 +9,13 @@ if (isset($_GET['logout'])){
 	die(0);				
 }
 
+$error_msg = false;
+
 if (isset($_POST['email']) && ('' != $_POST['email']) && 
 	isset($_POST['password']) && ('' != $_POST['password'])) {
 
-	$email = mysql_real_escape_string($_POST['email']);
-	$password = mysql_real_escape_string($_POST['password']);
+	$email = mysql_escape_string($_POST['email']);
+	$password = mysql_escape_string($_POST['password']);
 	
 	$mysqli = getMysqliConnection();	
 	
@@ -85,7 +85,7 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 						</tr>
 						<tr>
 							<td></td>					
-							<td> <a href=forgot.html>שכחת את הסיסמא?</a></td>
+							<td> <a href=forgot.php>שכחת את הסיסמא?</a></td>
 						</tr>
 						<tr>
 							<td></td>					

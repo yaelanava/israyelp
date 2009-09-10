@@ -12,10 +12,9 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 	isset($_POST['biz_id']) && ('' != $_POST['biz_id']) &&
 	isset($_POST['biz_type']) && ('' != $_POST['biz_type'])) {
 	
-	$review =  mysql_real_escape_string($_POST['review']);
+	$review =  mysql_escape_string($_POST['review']);
 	$grading = $_POST['grading'];
-	$title = mysql_real_escape_string($_POST['title']);
-
+	$title = mysql_escape_string($_POST['title']);
 	
 	$city_id = $_SESSION['city_id'];
 	$user_id = $_SESSION['user_id'];
