@@ -15,7 +15,7 @@ if ($user_id === $_SESSION['user_id']){
 	$same_user = true;
 }
 
-$ext_user_name = $_SESSION['ext_user_name'];
+$watched_user_name = $_SESSION['watched_user_name'];
 
 //counting how much reviews this user wrote
 $mysqli = getMysqliConnection();
@@ -61,8 +61,8 @@ $rev_count = $rev_result->num_rows;
 </div>
 
 <div id="bodyContainer">
-		<div id="user_header"  align="right">
-			<ul id="userTabs" >	
+		<div id="userTabs" >
+			<ul>	
 				<?php
 					if($same_user)
 						$html = "<li><a href=\"./profile.php\">פרופיל</a></li>";
@@ -71,10 +71,14 @@ $rev_count = $rev_result->num_rows;
 					$html .= "<li class=\"selected\"><a href=\"./my_reviews.php?user_id=".$user_id."\">ביקורות</a></li>";
 					if ($same_user){
 						$html .= "<li><a href=\"./my_favs.php\">מועדפים</a></li>";	
+						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
 					}
 					echo $html;
 				?>			
 			</ul> 
+		</div>		
+		<div id="user_header" align="right">
+			<h1>הפרופיל של <?php echo $watched_user_name?></h1>			
 		</div>
 	
 	
@@ -86,7 +90,7 @@ $rev_count = $rev_result->num_rows;
 							<br/>";
 				}else{
 					$html = "<br/>
-							<H1> $ext_user_name כתב כבר $rev_count ביקורות לאתר</H1>
+							<H1> $watched_user_name כתב כבר $rev_count ביקורות לאתר</H1>
 							<br/>";
 				}
 				echo $html;
