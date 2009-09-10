@@ -154,15 +154,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 		</div>	
 	</div>	
 
-	<div id="sub_cat_lists" class="clearfix">
-		<h2>אתרי ספא ויופי ב<?php echo $city_name?> לפי קטגוריות<h2>
-		<ul class="stripped other_sub_cats">
-			<li><a href="?city_id=<?php echo $city_id?>&category=Hair Salons">עיצוב שיער</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Hair removal">הסרת שיער</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Day Spas">ספא</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Nail Salons">בניית ציפורניים</a></li>
-		</ul>
-	</div>	
+
 </div>
 
 <?php echo getFooterHTMLCode()?>
