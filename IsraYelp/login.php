@@ -92,11 +92,10 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 		</div>
 		
 		<div class="box" style="text-align:center;">
-				<br/>
-				<H1 style="text-align:center">עדיין אין לך חשבון ?</H1>
+				<H1 style="text-align:center">אין לך חשבון ?</H1>
 				<p style="text-align:center">זה בסדר, אנחנו עדיין אוהבים אותך.</p>
 				<br/>
-				<p style="text-align:center"><a href="signup.php"><img src="image/signup.png" style="border:0px;" alt="signup"></a></p>
+				<p style="text-align:center"><a href="signup.php"><img src="image/signup.png" style="border:0px;"></a></p>
 				<br/>
 				<p style="text-align:center">IsraYelp היא דרך קלה ומהנה למצוא, לבקר ולדבר על כל מה שטוב ולא טוב באזוריך. <br> מדובר באנשים אמיתיים הנותנים ביקורת מהימנה על כל דבר, החל ממסעדות ועד למספרות...</p>
 		</div>			
