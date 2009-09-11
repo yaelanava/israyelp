@@ -40,13 +40,8 @@
 
 </head>
 <body>
-<div id="head">
-		<div id="logo">
-			<A href="./main.php">Yelp</A>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+<?php echo getHeadHTMLCode()?>
+
 <div id="bodyContainer" dir="rtl">
 	<div class="box" >
 			

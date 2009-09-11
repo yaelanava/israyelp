@@ -55,13 +55,9 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 </head>
 
 <body>
-<div id="head">
-		<div id="logo">
-			<A href="./main.php">Yelp</A>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+<?php echo getHeadHTMLCode()?>
+
+
 <div id="bodyContainer" dir="rtl">
 	<div class="box" style="width:450px;margin-right:10px;float:right;margin-top:10px;text-align:right;border-left:#ccc 1px solid;margin-left:30px;">
 			<H1>התחברות</H1>

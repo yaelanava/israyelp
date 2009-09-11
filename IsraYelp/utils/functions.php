@@ -55,6 +55,56 @@ function getCityID($city_name){
 	return $city['id'];
 }
 
+function getHeadHTMLCode(){
+	$logged_message = session_is_registered('username') 
+				  ? "אתה מחובר כ-".$_SESSION['username']
+				  : "";	
+	$html = "		
+		<div id=\"head\">
+				<div id=\"logo\">
+					<A href=\"./main.php\"></A>
+				</div>
+				<div id=\"register\">
+					<p>".$logged_message."</p>
+				</div>
+				<div id=\"leftEdge\"></div>
+				<div id=\"rightEdge\"></div>
+		</div>";
+	return $html;
+}
+
+function getNavHTMLCode(){
+	$write_review_link = !session_is_registered('username') 
+				  ? "./login.php" 
+				  : "./write_review.php";
+	$login_link = session_is_registered('username') 
+				  ? "./login.php?logout" 
+				  : "./login.php";
+	$login_message = session_is_registered('username') 
+				  ? "התנתק" 
+				  : "כנס";
+	$myAccount_link = session_is_registered('username') 
+					  ? "./profile.php" 
+					  : "./login.php";	
+		  
+	$html = "
+		<div id=\"navContainer\">
+			<ul>			
+				<LI class=\"header\" id=\"writeReview\"><A href=".$write_review_link.">כתוב ביקורת</A> | </LI>
+				<LI class=\"header\" id=\"findReview\"><A href= \"./find_review.php\">חפש ביקורת</A></LI>				
+				<LI class=\"header_login\"><A href=".$login_link." >".$login_message."</A></LI>
+				<LI class=\"header_login\"><A href=".$myAccount_link." >החשבון שלי </A> | </LI>
+			</ul>
+		</div>";
+	return $html;
+	
+
+	
+}
+
+
+
+
 function getFooterHTMLCode(){
 	$myAccount_link = session_is_registered('username') 
 					  ? "./profile.php" 

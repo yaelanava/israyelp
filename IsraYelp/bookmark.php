@@ -49,13 +49,8 @@ if ($count == 0) {
 	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 <body dir="rtl">
-<div id="head">
-		<div id="logo">
-			<A href="./main.php">Yelp</A>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+<?php echo getHeadHTMLCode()?>
+
 <div id="bodyContainer_Centered">
 	<p><?php echo $bookmark_msg?></p>
 	<a href="<?php echo $biz_url?>">לחץ כאן כדי לחזור לדף הקודם.</a>

@@ -72,13 +72,8 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 </head>
 
 <body dir="rtl">
-<div id="head">
-		<div id="logo">
-			<A href="./main.php">Yelp</A>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+<?php echo getHeadHTMLCode()?>
+
 <div id="bodyContainer_Centered">
 	<p><?php if ($result) {echo "הביקורת נשמרה בהצלחה.";} else {echo "הביקורת לא נשמרה. אנא נסה שוב";}?>
 		<br><br>
