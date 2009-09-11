@@ -404,32 +404,30 @@ $city_name = getCityName($city_id);
 							$result = $mysqli->query($query);
 							$biz = mysqli_fetch_assoc($result);
 							$biz_url = getBizURL($biz_type, $biz_id);
+							$image_srs = "./biz_pics/$biz_type/$biz_id.jpg";
 							
 							$rev = $review['review'];
+							$rev_title = $review['title'];
 							
 							$html =  "<div id=\"reviewerInfo\">
-										<div class=\"clearStyles photoBox\" >
-											<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\">
-											<IMG style=\"WIDTH: 50px; HEIGHT: 50px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
-										</div>
-										<p>
-											<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\">" .$user['username'] ."</A> 
-										</p>
+											<div class=\"clearStyles bizPhotoBox\">
+												<a  href=\"$biz_url\"><img src=\"$image_srs\" style=\"WIDTH: 60px; HEIGHT: 70px\" alt=\"".$biz['name']."\"></a>
+											</div>
 									</div>
 								
 									<div id=\"reviewPick\">
+										<p>נכתבה עבור: <a href=\"$biz_url\">".$biz['name']."</a></p>
+										<p style=\"padding-top:.3em;\">
 										<div class=\"rating\">
 											<IMG class=\"stars_". $review['grading']." height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />							
-										</div>
-										<p><a href=\"$biz_url\">".$biz['name']."</a></p>
-										<p style=\"padding-top:.3em;\">";
+										</div>";
 							if (strlen($rev) > 100){
 								$rev = substr($rev,0,99);
 								$_SESSION['user_id_rev'] = $user['id'];
-								$html .= $rev; 								
+								$html .= "<strong>".$rev_title."</strong><br><em>".$rev."</em>";								
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
 							} else {
-								$html .= $rev; 							
+								$html .= "<strong>".$rev_title."</strong><br><em>".$rev."</em>"; 	 							
 							}
 							$html .="<p></div>";
 														
@@ -496,7 +494,7 @@ $city_name = getCityName($city_id);
 											"</div>								
 											<p>ביקורת עבור: 
 											<a href=\"$biz_url\">".$biz['name']."</a><br>
-											<u>".$review['title'] ."</u>
+											<strong>".$review['title'] ."</strong>
 											
 											<br/>";																																														
 							if (strlen($rev) > 100){
