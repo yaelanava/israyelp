@@ -960,19 +960,39 @@
 	float: right;
 	}
 	
+	#bottom_cat {
+	WIDTH: 910px;	
+	BORDER-TOP: #ccc 1px solid;
+	MARGIN-RIGHT: 10px;
+	}
+	
+	#bottom_cat H3 {
+	MARGIN-TOP: 5px;
+	PADDING-TOP:5px;
+	text-align:right;	
+	width:570px;
+	FONT-SIZE: 14px
+	}
+	
+	
+	UL#bottom_cat LI {	
+	MARGIN: 0px}
+	
+
+	
 	#sub_cat_lists {
 	PADDING-TOP: 20px;	
-	MARGIN-RIGHT: 10px;
+	MARGIN-RIGHT: 5px;
 	MARGIN-BOTTOM: 12px;	
 	PADDING-BOTTOM: 10px;	
 	WIDTH: 910px;
 	FLOAT: right;
-	BORDER-TOP: #ccc 1px solid	}
+	BORDER-TOP: #ccc 1px solid}
 	
 	#sub_cat_lists .other_sub_cats {	
 	MARGIN-TOP: 5px;	
 	FLOAT: right;	
-	WIDTH: 180px;	}
+	WIDTH: 180px;}
 	
 	#sub_cat_lists .other_sub_cats LI {	
 	MARGIN-BOTTOM: 0px}
