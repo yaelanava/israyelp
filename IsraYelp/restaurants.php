@@ -81,7 +81,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 										</div> 
 										<em class=\"smaller\">".$topBiz['num_reviews']." ביקורות</em>
 									</div>
-									<p class=\"smaller\">קטגוריה:".$topBiz['category']."</p>
+									<p class=\"smaller\">קטגוריה: ".$topBiz['category']."</p>
 									<p>".$BizReview['review']."</p>
 								</div>";
 						echo $html;
@@ -101,7 +101,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 										</div> 
 										<em class=\"smaller\">".$biz['num_reviews']." ביקורות</em>
 									</div>
-									<p class=\"smaller\">קטגוריה:".$biz['category']."</p>
+									<p class=\"smaller\">קטגוריה: ".$biz['category']."</p>
 								</li>";
 							$i++;						}
 					$html .= "</ul>";
