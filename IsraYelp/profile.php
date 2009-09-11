@@ -89,9 +89,9 @@ $graph = $bar->horizontal();
 						$html = "<li class=\"selected\"><a href=\"./profile.php\"\">פרופיל</a></li>";
 					else 
 					 	$html = "<li class=\"selected\"><a href=\"./profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
-					$html .="<li><a href=\"./my_reviews.php?user_id=".$user_id."\">ביקורות</a></li> ";
+					$html .="<li><a href=\"./user_reviews.php?user_id=".$user_id."\">ביקורות</a></li> ";
 					if ($same_user){
-						$html .= "<li><a href=\"./my_favs.php\">מועדפים</a></li>";	
+						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
 						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
 					}
 					echo $html;
@@ -129,7 +129,7 @@ $graph = $bar->horizontal();
 								$rev_result = $mysqli->query($review_query);
 								$rev_count = $rev_result->num_rows;
 								
-								$html = "<a href=\"./my_reviews.php?user_id=".$user_id."\">";
+								$html = "<a href=\"./user_reviews.php?user_id=".$user_id."\">";
 								$html .= $rev_count. " ";
 								if($same_user)
 									$html .= "ביקורות נכתבו על ידך </a>";
@@ -142,7 +142,7 @@ $graph = $bar->horizontal();
 									$fav_result = $mysqli->query($fav_query);
 									$fav_count = $fav_result->num_rows;
 									
-									$html = "<a href=\"./my_favs.php\">יש לך $fav_count מקומות מועדפים </a>";
+									$html = "<a href=\"./user_bookmarks.php\">יש לך $fav_count מקומות מועדפים </a>";
 									echo $html;
 								}
 							?>		

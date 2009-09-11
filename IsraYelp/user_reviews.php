@@ -50,9 +50,9 @@ $rev_count = $rev_result->num_rows;
 						$html = "<li><a href=\"./profile.php\">פרופיל</a></li>";
 					else 
 					 	$html = "<li><a href=\"./profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
-					$html .= "<li class=\"selected\"><a href=\"./my_reviews.php?user_id=".$user_id."\">ביקורות</a></li>";
+					$html .= "<li class=\"selected\"><a href=\"./user_reviews.php?user_id=".$user_id."\">ביקורות</a></li>";
 					if ($same_user){
-						$html .= "<li><a href=\"./my_favs.php\">מועדפים</a></li>";	
+						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
 						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
 					}
 					echo $html;
