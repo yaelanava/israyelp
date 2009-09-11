@@ -88,7 +88,7 @@ $result_reviews = $mysqli->query($query_reviews);
 									} else {
 										echo ("./send_to_friend.php");
 									} 
-								?>">
+								?>"
 						id="bizShare">
 						<img src= "./image/send2friend.png" width=108 height=41></a>
 					

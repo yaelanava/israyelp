@@ -307,7 +307,6 @@ INSERT INTO `shopping` (`id`, `name`, `another_name`, `address`, `city_id`, `lat
 
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
-  `id` bigint(20) default NULL,
   `sender_id` bigint(20) NOT NULL,
   `recipient_id` bigint(20) NOT NULL,
   `message` text NOT NULL,
@@ -318,8 +317,9 @@ CREATE TABLE IF NOT EXISTS `messages` (
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`id`, `sender_id`, `recipient_id`, `message`) VALUES
-(NULL, 1, 2, 'hello!!');
+INSERT INTO `messages` (`sender_id`, `recipient_id`, `message`) VALUES
+(1, 2, 'hello!!!! :)'),
+(2, 1, 'hello to you too!!!! :)');
 
 
 -- ----------------------------------------------------------
