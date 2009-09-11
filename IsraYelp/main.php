@@ -384,8 +384,8 @@ $city_name = getCityName($city_id);
 										<div class=\"rating\">
 											<IMG class=\"stars_".$review['grading']." height=\"325\" alt=\"".$review['grading']."כוכבים \" src=\"./image/stars_map.png\" width=\"83\" />							
 										</div>";
-							if (strlen($rev) > 120){
-								$rev = substr($rev,0,119);
+							if (strlen($rev) > 150){
+								$rev = substr($rev,0,149);
 								$_SESSION['user_id_rev'] = $user['id'];
 								$html .= "<strong>".$rev_title."</strong><br><em>".$rev."</em>";								
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
@@ -458,11 +458,11 @@ $city_name = getCityName($city_id);
 											<strong>".$review['title'] ."</strong>
 											
 											<br/>";																																														
-							if (strlen($rev) > 120){
-								$rev = substr($rev,0,119);
+							if (strlen($rev) > 150){
+								$rev = substr($rev,0,149);
 								$_SESSION['user_id_rev'] = $user['id'];
 								$html .= "<em>".$rev."</em>"; 								
-								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
+								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\" style=\"FONT-SIZE:10px\"> להמשך לחץ כאן...</a>";
 							} else {
 								$html .= "<em>".$rev."</em>"; 							
 							}
