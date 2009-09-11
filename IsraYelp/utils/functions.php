@@ -84,7 +84,7 @@ function getNavHTMLCode(){
 				  ? "התנתק" 
 				  : "כנס";
 	$myAccount_link = session_is_registered('username') 
-					  ? "./profile.php" 
+					  ? "./user_profile.php" 
 					  : "./login.php";	
 		  
 	$html = "
@@ -101,13 +101,13 @@ function getNavHTMLCode(){
 
 function getFooterHTMLCode(){
 	$myAccount_link = session_is_registered('username') 
-					  ? "./profile.php" 
+					  ? "./user_profile.php" 
 					  : "./signup.php";
 	$html = "<div id=\"footer\">	
 				<div>		
 					<ul id=\"aboutSite\">
 						<li><a href=\"$myAccount_link\">החשבון שלי</a></li>
-						<li> | <a href=\"./faq.php\" >שאלות נפוצות </a></li>
+						<li> | <a href=\"./faqs.php\" >שאלות נפוצות </a></li>
 						<li> | <a href=\"./contact_us.php\" >צור קשר </a></li>
 					</ul>
 				</div>

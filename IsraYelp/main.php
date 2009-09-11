@@ -52,24 +52,18 @@ $city_name = getCityName($city_id);
 	<form method="post" action="./search.php" name="external_search"> 
 		<p>
 			<label for="find_desc_ext"> שם המקום <em> שם העסק</em></label> 
-			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="place_name" tabindex="1" value="" >
-			
+			<input type="text" align="right" maxlength="64" id="find_desc_ext" name="place_name" tabindex="1" value="" >			
 		</p>
 		<p>
 			<label for="find_loc_ext">סוג המקום <em> </em></label>
 			<?php echo getTypesHTMLCode()?>
 		</p>
-
 		<p>
 			<label for="find_loc_ext">עיר <em> </em></label>
-
-			<?php echo getCitiesHTMLCode();?>
-			
-			</p>
+			<?php echo getCitiesHTMLCode();?>			
+		</p>
 		<input type="hidden" name="source" value="main">
-
 		<button type="submit" id="ex_submit_button" class="form_img_btn" tabindex="3"></button>
-
 	</form>
 	</div>
 
@@ -308,7 +302,7 @@ $city_name = getCityName($city_id);
 				</li>
 				<li class="health"><a href="">רפואה ושירותי בריאות</a> 0  </li>
 				<li class="food"><a href="">מזון</a> 0  </li>				
-				<li class="education"><a href="">השכלה</a> 0  </li>
+				<li class="education"><a href="">חינוך והשכלה</a> 0  </li>
 				<li class="pets">  <a href="">חיות מחמד</a> 0 </li>
 				
 				<!--				
@@ -339,7 +333,7 @@ $city_name = getCityName($city_id);
 				$result = $mysqli->query($query);
 				while ($user = mysqli_fetch_assoc($result)){
 					$html = "<div>
-							<P><A href=\"./profile.php?user_id=".$user['id']."\">".$user['username']."</A></P>
+							<P><A href=\"./user_profile.php?user_id=".$user['id']."\">".$user['username']."</A></P>
 							<div class=\"clearStyles photoBox\">
 								<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
 							</div>
@@ -383,16 +377,15 @@ $city_name = getCityName($city_id);
 											<div class=\"clearStyles bizPhotoBox\">
 												<a  href=\"$biz_url\"><img src=\"$image_srs\" style=\"WIDTH: 60px; HEIGHT: 70px\" alt=\"".$biz['name']."\"></a>
 											</div>
-									</div>
-								
+									</div>								
 									<div id=\"reviewPick\">
 										<p>נכתבה עבור: <a href=\"$biz_url\">".$biz['name']."</a></p>
 										<p style=\"padding-top:.3em;\">
 										<div class=\"rating\">
-											<IMG class=\"stars_". $review['grading']." height=\"325\" alt=\"".$review['grading']."כוכבים \" src=\"./image/stars_map.png\" width=\"83\" />							
+											<IMG class=\"stars_".$review['grading']." height=\"325\" alt=\"".$review['grading']."כוכבים \" src=\"./image/stars_map.png\" width=\"83\" />							
 										</div>";
-							if (strlen($rev) > 100){
-								$rev = substr($rev,0,99);
+							if (strlen($rev) > 120){
+								$rev = substr($rev,0,119);
 								$_SESSION['user_id_rev'] = $user['id'];
 								$html .= "<strong>".$rev_title."</strong><br><em>".$rev."</em>";								
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
@@ -403,10 +396,8 @@ $city_name = getCityName($city_id);
 														
 							echo $html;							
 						}
-					?>				
-				
-			</div>
-			
+					?>								
+			</div>	
 			
 			<?php 
 						$today_coupons = "SELECT * FROM `coupons` WHERE city_id=$city_id ORDER BY id DESC LIMIT 2 "; 
@@ -459,16 +450,16 @@ $city_name = getCityName($city_id);
 						
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>". 
-											"<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</a>" .		
+											<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>". 
+											"<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</a>" .		
 											"</div>								
 											<p>ביקורת עבור: 
 											<a href=\"$biz_url\">".$biz['name']."</a><br>
 											<strong>".$review['title'] ."</strong>
 											
 											<br/>";																																														
-							if (strlen($rev) > 100){
-								$rev = substr($rev,0,99);
+							if (strlen($rev) > 120){
+								$rev = substr($rev,0,119);
 								$_SESSION['user_id_rev'] = $user['id'];
 								$html .= "<em>".$rev."</em>"; 								
 								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
@@ -492,8 +483,6 @@ $city_name = getCityName($city_id);
 		<area rel="nofollow" alt="בדוק מסעדות" href="./restaurants.php?city_id=<?php echo $city_id; ?>" coords="718,6,941,79">
 	</map>
 </div>
-
-
 
 <?php echo getFooterHTMLCode()?>
 
