@@ -95,7 +95,7 @@ $rev_count = $rev_result->num_rows;
 										<td width=200><span><b>הביקורת נכתבה עבור </b><a href=\"$biz_url\">".$biz['name']."</a>"."</span>
 											<DIV class=\"ext_rating\">
 												<DIV class=\"rating\">
-													<IMG class=\"stars_". $grading."\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
+													<IMG class=\"stars_". $grading."\" height=\"325\" alt=\"".$review['grading']."כוכבים \" src=\"./image/stars_map.png\" width=\"83\" />
 												</DIV>
 												<EM class=\"smaller\">". $review['added']."</EM> 
 											</DIV>
