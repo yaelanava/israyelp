@@ -148,20 +148,20 @@ $result_reviews = $mysqli->query($query_reviews);
 											<DIV class=\"mini\">
 												<DIV class=\"photoBoxSm\">
 													<DIV class=\"clearStyles photoBox\">
-														<A href=\"./profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+														<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 													</div>			
 												</div>
 											</div>
-											<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"./profile.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
+											<P class=\"reviewer_info\"><A class=\"reviewer_name\" href=\"./user_profile.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
 											<P class=\"reviewer_info\">". $user['city']."</P>
 										</div>
 										<DIV class=\"ext_rating\">
 											<DIV class=\"rating\">
-												<IMG class=\"stars_". $review['grading'] ."\" title=\"". $review['grading'] ." כוכבים\" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
+												<IMG class=\"stars_". $review['grading'] ."\" title=\"".$review['grading']." כוכבים \" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
 											</DIV>
 												<EM class=\"smaller\">". $review['added']."</EM> 
 										</DIV>
-											<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>". $review['review']."</P>
+											<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>".$review['review']."</P>
 									</div>
 								</div>";
 							echo $html;

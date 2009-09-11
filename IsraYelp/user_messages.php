@@ -36,7 +36,7 @@ $count = $result->num_rows;
 <div id="bodyContainer">
 		<div id="userTabs" >
 			<ul>	
-				<li><a href="./profile.php">פרופיל</a></li>		 
+				<li><a href="./user_profile.php">פרופיל</a></li>		 
 				<li><a href="./user_reviews.php">ביקורות</a></li>
 				<li><a href="./user_bookmarks.php">מועדפים</a></li>
 				<li class="selected"><a href="./user_messages.php">הודעות</a></li>										
@@ -63,7 +63,7 @@ $count = $result->num_rows;
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
-										<span><b><a href=\"./profile.php?user_id=$sender_id/\">$sender_name</a></b></span>
+										<span><b><a href=\"./user_profile.php?user_id=$sender_id/\">$sender_name</a></b></span>
 									</td>
 									 <td>".$msg['message']."
 								</tr>
