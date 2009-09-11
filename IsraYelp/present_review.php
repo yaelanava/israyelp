@@ -32,10 +32,10 @@
 							<em class=\"smaller grey\">". $user['username'] ."</em>
 						</td>
 						<td>
+							ביקורת עבור: 
+							<a href=\"$biz_url\"><strong>".$biz['name']."</strong></a><br><br><strong>".$review['title'] ."</strong>
 							
-							<a href=\"$biz_url\">".$biz['name']."</a> - ".$review['title'] ."
-							<br/>
-							<br/>".$the_review."
+							<br/><em>".$the_review."</em>
 						</td>
 					</tr>
 				</table>
@@ -66,14 +66,24 @@
 		<div id="rightEdge"></div>
 </div>
 
+<div id="navContainer">
+		<ul>
+			
+			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
+			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
+			
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "login.php?logout=1";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
+			<LI class="header_login"><A   href=<?php if (session_is_registered('username')) {echo "about_me.php?external_user=".$_SESSION['user_id']."";} else{echo "signup.php?profile=1";}?> >החשבון שלי </A> | </LI>
+		</ul>
+</div>
 
 <div id="bodyContainer_Centered">
 	<p>
-		<?php
-			echo $html; 
-		?>
+		<?php echo $html; ?>
 	</p>
 </div>
+
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>

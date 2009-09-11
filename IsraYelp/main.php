@@ -470,7 +470,7 @@ $city_name = getCityName($city_id);
 					<h3>ישר מהתנור...</h3>
 					<p>הביקורות האחרונות של חברי האתר</p>
 					<?php 
-						$query_reviews = "SELECT * FROM `reviews` WHERE city_id=$city_id ORDER BY added DESC LIMIT 3"; //todo: same city or not?
+						$query_reviews = "SELECT * FROM `reviews` WHERE city_id=$city_id ORDER BY added DESC LIMIT 4"; //todo: same city or not?
 						$result_reviews = $mysqli->query($query_reviews);
 						while ($review = mysqli_fetch_assoc($result_reviews) ){
 							$user_id_late = $review['user_id'];
