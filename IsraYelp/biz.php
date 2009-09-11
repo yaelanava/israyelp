@@ -92,7 +92,7 @@ $result_reviews = $mysqli->query($query_reviews);
 							
 									echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									} else {
-									echo ("./bookmark.php?fav_biz_type=".$biz_type."&fav_biz_id=".$biz_id);
+									echo ("./bookmark.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									}
 								?>">
 						<img src="./image/bookmark.png" width=108 height=41></a>
