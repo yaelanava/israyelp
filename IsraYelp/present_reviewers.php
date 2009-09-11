@@ -51,27 +51,33 @@
 			$html .= "<p><a href=\"./find_review.php\">"."לחץ כאן לחזרה לדף הקודם"."</A>";
 			echo $html;
 		}
+		else if ($count == 1){
+			$user = mysqli_fetch_assoc($result);
+			header("location:./my_reviews.php?user_id=".$user['id']);	
+			die(0);			
+		}
 		else {
 			$html = "<p><h5>"."נמצאו"." ".$count." מבקרים:"."</h5></p>";
 			$html .= "<table>";
 			while ($user = mysqli_fetch_assoc($result)){
 				$html .= "<tr>
 					<td>
-					<div class=\"clearStyles photoBox\">
-						<img style=\"WIDTH: 40px; HEIGHT: 40px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
-					</div>
+						<P><div class=\"clearStyles bizPhotoBox\">
+							<A href=\"./my_reviews.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+							</div>
+						</P>
 					</td>
 					<td>
 						<P>
-							<A href=\"./about_me.php?external_user=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
-						</P>
+							<A href=\"./my_reviews.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</A>
+						</P>						
 					</td>
 					</tr>";
 			}
 			$html.="</table>";
-			echo $html;
-			
-			}	
+			echo $html;			
+		}
+
 	?>	
 </div>	
 
