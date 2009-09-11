@@ -39,8 +39,7 @@ $fav_count = $fav_result->num_rows;
 				<li><a href="./profile.php">פרופיל</a></li>		 
 				<li><a href="./user_reviews.php">ביקורות</a></li>
 				<li class="selected"><a href="./user_bookmarks.php">מועדפים</a></li>
-				<li><a href="./user_messages.php">הודעות</a></li>					
-								
+				<li><a href="./user_messages.php">הודעות</a></li>												
 			</ul> 
 		</div>
 		<div id="user_header" align="right">
