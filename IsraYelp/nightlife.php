@@ -126,11 +126,11 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 	<div id="bottom_cat">
 		<h3>אתרי בילוי ב<?php echo $city_name?> לפי קטגוריות:</h3>
 		<ul dir="rtl">
-			<li><a href="?city_id=<?php echo $city_id?>&category=Bars">ברים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Comedy Clubs">קומדי קלאב</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Karaoke">קריוקי</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Jazz & Blues">ג'אז ובלוז</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category='Dance Clubs'">מועדוני דאנס</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=ברים">ברים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=קומדי קלאב">קומדי קלאב</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=קריוקי">קריוקי</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=ג'אז ובלוז">ג'אז ובלוז</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=מועדוני דאנס">מועדוני דאנס</a></li>
 		</ul>
 	</div>	
 </div>

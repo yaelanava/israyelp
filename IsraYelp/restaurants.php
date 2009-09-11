@@ -126,14 +126,14 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 	<div id="bottom_cat">
 		<h3>מסעדות ובתי קפה ב<?php echo $city_name?> לפי קטגוריות:</h3>
 		<ul dir="rtl">
-			<li><a href="?city_id=<?php echo $city_id?>&category=events">אירועים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=meat">בשר</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=gourmet">גורמה</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=fish">דגים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=mediterranean">ים-תיכוני</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=sea_food">מאכלי ים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=chef_rest">מסעדת שף</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=take_away">take away</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=אירועים">אירועים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=בשר">בשר</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=גורמה">גורמה</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=דגים">דגים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=ים-תיכוני">ים-תיכוני</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=מאכלי ים">מאכלי ים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=מסעדת שף">מסעדת שף</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=טייק אווי">טייק אווי</a></li>
 		</ul>
 	</div>	
 </div>

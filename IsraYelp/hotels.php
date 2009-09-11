@@ -118,12 +118,8 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 					echo "<br></br>";					
 				}
 			?>
-		</div>
-		
-	
+		</div>		
 	</div>	
-
-
 </div>
 
 <?php echo getFooterHTMLCode()?>

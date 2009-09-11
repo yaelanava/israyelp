@@ -44,7 +44,7 @@ for ($i=1; $i < 6; $i++){
 	$ratings[$i] = $result->num_rows;
 }
 
-$text = array("5","4","3","2","1");
+$text = array("5 λελαιν","4 λελαιν","3 λελαιν","2 λελαιν","1 λελαιν");
 $value = array($ratings[5],$ratings[4],$ratings[3],$ratings[2],$ratings[1]);
 
 $bar = new HTML_graph();

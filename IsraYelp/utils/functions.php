@@ -97,13 +97,7 @@ function getNavHTMLCode(){
 			</ul>
 		</div>";
 	return $html;
-	
-
-	
 }
-
-
-
 
 function getFooterHTMLCode(){
 	$myAccount_link = session_is_registered('username') 
