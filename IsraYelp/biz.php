@@ -83,26 +83,29 @@ $result_reviews = $mysqli->query($query_reviews);
 				</div>				
 				<div  id="bizActions" class="clearfix">
 					<a class="send-to-friend" rel="nofollow"  
-						href="./send_to_friend.php" 
+						href = "<?php if (!session_is_registered('username')) { 							
+										echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
+									} else {
+										echo ("./send_to_friend.php");
+									} 
+								?>">
 						id="bizShare">
 						<img src= "./image/send2friend.png" width=108 height=41></a>
 					
 					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" 
-						href = "<?php if (!session_is_registered('username')) { 
-							
-									echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
+						href = "<?php if (!session_is_registered('username')) { 							
+										echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									} else {
-									echo ("./bookmark.php?biz_type=".$biz_type."&biz_id=".$biz_id);
+										echo ("./bookmark.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									}
 								?>">
 						<img src="./image/bookmark.png" width=108 height=41></a>
 					
 					<a class="write review" rel="nofollow" 
-						href = "<?php if (!session_is_registered('username')) { 
-							
-									echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
+						href = "<?php if (!session_is_registered('username')) { 							
+										echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									} else {
-									echo ("./writeReviewForm.php?biz_type=".$biz_type."&biz_id=".$biz_id);
+										echo ("./writeReviewForm.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									}
 								?>" 
 						id="bizWriteReview">
