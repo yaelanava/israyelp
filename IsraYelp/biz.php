@@ -53,13 +53,28 @@ $result_reviews = $mysqli->query($query_reviews);
 		<div id="rightEdge"></div>
 </div>
 
+
+
 <div id="navContainer">
 		<ul>			
-			<LI class="header" id="writeReview"><A href="./write_review.php>כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A href="./find_review.php" >חפש ביקורת</A></LI>
+			<LI class="header" id="writeReview">
+				<A href= "<?php if (!session_is_registered('username')) { 
+									echo ("./login.php");
+									} else {
+									echo ("./write_review.php");
+									}
+								?>" >
+				כתוב ביקורת
+				</A> | 
+			</LI>
+			<LI class="header" id="findReview">
+				<A href= "./find_review.php">
+				חפש ביקורת
+				</A>
+			</LI>
 			
 			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.php?";}?> >החשבון שלי </A> | </LI>
+			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "login.php";}?> >החשבון שלי </A> | </LI>
 		</ul>
 </div>
 
@@ -88,7 +103,7 @@ $result_reviews = $mysqli->query($query_reviews);
 								</address>			
 								<span id="bizPhone" class="tel"> <?php echo $biz['phone_number']; ?> </span>
 								<p><a href="<?php echo "http://".$biz['link']?>"><?php echo $biz['link']?></a></p>
-								
+							</div>	
 						</td>				
 						<td>
 							<div id="bizPhotos"">
@@ -144,7 +159,7 @@ $result_reviews = $mysqli->query($query_reviews);
 				
 	<div id="bizReviews">
 		<div id="bizReviewsHeader" class="clearfix">
-			</br>
+			<br>
 			<h2 id="total_reviews">	<?php echo $num_reviews; ?> ביקורות עבור <?php echo $biz_name?></h2>	
 		</div>
 		<br></br>
