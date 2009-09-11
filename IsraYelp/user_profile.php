@@ -27,7 +27,6 @@ $city = $user['city'];
 $register_since = $user['register_since'];
 $email = $user['email'];
 $username = $user['username'];
-$_SESSION['watched_user_name'] = $username;
 
 if (isset($_SESSION['user_id']) && !$same_user) {
 	$current_user_id = $_SESSION['user_id'];
@@ -115,8 +114,14 @@ $graph = $bar->horizontal();
 												$html = "<p id=\"photo_action_link\">
 														<a href=\"./uploadUserPictureForm.php\" class=\"small\">ערוך תמונה</a>
 							 							</p>";
-												echo $html;
+											} else {
+												$html = "<p id=\"photo_action_link\">
+															<a href=\"./add_as_friend.php?user_id=$user_id\" class=\"small\">הוסף כחבר</a>
+															<br>
+															<a href=\"./send_message_to_user.php?recipient_id=$user_id&recipient_name=$username\" class=\"small\">שלח הודעה</a>
+														</p>";
 											}
+											echo $html;											
 										?>					 					
 								</div>
 							</div>	
@@ -190,33 +195,6 @@ $graph = $bar->horizontal();
 						</td>
 					</tr>															
 				</table>
-				<?php
-					if(isset($_SESSION['user_id']) && !$same_user){
-						$html = "<div class=\"box\" id=\"send_a_message\" >
-									<h1> כתוב ל- $username הודעה </h1>
-										<form method=\"post\" action=\"send_message_to_user.php\" align=\"center\">
-											<dl id=\"newBizForm\">
-												<dt class=\"review\"><strong>כותרת ההודעה</strong><br/>	</dt>
-												<dd class=\"review\">
-													<input type=\"text\" name=\"title\" size=\"40\"> 
-													<br>
-												</dd>
-												
-												<dt class=\"review\"><strong><br>תוכן ההודעה</strong>		</dt>
-												<dd class=\"review\">
-													<textarea cols=\"40\" rows=\"8\" class=\"form400\"  name=\"message\"></textarea>
-												</dd>
-											</dl>
-											<input type=\"submit\" name=\"action_select\" value=\"שלח\">
-											<input type=\"hidden\" name=\"real_user_email\" value=".$current_user['email'].">
-											<input type=\"hidden\" name=\"ext_user_email\" value=".$email.">
-											<input type=\"hidden\" name=\"real_name\" value=".$current_user['username'].">	
-											<input type=\"hidden\" name=\"ext_id\" value=".$user_id.">
-										</form>
-									</div>";
-						echo $html;
-					}
-				?>
 		</div>
 	</div>
 </div>		

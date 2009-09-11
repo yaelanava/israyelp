@@ -1,29 +1,34 @@
 <?php
-	$real_user_email = $_POST['real_user_email'];
-	$ext_user_email = $_POST['ext_user_email'];
-	$inner_message = $_POST['message'];
-	$title = $_POST['title'];
-	$real_name = $_POST['real_name'];
-	$ext_user=$_POST['ext_id'];
+session_start();
+
+include './utils/functions.php';
+
+$recipient_name = $_GET['recipient_name'];
+$recipient_id = $_GET['recipient_id'];
+
+if (isset($_POST['message']) && ('' != $_POST['message'])) {
+	$mysqli = getMysqliConnection();
 	
-	$message .= $title;
-	$message .= "\n";
-	$message .= $inner_message;
+	$sender_id = $_SESSION['user_id'];
 	
-	$message;
-	$subject = "Message By: ".$real_name;
-	$body = $message;
+	$message = $_POST['message'];
 	
-	$error_msg=0;
-	
-	if (!mail($ext_user_email, $subject, $body, $real_user_email)) {
-		$error_msg="שליחת המייל נכשלה.";
- 	}
- ?>
+	$query = "INSERT INTO `messages` (
+				`sender_id`, 
+				`recipient_id`, 
+				`message`
+			) VALUES (
+				'$sender_id', '$recipient_id', '$message'
+			);";
+	$mysqli->query($query);
+	header("Location: ./user_profile.php?user_id=$recipient_id");
+}
+
+?>
  
  <html>
 <head>
-	<title>שליחת הודעה |IsraYelp</title>
+	<title>שליחת הודעה למשתמש |IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User Reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -37,19 +42,21 @@
 <?php echo getHeadHTMLCode()?>
 
 <div id="bodyContainer_Centered">
-	<p> <?php
-			if($error_msg){
-				$html= "$error_msg
-				<br><br>
-				<A href=\"./about_me.php?external_user=".$ext_user."\"> נסה שוב </A>"; 
-			}
-			else{
-				$html ="ההודעה נשלחה בהצלחה.
-				<br><br>
-				<A href=\"./about_me.php?external_user=".$ext_user."\"> חזור לחשבון שלי </A>"; 
-			}
-			echo $html;
-	?>
-	</div>
+	<h1> כתוב ל- <?php echo $recipient_name?> הודעה </h1>
+	<form method="post" action="send_message_to_user.php?recipient_id=<?php echo $recipient_id?>&recipient_name=<?php echo $recipient_name?>">
+	<br/>
+		<table cellpadding="5" cellspacing="5">
+			<tr>
+				<td valign="top"><strong><br>תוכן ההודעה:</strong></td>
+				<td><textarea cols="40" rows="8" class="form400" name="message"></textarea></td>
+				<?php if (isset($_POST['message']) && ('' == $_POST['message'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>				
+			</tr>	
+			<tr>
+				<td></td>
+				<td><input type="submit" value="שלח"></td>						
+		</table>
+	</form>
+</div>
+
 </body>
 </html>

@@ -7,7 +7,11 @@ $mysqli = getMysqliConnection();
 
 $user_id = $_SESSION['user_id'];
 
-$watched_user_name = $_SESSION['watched_user_name'];
+//getting user name
+$user_query = "SELECT * FROM `users` WHERE id=$user_id";
+$user_result = $mysqli->query($user_query);
+$user = mysqli_fetch_assoc($user_result);
+$username = $user['username'];
 
 //counting how much reviews this user wrote
 $query = "SELECT * FROM `messages` WHERE recipient_id='$user_id'";
@@ -43,7 +47,7 @@ $count = $result->num_rows;
 			</ul> 
 		</div>
 		<div id="user_header" align="right">
-			<h1>הפרופיל של <?php echo $watched_user_name?></h1>			
+			<h1>הפרופיל של <?php echo $username?></h1>			
 		</div>
 	<div id="user_details_wrapper">		
 		<?php 
@@ -63,11 +67,17 @@ $count = $result->num_rows;
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
-										<span><b><a href=\"./user_profile.php?user_id=$sender_id/\">$sender_name</a></b></span>
+										<span><b><a href=\"./user_profile.php?user_id=$sender_id\">$sender_name</a></b></span>
+										<DIV class=\"clearStyles photoBox\">
+											<A href=\"./user_profile.php?user_id=\"$sender_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $sender_name\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+										</div>			
 									</td>
 									 <td>".$msg['message']."
 								</tr>
 							</table>
+							<div style=\"padding-right:10px;\">
+								<a style=\"color:red\" href=\"./send_message_to_user.php?recipient_id=$sender_id&recipient_name=$sender_name\">השב</a>
+							</div>
 						</div>";
 				echo $html;				
 			}

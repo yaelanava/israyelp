@@ -51,22 +51,19 @@ if (isset($_POST['email']) && ('' != $_POST['email'])) {
 			<br/>
 			<form method="post" action="send_to_friend.php">
 				<table align="right" cellpadding="5">
-					<tr>
+					<tr valign="top">
 						<td><p>דוא'ל החבר:</p></td>
-						<td><input type="text" name="email" size="50"></td>
+						<td><input type="text" name="email" size="50"><br></br></td>
 						<?php 
 							if ($error_msg) {
 								echo "<td style=\"color:red;\">$error_msg<td/>";
 							} else if (isset($_POST['email']) && ('' == $_POST['email'])) {
 								echo "<td style=\"color:red;\">* שדה חובה</td>";
 							}
-						?>	
-					</tr>
-					<tr>
-						<td><br/></td>
-					</tr>
-					<tr>
-						<td><p>תוכן ההודעה:</p></td>
+						?>							
+					</tr>					
+					<tr valign="top">
+						<td width=80><p>תוכן ההודעה:</p></td>
 						<?php 
 							$url = $_SERVER['HTTP_REFERER'];
 							$message = "היי!";
@@ -74,9 +71,9 @@ if (isset($_POST['email']) && ('' != $_POST['email'])) {
 							$message .= "\n";
 							$message .= $url;
 						?>
-						<td><?php echo $message?></td>
+						<td width=350><?php echo $message?><br></br></td>											
 					</tr>
-					<tr>
+					<tr valign="top">
 						<td><p>תוכן נוסף:</p></td>
 						<td><textarea id="STF_Note" name="note" rows="5" cols="40" class="form400"></textarea></td>					
 					</tr>

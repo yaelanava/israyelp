@@ -7,7 +7,11 @@ $mysqli = getMysqliConnection();
 
 $user_id = $_SESSION['user_id'];
 
-$watched_user_name = $_SESSION['watched_user_name'];
+//getting user name
+$user_query = "SELECT * FROM `users` WHERE id=$user_id";
+$user_result = $mysqli->query($user_query);
+$user = mysqli_fetch_assoc($user_result);
+$username = $user['username'];
 
 //counting how much reviews this user wrote
 $fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
@@ -43,7 +47,7 @@ $fav_count = $fav_result->num_rows;
 			</ul> 
 		</div>
 		<div id="user_header" align="right">
-			<h1>הפרופיל של <?php echo $watched_user_name?></h1>			
+			<h1>הפרופיל של <?php echo $username?></h1>			
 		</div>
 	<div id="user_details_wrapper">		
 		<?php 
