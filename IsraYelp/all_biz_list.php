@@ -107,3 +107,11 @@ $result_bizs = $mysqli->query($query_bizs);
 					}
 				?>											
 			</ul>
+		</div>
+	</div>
+</div>
+
+<?php echo getFooterHTMLCode()?>
+</body>
+</html>
+			
