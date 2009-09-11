@@ -81,7 +81,7 @@ $count = $result->num_rows;
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
-										<span><b><a href=\"./profile.php?user_id=$sender_id/.\">$sender_name</a></b></span>
+										<span><b><a href=\"./profile.php?user_id=$sender_id/\">$sender_name</a></b></span>
 									</td>
 									 <td>".$msg['message']."
 								</tr>
