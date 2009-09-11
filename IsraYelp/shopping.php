@@ -23,7 +23,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>מסעדות ב<?php echo $city_name?> | IsraYelp</title>
+	<title>אתרי קניות ב<?php echo $city_name?> | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -139,24 +139,12 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 			?>
 		</div>
 		
-		<div id="biz_map"">
-			<h2>מפת <?php echo $city_name?></h2>
-			<iframe src="http://maps.freemap.co.il/api/openlayers/?
-						zoom=9&
-						lat=<?php echo $topBiz['lat']?>&
-						lon=<?php echo $topBiz['lon']?>&
-						marker=true"
-					width="900" height="350"		       	
-			        scrolling="no"
-			        marginwidth="10" marginheight="10" 
-			        frameborder="1">
-			 </iframe>
-		</div>	
 	</div>	
-
-	<div id="sub_cat_lists" class="clearfix">
-		<h2>אתרי קניות ב<?php echo $city_name?> לפי קטגוריות<h2>
-		<ul class="stripped other_sub_cats">
+	
+		
+	<div id="bottom_cat">
+		<h3 >אתרי קניות ב<?php echo $city_name?> לפי קטגוריות:</h3>
+		<ul dir="rtl">
 			<li><a href="?city_id=<?php echo $city_id?>&category=Shopping Centers">מרכזי קניות</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=Antiques">עתיקות</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=Fashion">אופנה</a></li>
