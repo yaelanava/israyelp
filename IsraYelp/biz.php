@@ -1,4 +1,3 @@
-
 <?php 
 
 session_start();
@@ -18,12 +17,8 @@ $biz = mysqli_fetch_assoc($result_biz);
 $biz_name = $biz['name'];	
 $num_reviews = $biz['num_reviews'];
 
-
 $query_reviews = "SELECT * FROM `reviews` WHERE biz_id=$biz_id and biz_type='$biz_type' ORDER BY added DESC";
 $result_reviews = $mysqli->query($query_reviews);
-
-
-
 
 ?>
 
@@ -62,7 +57,7 @@ $result_reviews = $mysqli->query($query_reviews);
 								</div>
 							</div>
 							<div id="bizInfoContent">
-								<p id="bizCategories"><strong>קטגוריה:</strong>
+								<p id="bizCategories"><strong>קטגוריה: </strong>
 									<span id="cat_display"> <?php echo $biz['category'];?>	</span>
 								</p>
 								<address class="adr">
@@ -87,26 +82,31 @@ $result_reviews = $mysqli->query($query_reviews);
 						<?php echo getBizAdditionalInfo($biz_type, $biz);?>
 				</div>				
 				<div  id="bizActions" class="clearfix">
-					<a class="send-to-friend" rel="nofollow"  href="./send_to_friend.php?biz_id=<?php echo $biz_id?>&return_url=<?php echo $biz_url?>" id="bizShare"><img src= "./image/send2friend.png" width=108 height=41></a>
+					<a class="send-to-friend" rel="nofollow"  
+						href="./send_to_friend.php" 
+						id="bizShare">
+						<img src= "./image/send2friend.png" width=108 height=41></a>
+					
 					<a class="bookmark" rel="nofollow"  class="bookmark" id="bizBookmark" 
-					href="<?php if (!session_is_registered('username')) { 
+						href = "<?php if (!session_is_registered('username')) { 
 							
 									echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									} else {
 									echo ("./bookmark.php?fav_biz_type=".$biz_type."&fav_biz_id=".$biz_id);
 									}
 								?>">
-					<img src= "./image/bookmark.png" width=108 height=41></a>
+						<img src="./image/bookmark.png" width=108 height=41></a>
+					
 					<a class="write review" rel="nofollow" 
-						href= "<?php if (!session_is_registered('username')) { 
+						href = "<?php if (!session_is_registered('username')) { 
 							
 									echo ("./login.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									} else {
-									//echo ("./writeReviewForm.php?biz_id=".$biz_id."&biz_name=".$biz_name."&biz_type=$biz_type");
 									echo ("./writeReviewForm.php?biz_type=".$biz_type."&biz_id=".$biz_id);
 									}
 								?>" 
-						id="bizWriteReview"><img src= "./image/write.png" width=108 height=41></a>			
+						id="bizWriteReview">
+						<img src= "./image/write.png" width=108 height=41></a>			
 				</div>							
 			</td>							
 			<td>
