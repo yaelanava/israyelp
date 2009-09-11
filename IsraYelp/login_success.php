@@ -24,13 +24,9 @@ if (isset($_GET['biz_id'])&&isset($_GET['biz_type'])){
 </head>
 
 <body  dir="rtl">
-<div id="head">
-		<div id="logo">
-			<A href="./main.php">Yelp</A>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+<?php echo getHeadHTMLCode()?>
+
+
 <div id="bodyContainer_Centered">	
 	<p><?php if (session_is_registered('username')) print("אתה מחובר כ-".$_SESSION['username'])."." ?></p>
 	<a href=<?php echo $returnUrl?>>לחץ כאן להמשך גלישה באתר.</a>

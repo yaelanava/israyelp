@@ -20,13 +20,8 @@ include './utils/functions.php';
 </head>
 
 <body dir="rtl">
-<div id="head">
-		<div id="logo">
-			<A href="./main.php">Yelp</A>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+<?php echo getHeadHTMLCode()?>
+
 <div id="bodyContainer_Centered">
 	<p>שליחת המייל נכשלה.
 		<br><br>

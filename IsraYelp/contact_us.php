@@ -16,16 +16,8 @@ include './utils/functions.php';
 </head>
 
 <body dir="rtl">
-<div id="head">
-		<div id="logo">
-			<A href="./main.php"></A>
-		</div>
-		<div id="register">
-			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-" . $_SESSION['username']) ?></p>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+<?php echo getHeadHTMLCode()?>
+
 
 <div id="bodyContainer">
 	<H1>צור קשר</H1>

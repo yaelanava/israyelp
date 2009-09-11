@@ -35,27 +35,8 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 
 <body dir="rtl">
 
-<div id="head">
-		<div id="logo">
-			<A href="./main.php?city_id=<?php echo $city_id?>"></A>
-		</div>
-		<div id="register">
-			<p><?php if (session_is_registered('username')) print("אתה מחובר כ-".$_SESSION['username']) ?></p>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
-
-
-<div id="navContainer">
-		<ul>			
-			<LI class="header" id="writeReview"><A   href="./write_review.php" >כתוב ביקורת</A> | </LI>
-			<LI class="header" id="findReview"><A   href="./find_review.php" >חפש ביקורת</A></LI>
-			
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "login.php?logout";} else{echo "login.php";}?> > <?php if (session_is_registered('username')) {echo "התנתק";} else {echo "כנס";}?></A></LI>
-			<LI class="header_login"><A href=<?php if (session_is_registered('username')) {echo "profile.php";} else{echo "signup.php?";}?> >החשבון שלי </A> | </LI>
-		</ul>
-</div>
+<?php echo getHeadHTMLCode()?>
+<?php echo getNavHTMLCode()?>
 
 <div id="mainContent" class="category_browse">
 	<div id="locBar">

@@ -83,13 +83,8 @@ if (!$password_error && !$mail_error &&
 </head>
 
 <body dir="rtl">
-<div id="head">
-		<div id="logo">
-			<A href="./main.php">Yelp</A>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+<?php echo getHeadHTMLCode()?>
+
 <div id="bodyContainer">
 <H1>צור את הפרופיל שלך</H1>
 <div class="box" id="signupForm">
