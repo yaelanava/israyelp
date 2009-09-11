@@ -23,7 +23,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>אתרי ספא ויופי ב<?php echo $city_name?> | IsraYelp</title>
+	<title>מכוני ספא ויופי ב<?php echo $city_name?> | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -46,16 +46,16 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 	<div id="top_cat_biz">
 		<div id="top_biz_lists" class="clearfix">
 			<br/>
-			<h1>אתרי ספא ויופי ב<?php echo $city_name?> </h1>
+			<h1>מכוני ספא ויופי ב<?php echo $city_name?> </h1>
 			<p id="breadcrumbs">קטגוריה: 
 				<a href="./main.php?city_id=<?php echo $city_id?>"><?php echo $city_name?></a> 
 				&raquo;		
 				<?php 
 					if ($category) {
-						echo "<a href=\"?city_id=$city_id\">אתרי ספא ויופי</a>
+						echo "<a href=\"?city_id=$city_id\"> מכוני ספא ויופי</a>
 								&raquo; $category"; 
 					} else {
-						echo "אתרי ספא ויופי";
+						echo "מכוני ספא ויופי";
 					}
 				?>					
 			</p>
@@ -124,7 +124,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 	</div>	
 
 	<div id="bottom_cat">
-		<h3 >אתרי ספא ויופי ב<?php echo $city_name?> לפי קטגוריות:</h3>
+		<h3 >מכוני ספא ויופי ב<?php echo $city_name?> לפי קטגוריות:</h3>
 		<ul dir="rtl">
 			<li><a href="?city_id=<?php echo $city_id?>&category=עיצוב שיער">עיצוב שיער</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=הסרת שיער">הסרת שיער</a></li>

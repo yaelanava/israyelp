@@ -126,18 +126,18 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 	<div id="bottom_cat">
 		<h3 >אתרי קניות ב<?php echo $city_name?> לפי קטגוריות:</h3>
 		<ul dir="rtl">
-			<li><a href="?city_id=<?php echo $city_id?>&category=Shopping Centers">מרכזי קניות</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Antiques">עתיקות</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Fashion">אופנה</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Electronics">אלקטרוניקה</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Jewelry">תכשיטים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Flowers & Gifts">פרחים ומתנות</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Computers">מחשבים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Home & Garden">בית וגינה</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Toy Stores">חנויות צעצועים</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Drugstores">בתי מרקחת</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Books&Music&Video">ספרים, מוזיקה ווידאו</a></li>
-			<li><a href="?city_id=<?php echo $city_id?>&category=Office Equipment">ציוד משרדי</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=מרכזי קניות">מרכזי קניות</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=עתיקות">עתיקות</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=אופנה">אופנה</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=אלקטרוניקה">אלקטרוניקה</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=תכשיטים">תכשיטים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=פרחים ומתנות">פרחים ומתנות</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=מחשבים">מחשבים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=בית וגינה">בית וגינה</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=חנויות צעצועים">חנויות צעצועים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=בתי מרקחת">בתי מרקחת</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=ספרים, מוזיקה ווידאו">ספרים, מוזיקה ווידאו</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=ציוד משרדי">ציוד משרדי</a></li>
 		</ul>
 	</div>	
 </div>
