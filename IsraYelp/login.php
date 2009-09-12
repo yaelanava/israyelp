@@ -67,7 +67,7 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 						?>" >
 				<p>אנא הכנס את הדוא"ל והסיסמא.<p/>
 				<?php if ($error_msg) echo "<p style=\"color:red;\">$error_msg<p/>"?>
-				<table  border="0">
+				<table  cellspacing="10" border="0">
 						<tr>
 							<td>דוא"ל:</td> 
 							<td style="text-align:right;"><input name="email" size="35" <?php if (isset($_POST['email'])) echo "value=\"".$_POST['email']."\""?>></td>
@@ -78,10 +78,10 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 							<td> <input name="password" type="password" size="35" <?php if (isset($_POST['password'])) echo "value=\"".$_POST['password']."\""?>></td>
 							<?php if (isset($_POST['password']) && ('' == $_POST['password'])) echo "<td style=\"color:red;\">* שדה חובה</td>"?>										
 						</tr>
-						<tr>
-							<td></td>					
-							<td> <a href=forgot.php>שכחת את הסיסמא?</a></td>
-						</tr>
+<!--						<tr>-->
+<!--							<td></td>					-->
+<!--							<td> <a href=forgot.php>שכחת את הסיסמא?</a></td>-->
+<!--						</tr>-->
 						<tr>
 							<td></td>					
 							<td style="text-align:left;"> <input type="submit" value="כניסה" /></td>
