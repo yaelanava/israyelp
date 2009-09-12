@@ -15,7 +15,7 @@ if (isset($_POST['email']) && ('' != $_POST['email']) &&
 	isset($_POST['password']) && ('' != $_POST['password'])) {
 
 	$email = mysql_escape_string($_POST['email']);
-	$password = mysql_escape_string($_POST['password']);
+	$password = $_POST['password'];
 	
 	$mysqli = getMysqliConnection();	
 	

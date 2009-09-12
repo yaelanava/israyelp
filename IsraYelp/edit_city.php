@@ -9,7 +9,7 @@ if (isset($_POST['new_city']) && ('' != $_POST['new_city'])) {
 	$id = $_SESSION['user_id'];
 	
 	$mysqli = getMysqliConnection();		
-	$update_query="UPDATE `users` SET `city` = '$new_city' WHERE `users`.`id` =$id LIMIT 1 ;";
+	$update_query="UPDATE `users` SET `city`='$new_city' WHERE `users`.`id`=$id LIMIT 1;";
 	if ($mysqli->query($update_query)) {
 		header("location: edit_successes.php");
 	}	
