@@ -53,7 +53,7 @@ include './utils/functions.php';
 	</div>
 
 	<br>
-	<h1>חיפוש לפי כותב הביקורת:</h1>
+	<h1>חיפוש ביקורת לפי משתמש:</h1>
 	<div id="external_search">
 	<form method="post" action="./present_reviewers.php" name="external_search"> 
 		<p>

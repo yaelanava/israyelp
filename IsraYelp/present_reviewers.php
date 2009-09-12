@@ -39,7 +39,6 @@ if ($count == 0){
 				</tr>";
 	}
 	$html.="</table>";
-	$html .= "<br><p><a href=".$back_url.">"."חזרה לדף הקודם >>"."</a>";
 }
 
 ?>
