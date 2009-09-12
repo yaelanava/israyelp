@@ -13,8 +13,8 @@ if (isset($_GET['user_id'])){
 }
 
 $same_user = false;
-if (isset($_SESSION['user_id']) && ($user_id == $_SESSION['user_id'])) {
-	$same_user = true;
+if (isset($_SESSION['user_id']) && $user_id == $_SESSION['user_id']){
+		$same_user = true;
 }
 
 //extracting the user information 
@@ -81,10 +81,7 @@ $graph = $bar->horizontal();
 		<div id="userTabs">
 			<ul> 
 				<?php
-					if($same_user)
-						$html = "<li class=\"selected\"><a href=\"./user_profile.php\"\">פרופיל</a></li>";
-					else 
-					 	$html = "<li class=\"selected\"><a href=\"./user_profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
+				 	$html = "<li class=\"selected\"><a href=\"./user_profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
 					$html .="<li><a href=\"./user_reviews.php?user_id=".$user_id."\">ביקורות</a></li> ";
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
@@ -104,15 +101,15 @@ $graph = $bar->horizontal();
 						<td>
 							<div id="user_pic">
 								<div class="clearStyles photoBox">
-									<img src="<? echo getUserPictureSrc($user_id)?>" height="150px" width="150px">
-									
+									<img src="<?php echo getUserPictureSrc($user_id);?>" height="150px" width="150px">																	
 										<?php 
 											if($same_user){
 												$html = "<p id=\"photo_action_link\">
 														<a href=\"./uploadUserPictureForm.php\" class=\"small\">ערוך תמונה</a>
 							 							</p>";
-											} else if (isset($_SESSION['user_id'])) {
-												$html = "<p id=\"photo_action_link\">
+											} else {
+												$html = "<br>
+														<p id=\"photo_action_link\">
 															<a href=\"./add_as_friend.php?user_id=$user_id\" class=\"small\">הוסף כחבר</a>
 															<br>
 															<a href=\"./send_message_to_user.php?recipient_id=$user_id&recipient_name=$username\" class=\"small\">שלח הודעה</a>
@@ -148,8 +145,8 @@ $graph = $bar->horizontal();
 									echo $html;
 								}
 							?>		
-							</ul>	
-							<br></br>						
+							</ul>
+							<br></br>							
 							<?php echo $graph;?>							
 						</td>				
 					</tr>	
@@ -157,16 +154,12 @@ $graph = $bar->horizontal();
 					<tr>
 						<td>
 							<span id="highlight2">מיקום: </span>
-							<?php    					
-			    				if (empty($city)) {
-		    						echo 'לא ידוע';			    				
-			    				} else {
-			    					echo  $city;			    					
-			    				}
-			    				
-			    				if($same_user){
+							<?php   
+								echo (empty($city) ? "לא ידוע" : $city);						    				
+			    				if ($same_user) {
 			    					$html = "<p><span class=\"formLabel\">
-			    							<a href=\"edit_city.php\">ערוך</a></span></p>";	
+			    								<a href=\"edit_city.php\">ערוך</a></span>
+			    							</p>";	
 			    					echo $html;		    								    				
 			    				}
 							?>
@@ -174,15 +167,17 @@ $graph = $bar->horizontal();
 					</tr>
 						
 					<?php
-						if($same_user){
+						if ($same_user) {
 							$html = "<tr>
-							<td>
-							<span id=\"highlight2\"> כתובת הדואר שלך: </span>";
-							echo $html;	
-							echo  $email;
-							echo "<br/>"; 
-			    			$html = "<p><span class=\"formLabel\">
-			    					<a href=\"edit_email.php\">ערוך</a></span></p></td></tr>";	
+										<td>
+											<span id=\"highlight2\"> כתובת הדואר שלך: </span>
+											$email
+											<br/> 
+			    							<p><span class=\"formLabel\">
+			    								<a href=\"edit_email.php\">ערוך</a></span>
+			    							</p>
+			    						</td>
+			    					</tr>";	
 			    			echo $html;		    								    				
 		    			}
 					?>
