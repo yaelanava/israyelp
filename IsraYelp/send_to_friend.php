@@ -75,11 +75,14 @@ if (isset($_POST['email']) && ('' != $_POST['email'])) {
 							$message .= "\n";
 							$message .= $url;
 						?>
-						<td width=350><?php echo $message?><br></br></td>											
+						<td width=350>
+							<p><?php echo $message?></p>
+							<br></br>
+						</td>											
 					</tr>
 					<tr valign="top">
 						<td><p>תוכן נוסף:</p></td>
-						<td><textarea id="STF_Note" name="note" rows="5" cols="40" class="form400"></textarea></td>					
+						<td><textarea id="STF_Note" name="note" rows="5" cols="40" class="form400"><?php if (isset($_POST['note'])) echo $_POST['note']?></textarea></td>					
 					</tr>
 					<tr>				
 						<td>&nbsp;</td>
