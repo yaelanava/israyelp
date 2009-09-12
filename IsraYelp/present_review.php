@@ -44,7 +44,7 @@ $html = "<div>
 							<EM class=\"smaller\">". $review['added']."</EM> 
 						</DIV>
 						<br>
-						<p class=\"review_comment\" style=\"PADDING-RIGHT: 0px\"><b>". $review['title']."</b><br>".$review['review']."</P>
+						<p class=\"review_comment\" style=\"text-align: right\"><b>". $review['title']."</b><br>".$review['review']."</P>
 					</td>
 				</tr>
 			</table>
