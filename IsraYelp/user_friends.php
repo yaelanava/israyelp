@@ -13,7 +13,7 @@ $user_result = $mysqli->query($user_query);
 $user = mysqli_fetch_assoc($user_result);
 $username = $user['username'];
 
-//counting how much reviews this user wrote
+//counting how much friends this user has
 $query = "SELECT * FROM `friends` WHERE user_id=$user_id";
 $result = $mysqli->query($query);
 $count = $result->num_rows;
@@ -23,7 +23,7 @@ $count = $result->num_rows;
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title> ההודעות שלי | IsraYelp</title>
+	<title> החברים שלי | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -34,6 +34,7 @@ $count = $result->num_rows;
 </head>
 
 <body dir="rtl">
+
 <?php echo getHeadHTMLCode()?>
 <?php echo getNavHTMLCode()?>
 
@@ -43,7 +44,8 @@ $count = $result->num_rows;
 				<li><a href="./user_profile.php">פרופיל</a></li>		 
 				<li><a href="./user_reviews.php">ביקורות</a></li>
 				<li><a href="./user_bookmarks.php">מועדפים</a></li>
-				<li class="selected"><a href="./user_messages.php">הודעות</a></li>										
+				<li><a href="./user_messages.php">הודעות</a></li>
+				<li class="selected"><a href="./user_friends.php">חברים</a></li>										
 			</ul> 
 		</div>
 		<div id="user_header" align="right">
@@ -52,31 +54,30 @@ $count = $result->num_rows;
 	<div id="user_details_wrapper">		
 		<?php 
 			$html = "<br/>
-					<H1>יש לך $count הודעות</H1>
+					<H1>יש לך $count חברים</H1>
 					<br/>";	
 			echo $html;
-			while ($msg = mysqli_fetch_assoc($result)){	
-				$sender_id = $msg['sender_id'];
+			while ($friend = mysqli_fetch_assoc($result)){	
+				$friend_id = $friend['friend_id'];
 				
-				$query_sender = "SELECT * FROM `users` WHERE id=$sender_id";
-				$result_sender = $mysqli->query($query_sender);
-				$sender = mysqli_fetch_assoc($result_sender);	
-				$sender_name = $sender['username'];
+				$query_friend = "SELECT * FROM `users` WHERE id=$friend_id";
+				$result_friend = $mysqli->query($query_friend);
+				$friend = mysqli_fetch_assoc($result_friend);	
+				$friend_name = $friend['username'];
 				
 				$html = "<div id=\"my_review\">					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
-										<span><b><a href=\"./user_profile.php?user_id=$sender_id\">$sender_name</a></b></span>
+										<span><b><a href=\"./user_profile.php?user_id=$friend_id\">$friend_name</a></b></span>
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./user_profile.php?user_id=\"$sender_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $sender_name\" src=\"".getUserPictureSrc($sender_id)."\"></A>
+											<A href=\"./user_profile.php?user_id=\"$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
 										</div>			
 									</td>
-									 <td>".$msg['message']."
 								</tr>
 							</table>
 							<div style=\"padding-right:10px;\">
-								<a style=\"color:red\" href=\"./send_message_to_user.php?recipient_id=$sender_id&recipient_name=$sender_name\">השב</a>
+								<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_id&friend_name=$friend_name\">הסר חבר</a>
 							</div>
 						</div>";
 				echo $html;				

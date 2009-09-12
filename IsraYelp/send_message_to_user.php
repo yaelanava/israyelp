@@ -14,11 +14,12 @@ if (isset($_POST['message']) && ('' != $_POST['message'])) {
 	$message = $_POST['message'];
 	
 	$query = "INSERT INTO `messages` (
+				`id`,
 				`sender_id`, 
 				`recipient_id`, 
 				`message`
 			) VALUES (
-				'$sender_id', '$recipient_id', '$message'
+				NULL, '$sender_id', '$recipient_id', '$message'
 			);";
 	$mysqli->query($query);
 	header("Location: ./user_profile.php?user_id=$recipient_id");
@@ -40,7 +41,9 @@ if (isset($_POST['message']) && ('' != $_POST['message'])) {
 </head>
 
 <body dir="rtl">
+
 <?php echo getHeadHTMLCode()?>
+<?php echo getNavHTMLCode()?>
 
 <div id="bodyContainer_Centered">
 	<h1> כתוב ל- <?php echo $recipient_name?> הודעה </h1>
@@ -58,6 +61,8 @@ if (isset($_POST['message']) && ('' != $_POST['message'])) {
 		</table>
 	</form>
 </div>
+
+<?php getFooterHTMLCode()?>
 
 </body>
 </html>

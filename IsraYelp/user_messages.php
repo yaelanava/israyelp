@@ -44,6 +44,7 @@ $count = $result->num_rows;
 				<li><a href="./user_reviews.php">ביקורות</a></li>
 				<li><a href="./user_bookmarks.php">מועדפים</a></li>
 				<li class="selected"><a href="./user_messages.php">הודעות</a></li>										
+				<li><a href="./user_friends.php">חברים</a></li>										
 			</ul> 
 		</div>
 		<div id="user_header" align="right">
@@ -56,6 +57,7 @@ $count = $result->num_rows;
 					<br/>";	
 			echo $html;
 			while ($msg = mysqli_fetch_assoc($result)){	
+				$msg_id =  $msg['id'];
 				$sender_id = $msg['sender_id'];
 				
 				$query_sender = "SELECT * FROM `users` WHERE id=$sender_id";
@@ -76,8 +78,9 @@ $count = $result->num_rows;
 								</tr>
 							</table>
 							<div style=\"padding-right:10px;\">
-								<a style=\"color:red\" href=\"./send_message_to_user.php?recipient_id=$sender_id&recipient_name=$sender_name\">השב</a>
-							</div>
+								<a style=\"color:green\" href=\"./send_message_to_user.php?recipient_id=$sender_id&recipient_name=$sender_name\">השב</a>
+								<a style=\"color:red\" href=\"./delete_message.php?msg_id=$msg_id\">מחק</a>
+								</div>
 						</div>";
 				echo $html;				
 			}
