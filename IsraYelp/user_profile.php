@@ -107,7 +107,7 @@ $graph = $bar->horizontal();
 						<td>
 							<div id="user_pic">
 								<div class="clearStyles photoBox">
-									<img src="<? echo getUserPictureSrc($user_id, "./") ?>" height="150px" width="150px">
+									<img src="<? echo getUserPictureSrc($user_id)?>" height="150px" width="150px">
 									
 										<?php 
 											if($same_user){

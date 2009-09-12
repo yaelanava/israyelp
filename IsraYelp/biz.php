@@ -148,7 +148,7 @@ $result_reviews = $mysqli->query($query_reviews);
 											<DIV class=\"mini\">
 												<DIV class=\"photoBoxSm\">
 													<DIV class=\"clearStyles photoBox\">
-														<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+														<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"></A>
 													</div>			
 												</div>
 											</div>

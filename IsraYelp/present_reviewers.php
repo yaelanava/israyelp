@@ -47,7 +47,7 @@
 				$html .= "<tr>
 					<td>
 						<P><div class=\"clearStyles bizPhotoBox\">
-							<A href=\"./user_reviews.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+							<A href=\"./user_reviews.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"></A>
 							</div>
 						</P>
 					</td>

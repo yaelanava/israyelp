@@ -69,7 +69,7 @@ $count = $result->num_rows;
 									<td>
 										<span><b><a href=\"./user_profile.php?user_id=$sender_id\">$sender_name</a></b></span>
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./user_profile.php?user_id=\"$sender_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $sender_name\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+											<A href=\"./user_profile.php?user_id=\"$sender_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $sender_name\" src=\"".getUserPictureSrc($sender_id)."\"></A>
 										</div>			
 									</td>
 									 <td>".$msg['message']."
