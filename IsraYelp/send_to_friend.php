@@ -19,7 +19,7 @@ if (isset($_POST['email']) && ('' != $_POST['email'])) {
 		$url = $_POST['url'];
 				
 		mail($_POST['email'], "$username ממליצ/ה לך לבקר ב-IsraYelp", $message, "From: $email");
-		//header("Location: ".$url);
+		header("Location: ".$url);
 	} else {
 		$error_msg = "דוא'ל לא תקין";
 	}
@@ -27,6 +27,7 @@ if (isset($_POST['email']) && ('' != $_POST['email'])) {
 
 ?>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<title>אתר ביקורות הגולשים - IsraYelp </title>
@@ -40,9 +41,9 @@ if (isset($_POST['email']) && ('' != $_POST['email'])) {
 </head>
 
 <body dir="rtl">
+
 <?php echo getHeadHTMLCode()?>
-<?php echo getNavHTMLCode()?></ul>
-</div>
+<?php echo getNavHTMLCode()?>
 
 <div id="bodyContainer">
 	<H1>שלח לחבר</H1>
@@ -53,7 +54,10 @@ if (isset($_POST['email']) && ('' != $_POST['email'])) {
 				<table align="right" cellpadding="5">
 					<tr valign="top">
 						<td><p>דוא'ל החבר:</p></td>
-						<td><input type="text" name="email" size="50"><br></br></td>
+						<td>
+							<input type="text" name="email" size="50" <?php if (isset($_POST['email'])) echo "value=\"".$_POST['email']."\""?>>
+							<br></br>
+						</td>
 						<?php 
 							if ($error_msg) {
 								echo "<td style=\"color:red;\">$error_msg<td/>";
@@ -87,6 +91,8 @@ if (isset($_POST['email']) && ('' != $_POST['email'])) {
 			</form>
 		</div>
 </div>
+
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>
