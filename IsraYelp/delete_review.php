@@ -18,7 +18,7 @@ $biz_type = $review['biz_type'];
 $biz_id = $review['biz_id'];
 
 //delete review
-$query = "DELETE FROM `reviews` WHERE id=$review_id LIMIT 1";
+$query = "DELETE FROM `reviews` WHERE id=$review_id and user_id=$user_id LIMIT 1";
 $result = $mysqli->query($query);	
 	
 if ($result) {
