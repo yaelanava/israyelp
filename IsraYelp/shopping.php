@@ -14,6 +14,11 @@ $categoryQureyOrNull = $category ? " and category LIKE ('%$category%')" : "";
 
 $mysqli = getMysqliConnection();
 
+$query_bizs = "SELECT * FROM `$biz_type` WHERE city_id=$city_id $categoryQureyOrNull
+ 					  ORDER BY grading DESC";
+$result_bizs = $mysqli->query($query_bizs);
+$count_bizs = $result_bizs->num_rows;
+
 $query_top_bizs = "SELECT * FROM `$biz_type` WHERE city_id=$city_id $categoryQureyOrNull
  					  ORDER BY grading DESC LIMIT 5";
 $result_top_bizs = $mysqli->query($query_top_bizs);
@@ -115,7 +120,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 					$html .= "</ul>";
 					echo $html;
 					
-					if ($result_top_bizs->num_rows > 5) {
+					if ($count_bizs > 5) {
 						$html = "<div style=\"text-align: left\">
 									<a href=\"./all_biz_list.php?biz_type=$biz_type&city_id=$city_id".(($category) ? "&category=$category" : "")."\">לרשימה המלאה...</a>
 								</div>";
