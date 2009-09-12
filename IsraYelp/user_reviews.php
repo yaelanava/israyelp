@@ -11,7 +11,7 @@ if (isset($_GET['user_id'])){
 }
 
 $same_user = false;
-if ($user_id === $_SESSION['user_id']){
+if (isset($_SESSION['user_id']) && ($user_id == $_SESSION['user_id'])){
 	$same_user = true;
 }
 
