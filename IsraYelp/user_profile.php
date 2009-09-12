@@ -13,10 +13,8 @@ if (isset($_GET['user_id'])){
 }
 
 $same_user = false;
-if (isset($_SESSION['user_id'])){
-	if ($user_id == $_SESSION['user_id']){
-		$same_user = true;
-	}
+if (isset($_SESSION['user_id']) && ($user_id == $_SESSION['user_id'])) {
+	$same_user = true;
 }
 
 //extracting the user information 
@@ -34,7 +32,6 @@ if (isset($_SESSION['user_id']) && !$same_user) {
 	$user_result = $mysqli->query($user_query);
 	$current_user = mysqli_fetch_assoc($user_result);
 }
-
 
 //ratings graph
 for ($i=1; $i < 6; $i++){
@@ -75,7 +72,7 @@ $graph = $bar->horizontal();
 	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 
-<body class= "us" id="IsraYelp_main_body" dir="rtl">
+<body dir="rtl">
 
 <?php echo getHeadHTMLCode()?>
 <?php echo getNavHTMLCode()?>
@@ -85,9 +82,9 @@ $graph = $bar->horizontal();
 			<ul> 
 				<?php
 					if($same_user)
-						$html = "<li class=\"selected\"><a href=\"./profile.php\"\">פרופיל</a></li>";
+						$html = "<li class=\"selected\"><a href=\"./user_profile.php\"\">פרופיל</a></li>";
 					else 
-					 	$html = "<li class=\"selected\"><a href=\"./profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
+					 	$html = "<li class=\"selected\"><a href=\"./user_profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
 					$html .="<li><a href=\"./user_reviews.php?user_id=".$user_id."\">ביקורות</a></li> ";
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
@@ -151,7 +148,8 @@ $graph = $bar->horizontal();
 									echo $html;
 								}
 							?>		
-							</ul>							
+							</ul>	
+							<br></br>						
 							<?php echo $graph;?>							
 						</td>				
 					</tr>	
@@ -198,7 +196,6 @@ $graph = $bar->horizontal();
 		</div>
 	</div>
 </div>		
-
 
 <?php echo getFooterHTMLCode()?>
 
