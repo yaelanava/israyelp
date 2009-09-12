@@ -431,9 +431,9 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 --
 
 --INSERT INTO `reviews` (`id`, `city_id`, `biz_id`, `biz_type`, `user_id`, `grading`, `title`, `review`, `added`) VALUES
---(NULL, 2, 5, 'restaurants', 7, 3, 'מקום נחמד', 'קפה מסעדה נעים ומושקע עם שירות אדיב. המחירים קצת יקרים אבל יש עסקיות שוות. מניפת האנטריקוט מומלצת בחום', NULL);
+--(NULL, 2, 18, 'restaurants', 9, 5, 'מומלץ ביותר', 'בר-בורגר גדול ומעוצב, ההמבורגרים במקום הם מהטובים שטעמתי והמחיר שווה לכל כיס. בשעות הלילה יש מבצעים משתלמים. מומלץ ביותר!', NULL);
 
---UPDATE `restaurants` SET `grading`='3', `num_reviews`='1' WHERE `restaurants`.`id`=5 LIMIT 1 ;
+--UPDATE `restaurants` SET `grading`='5', `num_reviews`='1' WHERE `restaurants`.`id`=18 LIMIT 1 ;
 --UPDATE `restaurants` SET `lat`='31.96561', `lon`='34.78971' WHERE `restaurants`.`id`=5 LIMIT 1 ;
 
 
