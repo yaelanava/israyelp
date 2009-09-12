@@ -333,11 +333,10 @@ $city_name = getCityName($city_id);
 				$result = $mysqli->query($query);
 				while ($user = mysqli_fetch_assoc($result)){
 					$html = "<div>
-							<P><A href=\"./user_profile.php?user_id=".$user['id']."\">".$user['username']."</A></P>
-							<div class=\"clearStyles photoBox\">
-								<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'])."\">
-							</div>
-							<div></div>			
+								<P><A href=\"./user_profile.php?user_id=".$user['id']."\">".$user['username']."</A></P>
+								<div class=\"clearStyles photoBox\">
+									<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><img style=\"WIDTH: 80px; HEIGHT: 80px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"> </A>								
+								</div>									
 							</div>";
 					echo $html;
 				}										
