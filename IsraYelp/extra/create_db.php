@@ -396,7 +396,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 --
 
 -- INSERT INTO `reviews` (`id`, `city_id`, `biz_id`, `biz_type`, `user_id`, `grading`, `title`, `review`, `added`) VALUES
--- (1, 1, 1, 'restaurants', 1, 5, 'title111', 'Great', '0000-00-00 00:00:00');
+-- (NULL, 1, 5, '', , 5, '', '', NULL);
 
 ";
 
