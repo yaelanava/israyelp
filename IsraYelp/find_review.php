@@ -56,7 +56,7 @@ include './utils/functions.php';
 	<form method="post" action="./present_reviewers.php" name="external_search"> 
 		<p>
 			<label for="find_desc_ext">כינוי <em>כותב הביקורת</em></label> 
-			<input type="text" maxlength="64" id="find_desc_ext" name="find_reviewer" tabindex="1" value="">	
+			<input type="text" maxlength="64" id="find_desc_ext" name="reviewer_name" tabindex="1" value="">	
 		</p>
 
 		<input type="hidden" name="source" value="find_review">
