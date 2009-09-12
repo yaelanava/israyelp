@@ -1,6 +1,6 @@
 <?php
 
-include './functions.php';
+include '../utils/functions.php';
 
 $mysqli = getMysqliConnection();
 	
