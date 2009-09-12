@@ -110,7 +110,7 @@ $graph = $bar->horizontal();
 											} else {
 												$html = "<br>
 														<p id=\"photo_action_link\">
-															<a href=\"./add_as_friend.php?friend_id=$user_id\" class=\"small\">הוסף כחבר</a>
+															<a href=\"./add_as_friend.php?friend_id=$user_id&friend_name=$username\" class=\"small\">הוסף כחבר</a>
 															<br>
 															<a href=\"./send_message_to_user.php?recipient_id=$user_id&recipient_name=$username\" class=\"small\">שלח הודעה</a>
 														</p>";
@@ -175,16 +175,23 @@ $graph = $bar->horizontal();
 							<?php echo $graph?>
 						</td>
 						
-						<td>																
+						<td>	
+							<ul class="stripped" id="user_stats">																									
 							<?php
 								$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id";
 								$friends_result = $mysqli->query($friends_query);
 								$friends_count = $friends_result->num_rows;
 								$html = "<a href=\"./user_friends.php?\" class=\"stripped\" id=\"user_stats\">";
-								if($same_user)
+								if($same_user) {
 									$html .= "יש לך $friends_count חברים </a>";
-								else $html .= "<span>ל-$username יש</span> $friends_count חברים </a>";
-								echo $html;									if ($friends_count > 0) {
+								} else {
+									$html .= "<span>ל-$username יש</span> $friends_count חברים </a>";
+								}
+								echo $html;									
+								if ($friends_count > 0) {
+									$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id LIMIT 4";
+									$friends_result = $mysqli->query($friends_query);
+									$friends_count = $friends_result->num_rows;
 									$html = "<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\">";								
 									while ($friends = mysqli_fetch_assoc($friends_result)){ 
 										$friend_id = $friends['friend_id'];

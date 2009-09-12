@@ -33,7 +33,7 @@ if ($count == 0){
 						</P>
 					</td>
 					<td>
-						<P><a href=".$prefix.$user['id']." rel=\"nofollow\">".$user['username']."</a>
+						<P><a href=".$prefix.$user['id']." rel=\"nofollow\">".$user['username']."</a>".", ".$user['city']."
 						</P>
 					</td>
 				</tr>";

@@ -44,7 +44,7 @@ $result = $mysqli->query($query);
 	<p><?php echo "הוספת את $friend_name כחבר."?>
 		<br><br>
 		<?php
-			echo "<A href=\"./user_profile.php?user_id=".$friend_id."\"> חזור לחשבון של $friend_id. </A>"; 
+			echo "<A href=\"./user_profile.php?user_id=".$friend_id."\"> חזור לחשבון של $friend_name. </A>"; 
 		?>
 		
 	</p>
