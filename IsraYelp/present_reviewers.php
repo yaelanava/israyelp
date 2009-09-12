@@ -53,7 +53,7 @@ ssage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות
 		}
 
 		else {
-			$html = "<p><h5>"."נמצאו"." ".$count." מבקרים:"."</h5></p>";
+			$html = "<p><h5>"."נמצאו"." ".$count." משתמשים:"."</h5></p>";
 			$html .= "<table>";
 			while ($user = mysqli_fetch_assoc($result)){
 				$html .= "<tr>
