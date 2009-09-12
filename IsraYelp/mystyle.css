@@ -1305,11 +1305,19 @@
 	
 	#userTabs{
 	margin:0px 0px 0px 0px;
-	padding:0px;
+	padding-right:0px;
 	list-style:none;
 	overflow:auto;
-	margin:0px;
+	margin-right:0px;
 	}
+	
+	#userTabs ul{
+	padding-right:0px;
+	list-style:none;
+	overflow:auto;
+	margin-right:0px;
+	}
+	
 	#userTabs li{
 	background:url(../i/new/tabs2/round_left_off.gif) no-repeat #F38E5A;
 	padding:0px 0px 0px 10px;
