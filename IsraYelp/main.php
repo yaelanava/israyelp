@@ -457,7 +457,7 @@ $city_name = getCityName($city_id);
 												ביקורת עבור: <a href=\"$biz_url\" class=\"biz_name\">".$biz['name']."</a>
 											</div>
 											<div class=\"biz_rating\">
-												<div class=\"rating-small\">
+												<div class=\"rating\">
 													<img class=\"stars_".$biz['grading']."\" width=\"82\" height=325 src=\"./image/stars_map.png\"/>
 												</div> 
 											</div>
