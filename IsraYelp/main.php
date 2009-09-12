@@ -449,14 +449,14 @@ $city_name = getCityName($city_id);
 							$rev = $review['review'];
 						
 							$html = "<div class=\"clearfix\">
-											<div class=\"clearStyles photoBox\">
-												<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"></A>
-												<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</a>		
-											</div>
-											<div class=\"biz_info\">
-												ביקורת עבור: <a href=\"$biz_url\" class=\"biz_name\">".$biz['name']."</a>
-											</div>										
-											<strong>".$review['title'] ."</strong>					
+										<DIV class=\"clearStyles photoBox\">
+											<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"></A>". 
+											"<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</a>" .		
+											"</div>								
+											<p>ביקורת עבור: 
+											<a href=\"$biz_url\">".$biz['name']."</a><br>
+											<strong>".$review['title'] ."</strong>
+											
 											<br/>";																																														
 							if (strlen($rev) > 150){
 								$rev = substr($rev,0,149);
@@ -467,7 +467,7 @@ $city_name = getCityName($city_id);
 								$html .= "<em>".$rev."</em>"; 							
 							}
 							$html .="</p></div><br>";							
-							echo $html;											
+							echo $html;												
 						}
 					?>							
 				</div>			
