@@ -114,7 +114,7 @@ $graph = $bar->horizontal();
 												$html = "<p id=\"photo_action_link\">
 														<a href=\"./uploadUserPictureForm.php\" class=\"small\">ערוך תמונה</a>
 							 							</p>";
-											} else {
+											} else if (isset($_SESSION['user_id'])) {
 												$html = "<p id=\"photo_action_link\">
 															<a href=\"./add_as_friend.php?user_id=$user_id\" class=\"small\">הוסף כחבר</a>
 															<br>
@@ -130,7 +130,7 @@ $graph = $bar->horizontal();
 							<ul class="stripped" id="user_stats">					
 							<?php		
 								//counting how much reviews this user wrote
-								$review_query = "SELECT * FROM `test`.`reviews` WHERE user_id='$user_id'";
+								$review_query = "SELECT * FROM `reviews` WHERE user_id='$user_id'";
 								$rev_result = $mysqli->query($review_query);
 								$rev_count = $rev_result->num_rows;
 								
@@ -143,7 +143,7 @@ $graph = $bar->horizontal();
 
 								if ($same_user){
 									echo "<br></br>";
-									$fav_query = "SELECT * FROM `test`.`favorites` WHERE user_id='$user_id'";
+									$fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
 									$fav_result = $mysqli->query($fav_query);
 									$fav_count = $fav_result->num_rows;
 									
