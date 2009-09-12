@@ -37,6 +37,7 @@ ssage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות
 		$result = $mysqli->query($query);	
 		$count = $result->num_rows;
 		$source = $_POST['source'];
+		$back_url = "./".$source.".php";
 		
 		if ($source == "find_review"){
 			$prefix = "./user_reviews.php?user_id=";
@@ -46,8 +47,7 @@ ssage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות
 		}
 		
 		if ($count == 0){
-			$html = "<p><h5>"."לא נמצאו משתמשים בשם זה"."</h5></p>";
-			$back_url = "./".$source.".php";
+			$html = "<p><h5>"."לא נמצאו משתמשים בשם זה"."</h5></p>";			
 			$html .= "<p><a href=".$back_url.">"."לחץ כאן לחזרה לדף הקודם"."</A>";
 			echo $html;
 		}
@@ -70,7 +70,7 @@ ssage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות
 				</tr>";
 			}
 			$html.="</table>";
-			$html .= "<br><p><a href=\"./find_review.php\">"."חזרה לדף הקודם >>"."</A>";
+			$html .= "<br><p><a href=".$back_url.">"."חזרה לדף הקודם >>"."</A>";
 			echo $html;			
 		}
 
