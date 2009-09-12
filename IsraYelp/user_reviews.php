@@ -24,7 +24,7 @@ $user = mysqli_fetch_assoc($user_result);
 $username = $user['username'];
 
 //counting how much reviews this user wrote
-$review_query = "SELECT * FROM `reviews` WHERE user_id=$user_id";
+$review_query = "SELECT * FROM `reviews` WHERE user_id=$user_id ORDER BY added DESC";
 $rev_result = $mysqli->query($review_query);
 $rev_count = $rev_result->num_rows;
 
@@ -96,7 +96,7 @@ $rev_count = $rev_result->num_rows;
 					$html = "<div id=\"my_review\">						
 								<table cellpadding=\"20\" cellspacing=\"1\" border=\"0\" >
 									<tr>										
-										<td width=200><span><b>הביקורת נכתבה עבור </b><a href=\"$biz_url\">".$biz['name']."</a>"."</span>
+										<td width=200 valign=top><span><b>הביקורת נכתבה עבור </b><a href=\"$biz_url\">".$biz['name']."</a>"."</span>
 											<DIV class=\"ext_rating\">
 												<DIV class=\"rating\">
 													<IMG class=\"stars_". $grading."\" height=\"325\" alt=\"".$review['grading']." כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
