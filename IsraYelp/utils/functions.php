@@ -91,7 +91,7 @@ function getNavHTMLCode(){
 		<div id=\"navContainer\">
 			<ul>			
 				<LI class=\"header\" id=\"writeReview\"><A href=".$write_review_link.">כתוב ביקורת</A> | </LI>
-				<LI class=\"header\" id=\"findReview\"><A href= \"./find_review.php\">חפש ביקורת</A></LI>				
+				<LI class=\"header\" id=\"findReview\"><A href= \"./find_review.php\">חפש</A></LI>				
 				<LI class=\"header_login\"><A href=".$login_link." >".$login_message."</A></LI>
 				<LI class=\"header_login\"><A href=".$myAccount_link." >החשבון שלי </A> | </LI>
 				<LI class=\"header_login\"><A href=\"./find_reviewer.php\" >חפש משתמש </A> | </LI>
@@ -161,6 +161,17 @@ function getCitiesHTMLCode(){
 	}			
 	$html .= "</select>";
 	return $html;
+}
+
+function getGradingHTMLCode(){
+	return  "<select name=\"grading\">
+				<option value=\"all\" >הכל</option>
+				<option value=\"5\" >5</option>
+				<option value=\"4\" >4</option>
+				<option value=\"3\" >3</option>
+				<option value=\"2\" >2</option>
+				<option value=\"1\" >1</option>
+ 			</select>";
 }
 
 function check_email($email) {

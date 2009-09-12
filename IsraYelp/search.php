@@ -6,18 +6,18 @@ include './utils/functions.php';
 $name = $_POST['place_name'];
 $kind = $_POST['place_kind'];
 $city = $_POST['place_city'];
+//$grading = $_POST['grading'];
+//$grading_query = $grading=="all" ? "" : "and grading=$grading";
+
 $source = $_POST['source'];
 $city_id = getCityID($city);
 
-
-
 if ('' == $_POST['place_name']){
 	header ("location: ./".$kind.".php?city_id=".$city_id);
-	die(0);
-}
-else {
+	
+} else {
 	$name = $_POST['place_name'];
-	$query = "SELECT * FROM `$kind` WHERE  city_id='$city_id' and  name LIKE '%$name%' or another_name LIKE '%$name%'";
+	$query = "SELECT * FROM `$kind` WHERE  city_id=$city_id and  (name LIKE '%$name%' or another_name LIKE '%$name%')";
 	$mysqli = getMysqliConnection();
 	$result = $mysqli->query($query);
 	$count = $result->num_rows;
@@ -42,36 +42,35 @@ else {
 			header("Location:".$biz_urli);
 			die(0);
 		}
-	}
-	else if ($count > 1){
-		$title = "<span><b> נמצאו </b></span>".$count."<span><b> מקומות מתאימים: </b></span>";
-		$html = "<ul>";
-		while ($biz = mysqli_fetch_assoc($result)){		
-			$biz_id = $biz['id'];
-			$biz_name = $biz['name'];
-			$biz_urli = getBizURL($kind, $biz_id);				
-			if ($source == "write_review"){
-				if (!session_is_registered('username')) { 
-					header("Location: ./login.php?returnUrl=".$biz_urli);
-					die(0);
+
+	} else if ($count > 1){
+			$title = "<span><b> נמצאו </b></span>".$count."<span><b> מקומות מתאימים: </b></span>";
+			$html = "<ul>";
+			while ($biz = mysqli_fetch_assoc($result)){		
+				$biz_id = $biz['id'];
+				$biz_name = $biz['name'];
+				$biz_urli = getBizURL($kind, $biz_id);				
+				if ($source == "write_review"){
+					if (!session_is_registered('username')) { 
+						header("Location: ./login.php?returnUrl=".$biz_urli);
+						die(0);
+					}
+					else{
+				
+						$url = "./writeReviewForm.php?biz_type=$kind&biz_id=".$biz_id;
+						
+					}
 				}
-				else{
-			
-					$url = "./writeReviewForm.php?biz_type=".$kind."&biz_id=".$biz_id;
-					
+				else if ($source == "main"){
+					$url = $biz_urli;
 				}
-			}
-			else if ($source == "main"){
-				$url = $biz_urli;
-			}
-			$biz_address = $biz['address'];
-			$html .= "<li><span><b><a href=".$url.">".$biz_name."</a></b></span>".", ".$biz_address."</li>" ;
-		}	
-		$html .= "</ul>";	
-	}
-	else {
-		header("Location: ./new_place.php?place_name=".$name."&place_city=".$city);
-		die(0);
+				$biz_address = $biz['address'];
+				$html .= "<li><span><b><a href=".$url.">$biz_name</a></b></span>".", $biz_address</li>" ;
+			}	
+			$html .= "</ul>";	
+	
+	} else {
+		header("Location: ./new_place.php?place_name=$name&place_city=$city");	
 	}	
 }
 
@@ -96,13 +95,13 @@ else {
 <?php echo getNavHTMLCode()?>
 
 <div id="bodyContainer">
-		<?php echo $title;?>		
-		<br/>
-		<br/>	
-		<?php 	echo $html;?>			
+	<?php echo $title;?>		
+	<br/>
+	<br/>	
+	<?php 	echo $html;?>			
 </div>
 
-		<?php echo getFooterHTMLCode()?>
+<?php echo getFooterHTMLCode()?>
 
 </body>
 </html>
