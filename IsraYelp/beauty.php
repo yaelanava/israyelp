@@ -81,9 +81,17 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 										</div> 
 										<em class=\"smaller\">".$topBiz['num_reviews']." ביקורות</em>
 									</div>
-									<p class=\"smaller\">קטגוריה: ".$topBiz['category']."</p>
-									<p>".$BizReview['review']."</p>
-								</div>";
+									<p class=\"smaller\">קטגוריה: ".$topBiz['category']."</p>";
+
+							$rev = $BizReview['review'];
+							if (strlen($rev) > 155){
+								$rev = substr($rev,0,154);
+								$html .= "<p>".$rev."...</p>"; 								
+								$html .="<a href=\"./present_review.php?review_id=".$BizReview['id']."\" style=\"FONT-SIZE:10px\"> להמשך לחץ כאן...</a>";
+							} else {
+								$html .= "<p>".$rev."</p>"; 							
+							}
+							$html .= "</div>";
 						echo $html;
 					}
 	
