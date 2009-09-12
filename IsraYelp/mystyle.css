@@ -925,17 +925,21 @@
 	#top_cat_biz UL .biz_rating DIV {	
 	MARGIN-TOP: 2px}
 	
-	DIV.rating-small {	
-	PADDING-RIGHT: 0px !important;	
-	PADDING-LEFT: 0px !important;	
-	FLOAT: right;	
-	PADDING-BOTTOM: 5px !important;	
-	OVERFLOW: hidden !important;	
-	WIDTH: 100px;	
-	PADDING-TOP: 0px !important;	
-	POSITION: relative;	
-	HEIGHT: 9px}
+	DIV.rating-small{
+	float: right;
+	height:9px;
+	overflow:hidden !important;
+	padding:0 !important;
+	position: relative;
+	width:50px;}
 	
+	DIV.rating-small img.stars_0{clip:rect(190px, 50px, 199px, 0);top:-190px;}
+	DIV.rating-small img.stars_1{clip:rect(204px, 50px, 213px, 0);top:-204px;}	
+	DIV.rating-small img.stars_2{clip:rect(232px, 50px, 241px, 0);top:-232px;}
+	DIV.rating-small img.stars_3{clip:rect(260px, 50px, 269px, 0);top:-260px;}
+	DIV.rating-small img.stars_4{clip:rect(288px, 50px, 297px, 0);top:-288px;}
+	DIV.rating-small img.stars_5{clip:rect(316px, 50px, 325px, 0);top:-316px;}
+
 	#top_cat_biz UL .biz_rating EM {	
 	FLOAT: right;	
 	MARGIN-LEFT: 3px;	
@@ -945,7 +949,6 @@
 	FONT-SIZE: 11px;	
 	MARGIN-LEFT: 5px}
 
-	DIV.rating-small IMG.stars_4_half {	TOP: -302px}
 	
 	DIV.rating-small IMG {POSITION: absolute}
 	
