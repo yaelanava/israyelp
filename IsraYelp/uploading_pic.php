@@ -16,7 +16,9 @@ if (isset($_FILES['image']) && ('' != $_FILES['image']['name'])) {
 	} else {
 		$temp_name = $_FILES['image']['tmp_name'];		
 		$destination = "./users_pics/".$id;
-		copy($temp_name, $destination);
+		if (!copy($temp_name, $destination)) {
+			$error_msg = "העלאת התמונה נכשלה.";				
+		}
 	}
 } else {
 	$error_msg = "חובה לבחור קובץ.";	
@@ -44,12 +46,14 @@ if (isset($_FILES['image']) && ('' != $_FILES['image']['name'])) {
 			if ($error_msg) {
 				$html= "$error_msg
 				<br><br>
-				<A href=\"./upload_pic.php\"> נסה שנית. </A>"; 
+				<A href=\"./upload_pic.php\">נסה שנית. </A>
+				<p>או </p>
+				<A href=\"./user_profile.php?user_id=$id\">חזור לחשבון שלי.</A>"; 				
 			}
 			else{
 				$html ="התמונה הועלתה בהצלחה.
 				<br><br>
-				<A href=\"./user_profile.php?user_id=$id\"> חזור לחשבון שלי. </A>"; 
+				<A href=\"./user_profile.php?user_id=$id\">חזור לחשבון שלי.</A>"; 
 			}
 			echo $html;
 	?>
