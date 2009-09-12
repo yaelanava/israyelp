@@ -321,6 +321,29 @@ INSERT INTO `messages` (`sender_id`, `recipient_id`, `message`) VALUES
 (1, 2, 'hello!!!! :)'),
 (2, 1, 'hello to you too!!!! :)');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `friends`
+--
+
+DROP TABLE IF EXISTS `friends`;
+CREATE TABLE IF NOT EXISTS `friends` (
+  `user_id` bigint(20) NOT NULL,
+  `friend_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `friends`
+--
+
+INSERT INTO `friends` (`user_id`, `friend_id`) VALUES
+(1, 2),
+(2, 1),
+(1, 5),
+(5, 1),
+(1, 4),
+(4, 1);
 
 -- ----------------------------------------------------------
 
