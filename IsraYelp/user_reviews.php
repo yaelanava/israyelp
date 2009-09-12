@@ -51,10 +51,7 @@ $rev_count = $rev_result->num_rows;
 		<div id="userTabs" >
 			<ul>	
 				<?php
-					if($same_user)
-						$html = "<li><a href=\"./user_profile.php\">פרופיל</a></li>";
-					else 
-					 	$html = "<li><a href=\"./user_profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
+					$html = "<li><a href=\"./user_profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
 					$html .= "<li class=\"selected\"><a href=\"./user_reviews.php?user_id=".$user_id."\">ביקורות</a></li>";
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
@@ -77,7 +74,7 @@ $rev_count = $rev_result->num_rows;
 							<br/>";
 				}else{
 					$html = "<br/>
-							<H1> $username כתב כבר $rev_count ביקורות לאתר</H1>
+							<H1> $username כתב/ה כבר $rev_count ביקורות לאתר</H1>
 							<br/>";
 				}
 				echo $html;
