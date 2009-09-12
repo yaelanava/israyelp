@@ -94,6 +94,7 @@ function getNavHTMLCode(){
 				<LI class=\"header\" id=\"findReview\"><A href= \"./find_review.php\">חפש ביקורת</A></LI>				
 				<LI class=\"header_login\"><A href=".$login_link." >".$login_message."</A></LI>
 				<LI class=\"header_login\"><A href=".$myAccount_link." >החשבון שלי </A> | </LI>
+				<LI class=\"header_login\"><A href=\"./find_reviewer.php\" >חפש משתמש </A> | </LI>
 			</ul>
 		</div>";
 	return $html;
