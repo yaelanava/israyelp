@@ -62,7 +62,7 @@ $graph = $bar->horizontal();
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>		
-	<title> החשבון שלי | IsraYelp</title>
+	<title> פרופיל | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -86,6 +86,7 @@ $graph = $bar->horizontal();
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
 						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
+						$html .= "<li><a href=\"./user_friends.php\">חברים</a></li>";																
 					}
 					echo $html;
 				?>							
@@ -110,7 +111,7 @@ $graph = $bar->horizontal();
 											} else {
 												$html = "<br>
 														<p id=\"photo_action_link\">
-															<a href=\"./add_as_friend.php?friend_id=$user_id&friend_name=$username\" class=\"small\">הוסף כחבר</a>
+															<a href=\"./addRemove_friend.php?friend_id=$user_id&friend_name=$username\" class=\"small\">הוסף כחבר</a>
 															<br>
 															<a href=\"./send_message_to_user.php?recipient_id=$user_id&recipient_name=$username\" class=\"small\">שלח הודעה</a>
 														</p>";
@@ -159,8 +160,11 @@ $graph = $bar->horizontal();
 								else $html .= "ביקורות נכתבו על ידי $username </a>";
 								echo $html;	
 
-								//counting how much bookmarks this user has
+								echo "<br></br>";		
+								echo $graph;
+								
 								if ($same_user){
+									//counting how much bookmarks this user has
 									echo "<br></br>";
 									$fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
 									$fav_result = $mysqli->query($fav_query);
@@ -168,11 +172,19 @@ $graph = $bar->horizontal();
 									
 									$html = "<a href=\"./user_bookmarks.php\">יש לך $fav_count מקומות מועדפים </a>";
 									echo $html;
+									
+									//counting how much friends this user has
+									echo "<br></br>";
+									$msg_query = "SELECT * FROM `messages` WHERE recipient_id='$user_id'";
+									$msg_result = $mysqli->query($msg_query);
+									$msg_count = $msg_result->num_rows;
+									
+									$html = "<a href=\"./user_messages.php\">יש לך $msg_count הודעות </a>";
+									echo $html;
 								}
 							?>		
 							</ul>
-							<br></br>		
-							<?php echo $graph?>
+
 						</td>
 						
 						<td>	
@@ -181,7 +193,7 @@ $graph = $bar->horizontal();
 								$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id";
 								$friends_result = $mysqli->query($friends_query);
 								$friends_count = $friends_result->num_rows;
-								$html = "<a href=\"./user_friends.php?\" class=\"stripped\" id=\"user_stats\">";
+								$html = "<a href=\"./user_friends.php\" class=\"stripped\" id=\"user_stats\">";
 								if($same_user) {
 									$html .= "יש לך $friends_count חברים </a>";
 								} else {

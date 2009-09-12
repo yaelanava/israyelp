@@ -42,7 +42,8 @@ $rev_count = $rev_result->num_rows;
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="./mystyle.css"> 
 </head>
-<body class= "us" id="IsraYelp_main_body" dir="rtl">
+
+<body dir="rtl">
 
 <?php echo getHeadHTMLCode()?>
 <?php echo getNavHTMLCode()?>
@@ -55,7 +56,8 @@ $rev_count = $rev_result->num_rows;
 					$html .= "<li class=\"selected\"><a href=\"./user_reviews.php?user_id=$user_id\">ביקורות</a></li>";
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
-						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
+						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";	
+						$html .= "<li><a href=\"./user_friends.php\">חברים</a></li>";																
 					}
 					echo $html;
 				?>			

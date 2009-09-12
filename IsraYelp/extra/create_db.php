@@ -307,19 +307,20 @@ INSERT INTO `shopping` (`id`, `name`, `another_name`, `address`, `city_id`, `lat
 
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
+  `id` bigint(20) NOT NULL auto_increment,
   `sender_id` bigint(20) NOT NULL,
   `recipient_id` bigint(20) NOT NULL,
   `message` text NOT NULL,
-  PRIMARY KEY  (`recipient_id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`sender_id`, `recipient_id`, `message`) VALUES
-(1, 2, 'hello!!!! :)'),
-(2, 1, 'hello to you too!!!! :)');
+INSERT INTO `messages` (`id`, `sender_id`, `recipient_id`, `message`) VALUES
+(NULL, 1, 2, 'hello!!!! :)'),
+(NULL, 2, 1, 'hello to you too!!!! :)');
 
 -- --------------------------------------------------------
 
