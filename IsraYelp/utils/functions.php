@@ -33,8 +33,8 @@ function getBizURL($biz_type, $biz_id){
 	return "./biz.php?biz_type=".$biz_type."&biz_id=".$biz_id;
 }
 
-function getUserPictureSrc($user_id, $prefix){
-	$src = $prefix."users_pics/".$user_id;
+function getUserPictureSrc($user_id){
+	$src = "./users_pics/".$user_id;
 	if (!file_exists($src)) {
 		$src = $prefix."users_pics/blank_user_medium.gif";
 	}

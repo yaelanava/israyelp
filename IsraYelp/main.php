@@ -335,7 +335,7 @@ $city_name = getCityName($city_id);
 					$html = "<div>
 							<P><A href=\"./user_profile.php?user_id=".$user['id']."\">".$user['username']."</A></P>
 							<div class=\"clearStyles photoBox\">
-								<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'], "./")."\">
+								<img style=\"WIDTH: 80px; HEIGHT: 80px\" src=\"".getUserPictureSrc($user['id'])."\">
 							</div>
 							<div></div>			
 							</div>";
@@ -450,7 +450,7 @@ $city_name = getCityName($city_id);
 						
 							$html = "<div class=\"clearfix\">
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>". 
+											<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"></A>". 
 											"<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</a>" .		
 											"</div>								
 											<p>ביקורת עבור: 
