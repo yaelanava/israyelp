@@ -57,11 +57,11 @@ $fav_count = $fav_result->num_rows;
 					<br/>";	
 			echo $html;
 			while ($fav = mysqli_fetch_assoc($fav_result)){	
-				$fav_biz_id=$fav['biz_id'];
-				$fav_biz_type=$fav['biz_type'];
-				$biz_url = getBizURL($fav_biz_type, $fav_biz_id);
+				$biz_id = $fav['biz_id'];
+				$biz_type = $fav['biz_type'];
+				$biz_url = getBizURL($biz_type, $biz_id);
 				
-				$query_biz = "SELECT * FROM `$fav_biz_type` WHERE id=$fav_biz_id";
+				$query_biz = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
 				$result_biz = $mysqli->query($query_biz);
 				$biz = mysqli_fetch_assoc($result_biz);	
 				$biz_address = $biz['address'];
@@ -70,10 +70,10 @@ $fav_count = $fav_result->num_rows;
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
+										<a href=\"./bookmark.php?remove&biz_type=$biz_type&biz_id=$biz_id\"><img src=\"./image/delete_rev.png\" height=\"8px\" width=\"8px\" alt=\"מחק מקום\"></a>									
 										<span><b><a href=".$biz_url.">".$biz['name']."</a></b></span>
 										".", ".$biz_address."
-									</td>
-									 
+									</td>									 
 								</tr>
 							</table>
 						</div>";
