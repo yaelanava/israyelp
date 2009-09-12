@@ -110,7 +110,7 @@ $graph = $bar->horizontal();
 											} else {
 												$html = "<br>
 														<p id=\"photo_action_link\">
-															<a href=\"./add_as_friend.php?user_id=$user_id\" class=\"small\">הוסף כחבר</a>
+															<a href=\"./add_as_friend.php?friend_id=$user_id\" class=\"small\">הוסף כחבר</a>
 															<br>
 															<a href=\"./send_message_to_user.php?recipient_id=$user_id&recipient_name=$username\" class=\"small\">שלח הודעה</a>
 														</p>";
@@ -171,17 +171,20 @@ $graph = $bar->horizontal();
 								}
 							?>		
 							</ul>
-							<br></br>
+							<br></br>		
 							<?php echo $graph?>
 						</td>
 						
-						<td>
+						<td>																
 							<?php
 								$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id";
 								$friends_result = $mysqli->query($friends_query);
 								$friends_count = $friends_result->num_rows;
-								echo "$friends_count חברים";
-								if ($friends_count > 0) {
+								$html = "<a href=\"./user_friends.php?\" class=\"stripped\" id=\"user_stats\">";
+								if($same_user)
+									$html .= "יש לך $friends_count חברים </a>";
+								else $html .= "<span>ל-$username יש</span> $friends_count חברים </a>";
+								echo $html;									if ($friends_count > 0) {
 									$html = "<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\">";								
 									while ($friends = mysqli_fetch_assoc($friends_result)){ 
 										$friend_id = $friends['friend_id'];
@@ -192,9 +195,9 @@ $graph = $bar->horizontal();
 										$friend_name = $friend['username'];
 										$html .= "<tr>
 													<td>
-														<span><b><a href=\"./user_profile.php?user_id=$friend_id\">$friend_name</a></b></span>
+														<p><b><a href=\"./user_profile.php?user_id=$friend_id\">$friend_name</a></b></p>
 														<DIV class=\"clearStyles photoBox\">
-															<A href=\"./user_profile.php?user_id=\"$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
+															<A href=\"./user_profile.php?user_id=$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
 														</div>
 													</td>
 												</tr>";
@@ -203,6 +206,7 @@ $graph = $bar->horizontal();
 									echo $html;		
 								}									
 							?>
+							</ul>							
 						</td>				
 					</tr>	
 				</table>																		
