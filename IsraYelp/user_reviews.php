@@ -51,8 +51,8 @@ $rev_count = $rev_result->num_rows;
 		<div id="userTabs" >
 			<ul>	
 				<?php
-					$html = "<li><a href=\"./user_profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
-					$html .= "<li class=\"selected\"><a href=\"./user_reviews.php?user_id=".$user_id."\">ביקורות</a></li>";
+					$html = "<li><a href=\"./user_profile.php?user_id=$user_id\">פרופיל</a></li>"; 
+					$html .= "<li class=\"selected\"><a href=\"./user_reviews.php?user_id=$user_id\">ביקורות</a></li>";
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
 						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
