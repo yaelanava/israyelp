@@ -97,7 +97,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 									</div>
 									<div class=\"biz_rating\">
 										<div class=\"rating-small\">
-											<img class=\"stars_".$biz['grading']."\" width=\"83\" height=325 src=\"./image/stars_map.png\"/>
+											<img class=\"stars_".$biz['grading']."\" width=\"82\" height=325 src=\"./image/stars_map.png\"/>
 										</div> 
 										<em class=\"smaller\">".$biz['num_reviews']." ביקורות</em>
 									</div>

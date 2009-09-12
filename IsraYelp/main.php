@@ -456,8 +456,9 @@ $city_name = getCityName($city_id);
 											<p>ביקורת עבור: 
 											<a href=\"$biz_url\">".$biz['name']."</a><br>
 											<div class=\"rating-small\">
-												<IMG class=\"stars_".$review['grading']." height=\"325\" alt=\"".$review['grading']." כוכבים\" src=\"./image/stars_map.png\" width=\"83\" >							
+												<img class=\"stars_".$review['grading']."\" width=\"82\" height=325 src=\"./image/stars_map.png\"/ alt=\"".$review['grading']." כוכבים\">
 											</div>
+	
 											<br>
 											<strong>".$review['title'] ."</strong>
 											
