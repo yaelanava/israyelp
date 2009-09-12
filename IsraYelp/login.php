@@ -6,7 +6,6 @@ include './utils/functions.php';
 if (isset($_GET['logout'])){
 	session_destroy();
 	header("Location: main.php");
-	die(0);				
 }
 
 $error_msg = false;

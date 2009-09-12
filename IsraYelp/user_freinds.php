@@ -13,8 +13,8 @@ $user_result = $mysqli->query($user_query);
 $user = mysqli_fetch_assoc($user_result);
 $username = $user['username'];
 
-//counting how much messages this user has
-$query = "SELECT * FROM `messages` WHERE recipient_id=$user_id";
+//counting how much reviews this user wrote
+$query = "SELECT * FROM `friends` WHERE user_id=$user_id";
 $result = $mysqli->query($query);
 $count = $result->num_rows;
 

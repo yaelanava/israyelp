@@ -31,16 +31,13 @@ if ('' == $_POST['place_name']){
 		if ($source == "write_review"){
 			if (!session_is_registered('username')) { 
 					header("Location: ./login.php?returnUrl=".$biz_urli);
-					die(0);
 				} 
 			else {
 					header("Location:./writeReviewForm.php?biz_type=".$kind."&biz_id=".$biz_id);				
-					die(0);								
 				}					
 		}
 		else if ($source == "main"){
 			header("Location:".$biz_urli);
-			die(0);
 		}
 
 	} else if ($count > 1){
@@ -53,12 +50,8 @@ if ('' == $_POST['place_name']){
 				if ($source == "write_review"){
 					if (!session_is_registered('username')) { 
 						header("Location: ./login.php?returnUrl=".$biz_urli);
-						die(0);
-					}
-					else{
-				
-						$url = "./writeReviewForm.php?biz_type=$kind&biz_id=".$biz_id;
-						
+					} else {				
+						$url = "./writeReviewForm.php?biz_type=$kind&biz_id=".$biz_id;						
 					}
 				}
 				else if ($source == "main"){
