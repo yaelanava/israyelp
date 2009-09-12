@@ -39,7 +39,7 @@ include './utils/functions.php';
 				<td></td>
 				<td> 
 					<br>
-					<a href="./about_me.php?external_user=<?php echo $_SESSION['user_id']?>"> התחרטת? חזור לחשבון שלך.</a>				
+					<a href="./user_profile.php"> התחרטת? חזור לחשבון שלך.</a>				
 				</td>							
 			</tr>	
 		</table>
