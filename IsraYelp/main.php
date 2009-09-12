@@ -452,14 +452,16 @@ $city_name = getCityName($city_id);
 											<div class=\"clearStyles photoBox\">
 												<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"></A>
 												<A href=\"./user_profile.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</a>		
-											</div>								
-											<p>ביקורת עבור: 
-											<a href=\"$biz_url\">".$biz['name']."</a><br>
-											<div class=\"rating-small\">
-												<img class=\"stars_".$review['grading']."\" width=\"82\" height=325 src=\"./image/stars_map.png\"/ alt=\"".$review['grading']." כוכבים\">
 											</div>
-	
-											<br>
+											<div class=\"biz_info\">
+												ביקורת עבור: <a href=\"$biz_url\" class=\"biz_name\">".$biz['name']."</a>
+											</div>
+											<div class=\"biz_rating\">
+												<div class=\"rating-small\">
+													<img class=\"stars_".$biz['grading']."\" width=\"82\" height=325 src=\"./image/stars_map.png\"/>
+												</div> 
+											</div>
+											<br/>
 											<strong>".$review['title'] ."</strong>
 											
 											<br/>";																																														
