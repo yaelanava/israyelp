@@ -36,7 +36,7 @@ function getBizURL($biz_type, $biz_id){
 function getUserPictureSrc($user_id){
 	$src = "./users_pics/".$user_id;
 	if (!file_exists($src)) {
-		$src = $prefix."users_pics/blank_user_medium.gif";
+		$src = "./users_pics/blank_user_medium.gif";
 	}
 	return $src;
 }
