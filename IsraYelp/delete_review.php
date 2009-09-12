@@ -58,7 +58,7 @@ if ($result) {
 	<p>הביקורת נמחקה בהצלחה.
 		<br><br>
 		<?php
-			$html = "<A href=\"./user_profile.php?user_id=".$user_id."\"> חזור לחשבון שלי </A>"; 
+			$html = "<A href=\"./user_profile.php?user_id=".$user_id."\"> חזור לחשבון שלי. </A>"; 
 			echo $html;
 		?>
 		
