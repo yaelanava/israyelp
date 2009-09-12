@@ -46,15 +46,12 @@ ssage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות
 		}
 		
 		if ($count == 0){
-			$html = "<p><h5>"."לא נמצאו מבקרים בשם זה"."</h5></p>";
-			$html .= "<p><a href=\"./find_review.php\">"."לחץ כאן לחזרה לדף הקודם"."</A>";
+			$html = "<p><h5>"."לא נמצאו משתמשים בשם זה"."</h5></p>";
+			$back_url = "./".$source.".php";
+			$html .= "<p><a href=".$back_url.">"."לחץ כאן לחזרה לדף הקודם"."</A>";
 			echo $html;
 		}
-		else if ($count == 1){
-			$user = mysqli_fetch_assoc($result);
-			header ("location:".$prefix.$user['id']);
-			die(0);			
-		}
+
 		else {
 			$html = "<p><h5>"."נמצאו"." ".$count." מבקרים:"."</h5></p>";
 			$html .= "<table>";
@@ -73,6 +70,7 @@ ssage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות
 				</tr>";
 			}
 			$html.="</table>";
+			$html .= "<br><p><a href=\"./find_review.php\">"."חזרה לדף הקודם >>"."</A>";
 			echo $html;			
 		}
 
