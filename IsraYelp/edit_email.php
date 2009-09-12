@@ -1,29 +1,27 @@
 <?php 
-	session_start();
-	include './utils/functions.php';
+
+session_start();
+
+include './utils/functions.php';
 	
-	$error_msg = 0;
+
+$error_msg = 0;
+
+if (isset($_POST['new_email']) && ('' != $_POST['new_email'])) {
+	$new_email = mysql_escape_string($_POST['new_email']);
+	if(check_email($new_email)) {
+		$id = $_SESSION['user_id'];
 	
-	if (isset($_POST['new_email']) && ('' != $_POST['new_email'])) {
-		$new_email=mysql_real_escape_string($_POST['new_email']);
-		if(check_email($new_email))
-		{
-			$id = $_SESSION['user_id'];
-		
 		$mysqli = getMysqliConnection();	
 		$update_query="UPDATE `users` SET `email` = '$new_email' WHERE `users`.`id` =$id LIMIT 1 ;";
-		$mysqli->query($update_query);
-		header("location:edit_successes.php");	
-		}
-		else
-			$error_msg="האימייל שהכנסת אינו תקין, נסה שוב";
-		
-	}
-		
-	
-	
+		if ($mysqli->query($update_query)) {
+			header("location:edit_successes.php");
+		}	
+	} else { 
+		$error_msg="האימייל שהכנסת אינו תקין, נסה שוב";
+	}	
+}	
 ?>
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,7 +37,9 @@
 	<title>עדכון אימייל | IsraYelp</title>
 
 </head>
-<body>
+
+<body dir="rtl">
+
 <?php echo getHeadHTMLCode()?>
 
 <div id="bodyContainer" dir="rtl">
@@ -70,7 +70,7 @@
 							<td>
 								<br>
 								<?php
-									$html = "<A href=\"./about_me.php?external_user=".$_SESSION['user_id']."\"> התחרטת? חזור לחשבון שלך.</A>"; 
+									$html = "<A href=\"./user_profile.php\"> התחרטת? חזור לחשבון שלך.</A>"; 
 									echo $html;
 								?>
 							</td>

@@ -1,6 +1,13 @@
 <?php
-	session_start(); 
+
+session_start(); 
+
+include './utils/functions.php';
+
 ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 	<title> עדכון הושלם </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
@@ -11,18 +18,22 @@
 	<link rel="icon" href="../image/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="./mystyle.css"> 
 </head>
-<body class= "us" id="IsraYelp_main_body" dir="rtl">
+
+<body dir="rtl">
 
 <?php echo getHeadHTMLCode()?>
-
-
 
 <div id="bodyContainer_Centered">
 	<p>העדכון הושלם בהצלחה.
 		<br><br>
 		<?php
-			$html = "<A href=\"./about_me.php?external_user=".$_SESSION['user_id']."\">חזור לחשבון שלך.</A>"; 
+			$html = "<A href=\"./user_profile.php\">חזור לחשבון שלך.</A>"; 
 			echo $html;
 		?>
 	</p>
 </div>
+
+<?php echo getFooterHTMLCode()?>
+
+</body>
+</html>

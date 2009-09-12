@@ -81,8 +81,8 @@ $graph = $bar->horizontal();
 		<div id="userTabs">
 			<ul> 
 				<?php
-				 	$html = "<li class=\"selected\"><a href=\"./user_profile.php?user_id=".$user_id."\">פרופיל</a></li>"; 
-					$html .="<li><a href=\"./user_reviews.php?user_id=".$user_id."\">ביקורות</a></li> ";
+				 	$html = "<li class=\"selected\"><a href=\"./user_profile.php?user_id=$user_id\">פרופיל</a></li>"; 
+					$html .="<li><a href=\"./user_reviews.php?user_id=$user_id\">ביקורות</a></li> ";
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
 						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
@@ -96,9 +96,9 @@ $graph = $bar->horizontal();
 		</div>
 	<div id="user_details_wrapper">
 		<div id="inner_container" class="clearfix">				
-				<table cellspacing="20" cellpadding="1" border="0">					
-					<tr width=300 style="vertical-align:top">
-						<td>
+				<table cellspacing="30" cellpadding="1" border="0" >					
+					<tr style="vertical-align:top">
+						<td width=300>
 							<div id="user_pic">
 								<div class="clearStyles photoBox">
 									<img src="<?php echo getUserPictureSrc($user_id);?>" height="150px" width="150px">																	
@@ -118,8 +118,32 @@ $graph = $bar->horizontal();
 											echo $html;											
 										?>					 					
 								</div>
-							</div>	
+							</div>
+							<br></br>
+							<span id="highlight2">מיקום: </span>
+							<?php   
+								echo (empty($city) ? "לא ידוע" : $city);						    				
+			    				if ($same_user) {
+			    					$html = "<p><span class=\"formLabel\">
+			    								<a href=\"edit_city.php\">ערוך</a></span>
+			    							</p>";	
+			    					echo $html;
+			    				}		    								    				
+								if ($same_user) {
+									$html = "<br></br>
+											<span id=\"highlight2\"> כתובת הדואר שלך: </span>
+											$email
+			    							<p><span class=\"formLabel\">
+			    								<a href=\"edit_email.php\">ערוך</a></span>
+			    							</p>";	
+			    					echo $html;		    								    				
+		    					}
+							?>
+							<br></br>
+							<span id="highlight2">רשום לאתר מ:</span>
+							<?php echo $register_since?>							
 						</td>
+						
 						<td width=300>
 							<ul class="stripped" id="user_stats">					
 							<?php		
@@ -135,6 +159,7 @@ $graph = $bar->horizontal();
 								else $html .= "ביקורות נכתבו על ידי $username </a>";
 								echo $html;	
 
+								//counting how much bookmarks this user has
 								if ($same_user){
 									echo "<br></br>";
 									$fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
@@ -146,48 +171,41 @@ $graph = $bar->horizontal();
 								}
 							?>		
 							</ul>
-							<br></br>							
-							<?php echo $graph;?>							
+							<br></br>
+							<?php echo $graph?>
+						</td>
+						
+						<td>
+							<?php
+								$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id";
+								$friends_result = $mysqli->query($friends_query);
+								$friends_count = $friends_result->num_rows;
+								echo "$friends_count חברים";
+								if ($friends_count > 0) {
+									$html = "<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\">";								
+									while ($friends = mysqli_fetch_assoc($friends_result)){ 
+										$friend_id = $friends['friend_id'];
+										//getting friend name
+										$friend_query = "SELECT * FROM `users` WHERE id=$friend_id";
+										$friend_result = $mysqli->query($friend_query);
+										$friend = mysqli_fetch_assoc($friend_result);
+										$friend_name = $friend['username'];
+										$html .= "<tr>
+													<td>
+														<span><b><a href=\"./user_profile.php?user_id=$friend_id\">$friend_name</a></b></span>
+														<DIV class=\"clearStyles photoBox\">
+															<A href=\"./user_profile.php?user_id=\"$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
+														</div>
+													</td>
+												</tr>";
+									}
+									$html .= "</table>";									
+									echo $html;		
+								}									
+							?>
 						</td>				
 					</tr>	
-					
-					<tr>
-						<td>
-							<span id="highlight2">מיקום: </span>
-							<?php   
-								echo (empty($city) ? "לא ידוע" : $city);						    				
-			    				if ($same_user) {
-			    					$html = "<p><span class=\"formLabel\">
-			    								<a href=\"edit_city.php\">ערוך</a></span>
-			    							</p>";	
-			    					echo $html;		    								    				
-			    				}
-							?>
-						</td>
-					</tr>
-						
-					<?php
-						if ($same_user) {
-							$html = "<tr>
-										<td>
-											<span id=\"highlight2\"> כתובת הדואר שלך: </span>
-											$email
-											<br/> 
-			    							<p><span class=\"formLabel\">
-			    								<a href=\"edit_email.php\">ערוך</a></span>
-			    							</p>
-			    						</td>
-			    					</tr>";	
-			    			echo $html;		    								    				
-		    			}
-					?>
-					<tr>
-						<td>
-							<span id="highlight2">רשום לאתר מ:</span>
-							<?php echo $register_since;?>
-						</td>
-					</tr>															
-				</table>
+				</table>																		
 		</div>
 	</div>
 </div>		

@@ -1,22 +1,21 @@
 <?php 
-	session_start();
-	include './utils/functions.php';
 	
+session_start();
+
+include './utils/functions.php';
 	
-	if (isset($_POST['new_city']) && ('' != $_POST['new_city'])) {
-		$new_city=mysql_real_escape_string($_POST['new_city']);
-		$id = $_SESSION['user_id'];
-		
-		$mysqli = getMysqliConnection();	
-		$update_query="UPDATE `users` SET `city` = '$new_city' WHERE `users`.`id` =$id LIMIT 1 ;";
-		$mysqli->query($update_query);
-		header("location:edit_successes.php");	
-	}
-		
+if (isset($_POST['new_city']) && ('' != $_POST['new_city'])) {
+	$new_city = mysql_escape_string($_POST['new_city']);
+	$id = $_SESSION['user_id'];
 	
+	$mysqli = getMysqliConnection();		
+	$update_query="UPDATE `users` SET `city` = '$new_city' WHERE `users`.`id` =$id LIMIT 1 ;";
+	if ($mysqli->query($update_query)) {
+		header("location: edit_successes.php");
+	}	
+}
 	
 ?>
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,6 +32,7 @@
 
 </head>
 <body>
+
 <?php echo getHeadHTMLCode()?>
 
 
@@ -62,7 +62,7 @@
 							<td>
 								<br>
 								<?php
-									$html = "<A href=\"./about_me.php?external_user=".$_SESSION['user_id']."\"> התחרטת? חזור לחשבון שלך.</A>"; 
+									$html = "<A href=\"./user_profile.php\"> התחרטת? חזור לחשבון שלך.</A>"; 
 									echo $html;
 								?>
 							</td>
@@ -74,27 +74,3 @@
 	</div> 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
