@@ -455,15 +455,8 @@ $city_name = getCityName($city_id);
 											</div>
 											<div class=\"biz_info\">
 												ביקורת עבור: <a href=\"$biz_url\" class=\"biz_name\">".$biz['name']."</a>
-											</div>
-											<div class=\"biz_rating\">
-												<div class=\"rating\">
-													<img class=\"stars_".$biz['grading']."\" width=\"82\" height=325 src=\"./image/stars_map.png\"/>
-												</div> 
-											</div>
-											<br/>
-											<strong>".$review['title'] ."</strong>
-											
+											</div>										
+											<strong>".$review['title'] ."</strong>					
 											<br/>";																																														
 							if (strlen($rev) > 150){
 								$rev = substr($rev,0,149);
