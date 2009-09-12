@@ -8,8 +8,16 @@
 <head>
 	<title> ביקורת </title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
-	<meta name="description" content="IsraYelp - User reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
-	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
+	<meta name="description" content="IsraYelp - User reviews and 
+
+Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services 
+
+and More">
+	<meta name="keywords" content="Yelp,recommendation,Israel, 
+
+review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,ma
+
+ssage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
 	
 	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
@@ -23,12 +31,19 @@
 
 <div id="bodyContainer">
 	<?php 
-		$reviewer = $_POST['find_reviewer'];
-		
+		$reviewer = $_POST['reviewer_name'];		
 		$mysqli = getMysqliConnection();
 		$query = "SELECT * FROM `users` WHERE username='$reviewer'";
 		$result = $mysqli->query($query);	
 		$count = $result->num_rows;
+		$source = $_POST['source'];
+		
+		if ($source == "find_review"){
+			$prefix = "./user_reviews.php?user_id=";
+		}
+		else if ($source =="find_reviewer"){
+			$prefix = "./user_profile.php?user_id=";	
+		}
 		
 		if ($count == 0){
 			$html = "<p><h5>"."לא נמצאו מבקרים בשם זה"."</h5></p>";
@@ -37,7 +52,7 @@
 		}
 		else if ($count == 1){
 			$user = mysqli_fetch_assoc($result);
-			header("location:./my_reviews.php?user_id=".$user['id']);	
+			header ("location:".$prefix.$user['id']);
 			die(0);			
 		}
 		else {
@@ -47,16 +62,15 @@
 				$html .= "<tr>
 					<td>
 						<P><div class=\"clearStyles bizPhotoBox\">
-							<A href=\"./user_reviews.php?user_id=".$user['id']."\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"></A>
+							<A href=".$prefix.$user['id']." rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
 							</div>
 						</P>
 					</td>
 					<td>
-						<P>
-							<A href=\"./user_reviews.php?user_id=".$user['id']."\" rel=\"nofollow\">".$user['username']."</A>
-						</P>						
+						<P><A href=".$prefix.$user['id']." rel=\"nofollow\">".$user['username']."</A>
+						</P>
 					</td>
-					</tr>";
+				</tr>";
 			}
 			$html.="</table>";
 			echo $html;			
