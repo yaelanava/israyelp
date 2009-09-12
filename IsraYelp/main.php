@@ -386,7 +386,7 @@ $city_name = getCityName($city_id);
 							if (strlen($rev) > 150){
 								$rev = substr($rev,0,149);
 								$html .= "<strong>".$rev_title."</strong><br><em>".$rev."</em>";								
-								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\"> להמשך לחץ כאן...</a>";
+								$html .="<a href=\"./present_review.php?review_id=".$review['id']."\" style=\"FONT-SIZE:10px\"> להמשך לחץ כאן...</a>";
 							} else {
 								$html .= "<strong>".$rev_title."</strong><br><em>".$rev."</em>"; 	 							
 							}

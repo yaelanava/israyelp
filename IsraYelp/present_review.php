@@ -1,45 +1,54 @@
 <?php 
-	session_start();
-	include './utils/functions.php';
-	
-	$review_id=$_GET['review_id'];
-	$user_id = $_SESSION['user_id_rev'];
-	
-	$mysqli = getMysqliConnection();
-	$review_query = "SELECT * FROM `reviews` WHERE `reviews`.`id` = '$review_id' LIMIT 1";
-	$result_reviews=$mysqli->query($review_query);
-	$review = mysqli_fetch_assoc($result_reviews);
-	$the_review=$review['review'];
-	
-	$query_user = "SELECT * FROM `users` WHERE id='$user_id'";
-	$result_user = $mysqli->query($query_user);
-	$user = mysqli_fetch_assoc($result_user);
-	
-	$biz_id = $review['biz_id'];
-	$biz_type = $review['biz_type'];
-	$query = "SELECT * FROM `$biz_type` WHERE id='$biz_id'";
-	$result = $mysqli->query($query);
-	$biz = mysqli_fetch_assoc($result);
-	$biz_url = getBizURL($biz_type, $biz_id);
+session_start();
 
-	$html = "<div class=\"clearfix\">	
-				<table cellpadding=\"20\" cellspacing=\"1\" border=\"0\" >
-					<tr>
-						<td>
-							<DIV class=\"clearStyles photoBox\">
-								<A href=\"./user_profile.php\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
-							</div>
-							<em class=\"smaller grey\">". $user['username'] ."</em>
-						</td>
-						<td>
-							ביקורת עבור: 
-							<a href=\"$biz_url\"><strong>".$biz['name']."</strong></a><br><br><strong>".$review['title'] ."</strong>
-							
-							<br/><em>".$the_review."</em>
-						</td>
-					</tr>
-				</table>
-			</div>	";	
+include './utils/functions.php';
+
+$mysqli = getMysqliConnection();
+
+$review_id=$_GET['review_id'];
+
+$review_query = "SELECT * FROM `reviews` WHERE `reviews`.`id`=$review_id LIMIT 1";
+$result_reviews=$mysqli->query($review_query);
+$review = mysqli_fetch_assoc($result_reviews);
+
+$user_id = $review['user_id'];
+$query_user = "SELECT * FROM `users` WHERE id=$user_id";
+$result_user = $mysqli->query($query_user);
+$user = mysqli_fetch_assoc($result_user);
+
+$biz_id = $review['biz_id'];
+$biz_type = $review['biz_type'];
+$query = "SELECT * FROM `$biz_type` WHERE id=$biz_id";
+$result = $mysqli->query($query);
+$biz = mysqli_fetch_assoc($result);
+$biz_url = getBizURL($biz_type, $biz_id);
+
+$html = "<div>	
+			<table cellpadding=\"0\" cellspacing=\"10\" border=\"0\" >
+				<tr valign=top>
+					<td width=80>
+						<DIV class=\"clearStyles photoBox\">
+							<A href=\"./user_profile.php?user_id=$user_id\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של ".$user['username']."\" src=\"".getUserPictureSrc($user['id'])."\"></A>
+						</div>
+						<P class=\"reviewer_info\" style=\"float:right\"><A class=\"reviewer_name\" href=\"./user_profile.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
+						<br></br>
+						<P class=\"reviewer_info\" style=\"float:right\">". $user['city']."</P>
+					<td>
+						ביקורת עבור: 
+						<a href=\"$biz_url\"><strong>".$biz['name']."</strong></a>
+						<br></br>
+						<DIV class=\"ext_rating\">
+							<DIV class=\"rating\">
+								<IMG class=\"stars_". $review['grading'] ."\" title=\"".$review['grading']." כוכבים \" height=\"325\" alt=\"". $review['grading'] ."כוכבים\" src=\"./image/stars_map.png\" width=\"83\" />
+							</DIV>
+							<EM class=\"smaller\">". $review['added']."</EM> 
+						</DIV>
+						<br>
+						<p class=\"review_comment\" style=\"PADDING-RIGHT: 0px\"><b>". $review['title']."</b><br>".$review['review']."</P>
+					</td>
+				</tr>
+			</table>
+		</div>	";	
 ?>
 
 <html>
