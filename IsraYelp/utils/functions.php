@@ -127,7 +127,7 @@ function getFooterHTMLCode(){
 				</div>
 	
 				<div>
-					<p> &copy; כל הזכויות שמורות | סדנה בפיתוח אפקליקציות web עם php, אוניברסיטת תל-אביב </p>
+					<p> &copy; כל הזכויות שמורות</p>
 				</div>
 			</div>";
 	return $html;

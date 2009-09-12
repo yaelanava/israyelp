@@ -10,6 +10,11 @@ $friend_id = $_GET['friend_id'];
 
 $friend_name = $_GET['friend_name'];
 
+$query = "SELECT * from `friends` WHERE user_id=$user_id and friend_id=$friend_id";		
+$result = $mysqli->query($query);
+if ($result->num_rows != 0) {
+	
+}
 
 $query = "INSERT INTO `friends` (
 			`user_id` ,
