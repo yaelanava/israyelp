@@ -326,7 +326,7 @@ $city_name = getCityName($city_id);
 	</div> 
 
 	<div id="topYelpersModule" class="external">
-		<h3>מבקרים נבחרים</h3>
+		<h3>משתמשים נבחרים</h3>
 		<br>
 			<?php 						
 				$query = "SELECT * FROM `users` ORDER BY RAND() LIMIT 6";
