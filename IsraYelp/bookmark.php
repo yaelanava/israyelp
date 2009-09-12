@@ -7,31 +7,44 @@ $mysqli = getMysqliConnection();
 
 $biz_id = $_GET['biz_id'];
 $biz_type = $_GET['biz_type'];
-$biz_url = getBizURL($biz_type, $biz_id);
 
 $user_id = $_SESSION['user_id'];		
 
-$query = "SELECT * FROM `favorites` WHERE user_id=$user_id and biz_id=$biz_id and biz_type='$biz_type'";
-$result = $mysqli->query($query);
-$count = $result->num_rows;
-if ($count == 0) {
-	$type_name = mysql_real_escape_string($biz_type);
-	$query = "INSERT INTO .`favorites` (
-				`user_id` ,
-				`biz_id` ,
-				`biz_type` 	
-			)VALUES (
-				'$user_id' , '$biz_id', '$biz_type'
-			);";
-	$result = $mysqli->query($query);	
+if (isset($_GET['remove'])) {
+	$query = "DELETE FROM `favorites` WHERE `favorites`.`user_id`=$user_id AND `favorites`.`biz_id`=$biz_id AND CONVERT(`favorites`.`biz_type` USING utf8)='$biz_type' LIMIT 1";
+	$result = $mysqli->query($query);
 	if 	($result) {
-		$bookmark_msg = "המקום נרשם בהצלחה כמועדף.";
+			$bookmark_msg = "המקום נמחק בהצלחה.";
+		} else {
+			$bookmark_msg = "פעולת מחיקת המקום נכשלה, אנא נסה שוב.";		
+		}		
+	$return_url = "./user_bookmarks.php";
+	
+} else { //insert
+	$query = "SELECT * FROM `favorites` WHERE user_id=$user_id and biz_id=$biz_id and biz_type='$biz_type'";
+	$result = $mysqli->query($query);
+	$count = $result->num_rows;
+	if ($count == 0) {
+		$type_name = mysql_escape_string($biz_type);
+		$query = "INSERT INTO .`favorites` (
+					`user_id` ,
+					`biz_id` ,
+					`biz_type` 	
+				)VALUES (
+					'$user_id' , '$biz_id', '$biz_type'
+				);";
+		$result = $mysqli->query($query);	
+		if 	($result) {
+			$bookmark_msg = "המקום נרשם בהצלחה כמועדף.";
+		} else {
+			$bookmark_msg = "פעולת סימון כמקום מועדף נכשלה, אנא נסה שוב.";		
+		}		
 	} else {
-		$bookmark_msg = "פעולת סימון כמקום מועדף נכשלה, אנא נסה שוב.";		
-	}		
-} else {
-	$bookmark_msg = "מקום זה כבר נמצא ברשימת המקומות המועדפים עלייך.";			
+		$bookmark_msg = "מקום זה כבר נמצא ברשימת המקומות המועדפים עלייך.";			
+	}
+	$return_url = getBizURL($biz_type, $biz_id);	
 }
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -51,7 +64,7 @@ if ($count == 0) {
 
 <div id="bodyContainer_Centered">
 	<p><?php echo $bookmark_msg?></p>
-	<a href="<?php echo $biz_url?>">לחץ כאן כדי לחזור לדף הקודם.</a>
+	<a href="<?php echo $return_url?>">לחץ כאן כדי לחזור לדף הקודם.</a>
 </div>
 </body>
 </html>
