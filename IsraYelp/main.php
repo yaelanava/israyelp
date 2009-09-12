@@ -477,7 +477,7 @@ $city_name = getCityName($city_id);
 
 <div id="pressLinks"><img src="./image/ads_full.png" width="950" height="84" usemap="#pressMap"  />
 	<map name="pressMap">
-		<area rel="nofollow" alt="חפש מבקר" href="./find_review.php" coords="10,6,232,79">
+		<area rel="nofollow" alt="חפש מבקר" href="./find_reviewer.php" coords="10,6,232,79">
 		<area rel="nofollow" alt="כתוב ביקורת" href="./write_review.php"  coords="245,6,469,79">
 		<area rel="nofollow" alt="בדוק בתי מלון" href="./hotels.php?city_id=<?php echo $city_id; ?>" coords="481,6,705,79">
 		<area rel="nofollow" alt="בדוק מסעדות" href="./restaurants.php?city_id=<?php echo $city_id; ?>" coords="718,6,941,79">
