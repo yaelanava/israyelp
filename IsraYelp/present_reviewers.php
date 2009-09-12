@@ -62,7 +62,7 @@ ssage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות
 				$html .= "<tr>
 					<td>
 						<P><div class=\"clearStyles bizPhotoBox\">
-							<A href=".$prefix.$user['id']." rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'], "./")."\"></A>
+							<A href=".$prefix.$user['id']." rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של " . $user['username'] ."\" src=\"".getUserPictureSrc($user['id'])."\"></A>
 							</div>
 						</P>
 					</td>
