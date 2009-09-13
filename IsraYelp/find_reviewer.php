@@ -29,7 +29,7 @@ include './utils/functions.php';
 	<div id="external_search">
 	<form method="post" action="./present_reviewers.php" name="external_search"> 
 		<p>
-			<label for="find_desc_ext">כינוי <em>כותב הביקורת</em></label> 
+			<label for="find_desc_ext">כינוי <em>שם המשתמש</em></label> 
 			<input type="text" maxlength="64" id="find_desc_ext" name="reviewer_name" tabindex="1" value="">	
 		</p>
 
