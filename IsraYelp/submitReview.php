@@ -49,7 +49,9 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 		$newGrading = ceil(($oldGrading*$num_reviews + $grading) / ++$num_reviews);
 		
 		$query = "UPDATE `$biz_type` SET `grading`='$newGrading', `num_reviews`='$num_reviews' WHERE id=$biz_id LIMIT 1";	
-		$result = $mysqli->query($query);		
+		$result = $mysqli->query($query);
+
+		header("Location: $biz_url");
 	}
 		
 } else {
@@ -75,9 +77,8 @@ if (isset($_POST['title']) && ('' != $_POST['title']) &&
 <?php echo getHeadHTMLCode()?>
 
 <div id="bodyContainer_Centered">
-	<p><?php if ($result) {echo "הביקורת נשמרה בהצלחה.";} else {echo "הביקורת לא נשמרה. אנא נסה שוב";}?>
-		<br><br>
-		
+	<p><?php echo "הביקורת לא נשמרה. אנא נסה שוב"?>
+		<br><br>		
 		<a href="<?php echo $biz_url;?>">לחץ כאן כדי לחזור לדף המקום.</a>
 	</p>
 </div>

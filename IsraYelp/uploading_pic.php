@@ -16,7 +16,9 @@ if (isset($_FILES['image']) && ('' != $_FILES['image']['name'])) {
 	} else {
 		$temp_name = $_FILES['image']['tmp_name'];		
 		$destination = "./users_pics/".$id;
-		if (!copy($temp_name, $destination)) {
+		if (copy($temp_name, $destination)) {
+			header("Location: ./user_profile.php?user_id=$id");
+		} else {
 			$error_msg = "העלאת התמונה נכשלה.";				
 		}
 	}
@@ -42,21 +44,14 @@ if (isset($_FILES['image']) && ('' != $_FILES['image']['name'])) {
 <?php echo getHeadHTMLCode()?>
 
 <div id="bodyContainer_Centered">
-	<p> <?php
-			if ($error_msg) {
-				$html= "$error_msg
-				<br><br>
-				<A href=\"./upload_pic.php\">נסה שנית. </A>
-				<p>או </p>
-				<A href=\"./user_profile.php?user_id=$id\">חזור לחשבון שלי.</A>"; 				
-			}
-			else{
-				$html ="התמונה הועלתה בהצלחה.
-				<br><br>
-				<A href=\"./user_profile.php?user_id=$id\">חזור לחשבון שלי.</A>"; 
-			}
+	<p> 
+		<?php
+			$html= "$error_msg
+					<br><br>
+					<A href=\".//uploadUserPictureForm.php\">נסה שנית </A> או <A href=\"./user_profile.php?user_id=$id\">חזור לחשבון שלי.</A>"; 				
 			echo $html;
-	?>
-	</div>
+		?>
+	</p>
+</div>
 </body>
 </html>
