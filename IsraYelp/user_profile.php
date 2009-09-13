@@ -195,9 +195,20 @@ $graph = $bar->horizontal();
 								$friends_count = $friends_result->num_rows;
 								$html = "<a href=\"./user_friends.php?user_id=$user_id\"\" class=\"stripped\" id=\"user_stats\">";
 								if($same_user) {
-									$html .= "יש לך $friends_count חברים </a>";
+									if ($friends_count>0){
+										$html .= "יש לך $friends_count חברים וביניהם...</a>";
+									}
+									else {
+										$html .= "יש לך $friends_count חברים </a>";
+									}
 								} else {
-									$html .= "<span>ל-$username יש</span> $friends_count חברים </a>";
+									if ($friends_count>0){
+										$html .= "<span>ל-$username יש</span> $friends_count חברים  וביניהם...</a>";			
+									}
+									else {
+										$html .= "<span>ל-$username יש</span> $friends_count חברים </a>";			
+										
+									}
 								}
 								echo $html;									
 								if ($friends_count > 0) {
