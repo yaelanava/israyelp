@@ -434,7 +434,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
 --(NULL, 2, 18, 'restaurants', 9, 5, 'מומלץ ביותר', 'בר-בורגר גדול ומעוצב, ההמבורגרים במקום הם מהטובים שטעמתי והמחיר שווה לכל כיס. בשעות הלילה יש מבצעים משתלמים. מומלץ ביותר!', NULL);
 
 --UPDATE `restaurants` SET `grading`='5', `num_reviews`='1' WHERE `restaurants`.`id`=18 LIMIT 1 ;
---UPDATE `restaurants` SET `lat`='31.96561', `lon`='34.78971' WHERE `restaurants`.`id`=5 LIMIT 1 ;
+--UPDATE `restaurants` SET `lat`='31.97563', `lon`='34.80755' WHERE `restaurants`.`id`=18 LIMIT 1 ;
 
 
 ";
