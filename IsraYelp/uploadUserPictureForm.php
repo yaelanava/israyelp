@@ -29,7 +29,7 @@ include './utils/functions.php';
 		<table align="center" cellpadding="5">
 			<tr>
 				<td> בחר קובץ </td>
-				<td> <input name="image" type="file"> </td>			
+				<td> <input name="image" type="file" size="50"> </td>			
 			</tr>
 			<tr>
 				<td></td>
