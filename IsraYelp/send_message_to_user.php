@@ -19,10 +19,11 @@ if (isset($_POST['message']) && ('' != $_POST['message'])) {
 				`id`,
 				`sender_id`, 
 				`recipient_id`, 
-				`message`
-				`read`
+				`message`,
+				`read`,
+				`added`
 			) VALUES (
-				NULL, '$sender_id', '$recipient_id', '$message', '0'
+				NULL, '$sender_id', '$recipient_id', '$message', '0', NULL
 			);";
 	
 	$mysqli->query($query);

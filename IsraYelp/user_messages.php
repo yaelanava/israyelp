@@ -14,7 +14,7 @@ $user = mysqli_fetch_assoc($user_result);
 $username = $user['username'];
 
 //counting how much messages this user has
-$query = "SELECT * FROM `messages` WHERE recipient_id=$user_id ORDER BY added";
+$query = "SELECT * FROM `messages` WHERE recipient_id=$user_id ORDER BY added DESC";
 $result = $mysqli->query($query);
 $count = $result->num_rows;
 
