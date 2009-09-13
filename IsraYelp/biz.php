@@ -162,6 +162,8 @@ $result_reviews = $mysqli->query($query_reviews);
 												<EM class=\"smaller\">". $review['added']."</EM> 
 										</DIV>
 											<p class=\"review_comment ieSucks\"><b>". $review['title']."</b><br>".$review['review']."</P>
+											<br>
+											<p><a style=\"FONT-SIZE:11px\" href=\"./report_review.php?review_id=".$review['id']."&biz_type=".$biz_type."&biz_id=".$biz_id."\"> ביקורת זו לא הולמת? דווח עליה.</a></p>
 									</div>
 								</div>";
 							echo $html;
