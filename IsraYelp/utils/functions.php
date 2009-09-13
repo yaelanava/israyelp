@@ -214,4 +214,13 @@ function getMonth($month){
 	return $month;
 } 
 
+function getNewMessagesCount($user_id) {
+	//counting how much new messages this user has
+	$mysqli = getMysqliConnection();
+	$query_new = "SELECT * FROM `messages` WHERE `recipient_id`=$user_id AND `read`='0'";
+	$result_new = $mysqli->query($query_new);
+	$count_new = $result_new->num_rows;
+	return $count_new;
+}
+
 ?>

@@ -28,6 +28,9 @@ $review_query = "SELECT * FROM `reviews` WHERE user_id=$user_id ORDER BY added D
 $rev_result = $mysqli->query($review_query);
 $rev_count = $rev_result->num_rows;
 
+//counting how much new messages this user has
+$count_new = getNewMessagesCount($user_id);
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -56,7 +59,7 @@ $rev_count = $rev_result->num_rows;
 					$html .= "<li class=\"selected\"><a href=\"./user_reviews.php?user_id=$user_id\">ביקורות</a></li>";
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
-						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";	
+						$html .= "<li><a href=\"./user_messages.php\">הודעות ".($count_new>0 ? "($count_new)" : "")."</a></li>";	
 					}
 					$html .= "<li><a href=\"./user_friends.php?user_id=$user_id\".php\">חברים</a></li>";																
 					echo $html;
@@ -111,7 +114,7 @@ $rev_count = $rev_result->num_rows;
 							</table>";
 							if($same_user){
 								$html .= "<div id=\"delete_review\" style=\"padding-left:20px\">
-										<a href=\"./delete_review.php?review_id=".$review_id."\"><img src=\"./image/delete_rev.png\" height=\"8px\" width=\"8px\"></a>
+										<a href=\"./delete_review.php?review_id=".$review_id."\"><img src=\"./image/delete.png\" height=\"8px\" width=\"8px\"></a>
 										<a href=\"./delete_review.php?review_id=".$review_id."\">מחק ביקורת </a>
 										</div>";
 							}

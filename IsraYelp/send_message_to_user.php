@@ -22,7 +22,11 @@ if (isset($_POST['message']) && ('' != $_POST['message'])) {
 				NULL, '$sender_id', '$recipient_id', '$message'
 			);";
 	$mysqli->query($query);
-	header("Location: ./user_profile.php?user_id=$recipient_id");
+	if (isset($_GET['replay'])) {
+		header("Location: ./user_messages.php");
+	} else {
+		header("Location: ./user_profile.php?user_id=$recipient_id");
+	}
 }
 
 ?>

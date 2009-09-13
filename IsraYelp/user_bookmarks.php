@@ -14,9 +14,12 @@ $user = mysqli_fetch_assoc($user_result);
 $username = $user['username'];
 
 //counting how much reviews this user wrote
-$fav_query = "SELECT * FROM `favorites` WHERE user_id='$user_id'";
+$fav_query = "SELECT * FROM `favorites` WHERE user_id=$user_id";
 $fav_result = $mysqli->query($fav_query);
 $fav_count = $fav_result->num_rows;
+
+//counting how much new messages this user has
+$count_new = getNewMessagesCount($user_id);
 
 ?>
 
@@ -43,7 +46,7 @@ $fav_count = $fav_result->num_rows;
 				<li><a href="./user_profile.php">פרופיל</a></li>		 
 				<li><a href="./user_reviews.php">ביקורות</a></li>
 				<li class="selected"><a href="./user_bookmarks.php">מועדפים</a></li>
-				<li><a href="./user_messages.php">הודעות</a></li>												
+				<li><a href="./user_messages.php">הודעות <?php echo ($count_new>0 ? "($count_new)" : "")?></a></li>									
 				<li><a href="./user_friends.php">חברים</a></li>										
 			</ul> 
 		</div>
@@ -70,7 +73,7 @@ $fav_count = $fav_result->num_rows;
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
-										<a href=\"./bookmark.php?remove&biz_type=$biz_type&biz_id=$biz_id\"><img src=\"./image/delete_rev.png\" height=\"8px\" width=\"8px\" alt=\"מחק מקום\"></a>									
+										<a href=\"./bookmark.php?remove&biz_type=$biz_type&biz_id=$biz_id\"><img src=\"./image/delete.png\" height=\"8px\" width=\"8px\" alt=\"מחק מקום\"></a>									
 										<span><b><a href=".$biz_url.">".$biz['name']."</a></b></span>
 										".", ".$biz_address."
 									</td>									 
