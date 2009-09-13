@@ -115,8 +115,7 @@ $graph = $bar->horizontal();
 																<br>
 																<a href=\"./send_message_to_user.php?recipient_id=$user_id&recipient_name=$username\" class=\"small\">שלח הודעה</a>
 															</p>";
-											}
-																							
+											}																							
 											echo $htmli;											
 										?>					 					
 								</div>
