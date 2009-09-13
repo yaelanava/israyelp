@@ -14,9 +14,12 @@ $user = mysqli_fetch_assoc($user_result);
 $username = $user['username'];
 
 //counting how much messages this user has
-$query = "SELECT * FROM `messages` WHERE recipient_id=$user_id";
+$query = "SELECT * FROM `messages` WHERE recipient_id=$user_id ORDER BY added";
 $result = $mysqli->query($query);
 $count = $result->num_rows;
+
+//counting how much new messages this user has
+$count_new = getNewMessagesCount($user_id);
 
 ?>
 
@@ -43,7 +46,7 @@ $count = $result->num_rows;
 				<li><a href="./user_profile.php">פרופיל</a></li>		 
 				<li><a href="./user_reviews.php">ביקורות</a></li>
 				<li><a href="./user_bookmarks.php">מועדפים</a></li>
-				<li class="selected"><a href="./user_messages.php">הודעות</a></li>										
+				<li class="selected"><a href="./user_messages.php">הודעות <?php echo ($count_new>0 ? "($count_new)" : "")?></a></li>										
 				<li><a href="./user_friends.php">חברים</a></li>										
 			</ul> 
 		</div>
@@ -53,7 +56,7 @@ $count = $result->num_rows;
 	<div id="user_details_wrapper">		
 		<?php 
 			$html = "<br/>
-					<H1>יש לך $count הודעות</H1>
+					<H1>יש לך $count הודעות ($count_new חדשות)</H1>
 					<br/>";	
 			echo $html;
 			while ($msg = mysqli_fetch_assoc($result)){	
@@ -74,12 +77,14 @@ $count = $result->num_rows;
 											<A href=\"./user_profile.php?user_id=\"$sender_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $sender_name\" src=\"".getUserPictureSrc($sender_id)."\"></A>
 										</div>			
 									</td>
-									 <td>".$msg['message']."
+									 <td>".($msg['read']==0 ? "<b>" : "").$msg['message'].($msg['read']==0 ? "</b>" : "")."
 								</tr>
 							</table>
-							<div style=\"padding-right:10px;\">
-								<a style=\"color:green\" href=\"./send_message_to_user.php?recipient_id=$sender_id&recipient_name=$sender_name\">השב</a>
-								<a style=\"color:red\" href=\"./delete_message.php?msg_id=$msg_id\">מחק</a>
+							<div id=\"msg_actions\">
+								<A id=\"msg_action\" href=\"./mark_as_readUnread.php?read&msg_id=$msg_id\"><img src=\"./image/read.png\" height=\"10px\" width=\"10px\" alt=\"סמן כנקרא\"></A>
+								<A id=\"msg_action\" href=\"./mark_as_readUnread.php?msg_id=$msg_id\"><img src=\"./image/unread.png\" height=\"10px\" width=\"10px\" alt=\"סמן כלא נקרא\"></A>
+								<A id=\"msg_action\" href=\"./send_message_to_user.php?replay&recipient_id=$sender_id&recipient_name=$sender_name\"><img src=\"./image/replay.png\" height=\"10px\" width=\"10px\" alt=\"השב\"></A>
+								<A id=\"msg_action\" href=\"./delete_message.php?msg_id=$msg_id\"><img src=\"./image/delete.png\" height=\"8px\" width=\"8px\" alt=\"מחק\"></A>
 								</div>
 						</div>";
 				echo $html;				

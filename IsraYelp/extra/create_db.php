@@ -294,7 +294,7 @@ INSERT INTO `restaurants` (`id`, `name`, `another_name`, `address`, `city_id`, `
 (15, 'אופרה', 'Opera', 'הנשיא 61 , חדרה', 7, 32.43874, 34.923692, '04-6322352', 'ארועים,דגים,טייק אווי', 0, 0, NULL, 'לא', 'כן', 'כן', 'כן', 'לא', 'כן', 'לא', 'לא', 'כן'),
 (16, 'גשן', 'Goshen', 'נחלת בנימין 37, תל אביב', 1, 32.065769, 34.770692, '03-5600766 ', 'ארועים,בשר,טייק אווי', 0, 0, NULL, 'לא', 'כן', 'כן', 'כן', 'לא', 'כן', 'כן', 'כן', 'כן'),
 (17, 'פאפאגאיו', 'Papagaio', 'מרכז עזריאלי 7 תל אביב', 1, 32.074451, 34.791855, '03-6092000', 'ארועים,בשר,טייק אווי', 0, 0, NULL, 'לא', 'כן', 'כן', 'כן', 'לא', 'כן', 'כן', 'לא', 'כן'),
-(18, 'מיט בול', 'meat ball', 'דרך המכבים 8, ראשון לציון', 2, 31.976505, 34.80727, '03-9646468', 'ארועים,בשר', 1, 1, 'http://meatball.co.il/index.php', 'לא', 'כן', 'כן', 'כן', 'לא', 'כן', 'כן', 'לא', 'כן');
+(18, 'מיט בול', 'meat ball', 'דרך המכבים 8, ראשון לציון', 2, 31.976505, 34.80727, '03-9646468', 'ארועים,בשר', 0, 0, 'http://meatball.co.il/index.php', 'לא', 'כן', 'כן', 'כן', 'לא', 'כן', 'כן', 'לא', 'כן');
 
 -- --------------------------------------------------------
 
@@ -346,16 +346,17 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `sender_id` bigint(20) NOT NULL,
   `recipient_id` bigint(20) NOT NULL,
   `message` text NOT NULL,
+  `read` binary(1) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`id`, `sender_id`, `recipient_id`, `message`) VALUES
-(NULL, 1, 2, 'hello!!!! :)'),
-(NULL, 2, 1, 'hello to you too!!!! :)');
+INSERT INTO `messages` (`id`, `sender_id`, `recipient_id`, `message`, `read`) VALUES
+(NULL, 1, 2, 'hello!!!! :)', 0),
+(NULL, 2, 1, 'hello to you too!!!! :)', 0);
 
 -- --------------------------------------------------------
 

@@ -1450,5 +1450,13 @@
 	font-weight: bold;
 }
 
+#msg_actions{
+	PADDING-RIGHT: 10px;
+}
+	
+#msg_actions #msg_action {	
+	MARGIN: 00px 5px 0px 0px;	
+}
+
 	
 	

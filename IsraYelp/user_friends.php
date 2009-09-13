@@ -27,6 +27,9 @@ $query = "SELECT * FROM `friends` WHERE user_id=$user_id";
 $result = $mysqli->query($query);
 $count = $result->num_rows;
 
+//counting how much new messages this user has
+$count_new = getNewMessagesCount($user_id);
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -55,7 +58,7 @@ $count = $result->num_rows;
 					$html .= "<li><a href=\"./user_reviews.php?user_id=$user_id\">ביקורות</a></li>";
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
-						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";	
+						$html .= "<li><a href=\"./user_messages.php\">הודעות ".($count_new>0 ? "($count_new)" : "")."</a></li>";	
 					}
 					$html .= "<li class=\"selected\"><a href=\"./user_friends.php?user_id=$user_id\"\">חברים</a></li>";																
 					echo $html;
