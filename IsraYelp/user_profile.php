@@ -183,7 +183,7 @@ $count_new = getNewMessagesCount($user_id);
 									$msg_result = $mysqli->query($msg_query);
 									$msg_count = $msg_result->num_rows;
 									
-									$html = "<a href=\"./user_messages.php\">יש לך $msg_count הודעות </a>";
+									$html = "<a href=\"./user_messages.php\">יש לך $msg_count הודעות ".($count_new>0 ? "($count_new חדשות)" : "")."</a>";
 									echo $html;
 								}
 							?>		
