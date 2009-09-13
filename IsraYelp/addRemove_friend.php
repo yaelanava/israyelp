@@ -42,8 +42,8 @@ if (isset($_GET['remove'])){
 		} else {
 			$msg = "הוספת $friend_name כחבר נכשלה.";		
 		}
-		$return_url = "<A href=\"./user_profile.php?user_id=".$friend_id."\"> חזור לחשבון של $friend_name. </A>";
 	}
+	$return_url = "<A href=\"./user_profile.php?user_id=".$friend_id."\"> חזור לחשבון של $friend_name. </A>";
 }
 	
 ?>
@@ -68,9 +68,7 @@ if (isset($_GET['remove'])){
 <div id="bodyContainer_Centered">
 	<p><?php echo $msg?>
 		<br><br>
-		<?php
-			echo $return_url; 
-		?>
+		<?php echo $return_url ?>
 		
 	</p>
 </div>
