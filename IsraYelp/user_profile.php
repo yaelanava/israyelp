@@ -45,7 +45,7 @@ $value = array($ratings[5],$ratings[4],$ratings[3],$ratings[2],$ratings[1]);
 
 $bar = new HTML_graph();
 $bar->set($text, $value, 150, 10, 0, "FFB164", "E8E8D0",0);
-$bar->SetTitle("התפלגויות דירוגים");
+$bar->SetTitle("התפלגות דירוגים");
 $bar->SetBgColour("FFE4B5");
 $bar->SetPercentage(false);
 $bar->SetTextFontColor("000000");
@@ -86,8 +86,8 @@ $graph = $bar->horizontal();
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
 						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";							
-						$html .= "<li><a href=\"./user_friends.php\">חברים</a></li>";																
 					}
+					$html .= "<li><a href=\"./user_friends.php?user_id=$user_id\"\">חברים</a></li>";																
 					echo $html;
 				?>							
 			</ul> 	
@@ -193,7 +193,7 @@ $graph = $bar->horizontal();
 								$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id";
 								$friends_result = $mysqli->query($friends_query);
 								$friends_count = $friends_result->num_rows;
-								$html = "<a href=\"./user_friends.php\" class=\"stripped\" id=\"user_stats\">";
+								$html = "<a href=\"./user_friends.php?user_id=$user_id\"\" class=\"stripped\" id=\"user_stats\">";
 								if($same_user) {
 									$html .= "יש לך $friends_count חברים </a>";
 								} else {

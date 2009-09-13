@@ -5,7 +5,16 @@ include './utils/functions.php';
 
 $mysqli = getMysqliConnection();
 
-$user_id = $_SESSION['user_id'];
+if (isset($_GET['user_id'])){
+	$user_id = $_GET['user_id'];
+} else {
+	$user_id = $_SESSION['user_id'];	
+}
+
+$same_user = false;
+if (isset($_SESSION['user_id']) && ($user_id == $_SESSION['user_id'])){
+	$same_user = true;
+}
 
 //getting user name
 $user_query = "SELECT * FROM `users` WHERE id=$user_id";
@@ -41,11 +50,16 @@ $count = $result->num_rows;
 <div id="bodyContainer">
 		<div id="userTabs" >
 			<ul>	
-				<li><a href="./user_profile.php">פרופיל</a></li>		 
-				<li><a href="./user_reviews.php">ביקורות</a></li>
-				<li><a href="./user_bookmarks.php">מועדפים</a></li>
-				<li><a href="./user_messages.php">הודעות</a></li>
-				<li class="selected"><a href="./user_friends.php">חברים</a></li>										
+				<?php
+					$html = "<li><a href=\"./user_profile.php?user_id=$user_id\">פרופיל</a></li>"; 
+					$html .= "<li><a href=\"./user_reviews.php?user_id=$user_id\">ביקורות</a></li>";
+					if ($same_user){
+						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
+						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";	
+					}
+					$html .= "<li class=\"selected\"><a href=\"./user_friends.php?user_id=$user_id\"\">חברים</a></li>";																
+					echo $html;
+				?>										
 			</ul> 
 		</div>
 		<div id="user_header" align="right">
@@ -53,9 +67,15 @@ $count = $result->num_rows;
 		</div>
 	<div id="user_details_wrapper">		
 		<?php 
-			$html = "<br/>
-					<H1>יש לך $count חברים</H1>
-					<br/>";	
+			if($same_user){
+					$html = "<br/>
+							<H1>יש לך $count חברים</H1>
+							<br/>";
+			} else {
+					$html = "<br/>
+							<H1><span>ל-$username יש</span> $count חברים</H1>
+							<br/>";
+			}
 			echo $html;
 			while ($friend = mysqli_fetch_assoc($result)){	
 				$friend_id = $friend['friend_id'];
@@ -75,11 +95,13 @@ $count = $result->num_rows;
 										</div>			
 									</td>
 								</tr>
-							</table>
-							<div style=\"padding-right:10px;\">
+							</table>";
+				if ($same_user) {
+					$html .= "<div style=\"padding-right:10px;\">
 								<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_id&friend_name=$friend_name\">הסר חבר</a>
-							</div>
-						</div>";
+							</div>";
+				}
+				$html .="</div>";
 				echo $html;				
 			}
 		?>			

@@ -57,8 +57,8 @@ $rev_count = $rev_result->num_rows;
 					if ($same_user){
 						$html .= "<li><a href=\"./user_bookmarks.php\">מועדפים</a></li>";	
 						$html .= "<li><a href=\"./user_messages.php\">הודעות</a></li>";	
-						$html .= "<li><a href=\"./user_friends.php\">חברים</a></li>";																
 					}
+					$html .= "<li><a href=\"./user_friends.php?user_id=$user_id\".php\">חברים</a></li>";																
 					echo $html;
 				?>			
 			</ul> 
