@@ -28,16 +28,14 @@ include './utils/functions.php';
 	<form action="uploading_pic.php" method="post" enctype="multipart/form-data">
 		<table align="center" cellpadding="5">
 			<tr>
-				<td> בחר קובץ </td>
-				<td> <input name="image" type="file" size="50"> </td>			
+				<td> בחר קובץ: </td>
+				<td> <input name="image" type="file" size="30"> </td>			
+			</tr>
+			<tr>				
+				<td colspan="2" align=center> <input type="submit" value="העלה תמונה"> </td>
 			</tr>
 			<tr>
-				<td></td>
-				<td> <input type="submit" value="העלה תמונה"> </td>
-			</tr>
-			<tr>
-				<td></td>
-				<td> 
+				<td colspan="2" align=center> 
 					<br>
 					<a href="./user_profile.php"> התחרטת? חזור לחשבון שלך.</a>				
 				</td>							
