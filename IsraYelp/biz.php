@@ -64,7 +64,7 @@ $result_reviews = $mysqli->query($query_reviews);
 									<span class="street-address"><?php echo $biz['address']; ?></span>										
 								</address>			
 								<span id="bizPhone" class="tel"> <?php echo $biz['phone_number']; ?> </span>
-								<p><a href="<?php echo "http://".$biz['link']?>"><?php echo $biz['link']?></a></p>
+								<p><a href="<?php echo "http://".$biz['link']?>" target="_blank"><?php echo $biz['link']?></a></p>
 							</div>	
 						</td>				
 						<td>
