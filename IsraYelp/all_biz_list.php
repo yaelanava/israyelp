@@ -69,11 +69,11 @@ $result_bizs = $mysqli->query($query_bizs);
 							$biz_id = $biz['id'];
 							$biz_url = getBizURL($biz_type, $biz_id);
 							$image_srs = "./biz_pics/$biz_type/$biz_id.jpg";
-							$html = "<li><div id=\"top_biz\" style=\"BORDER-TOP: #ccc 1px solid; WIDTH: 900px;\">
+							$html = "<li><div id=\"top_biz\" style=\"BORDER-TOP: #ccc 1px solid; WIDTH: 900px; PADDING-TOP: 10px; MARGIN-BOTTOM: 10px\">
 										<div class=\"clearStyles bizPhotoBox\">
-											<a  href=\"$image_srs\"><img src=\"$image_srs\" width=70 height=70 style=\"\" alt=\"".$biz['name']."\"></a>
+											<a  href=\"$image_srs\"><img src=\"$image_srs\" width=80 height=80 style=\"\" alt=\"".$biz['name']."\"></a>
 										</div>
-										<p class=\"biz_info\"><a href=\"$biz_url\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$biz['name']."</a></p>													
+										<p class=\"biz_info\"><a href=\"$biz_url\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold; FONT-SIZE:14px\">".$biz['name']."</a></p>													
 										<div class=\"top_biz_rating\">
 											<div class=\"rating\">
 												<img class=\"stars_".$biz['grading']."\" width=\"83\" height=\"325\" src=\"./image/stars_map.png\"/>
