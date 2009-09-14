@@ -10,7 +10,7 @@ $friend_id = $_GET['friend_id'];
 
 if (isset($_GET['confirm'])) {
 	$query1 = "UPDATE `friends` SET `confirmed`='1' WHERE `friends`.`user_id`=$friend_id AND `friends`.`friend_id`=$user_id AND `friends`.`confirmed`='0' LIMIT 1;";
-	$query2 = "UPDATE `friends` SET `confirmed`='1' WHERE `friends`.`user_id`=$user_id AND `friends`.`friend_id`=$friend_id AND `friends`.`confirmed`='0' LIMIT 1;";
+	$query2 = "INSERT INTO `friends` (`user_id`, `friend_id`, `confirmed`) 	VALUES ('$user_id', '$friend_id', '1');";	
 	$result1 = $mysqli->query($query1);
 	$result2 = $mysqli->query($query2);
 	
@@ -38,9 +38,8 @@ if (isset($_GET['confirm'])) {
 				`confirmed`  
 			)
 			VALUES 
-				('$user_id', '$friend_id', '0'), 
-				('$friend_id', '$user_id', '0')
-			;";
+				('$user_id', '$friend_id', '0');
+			";
 		$result = $mysqli->query($query);	
 		if ($result) {
 			$msg = "בקשת חברות נשלחה ל- $friend_name.";
