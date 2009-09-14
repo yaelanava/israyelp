@@ -149,7 +149,8 @@ $count_new = getNewMessagesCount($user_id);
 							</table>";
 				if ($same_user) {
 					$html .= "<div style=\"padding-right:10px;\">
-								<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_id&friend_name=$friend_name\">הסר חבר</a>
+								<a href=\"./addRemove_friend.php?remove&friend_id=$friend_id\"><img src=\"./image/delete.png\" height=\"8px\" width=\"8px\"></a>
+								<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_id\">הסר חבר</a>
 							</div>";
 				}
 				$html .="</div>";

@@ -15,7 +15,7 @@ if (isset($_POST['new_email']) && ('' != $_POST['new_email'])) {
 		$mysqli = getMysqliConnection();	
 		$update_query="UPDATE `users` SET `email` = '$new_email' WHERE `users`.`id` =$id LIMIT 1 ;";
 		if ($mysqli->query($update_query)) {
-			header("location:edit_successes.php");
+			header("location: user_profile.php");
 		}	
 	} else { 
 		$error_msg="האימייל שהכנסת אינו תקין, נסה שוב";

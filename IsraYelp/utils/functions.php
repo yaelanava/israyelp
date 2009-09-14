@@ -56,7 +56,7 @@ function getCityID($city_name){
 }
 
 function getHeadHTMLCode(){
-	$logged_message = session_is_registered('username') 
+	$logged_message = isset($_SESSION['username']) 
 				  ? "אתה מחובר כ-".$_SESSION['username']
 				  : "";	
 	$html = "		
@@ -74,36 +74,36 @@ function getHeadHTMLCode(){
 }
 
 function getNavHTMLCode(){
-	$write_review_link = !session_is_registered('username') 
-				  ? "./login.php" 
-				  : "./write_review.php";
-	$login_link = session_is_registered('username') 
+	$write_review_link = isset($_SESSION['username']) 
+				  ? "./write_review.php"
+				  : "./login.php"; 				  
+	$login_link = isset($_SESSION['username']) 
 				  ? "./login.php?logout" 
 				  : "./login.php";
-	$login_message = session_is_registered('username') 
+	$login_message = isset($_SESSION['username']) 
 				  ? "התנתק" 
 				  : "כנס";
-	$myAccount_link = session_is_registered('username') 
-					  ? "./user_profile.php" 
-					  : "./login.php";	
+	$myAccount_link = isset($_SESSION['username']) 
+				  ? "./user_profile.php" 
+				  : "./login.php";	
 		  
 	$html = "
 		<div id=\"navContainer\">
 			<ul>			
 				<LI class=\"header\" id=\"writeReview\"><A href=".$write_review_link.">כתוב ביקורת</A> | </LI>
-				<LI class=\"header\" id=\"findReview\"><A href= \"./find_review.php\">חפש</A></LI>				
+				<LI class=\"header\" id=\"findReview\"><A href= \"./find.php\">חפש</A></LI>				
 				<LI class=\"header_login\"><A href=".$login_link." >".$login_message."</A></LI>
 				<LI class=\"header_login\"><A href=".$myAccount_link." >החשבון שלי </A> | </LI>
-				<LI class=\"header_login\"><A href=\"./find_reviewer.php\" >חפש משתמש </A> | </LI>
+				<LI class=\"header_login\"><A href=\"./find_user.php\" >חפש משתמש </A> | </LI>
 			</ul>
 		</div>";
 	return $html;
 }
 
 function getFooterHTMLCode(){
-	$myAccount_link = session_is_registered('username') 
+	$myAccount_link = isset($_SESSION['username']) 
 					  ? "./user_profile.php" 
-					  : "./signup.php";
+					  : "./login.php";
 	$html = "<div id=\"footer\">	
 				<div>		
 					<ul id=\"aboutSite\">

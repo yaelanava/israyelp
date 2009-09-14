@@ -14,7 +14,7 @@ if (isset($_GET['confirm'])) {
 	$result1 = $mysqli->query($query1);
 	$result2 = $mysqli->query($query2);
 	
-	header("Location : ./user_friends.php");
+	header("location: user_friends.php");
 	
 } else if (isset($_GET['remove'])){
 	$query1 = "DELETE FROM `friends` WHERE `friends`.`user_id`=$user_id AND `friends`.`friend_id`=$friend_id LIMIT 1;";
@@ -22,8 +22,8 @@ if (isset($_GET['confirm'])) {
 	$result1 = $mysqli->query($query1);
 	$result2 = $mysqli->query($query2);
 	
-	header("Location : ./user_friends.php");
-	
+	header("location: user_friends.php");
+		
 } else { //insert
 	$friend_name = $_GET['friend_name'];
 	

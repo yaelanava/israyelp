@@ -69,11 +69,11 @@ $result_bizs = $mysqli->query($query_bizs);
 							$biz_id = $biz['id'];
 							$biz_url = getBizURL($biz_type, $biz_id);
 							$image_srs = "./biz_pics/$biz_type/$biz_id.jpg";
-							$html = "<li><div id=\"top_biz\">
+							$html = "<li><div id=\"top_biz\" style=\"BORDER-TOP: #ccc 1px solid; WIDTH: 900px;\">
 										<div class=\"clearStyles bizPhotoBox\">
 											<a  href=\"$image_srs\"><img src=\"$image_srs\" width=70 height=70 style=\"\" alt=\"".$biz['name']."\"></a>
 										</div>
-										<p class=\"biz_info\"><a href=\"$biz_url\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$biz['name']."</a></p>							
+										<p class=\"biz_info\"><a href=\"$biz_url\" id=\"top_biz_name_1\" style=\"FONT-WEIGHT: bold;\">".$biz['name']."</a></p>													
 										<div class=\"top_biz_rating\">
 											<div class=\"rating\">
 												<img class=\"stars_".$biz['grading']."\" width=\"83\" height=\"325\" src=\"./image/stars_map.png\"/>
@@ -81,6 +81,9 @@ $result_bizs = $mysqli->query($query_bizs);
 											<em class=\"smaller\">".$biz['num_reviews']." ביקורות</em>
 										</div>
 										<p class=\"smaller\">קטגוריה: ".$biz['category']."</p>
+										<address class=\"adr\"><span class=\"street-address\">".$biz['address']."</span></address>			
+										<span id=\"bizPhone\" class=\"tel\">".$biz['phone_number']."</span>
+										<p><a href=\"http://".$biz['link']."\">".$biz['link']."</a></p>	
 									</div></li>";
 							echo $html;														
 						}
