@@ -7,6 +7,7 @@ $recipient_name = $_GET['recipient_name'];
 $recipient_id = $_GET['recipient_id'];
 
 $replay = isset($_GET['replay']) ? "replay&" : "";
+$friend = isset($_GET['friend']) ? "friend&" : "";
 
 if (isset($_POST['message']) && ('' != $_POST['message'])) {
 	$mysqli = getMysqliConnection();
@@ -28,7 +29,9 @@ if (isset($_POST['message']) && ('' != $_POST['message'])) {
 	
 	$mysqli->query($query);
 	
-	if ($replay) {
+	if ($friend) {
+		header("Location: ./user_friends.php");
+	} else if ($replay) {
 		header("Location: ./user_messages.php");
 	} else {
 		header("Location: ./user_profile.php?user_id=$recipient_id");
@@ -57,7 +60,7 @@ if (isset($_POST['message']) && ('' != $_POST['message'])) {
 
 <div id="bodyContainer_Centered">
 	<h1> כתוב ל- <?php echo $recipient_name?> הודעה </h1>
-	<form method="post" action="send_message_to_user.php?<?php echo $replay?>recipient_id=<?php echo $recipient_id?>&recipient_name=<?php echo $recipient_name?>">
+	<form method="post" action="send_message_to_user.php?<?php echo $replay?><?php echo $friend?>recipient_id=<?php echo $recipient_id?>&recipient_name=<?php echo $recipient_name?>">
 	<br/>
 		<table cellpadding="5" cellspacing="5">
 			<tr>
