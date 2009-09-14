@@ -22,10 +22,15 @@ $user_result = $mysqli->query($user_query);
 $user = mysqli_fetch_assoc($user_result);
 $username = $user['username'];
 
-//counting how much friends this user has
-$query = "SELECT * FROM `friends` WHERE user_id=$user_id";
-$result = $mysqli->query($query);
-$count = $result->num_rows;
+//counting how much confirmed friends this user has
+$query_friends = "SELECT * FROM `friends` WHERE user_id=$user_id AND confirmed='1'";
+$result_friends = $mysqli->query($query_friends);
+$count_friends = $result_friends->num_rows;
+
+//counting how much friend requests this user has
+$query_friend_requests = "SELECT * FROM `friends` WHERE friend_id=$user_id AND confirmed='0'";
+$result_friend_requests = $mysqli->query($query_friend_requests);
+$count_friend_requests = $result_friend_requests->num_rows;
 
 //counting how much new messages this user has
 $count_new = getNewMessagesCount($user_id);
@@ -72,15 +77,58 @@ $count_new = getNewMessagesCount($user_id);
 		<?php 
 			if($same_user){
 					$html = "<br/>
-							<H1>יש לך $count חברים</H1>
+							<H1>יש לך $count_friends חברים</H1>
 							<br/>";
 			} else {
 					$html = "<br/>
-							<H1><span>ל-$username יש</span> $count חברים</H1>
+							<H1><span>ל-$username יש</span> $count_friends חברים</H1>
 							<br/>";
 			}
 			echo $html;
-			while ($friend = mysqli_fetch_assoc($result)){	
+			
+			if ($same_user and $count_friend_requests>0){
+				//display requests
+				$html = "<br/>
+						<b>	יש לך $count_friend_requests בקשות לחברות:</b>
+						<br/>";
+				while ($friend_request = mysqli_fetch_assoc($result_friend_requests)){	
+					$friend_request_id = $friend_request['user_id'];
+					
+					$query_friend = "SELECT * FROM `users` WHERE id=$friend_request_id";
+					$result_friend = $mysqli->query($query_friend);
+					$friend = mysqli_fetch_assoc($result_friend);	
+					$friend_name = $friend['username'];
+					
+					$html .= "<div id=\"my_review\">					
+								<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
+									<tr>
+										<td>
+											<span><b><a href=\"./user_profile.php?user_id=$friend_request_id\">$friend_name</a></b></span>
+											<DIV class=\"clearStyles photoBox\">
+												<A href=\"./user_profile.php?user_id=\"$friend_request_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_request_id)."\"></A>
+											</div>			
+										</td>
+									</tr>
+								</table>";
+					$html .= "<div style=\"padding-right:10px;\">
+								<a style=\"color:red\" href=\"./addRemove_friend.php?confirm&friend_id=$friend_request_id\">מאשר</a>
+								<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_request_id\">לא מאשר</a>
+							</div>";
+					$html .="</div>";
+				}
+				echo $html;						
+			}
+			
+			//display freinds
+			if ($count_friend_requests>0) {
+				$html = "<br></br>
+						<br/>
+						<b>והבאמת חברים...</b>
+						<br/>";
+			} else {
+				$html = "";
+			}
+			while ($friend = mysqli_fetch_assoc($result_friends)){	
 				$friend_id = $friend['friend_id'];
 				
 				$query_friend = "SELECT * FROM `users` WHERE id=$friend_id";
@@ -88,7 +136,7 @@ $count_new = getNewMessagesCount($user_id);
 				$friend = mysqli_fetch_assoc($result_friend);	
 				$friend_name = $friend['username'];
 				
-				$html = "<div id=\"my_review\">					
+				$html .= "<div id=\"my_review\">					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
@@ -105,8 +153,8 @@ $count_new = getNewMessagesCount($user_id);
 							</div>";
 				}
 				$html .="</div>";
-				echo $html;				
 			}
+			echo $html;			
 		?>			
 	</div>
 </div>
