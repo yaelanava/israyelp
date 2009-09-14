@@ -98,23 +98,31 @@ $count_new = getNewMessagesCount($user_id);
 					$result_friend = $mysqli->query($query_friend);
 					$friend = mysqli_fetch_assoc($result_friend);	
 					$friend_name = $friend['username'];
+					$friend_city = $friend['city'];
 					
-					$html .= "<div id=\"my_review\">					
+					$html .= "<div>					
 								<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 									<tr>
 										<td>
-											<span><b><a href=\"./user_profile.php?user_id=$friend_request_id\">$friend_name</a></b></span>
 											<DIV class=\"clearStyles photoBox\">
-												<A href=\"./user_profile.php?user_id=\"$friend_request_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_request_id)."\"></A>
+												<A href=\"./user_profile.php?user_id=\"$friend_request_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 80px; HEIGHT: 80px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_request_id)."\"></A>
 											</div>			
 										</td>
+										<td valign=top>
+											<span><b><a href=\"./user_profile.php?user_id=$friend_request_id\" style=\"FONT-SIZE:14px\">$friend_name</a></b>, $friend_city</span>
+											<br></br>
+											<a href=\"./addRemove_friend.php?confirm&friend_id=$friend_request_id\"><img src=\"./image/confirm.png\" height=\"8px\" width=\"8px\"></a>											
+											<a style=\"color:green\" href=\"./addRemove_friend.php?confirm&friend_id=$friend_request_id\">אשר</a>
+											<br>
+											<a href=\"./addRemove_friend.php?remove&friend_id=$friend_request_id\"><img src=\"./image/delete.png\" height=\"8px\" width=\"8px\"></a>											
+											<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_request_id\">דחה</a>
+											<br>
+											<a href=\"./send_message_to_user.php?friend&user_id=$friend_request_id\"><img src=\"./image/unread.png\" height=\"8px\" width=\"8px\"></a>											
+											<a style=\"color:black\" href=\"./send_message_to_user.php?friend&user_id=$friend_request_id\">שלח הודעה</a>
+										</td>
 									</tr>
-								</table>";
-					$html .= "<div style=\"padding-right:10px;\">
-								<a style=\"color:red\" href=\"./addRemove_friend.php?confirm&friend_id=$friend_request_id\">מאשר</a>
-								<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_request_id\">לא מאשר</a>
+								</table>					
 							</div>";
-					$html .="</div>";
 				}
 				echo $html;						
 			}
@@ -135,26 +143,34 @@ $count_new = getNewMessagesCount($user_id);
 				$result_friend = $mysqli->query($query_friend);
 				$friend = mysqli_fetch_assoc($result_friend);	
 				$friend_name = $friend['username'];
+				$friend_city = $friend['city'];
 				
 				$html .= "<div id=\"my_review\">					
 							<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\" >
 								<tr>
 									<td>
-										<span><b><a href=\"./user_profile.php?user_id=$friend_id\">$friend_name</a></b></span>
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./user_profile.php?user_id=\"$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
+											<A href=\"./user_profile.php?user_id=\"$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 60px; HEIGHT: 60px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
 										</div>			
 									</td>
+									<td valign=top>
+										<span><b><a href=\"./user_profile.php?user_id=$friend_id\" style=\"FONT-SIZE:14px\">$friend_name</a></b></span>
+										, $friend_city";
+										
+										if ($same_user) {
+											$html .= "<br></br>
+													<a href=\"./send_message_to_user.php?friend&user_id=$friend_id\"><img src=\"./image/unread.png\" height=\"8px\" width=\"8px\"></a>											
+													<a style=\"color:black\" href=\"./send_message_to_user.php?friend&user_id=$friend_id\">שלח הודעה</a>
+													<br>
+													<a href=\"./addRemove_friend.php?remove&friend_id=$friend_id\"><img src=\"./image/delete.png\" height=\"8px\" width=\"8px\"></a>
+													<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_id\">הסר חבר</a>
+													";
+										}
+							$html .="</td>
 								</tr>
-							</table>";
-				if ($same_user) {
-					$html .= "<div style=\"padding-right:10px;\">
-								<a href=\"./addRemove_friend.php?remove&friend_id=$friend_id\"><img src=\"./image/delete.png\" height=\"8px\" width=\"8px\"></a>
-								<a style=\"color:red\" href=\"./addRemove_friend.php?remove&friend_id=$friend_id\">הסר חבר</a>
-							</div>";
+							</table>				
+						</div>";
 				}
-				$html .="</div>";
-			}
 			echo $html;			
 		?>			
 	</div>
