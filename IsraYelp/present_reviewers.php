@@ -12,9 +12,9 @@ $count = $result->num_rows;
 $source = $_POST['source'];
 $back_url = "$source.php";
 		
-if ($source == "find_review"){
+if ($source == "find"){
 	$prefix = "./user_reviews.php?user_id=";
-} else if ($source =="find_reviewer"){
+} else if ($source =="find_user"){
 	$prefix = "./user_profile.php?user_id=";	
 }
 

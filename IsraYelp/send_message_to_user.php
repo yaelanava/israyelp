@@ -13,7 +13,7 @@ if (isset($_POST['message']) && ('' != $_POST['message'])) {
 	
 	$sender_id = $_SESSION['user_id'];
 	
-	$message = $_POST['message'];
+	$message = mysql_escape_string($_POST['message']);
 	
 	$query = "INSERT INTO `messages` (
 				`id`,

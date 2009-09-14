@@ -5,7 +5,7 @@ include './utils/functions.php';
 if ($_GET['city_id']){
 	$city_id = $_GET['city_id'];
 	$_SESSION['city_id'] = $city_id;
-} else if (session_is_registered('city_id')){
+} else if (isset($_SESSION['city_id'])){
 	header("Location: ./main.php?city_id=".$_SESSION['city_id']);
 	}else {
 	header("Location: ./main.php?city_id=1");	//default
@@ -42,7 +42,7 @@ $city_name = getCityName($city_id);
 	</div>
  
  	<?php 
- 		if (!session_is_registered('username')){
+ 		if (!isset($_SESSION['username'])){
  			$html = "<h2 id=\"nonMemberWelcome\"><A href=\"signup.php\"></A></h2>";
  			echo $html;
  		}
@@ -474,7 +474,7 @@ $city_name = getCityName($city_id);
 
 <div id="pressLinks"><img src="./image/ads_full.png" width="950" height="84" usemap="#pressMap"  />
 	<map name="pressMap">
-		<area rel="nofollow" alt="חפש מבקר" href="./find_reviewer.php" coords="10,6,232,79">
+		<area rel="nofollow" alt="חפש מבקר" href="./find_user.php" coords="10,6,232,79">
 		<area rel="nofollow" alt="כתוב ביקורת" href="./write_review.php"  coords="245,6,469,79">
 		<area rel="nofollow" alt="בדוק בתי מלון" href="./hotels.php?city_id=<?php echo $city_id; ?>" coords="481,6,705,79">
 		<area rel="nofollow" alt="בדוק מסעדות" href="./restaurants.php?city_id=<?php echo $city_id; ?>" coords="718,6,941,79">

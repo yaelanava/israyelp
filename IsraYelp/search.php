@@ -29,7 +29,7 @@ if ('' == $_POST['place_name']){
 		$biz_urli = getBizURL($kind, $biz_id);
 		
 		if ($source == "write_review"){
-			if (!session_is_registered('username')) { 
+			if (!isset($_SESSION['username'])) { 
 					header("Location: ./login.php?returnUrl=".$biz_urli);
 				} 
 			else {
@@ -48,7 +48,7 @@ if ('' == $_POST['place_name']){
 				$biz_name = $biz['name'];
 				$biz_urli = getBizURL($kind, $biz_id);				
 				if ($source == "write_review"){
-					if (!session_is_registered('username')) { 
+					if (!isset($_SESSION['username'])) { 
 						header("Location: ./login.php?returnUrl=".$biz_urli);
 					} else {				
 						$url = "./writeReviewForm.php?biz_type=$kind&biz_id=".$biz_id;						

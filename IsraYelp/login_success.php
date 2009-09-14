@@ -28,7 +28,7 @@ if (isset($_GET['biz_id'])&&isset($_GET['biz_type'])){
 
 
 <div id="bodyContainer_Centered">	
-	<p><?php if (session_is_registered('username')) print("אתה מחובר כ-".$_SESSION['username'])."." ?></p>
+	<p><?php if (isset($_SESSION['username'])) print("אתה מחובר כ-".$_SESSION['username'])."." ?></p>
 	<a href=<?php echo $returnUrl?>>לחץ כאן להמשך גלישה באתר.</a>
 </div>
 </body>
