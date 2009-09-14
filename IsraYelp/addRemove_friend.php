@@ -8,21 +8,25 @@ $mysqli = getMysqliConnection();
 $user_id = $_SESSION['user_id'];
 $friend_id = $_GET['friend_id'];
 
-$friend_name = $_GET['friend_name'];
-
-if (isset($_GET['remove'])){
+if (isset($_GET['confirm'])) {
+	$query1 = "UPDATE `friends` SET `confirmed`='1' WHERE `friends`.`user_id`=$friend_id AND `friends`.`friend_id`=$user_id AND `friends`.`confirmed`='0' LIMIT 1;";
+	$query2 = "UPDATE `friends` SET `confirmed`='1' WHERE `friends`.`user_id`=$user_id AND `friends`.`friend_id`=$friend_id AND `friends`.`confirmed`='0' LIMIT 1;";
+	$result1 = $mysqli->query($query1);
+	$result2 = $mysqli->query($query2);
+	
+	header("Location : ./user_friends.php");
+	
+} else if (isset($_GET['remove'])){
 	$query1 = "DELETE FROM `friends` WHERE `friends`.`user_id`=$user_id AND `friends`.`friend_id`=$friend_id LIMIT 1;";
 	$query2 = "DELETE FROM `friends` WHERE `friends`.`user_id`=$friend_id AND `friends`.`friend_id`=$user_id LIMIT 1;";
 	$result1 = $mysqli->query($query1);
 	$result2 = $mysqli->query($query2);
-	if ($result1 && $result2) {
-		$msg = "הסרת $friend_name כחבר הצליחה.";
-	} else {
-		$msg = "הסרת $friend_name כחבר נכשלה.";		
-	}	
-	$return_url = "<A href=\"./user_friends.php\"> חזור לחשבון שלי. </A>";
-			
+	
+	header("Location : ./user_friends.php");
+	
 } else { //insert
+	$friend_name = $_GET['friend_name'];
+	
 	$query = "SELECT * from `friends` WHERE user_id=$user_id and friend_id=$friend_id";		
 	$result = $mysqli->query($query);
 	if ($result->num_rows != 0) {
@@ -30,15 +34,16 @@ if (isset($_GET['remove'])){
 	} else {
 		$query = "INSERT INTO `friends` (
 				`user_id` ,
-				`friend_id` 
+				`friend_id`,
+				`confirmed`  
 			)
 			VALUES 
-				('$user_id', '$friend_id'), 
-				('$friend_id', '$user_id')
+				('$user_id', '$friend_id', '0'), 
+				('$friend_id', '$user_id', '0')
 			;";
 		$result = $mysqli->query($query);	
 		if ($result) {
-			$msg = "הוספת את $friend_name כחבר.";
+			$msg = "בקשת חברות נשלחה ל- $friend_name.";
 		} else {
 			$msg = "הוספת $friend_name כחבר נכשלה.";		
 		}
@@ -68,8 +73,7 @@ if (isset($_GET['remove'])){
 <div id="bodyContainer_Centered">
 	<p><?php echo $msg?>
 		<br><br>
-		<?php echo $return_url ?>
-		
+		<?php echo $return_url ?>		
 	</p>
 </div>
 

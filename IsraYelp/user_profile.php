@@ -194,7 +194,8 @@ $count_new = getNewMessagesCount($user_id);
 						<td>	
 							<ul class="stripped" id="user_stats">																									
 							<?php
-								$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id";
+								//counting how much confirmed friends this user has
+								$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id AND confirmed='1'";
 								$friends_result = $mysqli->query($friends_query);
 								$friends_count = $friends_result->num_rows;
 								$html = "<a href=\"./user_friends.php?user_id=$user_id\"\" class=\"stripped\" id=\"user_stats\">";
