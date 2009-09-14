@@ -154,8 +154,7 @@ $count_new = getNewMessagesCount($user_id);
 										</div>			
 									</td>
 									<td valign=top>
-										<span><b><a href=\"./user_profile.php?user_id=$friend_id\" style=\"FONT-SIZE:14px\">$friend_name</a></b></span>
-										, $friend_city";
+										<span><b><a href=\"./user_profile.php?user_id=$friend_id\" style=\"FONT-SIZE:14px\">$friend_name</a></b>, $friend_city</span>";
 										
 										if ($same_user) {
 											$html .= "<br></br>

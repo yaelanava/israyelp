@@ -44,7 +44,7 @@ $text = array("5 כוכבים","4 כוכבים","3 כוכבים","2 כוכבים","1 כוכבים");
 $value = array($ratings[5],$ratings[4],$ratings[3],$ratings[2],$ratings[1]);
 
 $bar = new HTML_graph();
-$bar->set($text, $value, 150, 10, 0, "FFB164", "E8E8D0",0);
+$bar->set($text, $value, 100, 10, 0, "FFB164", "E8E8D0",0);
 $bar->SetTitle("התפלגות דירוגים");
 $bar->SetBgColour("FFE4B5");
 $bar->SetPercentage(false);
@@ -165,8 +165,8 @@ $count_new = getNewMessagesCount($user_id);
 								echo $html;	
 
 								echo "<br></br>";		
-								echo $graph;
-								
+								echo "<div style=\"width: 250px\">$graph</div>";
+																	
 								if ($same_user){
 									//counting how much bookmarks this user has
 									echo "<br></br>";
@@ -188,7 +188,6 @@ $count_new = getNewMessagesCount($user_id);
 								}
 							?>		
 							</ul>
-
 						</td>
 						
 						<td>	
@@ -200,24 +199,13 @@ $count_new = getNewMessagesCount($user_id);
 								$friends_count = $friends_result->num_rows;
 								$html = "<a href=\"./user_friends.php?user_id=$user_id\"\" class=\"stripped\" id=\"user_stats\">";
 								if($same_user) {
-									if ($friends_count>0){
-										$html .= "יש לך $friends_count חברים וביניהם...</a>";
-									}
-									else {
-										$html .= "יש לך $friends_count חברים </a>";
-									}
+									$html .= "יש לך $friends_count חברים</a> ".($friends_count>5 ? "וביניהם..." : "");
 								} else {
-									if ($friends_count>0){
-										$html .= "<span>ל-$username יש</span> $friends_count חברים  וביניהם...</a>";			
-									}
-									else {
-										$html .= "<span>ל-$username יש</span> $friends_count חברים </a>";			
-										
-									}
+									$html .= "<span>ל-$username יש</span> $friends_count חברים</a> ".($friends_count>5 ? "וביניהם..." : "");			
 								}
 								echo $html;									
 								if ($friends_count > 0) {
-									$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id LIMIT 4";
+									$friends_query = "SELECT * FROM `friends` WHERE user_id=$user_id AND `confirmed`='1' LIMIT 5";
 									$friends_result = $mysqli->query($friends_query);
 									$friends_count = $friends_result->num_rows;
 									$html = "<table cellpadding=\"10\" cellspacing=\"1\" border=\"0\">";								
@@ -228,12 +216,17 @@ $count_new = getNewMessagesCount($user_id);
 										$friend_result = $mysqli->query($friend_query);
 										$friend = mysqli_fetch_assoc($friend_result);
 										$friend_name = $friend['username'];
+										$friend_city = $friend['city'];
+										
 										$html .= "<tr>
 													<td>
-														<p><b><a href=\"./user_profile.php?user_id=$friend_id\">$friend_name</a></b></p>
 														<DIV class=\"clearStyles photoBox\">
 															<A href=\"./user_profile.php?user_id=$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 40px; HEIGHT: 40px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
 														</div>
+													</td>
+													<td valign=top style=\"FONT-SIZE:12px\">
+														<span><b><a href=\"./user_profile.php?user_id=$friend_id\">$friend_name</a></b></span>
+														<br>$friend_city
 													</td>
 												</tr>";
 									}
