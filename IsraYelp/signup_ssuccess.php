@@ -1,19 +1,14 @@
-<?php
-session_start();
+<?php 
+ssesion_start();
 
 include './utils/functions.php';
 
-	$biz_id = $_SESSION['biz_id'];
-	$biz_type = $_SESSION['biz_type'];
-		
-	$biz_url = getBizURL($biz_type, $biz_id);
 ?>
-
-
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
-	<title>כתוב ביקורת |IsraYelp</title>
+	<title>הרשמה | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
 	<meta name="description" content="IsraYelp - User Reviews and Recommendations of Top Restaurants, Shopping, Nightlife, Entertainment, Services and More">
 	<meta name="keywords" content="Yelp,recommendation,Israel, review,friend,restaurant,dentist,doctor,salon,spa,shopping,store,share,community,massage,sushi,pizza,nails,ביקורת, מסעדות, בתי קולנוע, מרפאות,מספרות,בתי קפה,חנויות">
@@ -23,14 +18,14 @@ include './utils/functions.php';
 	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
 </head>
 
-<body dir="rtl">
+<body>
+
 <?php echo getHeadHTMLCode()?>
 
 <div id="bodyContainer_Centered">
-	<p>חלק מהשדות היו ריקים.
-		<br><br>
-		<a href="./main.php">נסה שנית.</a>
-	</p>
+	<p>.ההרשמה בוצעה בהצלחה</p>
+	<a href="login.php">.לחץ כאן כדי להיכנס לאתר</a>
 </div>
+
 </body>
 </html>
