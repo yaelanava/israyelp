@@ -83,7 +83,7 @@ $result_bizs = $mysqli->query($query_bizs);
 										<p class=\"smaller\">קטגוריה: ".$biz['category']."</p>
 										<address class=\"adr\"><span class=\"street-address\">".$biz['address']."</span></address>			
 										<span id=\"bizPhone\" class=\"tel\">".$biz['phone_number']."</span>
-										<p><a href=\"http://".$biz['link']."\">".$biz['link']."</a></p>	
+										<p><a href=\"http://".$biz['link']."\" target=\"_blank\">".$biz['link']."</a></p>	
 									</div></li>";
 							echo $html;														
 						}
