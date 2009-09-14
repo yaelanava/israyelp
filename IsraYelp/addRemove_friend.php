@@ -27,27 +27,34 @@ if (isset($_GET['confirm'])) {
 } else { //insert
 	$friend_name = $_GET['friend_name'];
 	
-	$query = "SELECT * from `friends` WHERE user_id=$user_id and friend_id=$friend_id";		
+	$query = "SELECT * from `friends` WHERE user_id=$user_id and friend_id=$friend_id AND confirmed='1'";		
 	$result = $mysqli->query($query);
 	if ($result->num_rows != 0) {
 		$msg = "$friend_name כבר חבר שלך!";
 	} else {
-		$query = "INSERT INTO `friends` (
-				`user_id` ,
-				`friend_id`,
-				`confirmed`  
-			)
-			VALUES 
-				('$user_id', '$friend_id', '0');
-			";
-		$result = $mysqli->query($query);	
-		if ($result) {
-			$msg = "בקשת חברות נשלחה ל- $friend_name.";
+		$query = "SELECT * from `friends` WHERE user_id=$user_id and friend_id=$friend_id AND confirmed='0'";		
+		$result = $mysqli->query($query);
+		if ($result->num_rows != 0) {
+			$msg = "בקשת חברות ל-$friend_name כבר נשלחה.";
 		} else {
-			$msg = "הוספת $friend_name כחבר נכשלה.";		
+			//insert
+			$query = "INSERT INTO `friends` (
+					`user_id` ,
+					`friend_id`,
+					`confirmed`  
+				)
+				VALUES 
+					('$user_id', '$friend_id', '0');
+				";
+			$result = $mysqli->query($query);	
+			if ($result) {
+				$msg = "בקשת חברות נשלחה ל- $friend_name.";
+			} else {
+				$msg = "הוספת $friend_name כחבר נכשלה.";		
+			}
 		}
+		$return_url = "<A href=\"./user_profile.php?user_id=".$friend_id."\"> חזור לחשבון של $friend_name. </A>";
 	}
-	$return_url = "<A href=\"./user_profile.php?user_id=".$friend_id."\"> חזור לחשבון של $friend_name. </A>";
 }
 	
 ?>
