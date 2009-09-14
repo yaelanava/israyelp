@@ -1,6 +1,11 @@
+<?php 
+ssesion_start();
+
+include './utils/functions.php';
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
 	<title>הרשמה | IsraYelp</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
@@ -9,19 +14,16 @@
 	
 	<link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="./image/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="./mystyle.css">  	
+	<link rel="stylesheet" type="text/css" href="./mystyle.css">  
 </head>
-<body>
-<div id="head">
-		<div id="logo">
-			<A href="./main.php">Yelp</A>
-		</div>
-		<div id="leftEdge"></div>
-		<div id="rightEdge"></div>
-</div>
+
+<body dir="rtl">
+
+<?php echo getHeadHTMLCode()?>
+
 <div id="bodyContainer_Centered">
-	<p>.ההרשמה בוצעה בהצלחה</p>
-	<a href="login.php">.לחץ כאן כדי להיכנס לאתר</a>
+	<p>ההרשמה נכשלה.</p>
+	<a href="signup.php">לחץ כאן כדי להירשם שנית.</a>	
 </div>
 </body>
 </html>
