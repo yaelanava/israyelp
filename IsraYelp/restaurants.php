@@ -139,7 +139,7 @@ $result_top_bizs = $mysqli->query($query_top_bizs);
 	<div id="bottom_cat">
 		<h3>מסעדות ובתי קפה ב<?php echo $city_name?> לפי קטגוריות:</h3>
 		<ul dir="rtl">
-			<li><a href="?city_id=<?php echo $city_id?>&category=אירועים">אירועים</a></li>
+			<li><a href="?city_id=<?php echo $city_id?>&category=ארועים">ארועים</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=בשר">בשר</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=גורמה">גורמה</a></li>
 			<li><a href="?city_id=<?php echo $city_id?>&category=דגים">דגים</a></li>
