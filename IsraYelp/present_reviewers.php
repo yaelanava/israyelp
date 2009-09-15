@@ -6,7 +6,7 @@ include './utils/functions.php';
 $mysqli = getMysqliConnection();
 
 $reviewer = $_POST['reviewer_name'];		
-$query = "SELECT * FROM `users` WHERE username='$reviewer'";
+$query = "SELECT * FROM `users` WHERE username LIKE '%$reviewer%'";
 $result = $mysqli->query($query);	
 $count = $result->num_rows;
 $source = $_POST['source'];
