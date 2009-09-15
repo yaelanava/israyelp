@@ -109,18 +109,20 @@ $count_new = getNewMessagesCount($user_id);
 									<img src="<?php echo getUserPictureSrc($user_id);?>" height="150px" width="150px">																	
 										<?php 
 											if($same_user){
-												$htmli = "<p id=\"photo_action_link\">
+												$html = "<p id=\"photo_action_link\">
 														<a href=\"./uploadUserPictureForm.php\" class=\"small\">ערוך תמונה</a>
 							 							</p>";
 											} else if (isset($_SESSION['user_id'])){
-													$htmli = "<br>
+													$html = "<br>
 															<p id=\"photo_action_link\">
 																<a href=\"./addRemove_friend.php?friend_id=$user_id&friend_name=$username\" class=\"small\">הוסף כחבר</a>
 																<br>
 																<a href=\"./send_message_to_user.php?recipient_id=$user_id&recipient_name=$username\" class=\"small\">שלח הודעה</a>
 															</p>";
-											}																							
-											echo $htmli;											
+											} else {
+												$html = "";																							
+											}
+											echo $html;											
 										?>					 					
 								</div>
 							</div>
