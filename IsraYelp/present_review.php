@@ -33,6 +33,7 @@ $html = "<div>
 						<P class=\"reviewer_info\" style=\"float:right\"><A class=\"reviewer_name\" href=\"./user_profile.php?user_id=".$user['id']."\">". $user['username']. "</A></P>
 						<br></br>
 						<P class=\"reviewer_info\" style=\"float:right\">". $user['city']."</P>
+					</td>
 					<td>
 						ביקורת עבור: 
 						<a href=\"$biz_url\"><strong>".$biz['name']."</strong></a>
@@ -68,9 +69,7 @@ $html = "<div>
 <?php echo getNavHTMLCode()?>
 
 <div id="bodyContainer_Centered">
-	<p>
-		<?php echo $html; ?>
-	</p>
+	<p><?php echo $html?></p>
 </div>
 
 <?php echo getFooterHTMLCode()?>
