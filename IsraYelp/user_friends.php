@@ -105,7 +105,7 @@ $count_new = getNewMessagesCount($user_id);
 									<tr>
 										<td>
 											<DIV class=\"clearStyles photoBox\">
-												<A href=\"./user_profile.php?user_id=\"$friend_request_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 80px; HEIGHT: 80px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_request_id)."\"></A>
+												<A href=\"./user_profile.php?user_id=$friend_request_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 80px; HEIGHT: 80px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_request_id)."\"></A>
 											</div>			
 										</td>
 										<td valign=top>
@@ -150,7 +150,7 @@ $count_new = getNewMessagesCount($user_id);
 								<tr>
 									<td>
 										<DIV class=\"clearStyles photoBox\">
-											<A href=\"./user_profile.php?user_id=\"$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 60px; HEIGHT: 60px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
+											<A href=\"./user_profile.php?user_id=$friend_id\" rel=\"nofollow\"><IMG style=\"WIDTH: 60px; HEIGHT: 60px\" alt=\"התמונה של $friend_name\" src=\"".getUserPictureSrc($friend_id)."\"></A>
 										</div>			
 									</td>
 									<td valign=top>
